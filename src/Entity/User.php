@@ -83,6 +83,11 @@ class User
      */
     private $chats;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $password;
+
     public function __construct()
     {
         $this->answers = new ArrayCollection();
@@ -281,6 +286,18 @@ class User
                 $chat->setUserSender(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
 
         return $this;
     }
