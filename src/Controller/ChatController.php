@@ -26,7 +26,7 @@ class ChatController extends AbstractController
 
             $message = $form->getData();
             //l'auteur de l'article est l'utilisateur connecté
-            $message->setUserSender(1);
+            $message->setUserSender(this);
             $message->setUserGetter(2);
             //je fixe la date de publication de l'article
             $message->setDateSend(new \DateTime(date('Y-m-d H:i:s')));
