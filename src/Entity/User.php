@@ -3,10 +3,15 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
 {
@@ -32,6 +37,11 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /* nouvelle propriété qui va stocker le mot de passe en clair lors de l'inscription
+    *
+    */
+    private $plainPassword;
 
     /**
      * @ORM\Column(type="string", length=30)
@@ -142,6 +152,18 @@ class User implements UserInterface
         return (string) $this->password;
     }
 
+    public function getPlainPassword() :string
+    {
+        return (string) $this->plainPassword;
+    }
+
+     public function setPlainPassword(string $plainPassword) :self
+    {
+        $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
     public function setPassword(string $password): self
     {
         $this->password = $password;
@@ -163,7 +185,7 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        $this->plainPassword = null;
     }
 
     public function getFirstname(): ?string

@@ -31,6 +31,16 @@ class Chat
      */
     private $message;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date_send;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $chat_id;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +78,30 @@ class Chat
     public function setMessage(string $message): self
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    public function getDateSend(): ?\DateTimeInterface
+    {
+        return $this->date_send;
+    }
+
+    public function setDateSend(\DateTimeInterface $date_send): self
+    {
+        $this->date_send = $date_send;
+
+        return $this;
+    }
+
+    public function getChatId(): ?int
+    {
+        return $this->chat_id;
+    }
+
+    public function setChatId(int $chat_id): self
+    {
+        $this->chat_id = $chat_id;
 
         return $this;
     }
