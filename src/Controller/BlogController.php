@@ -14,7 +14,7 @@ class BlogController extends AbstractController
 {
 
     /**
-     * @Route("/blog", name="blog")
+     * @Route("/admin/blog", name="blogAdmin")
      */ 
 
     public function addArticle(Request $request, FileUploader $fileuploader){
@@ -53,6 +53,24 @@ class BlogController extends AbstractController
 
     	return $this->render('blog/index.html.twig', ['form' => $form->createView()]);
 
+    }
+
+     /**
+     * @Route("/blog", name="blog")
+     */ 
+
+      public function blog()    {
+
+        //récupération de la liste des articles
+        // $articleDB = new ArticleDB();
+        //$articles = $articleDB->findAll()
+        $repository = $this->getDoctrine()->getRepository(Blog::class);
+        //utilisation de la méthode custom qui fait une jointure
+        $articles = $repository->findAll();
+
+        return $this->render('blog/blog.html.twig', [
+            'articles' => $articles,
+        ]);
     }
 
 
