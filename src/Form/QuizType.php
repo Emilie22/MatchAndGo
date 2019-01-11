@@ -15,7 +15,7 @@ class QuizType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('label', TextType::class)
+            ->add('label', TextType::class, ['label'=>'label'])
             ->add('answers', EntityType::class, ['class' => Answer::class, 'choice_label' => 'label_answer', 'multiple' => true])
         ;
     }
