@@ -82,12 +82,12 @@ class Blog
         return $this;
     }
 
-    public function getPictureBlog(): ?string
+    public function getPictureBlog()
     {
         return $this->pictureBlog;
     }
 
-    public function setPictureBlog(string $pictureBlog): self
+    public function setPictureBlog($pictureBlog): self
     {
         $this->pictureBlog = $pictureBlog;
 
