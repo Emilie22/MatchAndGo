@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\ChatFormType;
+use App\Entity\User;
 
 class ChatController extends AbstractController
 {
@@ -14,25 +15,29 @@ class ChatController extends AbstractController
      */
     public function index(Request $request)
     {
+
+        $entityManager = $this->getDoctrine()->getManager();
+
         $form = $this->createForm(ChatFormType::class);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
 
-            $article = $form->getData();
+            $message = $form->getData();
             //l'auteur de l'article est l'utilisateur connecté
-            $article->setUserSender($this->getUser());
+            $message->setUserSender(1);
+            $message->setUserGetter(2);
             //je fixe la date de publication de l'article
-            $article->setDatePubli(new \DateTime(date('Y-m-d H:i:s')));
+            $message->setDateSend(new \DateTime(date('Y-m-d H:i:s')));
 
-            $entityManager->persist($article);
+            $entityManager->persist($message);
 
             $entityManager->flush();
 
-
-        return $this->render('chat/index.html.twig', [
-            'form'=> $form->createView()
-        ]);
+        }
+            return $this->render('chat/index.html.twig', [
+                'form'=> $form->createView(),
+            ]);
     }
 }
