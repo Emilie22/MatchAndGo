@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Question;
 use App\Form\QuizType;
 
 class QuizController extends AbstractController
@@ -12,11 +13,12 @@ class QuizController extends AbstractController
     /**
      * @Route("/quiz", name="quiz")
      */
-    public function findMatch(Request $request)
+    public function showQuiz(Request $request)
     {
-    	$form = $this->createForm(QuizType::class);
-        $form->handleRequest($request);
-        return $this->render('quiz/index.html.twig', [
-            'form' => $form->createView()]);
+
+    	$repository = $this->getDoctrine()->getRepository(Question::class);
+    	$questions = $repository->findAll();
+
+        return $this->render('quiz/index.html.twig', ['questions' => $questions]);
     }
 }
