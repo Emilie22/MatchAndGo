@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello QuizController!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+	<div id="carouselQuiz" class="carousel slide" data-ride="carousel" data-interval="false">
+
+{# 		  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol> #}
+
+	<div class="carousel-inner">
+
+		<div class="carousel-item active">
+			<h3>Démarrer le questionnaire</h3>
+		</div>
+
+	<form>
+
+	{% for question in questions %}
+
+		{# {{ dump(question)}} #}
+
+		{# {{ dump(question.label)}} #}
+		<div class="carousel-item">
+			<div class="form-control form-control-lg text-center">
+				<label class="">{{ question.label }}</label>
+			</div>
+			
+			{% for answer in question.answers %}
+				<div class="form-check form-check-inline">
+					<input type="checkbox" class="form-check-input" value="{{ answer.id }}">
+					<label class="form-check-label">{{ answer.labelAnswer }}</label>
+				</div>
+				{# {{ dump(answer.id)}} #}
+			{% endfor %}
+
+			</div>
+		
+
+	{% endfor %}
+
+	<div class="carousel-item">
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary">Lancer la recherche</button>
+		</div>
+	</div>
+
+	</form>
+	
+	</div>
+
+	</div>
+
+
+	<a class="carousel-control-prev bg-dark" href="#carouselExampleIndicators" role="button" data-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="sr-only">Previous</span>
+	</a>
+	<a class="carousel-control-next bg-dark" href="#carouselExampleIndicators" role="button" data-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="sr-only">Next</span>
+	 </a>
+</div>
+
+
+{% endblock %}
