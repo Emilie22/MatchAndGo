@@ -1,3 +1,15 @@
 body{
 	font-family: 'Sriracha', cursive;
 }
+
+/*CAROUSEL*/
+
+#carouselQuiz {
+	min-height: 600px; 
+	margin: 0 auto;
+}
+
+#startQuiz {
+	display: flex;
+	justify-content: center;
+}
