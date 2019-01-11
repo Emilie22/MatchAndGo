@@ -1,9 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Match&Go{% endblock %}
 
 {% block body %}
 
-<video src="{{ asset('video/Sea.mp4') }}" type="video/mp4" autoplay="true" loop="true" class="container-fluid" height="200px"></video>
+	<video src="{{ asset('video/Sea.mp4') }}" type="video/mp4" autoplay="true" loop="true" class="container-fluid" height="200px"></video>
+
+	<div>
+		<a href="{{ path('app_register') }}">Trouver un compagnon de voyage</a>
+	</div>
 
 {% endblock %}
