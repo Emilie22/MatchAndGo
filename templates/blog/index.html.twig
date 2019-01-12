@@ -19,7 +19,7 @@
 			<img src="{{ asset('uploads/article/image/' ~ blog.pictureblog) }}"  class="img-thumbnail">
 
 			<h3>{{ blog.title }}</h3>
-			publié le {{ blog.datepost|date('d/m/Y') }} par {{ blog.author }}
+			<p>publié le {{ blog.datepost|date('d/m/Y') }} par {{ blog.author }}</p>
 			<a href="{{ path('showBlogWithSlug', {slug: blog.slug}) }}"><i class="fas fa-search-plus"></i></a>
 
 			{% if is_granted('ROLE_ADMIN') %} 
