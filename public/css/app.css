@@ -10,11 +10,24 @@ body{
 	color: #fdad17;
  }
 
- .btnInscription{
+.btnInscription{
  	background: #fdad17;
+ 	color: #3f4253;
  }
 
- .titleInscription{
+.titleInscription{
  	color: #3f4253;
  	
  }
+
+/*Formulaire de connexion*/
+
+.connexion{
+	background: #3f4253;
+	color: #fdad17;
+}
+
+.btnConnexion{
+	background: #fdad17;
+	color: #3f4253;
+}

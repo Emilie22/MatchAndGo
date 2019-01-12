@@ -75,6 +75,8 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Image
+     * 
      */
     private $picture;
 
@@ -260,12 +262,12 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getPicture(): ?string
+    public function getPicture()
     {
         return $this->picture;
     }
 
-    public function setPicture(string $picture): self
+    public function setPicture($picture)
     {
         $this->picture = $picture;
 
