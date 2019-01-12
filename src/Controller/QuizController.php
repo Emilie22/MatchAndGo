@@ -45,7 +45,7 @@ class QuizController extends AbstractController
 		$entityManager = $this->getDoctrine()->getManager();
 		$entityManager->flush();
 
-        return $this->render('quiz/index.html.twig', ['questions' => $questions]);
+        return $this->render('quiz/index.html.twig', ['questions' => $questions, 'user' => $this->getUser()->getAnswers()]);
     }
 
 
