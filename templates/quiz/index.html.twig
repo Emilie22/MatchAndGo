@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello QuizController!{% endblock %}
+{% block title %}Questionnaire de match{% endblock %}
 
 {% block body %}
 
@@ -14,24 +14,16 @@
     <li data-target="#carouselQuiz" data-slide-to="2"></li>
   </ol> #}
 
-	<div class="carousel-inner">
+	<div class="w-100 carousel-inner" role="listbox">
 
 		<div class="carousel-item active">
 
-			<button id="startQuiz" class="btn">Démarrer le questionnaire</button>
-			
-			<a class="carousel-control-prev bg-dark" href="#carouselQuiz" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a>
+			<h3>Démarrer le questionnaire</h3>
 
-			<a class="carousel-control-next bg-dark" href="#carouselQuiz" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			 </a></div>
+		</div>
 		
 
-	<form>
+	<form method="post" class="form-horizontal">
 
 	{% for question in questions %}
 
@@ -39,27 +31,28 @@
 
 		{# {{ dump(question.label)}} #}
 		<div class="carousel-item">
-			<div class="form-control form-control-lg text-center">
-				<label class="">{{ question.label }}</label>
+			<div class="row">
+	            <div class="form-group col-md-8 offset-2 text-center labelQuestion">
+					<label class="">{{ question.label }}</label>
+				</div>
 			</div>
 			
+				<div class="row littleContainer">
 			{% for answer in question.answers %}
-				<div class="form-check form-check-inline">
-					<input type="checkbox" class="form-check-input" name="{{ answer.labelAnswer }}" value="{{ answer.id }}">
-					<label class="form-check-label">{{ answer.labelAnswer }}</label>
+
+
+					<div class="col-12 col-md-6 btn-group-toggle text-center mt-3 mb-3" data-toggle="buttons">
+						<label class="btn btn-info">
+							<input type="checkbox" name="{{ answer.labelAnswer }}" value="{{ answer.id }}" autocomplete="off">
+							{{ answer.labelAnswer }}
+						</label>
+					</div>
+			{% endfor %}
+				
 				</div>
 				{# {{ dump(answer.id)}} #}
-			{% endfor %}
 
-			<a class="carousel-control-prev bg-dark" href="#carouselQuiz" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a>
 
-			<a class="carousel-control-next bg-dark" href="#carouselQuiz" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			 </a>
 
 		</div>
 		
@@ -73,17 +66,32 @@
 	</div>
 
 	</form>
+
+	{# defilement prev et next #}
+	<div class="navi">
+	    <a class="" href="#carouselQuiz" role="button" data-slide="prev">
+	      <span class="carousel-control-prev-icon ico"></span>
+	      <span class="sr-only">Previous</span>
+	    </a>
+	    <a class="" href="#carouselQuiz" role="button" data-slide="next">
+	      <span class="carousel-control-next-icon ico"></span>
+	      <span class="sr-only">Next</span>
+	    </a>
+    </div>
 	
 	</div>
 
 	</div>
 
-	{# {{ dump(get)}} #}
+{# 	{{ dump(get)}}
+	{{ dump(user)}}
+	{{ dump(answerObj)}} #}
 
 
 
 
 </div>
+
 
 
 {% endblock %}

@@ -7,7 +7,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Question;
 use App\Entity\Answer;
-use Symfony\Component\Security\Core\User\UserInterface;
 use App\Entity\User;
 
 class QuizController extends AbstractController
@@ -21,25 +20,30 @@ class QuizController extends AbstractController
     	$repository = $this->getDoctrine()->getRepository(Question::class);
     	$questions = $repository->findAll();
 
-    	$repositoryResponse = $this->getDoctrine()->getRepository(Answer::class);
+		$user = new User();
+		$user = $this->getUser();
 
-		$get = $request->query->all();
-		$answerObj=[];
-		foreach ($get as $key => $value){
-			$answerObj[] = $repositoryResponse->find($value);
+		$oldAnswers = $user->getAnswers();
+		foreach ($oldAnswers as $key => $value) {
+			$user->removeAnswer($value);
 		}
 
-		$userAnswer = new User();
-		foreach ($answerObj as $key => $value){
-			$userAnswer->addAnswer($value);
+		$post = $request->request->all();
+
+    	$repositoryAnswer = $this->getDoctrine()->getRepository(Answer::class);
+
+    	$answerObj = new Answer();
+		
+		$answerObj = [];
+		foreach ($post as $key => $value){
+			$answerObj[] = $repositoryAnswer->find($value);
+			foreach ($answerObj as $key => $value) {
+				$user->addAnswer($value);
+			}
 		}
 
 		$entityManager = $this->getDoctrine()->getManager();
-		$entityManager->persist($userAnswer);
 		$entityManager->flush();
-
-
-
 
         return $this->render('quiz/index.html.twig', ['questions' => $questions]);
     }
