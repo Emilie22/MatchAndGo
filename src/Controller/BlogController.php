@@ -9,52 +9,12 @@ use App\Form\BlogType;
 use Symfony\Component\HttpFoundation\File\File;
 use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\Request;
+use App\Form\CommentType;
 
 class BlogController extends AbstractController
 {
 
-    /**
-     * @Route("/admin/blog", name="blogAdmin")
-     */ 
-
-    public function addArticle(Request $request, FileUploader $fileuploader){
-
-    	//pour pouvoir sauvegarder un objet = insérer les infos dans la table, on utilise l'entity manager
-    	$entityManager = $this->getDoctrine()->getManager();
-    	
-        $form = $this->createForm(BlogType::class);
-
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()){
-
-            $article = $form->getData();
-
-            // $article->getImage() contient un objet qui représente le fichier image envoyé
-            $file = $article->getPictureBlog();
-
-            $filename = $fileuploader->upload($file, $this->getParameter('article_image_directory'));
-
-            // je remplace l'attribut image qui contient toujours le fichier par le nom du fichier
-            $article->setPictureBlog($filename);
-
-            //je fixe la date de publication de l'article
-            $article->setDatePost(new \DateTime(date('Y-m-d H:i:s')));
-
-            $entityManager->persist($article);
-
-            $entityManager->flush();
-
-            $this->addFlash('success', 'article ajouté');
-
-            return $this->redirectToRoute('blog');
-
-        }
-
-    	return $this->render('blog/index.html.twig', ['form' => $form->createView()]);
-
-    }
-
+   
      /**
      * @Route("/blog", name="blog")
      */ 
@@ -66,12 +26,29 @@ class BlogController extends AbstractController
         //$articles = $articleDB->findAll()
         $repository = $this->getDoctrine()->getRepository(Blog::class);
         //utilisation de la méthode custom qui fait une jointure
-        $articles = $repository->findAll();
+        $blogs = $repository->findAll();
 
-        return $this->render('blog/blog.html.twig', [
-            'articles' => $articles,
+        return $this->render('blog/index.html.twig', [
+            'blogs' => $blogs,
         ]);
     }
+
+   /**
+    * Route qui va afficher les détails d'un article grâce au slug 
+    * @Route("/blog/{slug}", name="showBlogWithSlug", requirements={"slug"="[a-z0-9]+(?:-[a-z0-9]+)*"})
+    */
+        public function showBlogWithSlug(Request $request, Blog $blog){
+
+            if(!$blog){
+            throw $this->createNotFoundException('No article found');
+        }
+
+        return $this->render('blog/blog.html.twig',
+                                        ['blog' => $blog ]
+        );
+
+            
+        }
 
 
 }
