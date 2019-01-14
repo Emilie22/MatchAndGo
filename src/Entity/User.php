@@ -75,6 +75,8 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Image
+     * 
      */
     private $picture;
 
@@ -97,6 +99,16 @@ class User implements UserInterface
     * @ORM\OneToMany(targetEntity="App\Entity\Chat", mappedBy="userSender")
     */
     private $chats;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Chat", mappedBy="chat_id")
+     */
+    private $id_chats;
+
+    public function __construct()
+    {
+        $this->id_chats = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -260,12 +272,12 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getPicture(): ?string
+    public function getPicture()
     {
         return $this->picture;
     }
 
-    public function setPicture(string $picture): self
+    public function setPicture($picture)
     {
         $this->picture = $picture;
 
@@ -327,31 +339,30 @@ class User implements UserInterface
    /**
     * @return Collection|Chat[]
     */
-   public function getChats(): Collection
+   public function getIdChats(): Collection
    {
-       return $this->chats;
+       return $this->id_chats;
    }
 
-   public function addChat(Chat $chat): self
+   public function addIdChat(Chat $idChat): self
    {
-       if (!$this->chats->contains($chat)) {
-           $this->chats[] = $chat;
-           $chat->setUserSender($this);
+       if (!$this->id_chats->contains($idChat)) {
+           $this->id_chats[] = $idChat;
+           $idChat->addChatId($this);
        }
 
        return $this;
    }
 
-   public function removeChat(Chat $chat): self
+   public function removeIdChat(Chat $idChat): self
    {
-       if ($this->chats->contains($chat)) {
-           $this->chats->removeElement($chat);
-           // set the owning side to null (unless already changed)
-           if ($chat->getUserSender() === $this) {
-               $chat->setUserSender(null);
-           }
+       if ($this->id_chats->contains($idChat)) {
+           $this->id_chats->removeElement($idChat);
+           $idChat->removeChatId($this);
        }
 
        return $this;
    }
-}
+   }
+
+

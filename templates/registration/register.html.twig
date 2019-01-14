@@ -3,12 +3,24 @@
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-    <h1>S'inscrire</h1>
-
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword) }}
-
-        <button class="btn">Je m'inscris</button>
-    {{ form_end(registrationForm) }}
+	<div class="container mt-5">
+		<h3 class="titleInscription mt-5 mb-5 text-center">S'inscrire sur Match&Go</h3>
+		<div class="row justify-content-center"> 
+			<div class="col-12 col-md-4 form-group inscription">
+				<div class="form-group mt-3">
+					{{ form_start(registrationForm)}}
+		        	{{ form_row(registrationForm.email, {'attr':{'class':'form-control mb-3 mt-3'}}) }}
+		       	    {{ form_row(registrationForm.plainPassword.first, {'attr':{'class':'form-control mb-3 mt-3'}}) }}
+		       	    {{ form_row(registrationForm.plainPassword.second, {'attr':{'class':'form-control mb-3 mt-3'}}) }}
+		       	<div class="form-check form-check-inline">
+					{{ form_widget(registrationForm.TermsAccepted, {'attr':{'class':'form-check-input mr-2'}}) }}
+					{{ form_label(registrationForm.TermsAccepted, 'Accepter les CGU', {'label_attr':{'class':'form-check-label'}}) }}
+					
+				</div>
+		        <button class="btn mb-3 mt-3 btnInscription" type="submit">S'inscrire</button>
+				{{ form_end(registrationForm) }}
+			</div>		
+			</div>
+		</div>   
+	</div>
 {% endblock %}
