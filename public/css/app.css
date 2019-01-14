@@ -31,3 +31,23 @@ body{
 	background: #fdad17;
 	color: #3f4253;
 }
+
+.fas.fa-trash{
+	color: #fdad17;
+}
+
+.fas.fa-pencil-alt{
+	color: #fdad17;
+}
+
+.fas.fa-search-plus{
+	color: #fdad17;
+}
+
+.navbar-light .navbar-nav .nav-link{
+	color: #fdad17;
+}
+
+a:hover {
+	color: #3f4253;
+}

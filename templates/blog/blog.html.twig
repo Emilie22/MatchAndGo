@@ -13,23 +13,19 @@
 <div class="container">
 <div class="row">
 
-	{% for blog in blogs %}
 
 		<div class="col-md-4">
 			<img src="{{ asset('uploads/article/image/' ~ blog.pictureblog) }}"  class="img-thumbnail">
 
 			<h3>{{ blog.title }}</h3>
-			<p>publié le {{ blog.datepost|date('d/m/Y') }} par {{ blog.author }}</p>
-			<a href="{{ path('showBlogWithSlug', {slug: blog.slug}) }}"><i class="fas fa-search-plus"></i></a>
-
-			{% if is_granted('ROLE_ADMIN') %} 
-			<a href="{{ path('deleteBlog', {slug: blog.slug}) }}"><i class="fas fa-trash"></i></a>
-			<a href="{{ path('updateBlog', {slug: blog.slug}) }}"><i class="fas fa-pencil-alt"></i></a> 
-				{% endif %}
+			publié dans la catégorie le {{ blog.datepost|date('d/m/Y') }} par {{ blog.author }}
+			<p>{{ blog.content }}</p>
 		</div>
-		
-
-	{% endfor %}
+		{% if is_granted('ROLE_ADMIN') %}
+			
+			<a href="{{ path('deleteBlog', {slug: blog.slug}) }}"><i class="fas fa-trash"></i></a>
+			<a href="{{ path('updateBlog', {slug: blog.slug}) }}"><i class="fas fa-pencil-alt"></i></a> |
+		{% endif %}
 	
 	</div>
 	</div>
