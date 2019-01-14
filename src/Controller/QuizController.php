@@ -20,6 +20,12 @@ class QuizController extends AbstractController
     	$repository = $this->getDoctrine()->getRepository(Question::class);
     	$questions = $repository->findAll();
 
+    	$imgQuiz = [];
+    	for ($i=1; $i<=21; $i++) {
+    		$imgQuiz[] = 'carousel'.$i;
+    	}
+    	// $imgQuiz = ['carousel1', 'carousel2', 'carousel3', 'carousel4', 'carousel5', 'carousel6', 'carousel7', 'carousel8', 'carousel9', 'carousel10', 'carousel11', 'carousel12'];
+
 		$user = new User();
 		$user = $this->getUser();
 
@@ -27,6 +33,7 @@ class QuizController extends AbstractController
 		foreach ($oldAnswers as $key => $value) {
 			$user->removeAnswer($value);
 		}
+		
 
 		$post = $request->request->all();
 
@@ -45,9 +52,10 @@ class QuizController extends AbstractController
 		$entityManager = $this->getDoctrine()->getManager();
 		$entityManager->flush();
 
-        return $this->render('quiz/index.html.twig', ['questions' => $questions, 'user' => $this->getUser()->getAnswers()]);
+        return $this->render('quiz/index.html.twig', ['questions' => $questions, 'imgQuiz' => $imgQuiz, 'answerObj' => $answerObj, 'post'=>$post]);
     }
 
 
 
 }
+
