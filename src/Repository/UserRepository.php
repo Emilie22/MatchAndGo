@@ -59,6 +59,7 @@ class UserRepository extends ServiceEntityRepository
                 ON au2.answer_id = au.answer_id 
                 WHERE u.id = 3 
                 AND au2.user_id <> u.id';
+                
         $select = $connexion->prepare($sql);
         $select->execute();
         // je renvoie un tableau de tableaux d'articles
@@ -84,4 +85,7 @@ class UserRepository extends ServiceEntityRepository
     // SELECT * FROM user LEFT JOIN answer_user au ON au.user_id = user.id LEFT JOIN answer_user a ON a.answer_id = user.answers
 
     // SELECT au2.user_id FROM user u LEFT JOIN answer_user au ON au.user_id = u.id LEFT JOIN answer_user au2 ON au2.answer_id = au.answer_id WHERE u.id = :id AND au2.user_id <> u.id
+
+
+    // GROUP BY user_id';
 }

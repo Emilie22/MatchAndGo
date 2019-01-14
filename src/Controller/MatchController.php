@@ -14,25 +14,27 @@ class MatchController extends AbstractController
      */
     public function index()
     {
-    	// $answers = $this->getUser()->getAnswers();
+    	
     	$repository = $this->getDoctrine()->getRepository(User::class);
     	$users = $repository->myFindAll();
 
+    	$userAnswers = [];
 
-    	// $answers = [];
-    	// foreach ($users as $user) {
-    	// 	// $user = new User();
-    	// 	$answers = $user->getAnswers();
+    	foreach ($users as $user) {
+    		$userAnswers[] = implode(" ", $user);
+    	}
 
-			// $idAnswers = [];
-    		
-   //  		foreach ($answers as $key=>$value) {
-   //  			$idAnswers[] = $value;
-   //  		}
-    	// }
+    	$test = array_count_values($userAnswers);
+
+    	$userMatch = [];
+    	foreach ($test as $key=>$value) {
+    		if ($value > 2) {
+    			$userMatch[] = $repository->findById($key);
+    		}
+    	}
 
         return $this->render('match/index.html.twig', [
-            'users'=>$users
+            'users'=>$users, 'userAnswers'=>$userAnswers, 'user'=>$userMatch, 'test'=>$test
         ]);
     }
 }
