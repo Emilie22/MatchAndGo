@@ -34,6 +34,7 @@ class QuizController extends AbstractController
 			$user->removeAnswer($value);
 		}
 		
+		// verif du formulaire !!!!!!
 
 		$post = $request->request->all();
 

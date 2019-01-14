@@ -48,7 +48,7 @@ class UserRepository extends ServiceEntityRepository
     }
     */
 
-    public function myFindAll() {
+    public function myFindAll($id) {
         $connexion = $this->getEntityManager()->getConnection();
         // on stocke la requête dans une variable
         $sql = 'SELECT au2.user_id   
@@ -57,10 +57,11 @@ class UserRepository extends ServiceEntityRepository
                 ON au.user_id = u.id 
                 LEFT JOIN answer_user au2 
                 ON au2.answer_id = au.answer_id 
-                WHERE u.id = 3 
+                WHERE u.id = :id 
                 AND au2.user_id <> u.id';
                 
         $select = $connexion->prepare($sql);
+        $select->bindValue(':id', $id);
         $select->execute();
         // je renvoie un tableau de tableaux d'articles
         return $select->fetchAll();

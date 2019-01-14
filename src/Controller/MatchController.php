@@ -16,7 +16,7 @@ class MatchController extends AbstractController
     {
     	
     	$repository = $this->getDoctrine()->getRepository(User::class);
-    	$users = $repository->myFindAll();
+    	$users = $repository->myFindAll($this->getUser()->getId());
 
     	$userAnswers = [];
 
