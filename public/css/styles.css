@@ -522,3 +522,52 @@ img::-moz-selection {
     color: #fff;
     background: 0 0;
 }
+
+/*Formulaire de connexion*/
+
+.connexion{
+    background: #3f4253;
+    color: #fdad17;
+}
+
+.btnConnexion{
+    background: #fdad17;
+    color: #3f4253;
+}
+
+.fas.fa-trash{
+    color: #fdad17;
+}
+
+.fas.fa-pencil-alt{
+    color: #fdad17;
+}
+
+.fas.fa-search-plus{
+    color: #fdad17;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    color: #fdad17;
+}
+
+a:hover {
+    color: #3f4253;
+}
+
+/*Formulaire d'inscription*/
+
+.inscription{ 
+    background: #3f4253;
+    color: #fdad17;
+ }
+
+.btnInscription{
+    background: #fdad17;
+    color: #3f4253;
+ }
+
+.titleInscription{
+    color: #3f4253;
+    
+ }

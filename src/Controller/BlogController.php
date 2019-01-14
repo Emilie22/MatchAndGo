@@ -28,7 +28,7 @@ class BlogController extends AbstractController
         //utilisation de la méthode custom qui fait une jointure
         $blogs = $repository->findAll();
 
-        return $this->render('blog/blog.html.twig', [
+        return $this->render('blog/index.html.twig', [
             'blogs' => $blogs,
         ]);
     }
