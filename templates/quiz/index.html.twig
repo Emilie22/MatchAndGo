@@ -1,72 +1,85 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello QuizController!{% endblock %}
+{% block title %}Questionnaire de match{% endblock %}
 
 {% block body %}
 
 <div class="container">
 
+	{# {{ dump(imgQuiz)}} #}
+
+
+	{# début du formulaire #}
+	<form method="post" class="form-horizontal">
+
+	{# début du carousel #}
 	<div id="carouselQuiz" class="carousel slide" data-ride="carousel" data-interval="false">
 
-{# 		  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol> #}
+		{# indicateurs du carousel #}
+		<ol class="carousel-indicators">
+	        {% for question in questions %}
+	            <li data-target="#carouselQuiz" data-slide-to="{{ loop.index0 }}" {% if loop.index0 == 0 %} class="active" {% endif %}></li>
+	        {% endfor %}
+	    </ol>
 
-	<div class="carousel-inner">
+		<div class="w-100 carousel-inner" role="listbox">
 
-		<div class="carousel-item active">
-			<h3>Démarrer le questionnaire</h3>
-		</div>
+			{% for question in questions %}
 
-	<form>
+				<div {% if loop.index0 == 0 %} class="carousel-item active" {% else %} class="carousel-item" {% endif %}>
+			        <img src="{{asset('uploads/quiz/picture/'~random(imgQuiz)~'.jpg') }}" class="d-block w-100 pictureQuiz">
+					<div class="row">
+			            <div class="form-group col-md-8 offset-2 text-center labelQuestion">
+							<label class="">{{ question.label }}</label>
+						</div>
+					</div>
+					
+						<div class="row littleContainer">
+						
+						{% for answer in question.answers %}	
 
-	{% for question in questions %}
+							<div class="col-12 col-md-6 btn-group-toggle text-center mt-3 mb-3" data-toggle="buttons">
+								<label class="btn btn-warning btnAnswers">
+									<input type="checkbox" name="{{ answer.labelAnswer }}" value="{{ answer.id }}" autocomplete="off">
+									{{ answer.labelAnswer }}
+								</label>
+							</div>
+						{% endfor %}
+						
+					</div>
 
-		{# {{ dump(question)}} #}
-
-		{# {{ dump(question.label)}} #}
-		<div class="carousel-item">
-			<div class="form-control form-control-lg text-center">
-				<label class="">{{ question.label }}</label>
-			</div>
-			
-			{% for answer in question.answers %}
-				<div class="form-check form-check-inline">
-					<input type="checkbox" class="form-check-input" value="{{ answer.id }}">
-					<label class="form-check-label">{{ answer.labelAnswer }}</label>
 				</div>
-				{# {{ dump(answer.id)}} #}
+
 			{% endfor %}
 
+			<div class="carousel-item row">
+				<div class="form-group col-12 text-center">
+					<button type="submit" id="btnSearchMatch">Recherche tes ami(e)s de voyage !</button>
+				</div>
 			</div>
 		
-
-	{% endfor %}
-
-	<div class="carousel-item">
-		<div class="form-group">
-			<button type="submit" class="btn btn-primary">Lancer la recherche</button>
 		</div>
-	</div>
 
 	</form>
-	
+
+	{# defilement prev et next #}
+	<div class="navi">
+	    <a class="carousel-control-prev ico" href="#carouselQuiz" role="button" data-slide="prev">
+	      <i class="fa fa-chevron-left fa-3x chevrons" aria-hidden="true"></i>
+	    </a>
+	    <a class="carousel-control-next ico" href="#carouselQuiz" role="button" data-slide="next">
+	      <i class="fa fa-chevron-right fa-3x chevrons" aria-hidden="true"></i>
+	    </a>
 	</div>
 
 	</div>
 
+{# {{ dump(post)}}
+{{ dump(answerObj)}}  #}
 
-	<a class="carousel-control-prev bg-dark" href="#carouselExampleIndicators" role="button" data-slide="prev">
-		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		<span class="sr-only">Previous</span>
-	</a>
-	<a class="carousel-control-next bg-dark" href="#carouselExampleIndicators" role="button" data-slide="next">
-		<span class="carousel-control-next-icon" aria-hidden="true"></span>
-		<span class="sr-only">Next</span>
-	 </a>
 </div>
 
 
+
 {% endblock %}
+
