@@ -26,8 +26,7 @@ class ChatController extends AbstractController
 
             $message = $form->getData();
             //l'auteur de l'article est l'utilisateur connecté
-            $message->setUserSender(1);
-            $message->setUserGetter(2);
+
             //je fixe la date de publication de l'article
             $message->setDateSend(new \DateTime(date('Y-m-d H:i:s')));
 
@@ -37,7 +36,7 @@ class ChatController extends AbstractController
 
         }
             return $this->render('chat/index.html.twig', [
-                'form'=> $form->createView(),
+                'form'=> $form->createView(),'user'=>$this->getUser()
             ]);
     }
 }
