@@ -14,7 +14,8 @@ class ChatFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('message', TextareaType::class)
+            ->add('message', TextType::class, array(
+                'attr' => array('id' => 'stop')))
             ->add('Envoyer', SubmitType::class);
             
     }

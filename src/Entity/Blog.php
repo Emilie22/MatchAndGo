@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BlogRepository")
@@ -40,6 +41,12 @@ class Blog
      * @ORM\Column(type="string", length=50)
      */
     private $author;
+
+    /**
+    * @Gedmo\Slug(fields={"title"})
+    * @ORM\Column(length=128, unique=true)
+    */
+    private $slug;
 
     public function getId(): ?int
     {
@@ -102,6 +109,18 @@ class Blog
     public function setAuthor(string $author): self
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
