@@ -1,5 +1,40 @@
+/*Couleurs pour site :
+jaune : #fdad17
+gris : #3f4253*/
+
+
 body{
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Open Sans', cursive;
+}
+
+
+/*Formulaire d'inscription*/
+
+.inscription{ 
+	background: #3f4253;
+	color: #fdad17;
+ }
+
+.btnInscription{
+ 	background: #fdad17;
+ 	color: #3f4253;
+ }
+
+.titleInscription{
+ 	color: #3f4253;
+ 	
+ }
+
+/*Formulaire de connexion*/
+
+.connexion{
+	background: #3f4253;
+	color: #fdad17;
+}
+
+.btnConnexion{
+	background: #fdad17;
+	color: #3f4253;
 }
 
 .fas.fa-trash{
@@ -21,3 +56,80 @@ body{
 a:hover {
 	color: #3f4253;
 }
+
+/*CAROUSEL*/
+
+#carouselQuiz {
+  margin: 4rem auto;
+  height: 600px;
+  position: relative;
+  box-shadow: 5px 5px 10px lightgrey, -5px -5px 10px lightgrey;
+}
+
+.carousel-inner {
+  height: 600px;
+  border: 10px solid #3f4253;
+}
+
+.ico {
+  background: none;
+  color: #3f4253;
+}
+
+.ico:hover {
+  background: none;
+  color: #3f4253;
+}
+
+.ico:focus {
+  background: none;
+  color: #3f4253;
+}
+
+.pictureQuiz {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 600px;
+  opacity: 0.6;
+}
+
+
+.labelQuestion {
+  margin-top: 4rem;
+  color: #3f4253;/*
+  font-family: 'Lobster', cursive;*/
+  font-size: 2rem;
+}
+
+.littleContainer {
+	width: 60%;
+	margin: 200px auto 0;
+}
+
+.btnAnswers {
+  background-color: #3f4253;
+  border: 1px solid #3f4253;
+  color: #fdad17;
+  width: 250px;
+}
+
+.btnAnswers:hover {
+  background-color: #fdad17;
+  color: #3f4253;  
+}
+
+#btnSearchMatch {
+  background-color: #fdad17;
+  color: #3f4253;
+  width: 300px;
+  height: 100px;
+  border: 1px solid #fdad17;
+  border-radius: 5px;
+  margin-top: 250px;
+  box-shadow: 10px 10px 20px lightgrey, -10px -10px 20px lightgrey;
+}
+
+
+
