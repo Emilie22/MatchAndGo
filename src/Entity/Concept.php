@@ -60,12 +60,12 @@ class Concept
         return $this;
     }
 
-    public function getPictureConcept(): ?string
+    public function getPictureConcept()
     {
         return $this->pictureConcept;
     }
 
-    public function setPictureConcept(string $pictureConcept): self
+    public function setPictureConcept($pictureConcept)
     {
         $this->pictureConcept = $pictureConcept;
 
