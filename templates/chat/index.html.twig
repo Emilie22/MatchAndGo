@@ -3,10 +3,13 @@
 {% block title %}tchat{% endblock %}
 
 {% block body %}
+{{dump(user)}}
 <div class="row">
-    <div class="col-md-12 text-center">
+    <div class="container">
+        <div id="chat" class="border rounded border-dark" style="height: 150px"></div>
+        
         {{ form_start(form) }}
-                {{ form_widget(form) }}
+            {{ form_widget(form) }}
         {{ form_end(form) }}
     </div>
 </div>

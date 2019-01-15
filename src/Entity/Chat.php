@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -16,15 +18,6 @@ class Chat
      */
     private $id;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="chats")
-     */
-    private $userSender;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="chats")
-     */
-    private $userGetter;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -37,38 +30,22 @@ class Chat
     private $date_send;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToMany(targetEntity="App\Entity\user", inversedBy="salon")
      */
-    private $chat_id;
+    private $salon;
+
+    public function __construct()
+    {
+        $this->user_id = new ArrayCollection();
+        $this->salon = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUserSender(): ?User
-    {
-        return $this->userSender;
-    }
-
-    public function setUserSender(?User $userSender): self
-    {
-        $this->userSender = $userSender;
-
-        return $this;
-    }
-
-    public function getUserGetter(): ?User
-    {
-        return $this->userGetter;
-    }
-
-    public function setUserGetter(?User $userGetter): self
-    {
-        $this->userGetter = $userGetter;
-
-        return $this;
-    }
 
     public function getMessage(): ?string
     {
@@ -94,15 +71,31 @@ class Chat
         return $this;
     }
 
-    public function getChatId(): ?int
+    /**
+     * @return Collection|user[]
+     */
+    public function getSalon(): Collection
     {
-        return $this->chat_id;
+        return $this->salon;
     }
 
-    public function setChatId(int $chat_id): self
+    public function addSalon(user $salon): self
     {
-        $this->chat_id = $chat_id;
+        if (!$this->salon->contains($salon)) {
+            $this->salon[] = $salon;
+        }
 
         return $this;
     }
+
+    public function removeSalon(user $salon): self
+    {
+        if ($this->salon->contains($salon)) {
+            $this->salon->removeElement($salon);
+        }
+
+        return $this;
+    }
+
+    
 }

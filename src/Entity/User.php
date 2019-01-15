@@ -98,6 +98,22 @@ class User implements UserInterface
     */
     private $chats;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Chat", mappedBy="user_id")
+     */
+    private $chat_id;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Chat", mappedBy="salon")
+     */
+    private $salon;
+
+    public function __construct()
+    {
+        $this->chat_id = new ArrayCollection();
+        $this->salon = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -327,31 +343,31 @@ class User implements UserInterface
    /**
     * @return Collection|Chat[]
     */
-   public function getChats(): Collection
+   public function getSalon(): Collection
    {
-       return $this->chats;
+       return $this->salon;
    }
 
-   public function addChat(Chat $chat): self
+   public function addSalon(Chat $salon): self
    {
-       if (!$this->chats->contains($chat)) {
-           $this->chats[] = $chat;
-           $chat->setUserSender($this);
+       if (!$this->salon->contains($salon)) {
+           $this->salon[] = $salon;
+           $salon->addSalon($this);
        }
 
        return $this;
    }
 
-   public function removeChat(Chat $chat): self
+   public function removeSalon(Chat $salon): self
    {
-       if ($this->chats->contains($chat)) {
-           $this->chats->removeElement($chat);
-           // set the owning side to null (unless already changed)
-           if ($chat->getUserSender() === $this) {
-               $chat->setUserSender(null);
-           }
+       if ($this->salon->contains($salon)) {
+           $this->salon->removeElement($salon);
+           $salon->removeSalon($this);
        }
 
        return $this;
    }
+
+
+
 }
