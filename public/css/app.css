@@ -99,16 +99,21 @@ a:hover {
 
 /*CAROUSEL*/
 
+.containerQuiz {
+	background-color: #3f4253;
+}
+
 #carouselQuiz {
-  margin: 4rem auto;
+	background-color: #fff;
+  /*padding: 100px;*/
   height: 600px;
   position: relative;
-  box-shadow: 5px 5px 10px lightgrey, -5px -5px 10px lightgrey;
+  /*box-shadow: 5px 5px 10px lightgrey, -5px -5px 10px lightgrey;*/
 }
 
 .carousel-inner {
   height: 600px;
-  border: 10px solid #3f4253;
+  border: 10px solid #25283a;
 }
 
 .ico {
