@@ -6,12 +6,13 @@
     <meta name="description" content="This is a free Bootstrap landing page theme created for BootstrapZero. Feature video background and one page design." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Codeply">
-    <link rel="stylesheet" href="{{ asset ('./css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset ('./css/animate.min.css') }}"  />
-    <link rel="stylesheet" href="{{ asset ('./css/ionicons.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset ('./css/styles.css') }}" />
+    <link rel="stylesheet" href="{{ asset ('css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset ('css/animate.min.css') }}"  />
+    <link rel="stylesheet" href="{{ asset ('css/ionicons.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset ('css/styles.css') }}" />
   </head>
   <body>
+    
     <nav id="topNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -35,7 +36,7 @@
                         <a href="{{ path ('admin') }}">Admin</a>
                     </li>
                     <li>
-                        <a href="#last">Contact</a>
+                        <a href="{{ path ('contact') }}">Contact</a>
                     </li>
                 </ul>
             </div>

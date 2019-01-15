@@ -7,6 +7,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\Question;
 use App\Entity\User;
+use App\Entity\Concept;
 
 class AppFixtures extends Fixture
 {
@@ -48,7 +49,14 @@ class AppFixtures extends Fixture
 
             //je rempli mon tableau users
             $users[] = $user;
-        }
+
+            $concept= new Concept();
+            $concept->setTitleConcept('Emilie' . $i);
+            $concept->setContentConcept('mon concept est le meilleur' . $i);
+            $concept->setPictureConcept('concept photo' . $i);
+            $manager->persist($concept);
+
+        }       
 
         $manager->flush();
     }
