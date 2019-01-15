@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Concept{% endblock %}
+
+{% block body %}
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
+
+<div class="container">
+	<div class="row">
+		{% for concept in concepts %}
+
+		<div class="col-md-4">
+			<img src="{{ asset('uploads/concept/image/' ~ concept.pictureConcept) }}">
+
+			<h3>{{ concept.titleConcept }}</h3>
+			<p>{{ concept.contentConcept }}</p>
+			
+			{% if is_granted('ROLE_ADMIN') %} 
+				<a href="{{ path('deleteConcept') }}"><i class="fas fa-trash"></i></a>
+				<a href="{{ path('updateConcept') }}"><i class="fas fa-pencil-alt"></i></a> 
+			{% endif %}
+
+		</div>	
+
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

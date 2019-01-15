@@ -5,7 +5,9 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Blog;
+use App\Entity\Concept;
 use App\Form\BlogType;
+use App\Form\ConceptType;
 use Symfony\Component\HttpFoundation\File\File;
 use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\Request;
@@ -124,5 +126,101 @@ class AdminController extends AbstractController{
             $this->addFlash('warning', 'Blog modifié');
         }
         return $this->render('admin/add.blog.html.twig', ['form' => $form->createView()]);
+    }
+}
+
+
+    /**
+     * @Route("/admin/concept/add", name="addConceptAdmin")
+     */ 
+
+    public function addConcept(Request $request, FileUploader $fileuploader){
+
+
+        $entityManager = $this->getDoctrine()->getManager();
+        
+        $form = $this->createForm(ConceptType::class);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+
+            $concept = $form->getData();
+
+            $file = $concept->getPictureConcept();
+
+            $filename = $fileuploader->upload($file, $this->getParameter('article_image_directory'));
+
+            $concept->setPictureConcept($filename);
+
+            $entityManager->persist($concept);
+
+            $entityManager->flush();
+
+            $this->addFlash('success', 'texte ajouté');
+
+            return $this->redirectToRoute('home');
+
+        }
+
+        return $this->render('admin/add.concept.html.twig', ['form' => $form->createView()]);
+
+    }
+
+    /**
+     * @Route("/admin/concept/delete", name="deleteConcept")
+     */ 
+
+    public function deleteConcept(Concept $concept){
+
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+       $entityManager = $this->getDoctrine()->getManager();
+
+       $entityManager->remove($concept);
+
+       $entityManager->flush();
+
+       $this->addFlash('warning', 'texte supprimé');
+
+       return $this->redirectToRoute('home');
+    }
+
+    /**
+    * @Route("admin/concept/update", name="updateConcept")
+    */
+    public function updateConcept(Request $request, Concept $concept, FileUploader $fileuploader){
+
+         $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        $filename = $concept->getPictureConcept();
+
+        if ($blog->getPictureConcept()) {
+            $blog->setPictureConcept(new File($this->getParameter('upload_directory') . $this->getParameter('article_image_directory') . '/' . $filename ));
+        }
+
+        $form = $this->createForm(ConceptType::class, $concept);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $concept = $form->getData();
+
+            if ($concept->getPictureConcept()) { 
+
+                $file = $blog->getPictureConcept();
+
+            $filename = $fileuploader->upload($file, $this->getParameter('article_image_directory'), $filename);
+            }
+    
+            $blog->setPictureConcept($filename);
+
+            $entitymanager = $this->getDoctrine()->getManager();
+
+            $entitymanager->flush();
+
+            $this->addFlash('warning', 'Texte modifié');
+        }
+        return $this->render('admin/add.concept.html.twig', ['form' => $form->createView()]);
     }
 }

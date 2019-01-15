@@ -16,10 +16,9 @@
 
 		<div class="col-md-4">
 			<img src="{{ asset('uploads/article/image/' ~ blog.pictureblog) }}"  class="img-thumbnail">
-
-			<h3 class="blog-title">{{ blog.title }}</h3>
+			<h3>{{ blog.title }}</h3>
 			publié dans la catégorie le {{ blog.datepost|date('d/m/Y') }} par {{ blog.author }}
-			<p class="blog-content">{{ blog.content }}</p>
+			<p>{{ blog.content }}</p>
 		</div>
 		{% if is_granted('ROLE_ADMIN') %}
 			
