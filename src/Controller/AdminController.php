@@ -127,8 +127,6 @@ class AdminController extends AbstractController{
         }
         return $this->render('admin/add.blog.html.twig', ['form' => $form->createView()]);
     }
-}
-
 
     /**
      * @Route("/admin/concept/add", name="addConceptAdmin")
