@@ -9,6 +9,7 @@ use App\Entity\Concept;
 use App\Entity\User;
 use App\Form\BlogType;
 use App\Form\ConceptType;
+use App\Form\ProfileType;
 use Symfony\Component\HttpFoundation\File\File;
 use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\Request;
@@ -225,34 +226,34 @@ class AdminController extends AbstractController{
     /**
     * @Route("admin/user/update", name="updateUser")
     */
-    
+
     public function updateUser(Request $request, ProfileType $profiletype, FileUploader $fileuploader){
 
          $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
-        $filename = $user->getPicture();
+        $filename = $profiletype->getPicture();
 
-        if ($user->getPicture()) {
-            $user->setPicture(new File($this->getParameter('upload_directory') . $this->getParameter('article_image_directory') . '/' . $filename ));
+        if ($profiletype->getPicture()) {
+            $profiletype->setPicture(new File($this->getParameter('upload_directory') . $this->getParameter('article_image_directory') . '/' . $filename ));
         }
 
-        $form = $this->createForm(ProfileType::class, $user);
+        $form = $this->createForm(ProfileType::class, $profiletype);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
         {
-            $user = $form->getData();
+            $profiletype = $form->getData();
 
-            if ($user->getPicture()) { // on ne fait le traitement de l'aupload que si une image a été envoyé 
+            if ($profiletype->getPicture()) { // on ne fait le traitement de l'aupload que si une image a été envoyé 
 
                 // $files va contenir l'image envoyée
 
-                $file = $user->getPicture();
+                $file = $profiletype->getPicture();
 
             $filename = $fileuploader->upload($file, $this->getParameter('article_image_directory'), $filename);
             }
             // on met à jour la propriété image, qui doit contenir le nom et pas l'image elle même 
-            $user->setPicture($filename);
+            $profiletype->setPicture($filename);
 
             $entitymanager = $this->getDoctrine()->getManager();
 
