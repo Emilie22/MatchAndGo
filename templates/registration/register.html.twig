@@ -13,10 +13,11 @@
 		        	{{ form_row(registrationForm.email, {'attr':{'class':'form-control mb-3 mt-3 inputInscription'}}) }}
 		       	    {{ form_row(registrationForm.plainPassword.first, {'attr':{'class':'form-control mb-3 mt-3 inputInscription'}}) }}
 		       	    {{ form_row(registrationForm.plainPassword.second, {'attr':{'class':'form-control mb-3 mt-3 inputInscription'}}) }}
-		       	<div class="form-check form-check-inline">
-					{{ form_widget(registrationForm.TermsAccepted, {'attr':{'class':'form-check-input mr-2 inputInscription'}}) }}
-					{{ form_label(registrationForm.TermsAccepted, 'Accepter les CGU', {'label_attr':{'class':'form-check-label form-check-input checkboxInscription'}}) }}
-					
+
+		       		<div class="form-check form-check-inline">
+						{{ form_widget(registrationForm.TermsAccepted, {'attr':{'class':'form-check-input mr-2 inputInscription'}}) }}
+						{{ form_label(registrationForm.TermsAccepted, 'Accepter les CGU', {'label_attr':{'class':'form-check-label form-check-input checkboxInscription'}}) }}
+					</div>
 				</div>
 		        <button class="btn mb-3 mt-3 btnInscription" type="submit">S'inscrire</button>
 				{{ form_end(registrationForm) }}

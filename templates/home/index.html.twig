@@ -3,11 +3,13 @@
 {% block title %}Match&Go{% endblock %}
 
 {% block body %}
+	<div class="container-fluid">
 
-	<video src="{{ asset('video/match&go.mp4') }}" type="video/mp4" autoplay="true" loop="true" class="container-fluid" height="200px"></video>
+		<video src="{{ asset('video/match&go.mp4') }}" type="video/mp4" autoplay="true" loop="true" class="videoHome"></video>
 
-	<div>
-		<a href="{{ path('app_register') }}">Trouver un compagnon de voyage</a>
+		<div>
+			<a href="{{ path('app_register') }}">Trouver un compagnon de voyage</a>
+		</div>
 	</div>
 
 {% endblock %}
