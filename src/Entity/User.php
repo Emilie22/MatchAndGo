@@ -96,24 +96,13 @@ class User implements UserInterface
     private $answers;
 
     /**
-    * @ORM\OneToMany(targetEntity="App\Entity\Chat", mappedBy="userSender")
-    */
+     * @ORM\OneToMany(targetEntity="App\Entity\Chat", mappedBy="user")
+     */
     private $chats;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Chat", mappedBy="user_id")
-     */
-    private $chat_id;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Chat", mappedBy="salon")
-     */
-    private $salon;
 
     public function __construct()
     {
-        $this->chat_id = new ArrayCollection();
-        $this->salon = new ArrayCollection();
+        $this->chats = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -345,28 +334,29 @@ class User implements UserInterface
    /**
     * @return Collection|Chat[]
     */
-   public function getSalon(): Collection
+   public function getChats(): Collection
    {
-       return $this->salon;
+       return $this->chats;
    }
 
-   public function addSalon(Chat $salon): self
+   public function addChat(Chat $chat): self
    {
-       if (!$this->salon->contains($salon)) {
-           $this->salon[] = $salon;
-           $salon->addSalon($this);
-
+       if (!$this->chats->contains($chat)) {
+           $this->chats[] = $chat;
+           $chat->setUser($this);
        }
 
        return $this;
    }
 
-   public function removeSalon(Chat $salon): self
+   public function removeChat(Chat $chat): self
    {
-       if ($this->salon->contains($salon)) {
-           $this->salon->removeElement($salon);
-           $salon->removeSalon($this);
-
+       if ($this->chats->contains($chat)) {
+           $this->chats->removeElement($chat);
+           // set the owning side to null (unless already changed)
+           if ($chat->getUser() === $this) {
+               $chat->setUser(null);
+           }
        }
 
        return $this;
