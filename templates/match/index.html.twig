@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MatchController!{% endblock %}
+
+{% block body %}
+
+{# {{ dump(users) }}
+{{ dump(userAnswers) }}
+{{ dump(test) }}
+{{ dump(user) }} #}
+{# {{ dump(answers) }} #}
+{# {{ dump(idAnswers) }} #}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12 col-md-3">
+			
+		</div>
+		<div class="col-12 col-md-6">
+			<div class="row">
+				{% for userA in user %}
+					{% for userB in userA %}
+					<div class="col-12 col-md-4">
+						<div class="card">
+							<img src="{{ asset('uploads/user/image/'~userB.picture~'.jpg') }}" alt="photoUserMatch" class="card-img-top">
+							<div class="card-body">
+								<h5 class="card-title">{{ userB.firstname }} | {{ userB.gender }} | {{ userB.birthday|date('m-d-Y') }}</h5>
+								<p class="card-text"></p>
+								<p class="card-text"></p>
+								<p class="card-text">{{ userB.city }}</p>
+								<p class="card-text">{{ userB.description }}</p>
+								<p><button>Tchatche avec moi !</button></p>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				{% endfor %}
+			</div>
+		</div>
+		<div class="col-12 col-md-3">
+			
+		</div>
+	</div>
+</div>
+{% endblock %}

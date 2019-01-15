@@ -9,11 +9,21 @@ body{
 
 
 /*Formulaire d'inscription*/
+.inscriptionBg{
+	background: #3f4253;
+	color: #fdad17;
+}
 
 .inscription{ 
 	background: #3f4253;
 	color: #fdad17;
  }
+
+.inputInscription{
+	background: #696d8a;
+	color: #fdad17;
+	border: #696d8a;
+}
 
 .btnInscription{
  	background: #fdad17;
@@ -21,9 +31,10 @@ body{
  }
 
 .titleInscription{
- 	color: #3f4253;
+ 	color: #fdad17;
  	
  }
+
 
 /*Formulaire de connexion*/
 
@@ -35,6 +46,35 @@ body{
 .btnConnexion{
 	background: #fdad17;
 	color: #3f4253;
+}
+
+.connexionBg{
+	background: #3f4253;
+	color: #fdad17;
+}
+
+.connexion >input{
+	background: #696d8a;
+	color: #fdad17;
+	border: #696d8a;
+}
+
+
+/*Création du profil*/
+
+.btnProfile{
+	background: #fdad17;
+	color: #3f4253;
+}
+
+.profileBg{
+	background-image: url('../uploads/profile/backgroundprofile2.jpg');
+	background-repeat: no-repeat;
+}
+
+.formBg{
+	background-color: rgba(248,248,248,.7);
+	padding: 30px;
 }
 
 .fas.fa-trash{
@@ -59,16 +99,21 @@ a:hover {
 
 /*CAROUSEL*/
 
+.containerQuiz {
+	background-color: #3f4253;
+}
+
 #carouselQuiz {
-  margin: 4rem auto;
+	background-color: #fff;
+  /*padding: 100px;*/
   height: 600px;
   position: relative;
-  box-shadow: 5px 5px 10px lightgrey, -5px -5px 10px lightgrey;
+  /*box-shadow: 5px 5px 10px lightgrey, -5px -5px 10px lightgrey;*/
 }
 
 .carousel-inner {
   height: 600px;
-  border: 10px solid #3f4253;
+  border: 10px solid #25283a;
 }
 
 .ico {
@@ -132,4 +177,17 @@ a:hover {
 }
 
 
+/*Formulaire admin Concept*/
+
+.btnConcept{
+  background: #fdad17;
+  color: #3f4253;
+}
+
+/*FOOTER*/
+
+footer{
+	color: #d4b478;
+	background-color: #25283a;
+}
 
