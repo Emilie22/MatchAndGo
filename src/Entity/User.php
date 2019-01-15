@@ -173,7 +173,7 @@ class User implements UserInterface
         return (string) $this->plainPassword;
     }
 
-     public function setPlainPassword(string $plainPassword) :self
+    public function setPlainPassword(string $plainPassword) :self
     {
         $this->plainPassword = $plainPassword;
 
@@ -353,6 +353,7 @@ class User implements UserInterface
        if (!$this->salon->contains($salon)) {
            $this->salon[] = $salon;
            $salon->addSalon($this);
+
        }
 
        return $this;
@@ -363,11 +364,13 @@ class User implements UserInterface
        if ($this->salon->contains($salon)) {
            $this->salon->removeElement($salon);
            $salon->removeSalon($this);
+
        }
 
        return $this;
    }
-
-
-
 }
+
+   
+
+

@@ -14,3 +14,27 @@
     </div>
 </div>
 {% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+
+	<script>
+		$("#stop").on('click', function(e){
+            e.preventDefault();
+			let idAuteur = $(this).val();
+			$.ajax({
+
+				type: 'post',
+				url: '{{ path("auteur1") }}',
+				data: 'idAuteur=' + idAuteur,
+				datatype: 'html',
+				success: function(result){
+					$("#result1").html(result);
+				},
+				error: function(error){
+					console.log(error);
+				}
+
+            })
+        })
+	</script>
+{% endblock %}

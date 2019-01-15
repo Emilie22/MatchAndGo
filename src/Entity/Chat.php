@@ -17,8 +17,6 @@ class Chat
      * @ORM\Column(type="integer")
      */
     private $id;
-
-
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -87,11 +85,11 @@ class Chat
 
         return $this;
     }
-
     public function removeSalon(user $salon): self
     {
         if ($this->salon->contains($salon)) {
             $this->salon->removeElement($salon);
+
         }
 
         return $this;
