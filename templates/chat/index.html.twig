@@ -1,40 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}tchat{% endblock %}
+{% block title %}Hello ChatController!{% endblock %}
 
 {% block body %}
-{{dump(user)}}
-<div class="row">
-    <div class="container">
-        <div id="chat" class="border rounded border-dark" style="height: 150px"></div>
-        
-        {{ form_start(form) }}
-            {{ form_widget(form) }}
-        {{ form_end(form) }}
-    </div>
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/promo8/MatchAndGo/src/Controller/ChatController.php'|file_link(0) }}">src/Controller/ChatController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/promo8/MatchAndGo/templates/chat/index.html.twig'|file_link(0) }}">templates/chat/index.html.twig</a></code></li>
+    </ul>
 </div>
-{% endblock %}
-{% block javascripts %}
-	{{ parent() }}
-
-	<script>
-		$("#stop").on('click', function(e){
-            e.preventDefault();
-			let idAuteur = $(this).val();
-			$.ajax({
-
-				type: 'post',
-				url: '{{ path("auteur1") }}',
-				data: 'idAuteur=' + idAuteur,
-				datatype: 'html',
-				success: function(result){
-					$("#result1").html(result);
-				},
-				error: function(error){
-					console.log(error);
-				}
-
-            })
-        })
-	</script>
 {% endblock %}
