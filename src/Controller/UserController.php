@@ -90,11 +90,9 @@ class UserController extends AbstractController
 
                 // MODIFICATION DU PROFIL //
 
-    /**
-    * @Route("/user/update/{id}", name="updateProfile", requirements={"id"="\d+"})
-    */
-    public function updateProfile(Request $request, Concept $concept, FileUploader $fileuploader){
-
-        $fi
-    }
+    // /**
+    // * @Route("/user/update/{id}", name="updateProfile", requirements={"id"="\d+"})
+    // */
+    // public function updateProfile(Request $request, Concept $concept, FileUploader $fileuploader){
+    // }
 }
