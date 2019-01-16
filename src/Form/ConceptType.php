@@ -20,7 +20,8 @@ class ConceptType extends AbstractType
             ->add('titleConcept', TextType::class, array('label' => 'Titre'))
             ->add('contentConcept', TextareaType::class, array('label' => 'Description'))
             ->add('pictureConcept', FileType::class, array('data_class'=> null, 
-                'label' => 'Photo'))
+                'label' => 'Photo',
+                'required' => true))
             ->add('Publier', SubmitType::class, array('label' => 'Enregistrer'))
         ;
     }

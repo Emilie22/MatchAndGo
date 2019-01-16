@@ -33,8 +33,11 @@ class MatchController extends AbstractController
     		}
     	}
 
+        $moi = $this->getUser();
+
         return $this->render('match/index.html.twig', [
-            'users'=>$users, 'userAnswers'=>$userAnswers, 'user'=>$userMatch, 'test'=>$test
+            'users'=>$users, 'userAnswers'=>$userAnswers, 'user'=>$userMatch, 'test'=>$test, 'moi'=>$moi
         ]);
     }
+
 }

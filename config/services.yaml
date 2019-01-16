@@ -8,6 +8,7 @@ parameters:
     upload_directory: "%kernel.project_dir%/public/uploads"
     article_image_directory: "/article/image"
     user_image_directory: "/user/image"
+    concept_image_directory: "/concept/image"
 
 services:
     # default configuration for services in *this* file

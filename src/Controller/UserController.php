@@ -56,10 +56,31 @@ class UserController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', 'Votre profil a bien été créé !');
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('showProfile');
     }
 
     	return $this->render('user/add.html.twig', ['form' => $form->createView()]);
    }
-    
+
+   /**
+   * @Route("/user/{id}", name="showProfile", requirements={"id"="\d+"})
+   */
+
+    public function showProfile(User $user){
+
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $profile = new User();
+
+        $profile = $this->getUser();
+   
+
+        $repository = $this->getDoctrine()->getRepository(User::class);
+        $questions = $repository->findAll();
+
+     return $this->render('user/index.html.twig', ['user'=>$user]);
+
+    }
 }
