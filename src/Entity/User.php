@@ -412,6 +412,26 @@ class User implements UserInterface
 
        return $this;
    }
+
+      public function getCoord()
+   {
+          $url = "https://maps.googleapis.com/maps/api/geocode/json?address={".urlencode(strip_tags($this->city))."}&key=AIzaSyBjslA2cbupRwG-dJvPAKcfZp0ruzEFM38";
+            // on récupère un fichier texte, file_get_contents récupère le contenu du fichier texte
+            // $resultat = file_get_contents($url, false, $context);
+            // avec json on transforme en tableaux de tableaux
+            $resultat = json_decode(file_get_contents($url, false, $context), true);
+            //var_dump($resultat);
+            //print_r('<pre>');
+            //print_r($resultat);
+            //print_r('</pre>');
+            $lat = $resultat['results'][0]['geometry']['location']['lat'];
+            $lng = $resultat['results'][0]['geometry']['location']['lng'];
+
+            $coord = ['lat' => $lat, 'long' => $lng];
+
+       return $coord;
+   }
+
 }
 
    
