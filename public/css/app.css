@@ -112,7 +112,7 @@ a:hover {
 }
 
 .profileBlock{
-  background: #414559;;
+  background: #3f4253;
   position:absolute;
   top: 40%;
   height: 100%;
@@ -126,6 +126,7 @@ a:hover {
 
 .infosUser{
   color: #fdad17;
+  border: 1px solid #fdad17;
 }
 
 
