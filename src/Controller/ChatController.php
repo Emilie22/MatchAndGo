@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
 use App\Entity\Chat;
 use App\Entity\Salon;
+use App\Form\ChatFormType;
 
 class ChatController extends AbstractController
 {
@@ -23,6 +25,7 @@ class ChatController extends AbstractController
         $user = $this->getUser();
         
         $invite = $repository->findById($idUser);
+
         foreach ($invite as $key=>$value) {
             $inviteId = $value;
         }
@@ -52,14 +55,47 @@ class ChatController extends AbstractController
 
 
             $entityManager->flush();
-        return $this->redirectToRoutes('chat');
+        return $this->redirectToRoute('chat');
     }
 
     /**
      * @Route("/chat", name="chat")
      */
-    public function index() {
+    public function index(Request $request) {
+
+        $repository = $this->getDoctrine()->getRepository(Chat::class);
+
+        $user = $this->getUser();
+        $userId = $user->getId();
+        dump($userId);
+
+        $chat = $repository->findWithChat($userId);
+        dump($chat);
+
+        $form = $this->createForm(ChatFormType::class);
+        // $form->handleRequest($request);
+        // if($form->isSubmitted() && $form->isValid()){ 
+        //     $profile = $form->getData();
+        //     $entityManager->persist($profile);
+        //     $entityManager->flush();
+        // };
+
+
+        // $viewMessage = $repository->viewMessage($userId);
+        return $this->render('chat/index.html.twig', ['chat'=>$chat, 'form' => $form->createView()]);
+    }
+
+    /**
+     * @Route("/chat/changeSalon", name="changeSalon")
+     */
+    public function changeSalon(Request $request){
+        dump($request);
+        $idSalon = $request->request->get('idSalon', null);
+        $idUser = $request->request->get('idUser', null);
         
-        return $this->render('chat/test.html.twig', ['user'=>$user]);
+        $repository = $this->getDoctrine()->getRepository(Chat::class);
+        $message = $repository->viewMessage($idSalon, $idUser);
+
+        return $this->render('chat/message.html.twig', ['messages'=>$message]);
     }
 }

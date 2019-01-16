@@ -59,14 +59,14 @@ class ChatRepository extends ServiceEntityRepository
         
 
     }
-    public function addMessage($id, $idSalon){
+    public function viewMessage($idUser, $idSalon){
         $connexion = $this->getEntityManager()->getConnection();
-        $sql = 'SELECT u.id, salon_id, date_send, message
+        $sql = 'SELECT u.id, salon_id, date_send, message, u.firstname, c.date_send
                 FROM user u
                 LEFT JOIN chat c ON u.id = c.user_id 
                 WHERE u.id = :id AND salon_id = :idSalon ';
         $select = $connexion->prepare($sql);
-        $select->bindValue(':id', $id);
+        $select->bindValue(':id', $idUser);
         $select->bindValue(':idSalon', $idSalon);
         $select->execute();
             return $select->fetchAll();
