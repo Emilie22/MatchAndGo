@@ -14,7 +14,7 @@
 	<div class="row pt-3 pb-3">
 		<div class="col-12">
 			<div class="titleMatch text-center">
-				<p><img class="avatar mr-3" src="http://placekitten.com/70/70" alt=""> Bonjour {{ moi.firstname }} ! Voici les voyageurs qui te correspondent ! N'hésite pas à tchater avec eux ! <a href="{{ path ('quiz')}}">Nouvelle recherche</a></p>
+				<p><img class="avatar2 mr-3" src="http://placekitten.com/70/70" alt=""> Bonjour {{ moi.firstname }} ! Voici les voyageurs qui te correspondent ! N'hésite pas à tchater avec eux ! <a href="{{ path ('quiz')}}">Nouvelle recherche</a></p>
 			</div>
 
 		</div>
@@ -22,7 +22,7 @@
 	<div class="row">
 		<div class="col-12 col-md-8">
 			<div class="row">
-				{% for userA in user %}
+				{% for userA in userMatch %}
 					{% for userB in userA %}
 					<div class="col-12 col-md-3">
 						<div class="card">
@@ -42,10 +42,53 @@
 				{% endfor %}
 			</div>
 		</div>
+				{{dump(cityTab)}};
+				{% for cityMatch in cityTab %}
+					{{dump(cityMatch)}}
+				{% endfor %}
+
 		<div class="col-12 col-md-4">
-			<div class="mapLoc"></div>
+			<div id="mapLoc">
+			</div>
 		</div>
 	</div>
 </div>
 </section>
+
+{% block javascripts %}
+<script>
+			
+            function initializeMap() {
+                var map = new google.maps.Map(document.getElementById('mapLoc'), {
+                    zoom: 5.5,
+                    center: {lat: 45.785, lng: 3.115}
+                });
+                
+                var geocoder = new google.maps.Geocoder();
+
+
+            }
+
+            // function geocodeAddress(geocoder, resultsMap) {
+                
+            //     geocoder.geocode({'address': address}, function(results, status) {
+            //         if (status === 'OK') {
+            //             resultsMap.setCenter(results[0].geometry.location);
+            //             var marker = new google.maps.Marker({
+            //                 map: resultsMap,
+            //                 position: results[0].geometry.location
+            //             });
+            //         } else {
+            //             alert('Geocode was not successful for the following reason: ' + status);
+            //         }
+            //     });
+            // }
+
+
+        </script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0xJoi5c9MwYIYQlwIEfLqLh95hLtcaYA&callback=initializeMap">
+        </script>
+
+    {% endblock %}
 {% endblock %}
