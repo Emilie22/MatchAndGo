@@ -100,6 +100,21 @@ class User implements UserInterface
      */
     private $chats;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $pictureBg;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $facebook;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $instagram;
+
     public function __construct()
     {
         $this->chats = new ArrayCollection();
@@ -358,6 +373,42 @@ class User implements UserInterface
                $chat->setUser(null);
            }
        }
+
+       return $this;
+   }
+
+   public function getPictureBg(): ?string
+   {
+       return $this->pictureBg;
+   }
+
+   public function setPictureBg(string $pictureBg): self
+   {
+       $this->pictureBg = $pictureBg;
+
+       return $this;
+   }
+
+   public function getFacebook(): ?string
+   {
+       return $this->facebook;
+   }
+
+   public function setFacebook(?string $facebook): self
+   {
+       $this->facebook = $facebook;
+
+       return $this;
+   }
+
+   public function getInstagram(): ?string
+   {
+       return $this->instagram;
+   }
+
+   public function setInstagram(?string $instagram): self
+   {
+       $this->instagram = $instagram;
 
        return $this;
    }
