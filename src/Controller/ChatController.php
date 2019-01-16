@@ -13,7 +13,7 @@ class ChatController extends AbstractController
     /**
      * @Route("/chat/add/{idUser}", name="Addchat", requirements={"idUser"="\d+"})
      */
-    public function index($idUser)
+    public function addChat($idUser)
     {
         $i = 0;
         $i++;
@@ -56,11 +56,10 @@ class ChatController extends AbstractController
     }
 
     /**
-     * @Route("/chat/show/{id}", name="showChat", requirements={"id"="\d+"})
+     * @Route("/chat", name="chat")
      */
-    public function showChat($id) {
-        $repository = $this->getDoctrine()->getRepository(Chat::class);
-        $user = $repository->findWithChat($id);
+    public function index() {
+        
         return $this->render('chat/test.html.twig', ['user'=>$user]);
     }
 }
