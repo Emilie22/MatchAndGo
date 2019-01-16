@@ -4,10 +4,16 @@
 
 {% block body %}
 
-	<video src="{{ asset('video/match&go.mp4') }}" type="video/mp4" autoplay="true" loop="true" class="container-fluid" height="200px"></video>
-
-	<div>
-		<a href="{{ path('app_register') }}">Trouver un compagnon de voyage</a>
-	</div>
+<section id="first">
+        <div class="header-content">
+            <div class="inner">
+                <h1 class="cursive">Match&Go</h1>
+                <h4>Trouver votre partenaire de voyage</h4>
+                <hr>
+                <a href="{{ path('app_register') }}" class="btn btn-primary btn-xl page-scroll">Go</a>
+            </div>
+        </div>
+        
+</section>
 
 {% endblock %}

@@ -29,17 +29,15 @@
 		        <a class="nav-link" href="{{ path ('blog')}}">Blog</a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="#">Contact</a>
+		        <a class="nav-link" href="{{ path ('contact')}}">Contact</a>
 		      </li>
 
 			<li class="nav-item dropdown">
 		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
 		        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-		          <a class="dropdown-item" href="{{ path ('home')}}">Accueil</a>
-		          <a class="dropdown-item" href="#">Users</a>
+		          <a class="dropdown-item" href="{{ path ('updateUser') }}">Users</a>
 		          <a class="dropdown-item" href="#">Concept</a>
 		          <a class="dropdown-item" href="{{ path ('addBlogAdmin')}}">Ajouter Article</a>
-		          <a class="dropdown-item" href="#">Contact</a>
 		        </div>
 		      </li>
 		      <li class="nav-item dropdown mr-5">
