@@ -226,40 +226,39 @@ class AdminController extends AbstractController{
     * @Route("admin/user/update", name="updateUser")
     */
 
-    public function updateUser(Request $request, ProfileType $profiletype, FileUploader $fileuploader){
+    public function updateUser(Request $request, User $user, FileUploader $fileuploader){
 
-         $this->denyAccessUnlessGranted('ROLE_ADMIN');
+ $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
-        $filename = $profiletype->getPicture();
+        $filename = $user->getPicture();
 
-        if ($profiletype->getPicture()) {
-            $profiletype->setPicture(new File($this->getParameter('upload_directory') . $this->getParameter('user_image_directory') . '/' . $filename ));
+        if ($user->getPicture()) {
+            $user->setPicture(new File($this->getParameter('upload_directory') . $this->getParameter('user_image_directory') . '/' . $filename ));
         }
 
-        $form = $this->createForm(ProfileType::class, $profiletype);
+        $form = $this->createForm(ProfileType::class, $user);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
         {
-            $profiletype = $form->getData();
+            $user = $form->getData();
 
-            if ($profiletype->getPicture()) { // on ne fait le traitement de l'aupload que si une image a été envoyé 
+            if ($user->getPicture()) { 
 
-                // $files va contenir l'image envoyée
-
-                $file = $profiletype->getPicture();
+                $file = $user->getPicture();
 
             $filename = $fileuploader->upload($file, $this->getParameter('user_image_directory'), $filename);
             }
-            // on met à jour la propriété image, qui doit contenir le nom et pas l'image elle même 
-            $profiletype->setPicture($filename);
+    
+            $user->setPicture($filename);
 
             $entitymanager = $this->getDoctrine()->getManager();
 
             $entitymanager->flush();
 
-            //génération d'un message flash
-            $this->addFlash('warning', 'Utilisateur modifié');
+            $this->addFlash('warning', 'User modifié');
+
+            return $this->redirectToRoute('admin');
         }
         return $this->render('admin/add.user.html.twig', ['form' => $form->createView()]);
     }
