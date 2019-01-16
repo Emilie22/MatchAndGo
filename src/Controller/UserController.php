@@ -94,5 +94,7 @@ class UserController extends AbstractController
     // * @Route("/user/update/{id}", name="updateProfile", requirements={"id"="\d+"})
     // */
     // public function updateProfile(Request $request, Concept $concept, FileUploader $fileuploader){
+
+    //     $filename = $concept->getPicture
     // }
 }
