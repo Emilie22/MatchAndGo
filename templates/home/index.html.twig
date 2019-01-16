@@ -3,7 +3,7 @@
 {% block title %}Match&Go{% endblock %}
 
 {% block body %}
-	<div class="container-fluid">
+	<div class="container-fluid pl-0 pr-0">
 
 <section id="first">
         <div class="header-content">
@@ -20,24 +20,31 @@
         <div class="col">
           <div class="home-content">
             <h1 class="white-text-brand">Match&Go</h1>
-            <p class="white-text-one">Trouver votre partenaire de voyage</p>
+            <p class="white-text-one">Trouvez votre partenaire de voyage</p>
               <a href="{{ path('app_register') }}" class="btn btn-outline-light">Go</a>
           </div>
         </div>
         </div>        
 </section>
 
+<section>
+    
+
+
+</section>
+
     <section id="three" class="no-padding">
         <div class="container-fluid">
-            <div class="row no-gutter">
-                {% for blog in blogs %}
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="{{ path ('showBlogWithSlug', {slug:blog.slug}) }}" class="gallery-box" data-toggle="modal">
-                            <img src="{{ asset('uploads/article/image/' ~ blog.pictureblog) }}"  class="img-thumbnail">
-                        </a>
-                    </div>
-                {% endfor %}    
-            </div>
+            <h2> Derniers Articles</h2>
+                <div class="row no-gutter">
+                    {% for blog in blogs %}
+                        <div class="col-lg-4 col-sm-6">
+                            <a href="{{ path ('showBlogWithSlug', {slug:blog.slug}) }}" class="gallery-box">
+                                <img src="{{ asset('uploads/article/image/' ~ blog.pictureblog) }}"  class="img-thumbnail">
+                            </a>
+                        </div>
+                    {% endfor %}    
+                </div>
         </div>                       
     </section>
 

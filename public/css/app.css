@@ -91,16 +91,10 @@ section {
 	padding: 30px;
 }
 
-.fas.fa-trash{
+.fas{
 	color: #fdad17;
-}
-
-.fas.fa-pencil-alt{
-	color: #fdad17;
-}
-
-.fas.fa-search-plus{
-	color: #fdad17;
+  font-size: 1.5em;
+  margin: 5px;  
 }
 
 .navbar-light .navbar-nav .nav-link{
@@ -252,7 +246,7 @@ a:hover {
 /*FOOTER*/
 
 footer{
-	color: #d4b478;
+	color: #fdad17;
 	background-color: #25283a;
 }
 
@@ -294,21 +288,6 @@ footer{
   padding: 5px 10px;
 }
 
-#video-background {
-  position: absolute;
-  right: 0; 
-  bottom: 0;
-  min-width: 100%; 
-  min-height: 100%;
-  width: auto; 
-  height: auto;
-  z-index: 1;
-}
-
-#video-background.collapsing {
-  display:none;
-}
-
 header {
     position: relative;
     min-height: auto;
@@ -321,6 +300,7 @@ header {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    height: 56px;
 }
 
 header .header-content {
@@ -389,32 +369,6 @@ header {
             font-weight: 300;
             text-transform: lowercase;
         }
-        
-        header > div#logo > div#navToggle {
-            background-color: rgba(0,0,0,.15);
-            position: absolute;
-            right: 0;
-            top: 0;
-            transition: 300ms all ease;
-        }
-            
-            header > div#logo > div#navToggle:hover {
-                background-color: rgba(0,0,0,.1);
-            }
-            
-            header > div#logo > div#navToggle > a {
-                color: rgba(255,255,255,.85);
-                display: block;
-                font-size: 0.85em;
-                font-weight: 600;
-                padding: 0 2.5rem;
-                text-decoration: none;
-                transition: 300ms all ease;
-            }
-            
-                header > div#logo > div#navToggle:hover > a {
-                    color: rgba(255,255,255,1);
-                }
 
     header > nav {
         background-color: white;
@@ -503,7 +457,7 @@ header {
     
         header > div#logo {
             background-color: transparent;
-            line-height: 90px;
+            line-height: 50px;
         }
     
             header > div#logo > h1 {
@@ -573,7 +527,7 @@ position: absolute;
     font-family: 'Questrial','Helvetica Neue',Arial,sans-serif;
 }
 .white-text-brand{
- font-family: 'Questrial','Helvetica Neue',Arial,sans-serif;   
+ font-family: 'Dancing Script', cursive;
 }
 
 .gallery-box {
@@ -626,5 +580,48 @@ position: absolute;
     padding-right: 0;
     padding-left: 0;
 }
+
+.btn-outline-light {
+    color: #f8f9fa;
+    background-color: transparent;
+    background-image: none;
+    border-color: #f8f9fa;
+    border-radius: 19px;
+    width: 100px;
+}
+
+.btn-outline-light:hover{
+  background-color: #fdad17;
+  border-color: #fdad17;
+  color: white;
+}
+
+h1{
+  font-size: 5rem;
+}
+
+.white-text-one{
+  font-size: 1.5rem;
+}
+
+h2{
+  font-size: 3rem;
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+  color: #fdad17;
+}
+
+.inputContact{
+  border-radius: 1.5rem;
+  background: #696d8a;
+  color: #fdad17;
+  border: #696d8a;
+
+}
+.contactBg{
+  background: #3f4253;
+  color: #fdad17;
+}
+
 
 

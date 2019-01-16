@@ -5,11 +5,13 @@
 {% block body %}
 
     {{ form_start(form) }}
-    <div class="container">
 
-    <div class="form-group">{{ form_row(form.name, {'attr':{'class':'form-control' }}) }}</div>
-    <div class="form-group">{{ form_row(form.email, {'attr':{'class':'form-control'}}) }}</div>
-    <div class="form-group">{{ form_row(form.messageContact, {'attr':{'class':'form-control'}}) }}</div>
+		<h3 class="titleInscription mb-5 mt-4 text-center">Nous Contacter</h3>
+    <div class="container-fluid contactBg col-12 col-md-4">
+
+    <div class="form-group">{{ form_row(form.name, {'attr':{'class':'form-control mb-2 mt-2 inputContact' }}) }}</div>
+    <div class="form-group">{{ form_row(form.email, {'attr':{'class':'form-control mb-2 mt-2 inputContact'}}) }}</div>
+    <div class="form-group">{{ form_row(form.messageContact, {'attr':{'class':'form-control mb-2 mt-2 inputContact'}}) }}</div>
 
 
     {{ form_end(form) }}
