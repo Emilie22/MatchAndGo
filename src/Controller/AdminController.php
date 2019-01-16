@@ -251,7 +251,7 @@ class AdminController extends AbstractController{
 
             $filename = $fileuploader->upload($file, $this->getParameter('article_image_directory'), $filename);
             }
-            // on met à jour la propriété image, qui doit contenir le nom et pas l'image elle même 
+
             $profiletype->setPicture($filename);
 
             $entitymanager = $this->getDoctrine()->getManager();
