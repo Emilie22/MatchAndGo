@@ -6,8 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Blog;
 use App\Entity\Concept;
+use App\Entity\User;
 use App\Form\BlogType;
 use App\Form\ConceptType;
+use App\Form\ProfileType;
 use Symfony\Component\HttpFoundation\File\File;
 use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,7 +32,7 @@ class AdminController extends AbstractController{
 
     public function addBlog(Request $request, FileUploader $fileuploader){
 
-    	//pour pouvoir sauvegarder un objet = insérer les infos dans la table, on utilise l'entity manager
+
     	$entityManager = $this->getDoctrine()->getManager();
     	
         $form = $this->createForm(BlogType::class);
@@ -41,15 +43,15 @@ class AdminController extends AbstractController{
 
             $blog = $form->getData();
 
-            // $article->getImage() contient un objet qui représente le fichier image envoyé
+
             $file = $blog->getPictureBlog();
 
             $filename = $fileuploader->upload($file, $this->getParameter('article_image_directory'));
 
-            // je remplace l'attribut image qui contient toujours le fichier par le nom du fichier
+
             $blog->setPictureBlog($filename);
 
-            //je fixe la date de publication de l'article
+    
             $blog->setDatePost(new \DateTime(date('Y-m-d H:i:s')));
 
             $entityManager->persist($blog);
@@ -68,17 +70,16 @@ class AdminController extends AbstractController{
 
     /**
     *@Route("admin/blog/delete/{slug}", name="deleteBlog", requirements={"slug"="[a-z0-9]+(?:-[a-z0-9]+)*"})
-    *Le param converter : on explique à Symfony que l'on veut convertir directement l'id en objet de classe Article en mettant le nom de la classe dans les parenthèses
     */
     public function deleteBlog(Blog $blog){
 
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
-        //récupération de l'entity manager, nécessaire pour la suppression
+
        $entityManager = $this->getDoctrine()->getManager();
-       //je veux supprimer cet article
+
        $entityManager->remove($blog);
-       //pour valider la suppression
+
        $entityManager->flush();
 
        //génération d'un message flash
@@ -107,22 +108,20 @@ class AdminController extends AbstractController{
         {
             $blog = $form->getData();
 
-            if ($blog->getPictureBlog()) { // on ne fait le traitement de l'aupload que si une image a été envoyé 
-
-                // $files va contenir l'image envoyée
+            if ($blog->getPictureBlog()) { 
 
                 $file = $blog->getPictureBlog();
 
             $filename = $fileuploader->upload($file, $this->getParameter('article_image_directory'), $filename);
             }
-            // on met à jour la propriété image, qui doit contenir le nom et pas l'image elle même 
+
             $blog->setPictureBlog($filename);
 
             $entitymanager = $this->getDoctrine()->getManager();
 
             $entitymanager->flush();
 
-            //génération d'un message flash
+
             $this->addFlash('warning', 'Blog modifié');
         }
         return $this->render('admin/add.blog.html.twig', ['form' => $form->createView()]);
@@ -147,7 +146,7 @@ class AdminController extends AbstractController{
 
             $file = $concept->getPictureConcept();
 
-            $filename = $fileuploader->upload($file, $this->getParameter('article_image_directory'));
+            $filename = $fileuploader->upload($file, $this->getParameter('concept_image_directory'));
 
             $concept->setPictureConcept($filename);
 
@@ -157,16 +156,15 @@ class AdminController extends AbstractController{
 
             $this->addFlash('success', 'texte ajouté');
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('addConceptAdmin');
 
         }
 
         return $this->render('admin/add.concept.html.twig', ['form' => $form->createView()]);
-
     }
 
     /**
-     * @Route("/admin/concept/delete", name="deleteConcept")
+     * @Route("/admin/concept/delete/{id}", name="deleteConcept")
      */ 
 
     public function deleteConcept(Concept $concept){
@@ -181,11 +179,11 @@ class AdminController extends AbstractController{
 
        $this->addFlash('warning', 'texte supprimé');
 
-       return $this->redirectToRoute('home');
+       return $this->redirectToRoute('concept');
     }
 
     /**
-    * @Route("admin/concept/update", name="updateConcept")
+    * @Route("/admin/concept/update/{id}", name="updateConcept")
     */
     public function updateConcept(Request $request, Concept $concept, FileUploader $fileuploader){
 
@@ -193,8 +191,8 @@ class AdminController extends AbstractController{
 
         $filename = $concept->getPictureConcept();
 
-        if ($blog->getPictureConcept()) {
-            $blog->setPictureConcept(new File($this->getParameter('upload_directory') . $this->getParameter('article_image_directory') . '/' . $filename ));
+        if ($concept->getPictureConcept()) {
+            $concept->setPictureConcept(new File($this->getParameter('upload_directory') . $this->getParameter('concept_image_directory') . '/' . $filename ));
         }
 
         $form = $this->createForm(ConceptType::class, $concept);
@@ -206,19 +204,63 @@ class AdminController extends AbstractController{
 
             if ($concept->getPictureConcept()) { 
 
-                $file = $blog->getPictureConcept();
+                $file = $concept->getPictureConcept();
 
-            $filename = $fileuploader->upload($file, $this->getParameter('article_image_directory'), $filename);
+            $filename = $fileuploader->upload($file, $this->getParameter('concept_image_directory'), $filename);
             }
     
-            $blog->setPictureConcept($filename);
+            $concept->setPictureConcept($filename);
 
             $entitymanager = $this->getDoctrine()->getManager();
 
             $entitymanager->flush();
 
             $this->addFlash('warning', 'Texte modifié');
+
+            return $this->redirectToRoute('concept');
         }
         return $this->render('admin/add.concept.html.twig', ['form' => $form->createView()]);
+    }
+
+    /**
+    * @Route("admin/user/update", name="updateUser")
+    */
+
+    public function updateUser(Request $request, ProfileType $profiletype, FileUploader $fileuploader){
+
+         $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        $filename = $profiletype->getPicture();
+
+        if ($profiletype->getPicture()) {
+            $profiletype->setPicture(new File($this->getParameter('upload_directory') . $this->getParameter('article_image_directory') . '/' . $filename ));
+        }
+
+        $form = $this->createForm(ProfileType::class, $profiletype);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $profiletype = $form->getData();
+
+            if ($profiletype->getPicture()) { // on ne fait le traitement de l'aupload que si une image a été envoyé 
+
+                // $files va contenir l'image envoyée
+
+                $file = $profiletype->getPicture();
+
+            $filename = $fileuploader->upload($file, $this->getParameter('article_image_directory'), $filename);
+            }
+            // on met à jour la propriété image, qui doit contenir le nom et pas l'image elle même 
+            $profiletype->setPicture($filename);
+
+            $entitymanager = $this->getDoctrine()->getManager();
+
+            $entitymanager->flush();
+
+            //génération d'un message flash
+            $this->addFlash('warning', 'Utilisateur modifié');
+        }
+        return $this->render('admin/add.user.html.twig', ['form' => $form->createView()]);
     }
 }
