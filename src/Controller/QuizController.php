@@ -26,6 +26,10 @@ class QuizController extends AbstractController
     	}
     	// $imgQuiz = ['carousel1', 'carousel2', 'carousel3', 'carousel4', 'carousel5', 'carousel6', 'carousel7', 'carousel8', 'carousel9', 'carousel10', 'carousel11', 'carousel12'];
 
+		$post = $request->request->all();
+
+		if (!empty($post)) {
+
 		$user = new User();
 		$user = $this->getUser();
 
@@ -34,10 +38,6 @@ class QuizController extends AbstractController
 			$user->removeAnswer($value);
 		}
 		
-		// verif du formulaire !!!!!!
-
-		$post = $request->request->all();
-
     	$repositoryAnswer = $this->getDoctrine()->getRepository(Answer::class);
 
     	$answerObj = new Answer();
@@ -53,7 +53,12 @@ class QuizController extends AbstractController
 		$entityManager = $this->getDoctrine()->getManager();
 		$entityManager->flush();
 
-        return $this->render('quiz/index.html.twig', ['questions' => $questions, 'imgQuiz' => $imgQuiz, 'answerObj' => $answerObj, 'post'=>$post, 'user'=>$this->getUser()]);
+		return $this->redirectToRoute('match');
+
+		}
+
+    return $this->render('quiz/index.html.twig', ['questions' => $questions, 'imgQuiz'=>$imgQuiz]);
+
     }
 
 
