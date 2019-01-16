@@ -9,10 +9,11 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" href="{{asset('js/app.js')}}">
-
+</head>
 
 
         {% block stylesheets %}{% endblock %}
+   <body>   	
   <header>
     <div id="logo" class="menuUp">
         <h1>Match&Go</h1>
@@ -20,7 +21,7 @@
     </div>
 	<nav>
         <ul>
-            <li><a href="#">Concept</a></li>
+            <li><a href="{{ path ('concept') }}">Concept</a></li>
             <li><a href="{{ path ('blog')}}">Blog</a></li>
             <li><a href="{{ path ('contact')}}">Contact</a></li>
             <li>
@@ -46,10 +47,9 @@
             </li>
         </ul>
     </nav>
-
-    </head>
-    <body>
-    	<header>
+</header>
+   </body>  
+{#     	<header>
     	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		  <a class="navbar-brand" href="{{ path ('home')}}">Logo</a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,7 +91,7 @@
 		    </ul>
 		  </div>
 		</nav>
-		</header>
+		</header> #}
 
         {% block body %}
 			

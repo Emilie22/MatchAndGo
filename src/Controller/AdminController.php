@@ -233,7 +233,7 @@ class AdminController extends AbstractController{
         $filename = $profiletype->getPicture();
 
         if ($profiletype->getPicture()) {
-            $profiletype->setPicture(new File($this->getParameter('upload_directory') . $this->getParameter('article_image_directory') . '/' . $filename ));
+            $profiletype->setPicture(new File($this->getParameter('upload_directory') . $this->getParameter('user_image_directory') . '/' . $filename ));
         }
 
         $form = $this->createForm(ProfileType::class, $profiletype);
@@ -249,7 +249,7 @@ class AdminController extends AbstractController{
 
                 $file = $profiletype->getPicture();
 
-            $filename = $fileuploader->upload($file, $this->getParameter('article_image_directory'), $filename);
+            $filename = $fileuploader->upload($file, $this->getParameter('user_image_directory'), $filename);
             }
             // on met à jour la propriété image, qui doit contenir le nom et pas l'image elle même 
             $profiletype->setPicture($filename);
