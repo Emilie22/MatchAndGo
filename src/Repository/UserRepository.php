@@ -19,32 +19,24 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-    // /**
-    //  * @return User[] Returns an array of User objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+    public function myFindAll($id) {
+        $connexion = $this->getEntityManager()->getConnection();
+        $sql = 'SELECT au2.user_id    
+                FROM user u 
+                LEFT JOIN answer_user au  
+                ON au.user_id = u.id 
+                LEFT JOIN answer_user au2 
+                ON au2.answer_id = au.answer_id 
+                WHERE u.id = :id 
+                AND au2.user_id <> u.id';
+                
+        $select = $connexion->prepare($sql);
+        $select->bindValue(':id', $id);
+        $select->execute();
+        return $select->fetchAll();
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?User
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+
+
+
 }

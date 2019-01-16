@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MatchController!{% endblock %}
+
+{% block body %}
+{# {{ dump(users) }}
+{{ dump(userAnswers) }}
+{{ dump(test) }}
+{{ dump(user) }} #}
+{# {{ dump(answers) }} #}
+{# {{ dump(idAnswers) }} #}
+<section class="match">
+<div class="container-fluid">
+	<div class="row pt-3 pb-3">
+		<div class="col-12">
+			<div class="titleMatch text-center">
+				<p><img class="avatar mr-3" src="http://placekitten.com/70/70" alt=""> Bonjour {{ moi.firstname }} ! Voici les voyageurs qui te correspondent ! N'hésite pas à tchater avec eux ! <a href="{{ path ('quiz')}}">Nouvelle recherche</a></p>
+			</div>
+
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 col-md-8">
+			<div class="row">
+				{% for userA in user %}
+					{% for userB in userA %}
+					<div class="col-12 col-md-3">
+						<div class="card">
+							<img src="http://placekitten.com/100/60" alt="photoUserMatch" class="imgProfileMatch">
+							<div class="card-body">
+								<p class="card-title text-center">{{ userB.firstname }}<br><span>{{ userB.gender }} | {{ userB.birthday|date('m-d-Y') }}</span></p>
+								<p class="card-text">{{ userB.city }}</p>
+								<div class="row">
+									<div class="text-center col-12 col-md-6"><button class="btnProfile">Profil</button></div>
+									<div class="text-center col-12 col-md-6"><button class="btnChat">Tchat</button></div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					{% endfor %}
+				{% endfor %}
+			</div>
+		</div>
+		<div class="col-12 col-md-4">
+			<div class="mapLoc"></div>
+		</div>
+	</div>
+</div>
+</section>
+{% endblock %}

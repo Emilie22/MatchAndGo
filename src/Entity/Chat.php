@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,7 +15,7 @@ class Chat
      * @ORM\Column(type="integer")
      */
     private $id;
-    
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -29,14 +27,16 @@ class Chat
     private $date_send;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="id_chats")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Salon", inversedBy="chats")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $chat_id;
+    private $salon;
 
-    public function __construct()
-    {
-        $this->chat_id = new ArrayCollection();
-    }
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="chats")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
 
     public function getId(): ?int
     {
@@ -67,28 +67,26 @@ class Chat
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getChatId(): Collection
+    public function getSalon(): ?Salon
     {
-        return $this->chat_id;
+        return $this->salon;
     }
 
-    public function addChatId(User $chatId): self
+    public function setSalon(?Salon $salon): self
     {
-        if (!$this->chat_id->contains($chatId)) {
-            $this->chat_id[] = $chatId;
-        }
+        $this->salon = $salon;
 
         return $this;
     }
 
-    public function removeChatId(User $chatId): self
+    public function getUser(): ?User
     {
-        if ($this->chat_id->contains($chatId)) {
-            $this->chat_id->removeElement($chatId);
-        }
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

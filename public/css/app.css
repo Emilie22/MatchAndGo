@@ -7,6 +7,10 @@ body{
 	font-family: 'Open Sans', cursive;
 }
 
+section {
+  min-height: 100vh;
+  /*background-color: #3f4253;*/
+}
 
 /*Vidéo Home*/
 
@@ -144,16 +148,21 @@ a:hover {
 }
 /*CAROUSEL*/
 
+.containerQuiz {
+	background-color: #3f4253;
+}
+
 #carouselQuiz {
-  margin: 4rem auto;
+	background-color: #fff;
+  /*padding: 100px;*/
   height: 600px;
   position: relative;
-  box-shadow: 5px 5px 10px lightgrey, -5px -5px 10px lightgrey;
+  /*box-shadow: 5px 5px 10px lightgrey, -5px -5px 10px lightgrey;*/
 }
 
 .carousel-inner {
   height: 600px;
-  border: 10px solid #3f4253;
+  border: 10px solid #25283a;
 }
 
 .ico {
@@ -242,4 +251,91 @@ a:hover {
 footer{
 	color: #d4b478;
 	background-color: #25283a;
+}
+
+/*page match*/
+
+.match {
+  background-color: #3f4253;
+}
+
+.titleMatch {
+  color: #fdad17;
+}
+
+.imgProfileMatch {
+  width: 100%;
+  box-shadow: 0px 10px 10px -4px #6A708C;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.card {
+    width: 200px;
+    min-height:300px;
+    background:#dabc83;
+    box-shadow:0 20px 50px rgba(0,0,0, 0.3);
+}
+
+.card:hover {
+    box-shadow:0 30px 70px rgba(0,0,0,0.7);
+}
+
+.btnChat, .btnProfile {
+  background-color: #3f4253;
+  border: 1px solid #3f4253;
+  color: #fdad17; 
+  margin: 0 auto;
+  padding: 5px 10px;
+}
+
+#video-background {
+  position: absolute;
+  right: 0; 
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto; 
+  height: auto;
+  z-index: 1;
+}
+
+#video-background.collapsing {
+  display:none;
+}
+
+header {
+    position: relative;
+    min-height: auto;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    background-color: #c9c9c9;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+header .header-content {
+    position: relative;
+    width: 100%;
+    padding: 100px 15px;
+    text-align: center;
+    z-index: 2;
+}
+
+header .header-content .inner h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+header .header-content .inner p {
+    margin-bottom: 50px;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
 }

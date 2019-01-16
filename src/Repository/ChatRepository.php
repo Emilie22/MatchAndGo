@@ -47,4 +47,16 @@ class ChatRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findWithChat($id) {
+        $querry = $this->createQueryBuilder('c')
+        ->innerJoin('c.user', 'u')
+        ->addSelect('u')
+        ->andWhere('u.id = :id')
+        ->setParameter('id', $id)
+        ->getQuery();
+        return $querry ->execute();
+        
+
+    }
 }

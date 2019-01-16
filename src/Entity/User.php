@@ -96,18 +96,13 @@ class User implements UserInterface
     private $answers;
 
     /**
-    * @ORM\OneToMany(targetEntity="App\Entity\Chat", mappedBy="userSender")
-    */
-    private $chats;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Chat", mappedBy="chat_id")
+     * @ORM\OneToMany(targetEntity="App\Entity\Chat", mappedBy="user")
      */
-    private $id_chats;
+    private $chats;
 
     public function __construct()
     {
-        $this->id_chats = new ArrayCollection();
+        $this->chats = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -169,7 +164,7 @@ class User implements UserInterface
         return (string) $this->plainPassword;
     }
 
-     public function setPlainPassword(string $plainPassword) :self
+    public function setPlainPassword(string $plainPassword) :self
     {
         $this->plainPassword = $plainPassword;
 
@@ -339,30 +334,35 @@ class User implements UserInterface
    /**
     * @return Collection|Chat[]
     */
-   public function getIdChats(): Collection
+   public function getChats(): Collection
    {
-       return $this->id_chats;
+       return $this->chats;
    }
 
-   public function addIdChat(Chat $idChat): self
+   public function addChat(Chat $chat): self
    {
-       if (!$this->id_chats->contains($idChat)) {
-           $this->id_chats[] = $idChat;
-           $idChat->addChatId($this);
+       if (!$this->chats->contains($chat)) {
+           $this->chats[] = $chat;
+           $chat->setUser($this);
        }
 
        return $this;
    }
 
-   public function removeIdChat(Chat $idChat): self
+   public function removeChat(Chat $chat): self
    {
-       if ($this->id_chats->contains($idChat)) {
-           $this->id_chats->removeElement($idChat);
-           $idChat->removeChatId($this);
+       if ($this->chats->contains($chat)) {
+           $this->chats->removeElement($chat);
+           // set the owning side to null (unless already changed)
+           if ($chat->getUser() === $this) {
+               $chat->setUser(null);
+           }
        }
 
        return $this;
    }
-   }
+}
+
+   
 
 

@@ -20,7 +20,6 @@ class BlogController extends AbstractController
 
       public function blog()    {
 
-
         $repository = $this->getDoctrine()->getRepository(Blog::class);
         
         $blogs = $repository->findAll();
