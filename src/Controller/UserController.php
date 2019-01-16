@@ -25,8 +25,6 @@ class UserController extends AbstractController
         ]);
     }
 
-                    // CREATION DU PROFIL //
-
     /**
      * @Route("/user/add", name="addProfile")
      */
@@ -64,8 +62,6 @@ class UserController extends AbstractController
     	return $this->render('user/add.html.twig', ['form' => $form->createView()]);
    }
 
-                    // AFFICHAGE DU PROFIL //
-
    /**
    * @Route("/user/{id}", name="showProfile", requirements={"id"="\d+"})
    */
@@ -87,14 +83,4 @@ class UserController extends AbstractController
      return $this->render('user/index.html.twig', ['user'=>$user]);
 
     }
-
-                // MODIFICATION DU PROFIL //
-
-    // /**
-    // * @Route("/user/update/{id}", name="updateProfile", requirements={"id"="\d+"})
-    // */
-    // public function updateProfile(Request $request, Concept $concept, FileUploader $fileuploader){
-
-    //     $filename = $concept->getPicture
-    // }
 }
