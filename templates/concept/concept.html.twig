@@ -9,24 +9,59 @@
 		</div>
 	{% endfor %}
 
-<div class="container">
+<div class="container-fluid conceptBg">
 	<div class="row">
 		{% for concept in concepts %}
 
-		<div class="col-md-4">
-			<img src="{{ asset('uploads/concept/image/' ~ concept.pictureConcept) }}">
+		<div class="col-md-6  mt-5">
+			<img src="{{ asset('uploads/concept/image/' ~ concept.pictureConcept) }}" class="img-thumbnail">
+		</div>
 
-			<h3>{{ concept.titleConcept }}</h3>
-			<p>{{ concept.contentConcept }}</p>
+		<div class="col-md-6 mt-5">
+			<h3 class="text-center">{{ concept.titleConcept }}</h3>
+			<p class="mt-5">{{ concept.contentConcept }}</p>
 			
 			{% if is_granted('ROLE_ADMIN') %} 
-				<a href="{{ path('deleteConcept') }}"><i class="fas fa-trash"></i></a>
-				<a href="{{ path('updateConcept') }}"><i class="fas fa-pencil-alt"></i></a> 
+				<a href="{{ path('deleteConcept', {id: concept.id}) }}"><i class="fas fa-trash"></i></a>
+				<a href="{{ path('updateConcept', {id: concept.id}) }}"><i class="fas fa-pencil-alt"></i></a> 
 			{% endif %}
 
-		</div>	
+		</div>
 
 		{% endfor %}
 	</div>
+
+	<div class="row conceptRow mt-5 justify-content-center">
+		<div class="col-12 col-md-12">
+			<h2 class="mt-5 mb-5 text-center"><em>«Voyager sans rencontrer l’autre, ce n’est pas voyager, c’est se déplacer» Alexandra David Neel</em></h2>
+		</div>
+	</div>
+
+	<div class="row mt-5 mb-5 justify-content-center">
+		<h1>L'équipe de Match&Go</h1>
+	</div>
+	<div class="row mt-5">
+		<div class="col-12 col-md-3 text-center">
+			<img src="http://placekitten.com/100/100">
+			<h2>Émilie</h2>
+			<p>Team member</p>
+		</div>
+		<div class="col-12 col-md-3 text-center">
+			<img src="http://placekitten.com/100/100">
+			<h2>David</h2>
+			<p>Team member</p>
+		</div>
+		<div class="col-12 col-md-3 text-center">
+			<img src="http://placekitten.com/100/100">
+			<h2>Thomas</h2>
+			<p>Team member</p>
+		</div>
+		<div class="col-12 col-md-3 text-center">
+			<img src="http://placekitten.com/100/100">
+			<h2>Soraya</h2>
+			<p>Team member</p>
+		</div>
+	</div>
 </div>
 {% endblock %}
+

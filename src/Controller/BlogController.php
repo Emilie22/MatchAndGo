@@ -14,18 +14,14 @@ use App\Form\CommentType;
 class BlogController extends AbstractController
 {
 
-   
      /**
      * @Route("/blog", name="blog")
      */ 
 
       public function blog()    {
 
-        //récupération de la liste des articles
-        // $articleDB = new ArticleDB();
-        //$articles = $articleDB->findAll()
         $repository = $this->getDoctrine()->getRepository(Blog::class);
-        //utilisation de la méthode custom qui fait une jointure
+        
         $blogs = $repository->findAll();
 
         return $this->render('blog/index.html.twig', [

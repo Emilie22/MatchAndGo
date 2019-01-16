@@ -12,6 +12,13 @@ section {
   /*background-color: #3f4253;*/
 }
 
+/*Vidéo Home*/
+
+.videoHome{
+  height:100vh;
+  width:100vw;
+}
+
 /*Formulaire d'inscription*/
 .inscriptionBg{
 	background: #3f4253;
@@ -101,6 +108,43 @@ a:hover {
 	color: #3f4253;
 }
 
+/* Affichage du profil de l'utilisateur connecté */
+
+.imgBgProfile{
+  height: 400px;
+  width: 100%;
+}
+
+.profileBlock{
+  background: #414559;;
+  position:absolute;
+  top: 40%;
+  height: 100%;
+  z-index: 0;
+
+}
+
+.rowBgProfile{
+  position:relative;
+}
+
+.infosUser{
+  color: #fdad17;
+}
+
+
+.avatar{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  box-shadow: 0px 2px 4px black;
+}
+
+.divAvatar{
+  position: absolute;
+  bottom: 48%;
+  left: 40%;
+}
 /*CAROUSEL*/
 
 .containerQuiz {
@@ -188,13 +232,25 @@ a:hover {
   color: #3f4253;
 }
 
+
+/*Affichage de la page concept*/
+
+.conceptBg{
+  background: #3f4253;
+  color: #fdad17;
+}
+
+.conceptRow{
+  background: #dabc83;
+  color: #3f4253;
+  height: 130px;
+}
 /*FOOTER*/
 
 footer{
 	color: #d4b478;
 	background-color: #25283a;
 }
-
 
 /*page match*/
 
@@ -232,4 +288,53 @@ footer{
   color: #fdad17; 
   margin: 0 auto;
   padding: 5px 10px;
+}
+
+#video-background {
+  position: absolute;
+  right: 0; 
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto; 
+  height: auto;
+  z-index: 1;
+}
+
+#video-background.collapsing {
+  display:none;
+}
+
+header {
+    position: relative;
+    min-height: auto;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    background-color: #c9c9c9;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+header .header-content {
+    position: relative;
+    width: 100%;
+    padding: 100px 15px;
+    text-align: center;
+    z-index: 2;
+}
+
+header .header-content .inner h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+header .header-content .inner p {
+    margin-bottom: 50px;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
 }

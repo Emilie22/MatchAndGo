@@ -1,38 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}tchat{% endblock %}
+{% block title %}Hello ChatController!{% endblock %}
 
 {% block body %}
-{{dump(user)}}
-<div class="row">
-    <div class="col-md-12 text-center">
-        {{ form_start(form) }}
-                {{ form_widget(form) }}
-        {{ form_end(form) }}
-    </div>
-</div>
-{% endblock %}
-{% block javascripts %}
-	{{ parent() }}
-
-	<script>
-		$("#stop").on('click', function(e){
-            e.preventDefault();
-			let idAuteur = $(this).val();
-			$.ajax({
-
-				type: 'post',
-				url: '{{ path("auteur1") }}',
-				data: 'idAuteur=' + idAuteur,
-				datatype: 'html',
-				success: function(result){
-					$("#result1").html(result);
-				},
-				error: function(error){
-					console.log(error);
-				}
-
-            })
-        })
-	</script>
+{# {{dump(user)}} #}
 {% endblock %}
