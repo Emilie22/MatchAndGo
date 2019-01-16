@@ -6,12 +6,23 @@
 
 <section id="first">
         <div class="header-content">
-            <div class="inner">
-                <h1 class="cursive">Match&Go</h1>
-                <h4>Trouver votre partenaire de voyage</h4>
-                <hr>
-                <a href="{{ path('app_register') }}" class="btn btn-primary btn-xl page-scroll">Go</a>
-            </div>
+        	<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" style="width: 100%" class="">
+    <source src="{{asset ('video/match&go.mp4')}}" type="video/mp4">
+    <div class="overlay"></div>
+  </video>
+
+     <!-- home wrapper -->
+  <div class="home-wrapper">
+    <div class="container">
+      <div class="row">
+        <!-- home content -->
+        <div class="col">
+          <div class="home-content">
+            <h1 class="white-text-brand">Match&Go</h1>
+            <p class="white-text-one">Trouver votre partenaire de voyage</p>
+              <a href="{{ path('app_register') }}" class="btn btn-outline-light">Go</a>
+          </div>
+        </div>
         </div>
         
 </section>
