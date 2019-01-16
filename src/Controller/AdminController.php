@@ -237,6 +237,7 @@ class AdminController extends AbstractController{
         }
 
         $form = $this->createForm(ProfileType::class, $user);
+
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
@@ -252,6 +253,7 @@ class AdminController extends AbstractController{
     
             $user->setPicture($filename);
 
+
             $entitymanager = $this->getDoctrine()->getManager();
 
             $entitymanager->flush();
@@ -259,6 +261,7 @@ class AdminController extends AbstractController{
             $this->addFlash('warning', 'User modifié');
 
             return $this->redirectToRoute('admin');
+
         }
         return $this->render('admin/add.user.html.twig', ['form' => $form->createView()]);
     }
