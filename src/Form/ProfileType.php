@@ -18,6 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Validator\Constraints\IsTrue;
 
 
+
 class ProfileType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -42,6 +43,7 @@ class ProfileType extends AbstractType
             ->add('description', TextareaType::class, array('label' => 'Parle-nous un peu de toi !'))
             ->add('countries', TextType::class, array('label' => 'Quels pays as-tu visités ?'))
             ->add('save', SubmitType::class, array('label' => 'Créer mon profil'))
+
 
         ;
     }

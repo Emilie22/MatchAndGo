@@ -3,5 +3,55 @@
 {% block title %}Hello ChatController!{% endblock %}
 
 {% block body %}
-{# {{dump(user)}} #}
+<div class="row">
+    <div class="container">
+        <div class="col-md-12">
+            <select id="salon">
+                {% for chat in chat %}
+                    <option class="selectSalon" value="{{chat.salon.id}}" data-user="{{chat.user.id}}">{{chat.salon.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="container">
+        <div class="col-md-12" id="message">
+            
+        </div>
+        {{ form_start(form) }}
+        {{ form_end(form) }}
+    </div>
+</div>
 {% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+
+	<script>
+		$("#salon").on('change', function(){
+
+			let idSalon = $(this).val();
+            let idUser = $('.selectSalon').data('user');
+            console.log(idSalon);
+            console.log(idUser);
+			$.ajax({
+
+				type: 'post',
+				url: '{{ path("changeSalon") }}',
+				data: 'idSalon=' + idSalon + '&idUser=' + idUser,
+				datatype: 'html',
+				success: function(result){
+					$("#message").append(result);
+				},
+				error: function(error){
+					console.log(error);
+				}
+
+			}) 
+		}) 
+            
+
+    </script>
+{% endblock %}
+
