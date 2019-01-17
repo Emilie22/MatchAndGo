@@ -13,7 +13,7 @@ use App\Form\ChatFormType;
 class ChatController extends AbstractController
 {
     /**
-     * @Route("/chat/add/{idUser}", name="Addchat", requirements={"idUser"="\d+"})
+     * @Route("/chat/add/{idUser}", name="addChat", requirements={"idUser"="\d+"})
      */
     public function addChat($idUser)
     {
@@ -32,7 +32,7 @@ class ChatController extends AbstractController
                 
         $chat1 = new Chat();
         $chat1 ->setUser($this->getUser());
-        $chat1 ->setMessage('Vous avez inviter à parler');
+        $chat1 ->setMessage('Vous avez invité à parler');
         $chat1 ->setDateSend(new \DateTime(date('Y-m-d H:i:s')));
 
         $salon1 = new Salon();
@@ -44,7 +44,7 @@ class ChatController extends AbstractController
 
         $chat = new Chat();
         $chat ->setUser($inviteId);
-        $chat ->setMessage('Vous avez été inviter à parler avec');
+        $chat ->setMessage('Vous avez été invité(e) à parler avec');
         $chat ->setDateSend(new \DateTime(date('Y-m-d H:i:s')));
 
         $chat ->setSalon($salon1);

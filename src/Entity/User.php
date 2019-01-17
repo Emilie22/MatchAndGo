@@ -398,20 +398,6 @@ class User implements UserInterface
        return $this;
    }
 
-      public function getCoord()
-   {
-          $url = "https://maps.googleapis.com/maps/api/geocode/json?address={".urlencode(strip_tags($this->city))."}&key=AIzaSyBjslA2cbupRwG-dJvPAKcfZp0ruzEFM38";
-
-            $resultat = json_decode(file_get_contents($url, false, $context), true);
-
-            $lat = $resultat['results'][0]['geometry']['location']['lat'];
-            $lng = $resultat['results'][0]['geometry']['location']['lng'];
-
-            $coord = ['lat' => $lat, 'long' => $lng];
-
-       return $coord;
-   }
-
 }
 
    

@@ -10,93 +10,46 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" href="{{asset('js/app.js')}}">
-</head>
-
-
         {% block stylesheets %}{% endblock %}
-   <body>   	
-  <header>
-    <div id="logo" class="menuUp">
-        <a class="navbar-brand" href="{{ path ('home') }}">Match&Go</a>
-        <div id="navToggle"><a href="">Menu</a></div>
-    </div>
-	<nav>
-        <ul>
-            <li><a href="{{ path ('concept') }}">Concept</a></li>
-            <li><a href="{{ path ('blog')}}">Blog</a></li>
-            <li><a href="{{ path ('contact')}}">Contact</a></li>
-            <li>
-                <a href="#">Admin <span class="toggle">Expand</span><span class="caret"></span></a>
-                <nav>
-                    <ul>
-                        <li><a href="{{ path ('updateUser') }}">Users</a></li>
-                        <li><a href="{{ path ('addConceptAdmin') }}">Concept</a></li>
-                        <li><a href="{{ path ('addBlogAdmin')}}">Ajouter Article</a></li>
-                    </ul>
-                </nav>
-            </li>
-                 <li>
-                <a href="{{ path('app_login') }}">Connexion <span class="toggle">Expand</span><span class="caret"></span></a>
-                <nav>
-                    <ul>
-                        <li><a href="#">Voir mon profil</a></li>
-                        <li><a href="#">Modifier mon profil</a></li>
-                        <li><a href="#">Nouvelle recherche</a></li>
-                        <li><a href="#">Déconnexion</a></li>
-                    </ul>
-                </nav>
-            </li>
-        </ul>
-    </nav>
-</header>
-   </body>  
-{#     	<header>
-    	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		  <a class="navbar-brand" href="{{ path ('home')}}">Logo</a>
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-		    <span class="navbar-toggler-icon"></span>
-		  </button>
-		  <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
-		    <ul class="navbar-nav">
-		      <li class="nav-item">
-		        <a class="nav-link"  href="{{ path ('concept')}}">Concept</a>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="{{ path ('blog')}}">Blog</a>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="{{ path ('contact')}}">Contact</a>
-		      </li>
+	</head>
 
-			<li class="nav-item dropdown">
-		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
-		        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-		          <a class="dropdown-item" href="{{ path ('updateUser') }}">Users</a>
-		          <a class="dropdown-item" href="#">Concept</a>
-		          <a class="dropdown-item" href="{{ path ('home')}}">Accueil</a>
-		          <a class="dropdown-item" href="#">Users</a>
-		          <a class="dropdown-item" href="{{ path ('addConceptAdmin')}}">Concept</a>
-		          <a class="dropdown-item" href="{{ path ('addBlogAdmin')}}">Ajouter Article</a>
-		        </div>
-		      </li>
-		      <li class="nav-item dropdown mr-5">
-		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-alt"></i></a>
-		        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-		          <a class="dropdown-item" href=" {{ path('app_login') }}">Connexion</a>
-		          <a class="dropdown-item" href="#">Voir mon profil</a>
-		          <a class="dropdown-item" href="#">Modifier mon profil</a>
-		          <a class="dropdown-item" href="#">Nouvelle recherche</a>
-		          <a class="dropdown-item" href="#">Déconnexion</a>
-		        </div>
-		      </li>
-		    </ul>
-		  </div>
-		</nav>
-		</header> #}
+	<body>   	
+		<header>
+			<div id="logo" class="menuUp">
+				<a class="navbar-brand" href="{{ path ('home') }}">Match&Go</a>
+				<div id="navToggle"><a href="">Menu</a></div>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="{{ path ('concept') }}">Concept</a></li>
+					<li><a href="{{ path ('blog')}}">Blog</a></li>
+					<li><a href="{{ path ('contact')}}">Contact</a></li>
+					<li>
+						<a href="#">Admin <span class="toggle">Expand</span><span class="caret"></span></a>
+						<nav>
+							<ul>
+								<li><a href="{{ path ('updateUser') }}">Users</a></li>
+								<li><a href="{{ path ('addConceptAdmin') }}">Concept</a></li>
+								<li><a href="{{ path ('addBlogAdmin')}}">Ajouter Article</a></li>
+							</ul>
+						</nav>
+					</li>
+					<li>
+						<a href="{{ path('app_login') }}">Connexion <span class="toggle">Expand</span><span class="caret"></span></a>
+						<nav>
+							<ul>
+								<li><a href="#">Voir mon profil</a></li>
+								<li><a href="#">Modifier mon profil</a></li>
+								<li><a href="#">Nouvelle recherche</a></li>
+								<li><a href="#">Déconnexion</a></li>
+							</ul>
+						</nav>
+					</li>
+				</ul>
+			</nav>
+		</header>
 
-        {% block body %}
-			
-        {% endblock %}
+        {% block body %}{% endblock %}
 
 		<footer>
 			<div class="container-fluid footer">
@@ -121,12 +74,12 @@
 				</div>
 			</div>
 		</footer>
-
-
+       
+        
         {% block javascripts %}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-        {% endblock %}
+    	{% endblock %}
 		
     </body>
 </html>
