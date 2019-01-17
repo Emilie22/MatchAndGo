@@ -20,8 +20,18 @@ class MatchController extends AbstractController
 
     	$userAnswers = [];
 
+        dump($users);
+
     	foreach ($users as $user) {
+            // dump($user);
     		$userAnswers[] = implode(" ", $user);
+            // foreach($user as $key=>$value) {
+            //     $city = $repository->findById($value)->getCity();
+            //     dump($city);
+            // }
+            // $url = "https://maps.googleapis.com/maps/api/geocode/json?address={".urlencode($user->getCity())."}&key=AIzaSyBjslA2cbupRwG-dJvPAKcfZp0ruzEFM38";
+            // dump($url);
+            // $userCoord[] = 
     	}
 
     	$test = array_count_values($userAnswers);
@@ -33,8 +43,8 @@ class MatchController extends AbstractController
     		}
     	}
 
-        $usersAll = $repository->findAll();
-        // dump($usersAll);
+        $userCity = $repository->findById($user)->getCity();
+        dump($userCity);
 
         $cityTab = [];
         foreach ($userMatch as $userCity) {

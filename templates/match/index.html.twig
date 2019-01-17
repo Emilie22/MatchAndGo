@@ -39,9 +39,9 @@
 						</div>
 					</div>
 					
-					{% set url = "https://maps.googleapis.com/maps/api/geocode/json?address={"~ userB.city ~"}&key=AIzaSyBjslA2cbupRwG-dJvPAKcfZp0ruzEFM38"|url_encode %}
+{# 					{% set url = "https://maps.googleapis.com/maps/api/geocode/json?address={"~ userB.city ~"}&key=AIzaSyBjslA2cbupRwG-dJvPAKcfZp0ruzEFM38"|url_encode %}
 						{{dump(url)}}
-{# 					{% set resultat = url|json_decode %}
+					{% set resultat = url|json_decode(true) %}
 						{{dump(resultat)}} #}
 {# 					{% set lat = resultat['results'][0]['geometry']['location']['lat'] %}
 					{% set lng = resultat['results'][0]['geometry']['location']['lng'] %} #}
@@ -49,11 +49,11 @@
 				{% endfor %}
 			</div>
 		</div>
-				{{dump(cityTab)}}
+{# 				{{dump(cityTab)}}
 			
 				{% for cityMatch in cityTab %}
 			
-				{% endfor %}
+				{% endfor %} #}
 
 		<div class="col-12 col-md-4">
 			<div id="mapLoc">

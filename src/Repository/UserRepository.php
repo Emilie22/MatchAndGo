@@ -21,7 +21,7 @@ class UserRepository extends ServiceEntityRepository
 
     public function myFindAll($id) {
         $connexion = $this->getEntityManager()->getConnection();
-        $sql = 'SELECT au2.user_id    
+        $sql = 'SELECT au2.user_id     
                 FROM user u 
                 LEFT JOIN answer_user au  
                 ON au.user_id = u.id 
