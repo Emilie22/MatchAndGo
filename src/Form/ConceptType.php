@@ -21,9 +21,7 @@ class ConceptType extends AbstractType
             ->add('contentConcept', TextareaType::class, array('label' => 'Description'))
             ->add('pictureConcept', FileType::class, array('data_class'=> null, 
                 'label' => 'Photo',
-                'required' => true))
-            ->add('Publier', SubmitType::class, array('label' => 'Enregistrer'))
-        ;
+                'required' => true));
     }
 
     public function configureOptions(OptionsResolver $resolver)

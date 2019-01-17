@@ -10,44 +10,53 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" href="{{asset('js/app.js')}}">
-        {% block stylesheets %}{% endblock %}
-	</head>
 
-	<body>   	
-		<header>
-			<div id="logo" class="menuUp">
-				<a class="navbar-brand" href="{{ path ('home') }}">Match&Go</a>
-				<div id="navToggle"><a href="">Menu</a></div>
-			</div>
-			<nav>
-				<ul>
-					<li><a href="{{ path ('concept') }}">Concept</a></li>
-					<li><a href="{{ path ('blog')}}">Blog</a></li>
-					<li><a href="{{ path ('contact')}}">Contact</a></li>
-					<li>
-						<a href="#">Admin <span class="toggle">Expand</span><span class="caret"></span></a>
-						<nav>
-							<ul>
-								<li><a href="{{ path ('updateUser') }}">Users</a></li>
-								<li><a href="{{ path ('addConceptAdmin') }}">Concept</a></li>
-								<li><a href="{{ path ('addBlogAdmin')}}">Ajouter Article</a></li>
-							</ul>
-						</nav>
-					</li>
-					<li>
-						<a href="{{ path('app_login') }}">Connexion <span class="toggle">Expand</span><span class="caret"></span></a>
-						<nav>
-							<ul>
-								<li><a href="#">Voir mon profil</a></li>
-								<li><a href="#">Modifier mon profil</a></li>
-								<li><a href="#">Nouvelle recherche</a></li>
-								<li><a href="#">Déconnexion</a></li>
-							</ul>
-						</nav>
-					</li>
-				</ul>
-			</nav>
-		</header>
+</head>
+
+        {% block stylesheets %}{% endblock %}
+   <body>   	
+<header>
+    <div id="logo" class="menuUp">
+        <a class="navbar-brand" href="{{ path ('home') }}">Match&Go</a>
+        <div id="navToggle"><a href="">Menu</a></div>
+    </div>
+	<nav>
+        <ul>
+            <li><a href="{{ path ('concept') }}">Concept</a></li>
+            <li><a href="{{ path ('blog')}}">Blog</a></li>
+            <li><a href="{{ path ('contact')}}">Contact</a></li>
+            	{% if is_granted('ROLE_ADMIN') %}
+            		<li>
+                		<a href="#">Admin <span class="toggle">Expand</span><span class="caret"></span></a>
+                		<nav>
+                    		<ul>
+                        		<li><a href="{{ path ('users') }}">Users</a></li>
+                        		<li><a href="{{ path ('addConceptAdmin') }}">Concept</a></li>
+                        		<li><a href="{{ path ('addBlogAdmin')}}">Ajouter Article</a></li>
+                    		</ul>
+                		</nav>
+            		</li>
+            	{% endif %}
+                 <li>
+                 	{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a href="{{ path('app_login') }}">Connexion</a>
+                {% endif %}
+                {% if is_granted('ROLE_USER') %}
+                	<a href="{{ path('app_login') }}">Profil</i> <span class="toggle">Expand</span><span class="caret"></span></a>
+                <nav>
+                    <ul>
+                        <li><a href="#">Modifier mon profil</a></li>
+                        <li><a href="#">Nouvelle recherche</a></li>
+                        <li><a href="#">Déconnexion</a></li>
+                    </ul>
+                </nav>
+                {% endif %}
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
 
         {% block body %}{% endblock %}
 
