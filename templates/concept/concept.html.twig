@@ -13,11 +13,11 @@
 	<div class="row">
 		{% for concept in concepts %}
 
-		<div class="col-md-6  mt-5">
+		<div class="col-12 col-md-3">
 			<img src="{{ asset('uploads/concept/image/' ~ concept.pictureConcept) }}" class="img-thumbnail">
 		</div>
 
-		<div class="col-md-6 mt-5">
+		<div class="col-12 col-md-3">
 			<h3 class="text-center">{{ concept.titleConcept }}</h3>
 			<p class="mt-5">{{ concept.contentConcept }}</p>
 			
