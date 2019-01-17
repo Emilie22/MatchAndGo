@@ -20,14 +20,10 @@ class BlogType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
      {
         $builder
-            ->add('title', TextType::class)
-            ->add('content', TextareaType::class)
-            ->add('author', TextType::class)
-            ->add('date_post', DateTimeType::class,[
-            ])
-            ->add('picture_blog', FileType::class, ['required' => true])
-            ->add('Publier', SubmitType::class)
-        ;
+            ->add('title', TextType::class, array('label' => 'Titre'))
+            ->add('content', TextareaType::class, array('label' => 'Contenu'))
+            ->add('author', TextType::class, array('label' => 'Auteur'))
+            ->add('picture_blog', FileType::class, array('label' => 'Image'), ['required' => true]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

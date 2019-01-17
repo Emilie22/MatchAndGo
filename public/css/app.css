@@ -22,57 +22,27 @@ section {
 }
 
 
-/*Formulaire d'inscription*/
-.inscriptionBg{
+/*Formulaires*/
+.formBackG{
 	background: #3f4253;
 	color: #fdad17;
 }
 
-.inscription{ 
-	background: #3f4253;
-	color: #fdad17;
- }
-
-.inputInscription{
+.formInput{
 	background: #696d8a;
 	color: #fdad17;
 	border: #696d8a;
 }
 
-.btnInscription{
+.formButton{
  	background: #fdad17;
  	color: #3f4253;
+  margin: 230px;
  }
 
-.titleInscription{
- 	color: #fdad17;
- 	
+.formTitle{
+ 	color: #fdad17; 	
  }
-
-
-/*Formulaire de connexion*/
-
-.connexion{
-	background: #3f4253;
-	color: #fdad17;
-}
-
-.btnConnexion{
-	background: #fdad17;
-	color: #3f4253;
-}
-
-.connexionBg{
-	background: #3f4253;
-	color: #fdad17;
-}
-
-.connexion >input{
-	background: #696d8a;
-	color: #fdad17;
-	border: #696d8a;
-}
-
 
 /*Création du profil*/
 

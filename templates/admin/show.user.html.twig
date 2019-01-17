@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+
+	{# affichage des éventuels messages flash #}
+	 {% for label, messages in app.flashes %}
+	 	{% for message in messages %}
+	 		<div class="alert alert-{{ label }}">{{ message}}</div>
+	 	{% endfor %}
+	 {% endfor %}
+
+	{% for user in users %}
+		<p>
+			<ul>{{ user.firstname }} {{ user.lastname }} {{ user.email }}</ul>
+			<a href="{{ path('deleteUser', {id: user.id}) }}"><i class="fas fa-trash"></i></a>
+		</p>
+	{% endfor %}
+
+{% endblock %}
