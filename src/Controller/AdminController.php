@@ -164,7 +164,7 @@ class AdminController extends AbstractController{
     }
 
     /**
-     * @Route("/admin/concept/delete/{id}", name="deleteConcept")
+     * @Route("/admin/concept/delete/{id}", name="deleteConcept", requirements={"id"="\d+"})
      */ 
 
     public function deleteConcept(Concept $concept){
@@ -183,7 +183,7 @@ class AdminController extends AbstractController{
     }
 
     /**
-    * @Route("/admin/concept/update/{id}", name="updateConcept")
+    * @Route("/admin/concept/update/{id}", name="updateConcept", requirements={"id"="\d+"})
     */
     public function updateConcept(Request $request, Concept $concept, FileUploader $fileuploader){
 
