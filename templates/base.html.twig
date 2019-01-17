@@ -8,6 +8,7 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" href="{{asset('js/app.js')}}">
 
@@ -46,8 +47,11 @@
                 <nav>
                     <ul>
                         <li><a href="#">Modifier mon profil</a></li>
-                        <li><a href="#">Nouvelle recherche</a></li>
-                        <li><a href="{{path('logout')}}">Déconnexion</a></li>
+
+                        <li><a href="{{ path('quiz') }}">Nouveau match</a></li>
+                        <li><a href="{{ path('match') }}">Derniers matchs</a></li>
+                        <li><a href="{{ path('logout') }}">Déconnexion</a></li>
+
                     </ul>
                 </nav>
                 {% endif %}
