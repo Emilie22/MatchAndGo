@@ -28,67 +28,31 @@ class SecurityController extends AbstractController
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
-          // CREATION DU PROFIL //
 
-    /**
-     * @Route("/login/add", name="addProfile")
-     */
 
-    public function addProfile(Request $request, FileUploader $fileuploader)
-    {
-
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-
-        $entityManager = $this->getDoctrine()->getManager();
-
-        $user = new User();
-
-        $user = $this->getUser();
-
-        $form = $this->createForm(ProfileType::class, $user);
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()){
-
-            $user = $form->getData();
-            $file = $user->getPicture(); 
-
-            $filename = $file ? $fileuploader->upload($file, $this->getParameter('user_image_directory')) : '';
-
-            $user->setPicture($filename);
-
-            $entityManager->flush();
-
-            $this->addFlash('success', 'Votre profil a bien été créé !');
-            return $this->redirectToRoute('showProfile');
-    }
-
-        return $this->render('security/add.html.twig', ['form' => $form->createView()]);
-   }
 
                     // AFFICHAGE DU PROFIL //
 
    /**
-   * @Route("/login/{id}", name="showProfile", requirements={"id"="\d+"})
+   * @Route("/login/infos", name="userInfo")
    */
 
-    public function showProfile(User $user){
+    public function showConnectedUser(Request $request){
 
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
+        $user = $this->getUser();
+
         $entityManager = $this->getDoctrine()->getManager();
 
-        $user = new User();
-
-        $user = $this->getUser();
-   
-
-        $repository = $this->getDoctrine()->getRepository(User::class);
-        $questions = $repository->findAll();
+        $entityManager->flush();
 
      return $this->render('security/index.html.twig', ['user'=>$user]);
 
     }
+
+
+                    
 
                 // MODIFICATION DU PROFIL //
 

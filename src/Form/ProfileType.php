@@ -15,7 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\UrlType;
+// use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Validator\Constraints\IsTrue;
 
 
@@ -42,7 +42,7 @@ class ProfileType extends AbstractType
             ->add('phone', TextType::class, array('label' => 'Numéro de téléphone'))
             ->add('picture', FileType::class, array(
                 'data_class'=> null, 
-                'label' => 'Choisis ta photo de profil', 'required' => false))
+                'label' => 'Choisis ta photo de profil', 'required' => true))
             // ->add('pictureBg', Choicetype::class, array(
             //     'choices'=> array('photo1' => 'photo1.jpg',
             //                       'photo2' => 'photo2.jpg',
@@ -54,8 +54,10 @@ class ProfileType extends AbstractType
             //     'multiple' => false))
             ->add('description', TextareaType::class, array('label' => 'Parle-nous un peu de toi !'))
             ->add('countries', TextType::class, array('label' => 'Quels pays as-tu visités ?'))
-            ->add('facebook', UrlType::class, array('label' => 'Lien vers ton profil facebook'))
-            ->add('instagram', TextType::class, array('label' => 'Ton compte Instagram'))
+            ->add('facebook', TextType::class, array('label' => 'Lien vers ton profil facebook',
+                'required' => false))
+            ->add('instagram', TextType::class, array('label' => 'Ton compte Instagram',
+                'required' => false))
             ->add('save', SubmitType::class, array('label' => 'Créer mon profil'))
 
 

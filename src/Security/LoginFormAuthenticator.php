@@ -68,7 +68,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Email introuvable');
+            throw new CustomUserMessageAuthenticationException('Identifiants invalides');
         }
 
         return $user;
@@ -85,13 +85,13 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        //redirection lorsque l'utilisteur s'est connecté
+        //redirection vers la page du profil lorsque l'utilisateur s'est connecté
 
-        return new RedirectResponse($this->router->generate('home'));
+        return new RedirectResponse($this->router->generate('userInfo'));
     }
 
     protected function getLoginUrl()
     {
-        return $this->router->generate('home');
+        return $this->router->generate('app_login');
     }
 }
