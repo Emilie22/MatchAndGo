@@ -6,7 +6,7 @@
 <div class="row">
     <div class="container">
         <div class="col-md-12">
-            <select id="salon">
+            <select id="salon" class="form-control">
                 {% for chat in chat %}
                     <option class="selectSalon" value="{{chat.salon.id}}" data-user="{{chat.user.id}}">{{chat.salon.name}}</option>
                 {% endfor %}
@@ -17,13 +17,20 @@
 
 <div class="row">
     <div class="container">
-        <div class="col-md-12" id="listMessage">
-            
+        <div class="col-md-12 border border-dark rounded" id="listMessage">
         </div>
-            <form id="stop">
+    </div>
+</div>
+<div class="row">
+    <div class="container text-center mt-3">
+        <form id="stop" class="form-inline">
+            <div class="col-md-10">
                 <input type="text" class="form-control formInput" id="message">
-                    <button class="btn fromBtn">Envoyer</button>
-            </form>
+            </div>
+            <div class="col-md-2">
+                <button class="btn formButton m-0">Envoyer</button>
+            </div>
+        </form>
     </div>
 </div>
 {% endblock %}
@@ -94,8 +101,7 @@
                 });
             };
         
-            setInterval(refresh, 5000);
-            //refresh();
+            setInterval(refresh, 3000);
         })
     </script>
 {% endblock %}

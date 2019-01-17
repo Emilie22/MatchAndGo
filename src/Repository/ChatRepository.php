@@ -65,7 +65,7 @@ class ChatRepository extends ServiceEntityRepository
         $sql = 'SELECT u.id, salon_id, date_send, message, u.firstname, c.date_send
                 FROM user u
                 RIGHT JOIN chat c ON u.id = c.user_id 
-                WHERE u.id = :id AND salon_id = :idSalon ';
+                WHERE u.id = :id OR salon_id = :idSalon ORDER BY date_send DESC LIMIT 20';
         $select = $connexion->prepare($sql);
         $select->bindValue(':id', $idUser);
         $select->bindValue(':idSalon', $idSalon);
