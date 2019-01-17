@@ -27,7 +27,7 @@ class RegistrationController extends AbstractController
             /** @var User */
             $user = $form->getData();
 
-            // encode the plain password
+
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
@@ -35,12 +35,8 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            //par mesure de sécurité, j'efface le mdp en clair
             $user->eraseCredentials();
-
-            //un utilisateur qui s'inscrit aura le role user par défaut
             $user->setRoles(['ROLE_USER']);
-
             $user->setFirstname('');
             $user->setLastname('');
             $user->setCity('');
@@ -50,19 +46,23 @@ class RegistrationController extends AbstractController
             $user->setPicture('');
             $user->setDescription('');
             $user->setCountries('');
+            // $user->setFacebook('');
+            // $user->setInstagram('');
+
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // do anything else you need here, like send an email
 
-            return $guardHandler->authenticateUserAndHandleSuccess(
+            $guardHandler->authenticateUserAndHandleSuccess(
                 $user,
                 $request,
                 $authenticator,
-                'main' // firewall name in security.yaml
+                'main'
             );
+
+            return $this->redirectToRoute('addProfile');
         }
 
         return $this->render('registration/register.html.twig', [

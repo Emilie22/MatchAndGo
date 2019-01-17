@@ -1,14 +1,11 @@
 <?php
-
 namespace App\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
-
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
@@ -21,107 +18,96 @@ class User implements UserInterface
      * @ORM\Column(type="integer")
      */
     private $id;
-
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
-
     /**
      * @ORM\Column(type="array")
      */
     private $roles = [];
-
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
     private $password;
-
     /* nouvelle propriété qui va stocker le mot de passe en clair lors de l'inscription
     *
     */
     private $plainPassword;
-
     /**
      * @ORM\Column(type="string", length=30)
      */
     private $firstname;
-
     /**
      * @ORM\Column(type="string", length=30)
      */
     private $lastname;
-
     /**
      * @ORM\Column(type="string", length=30)
      */
     private $city;
-
     /**
      * @ORM\Column(type="date")
      */
     private $birthday;
-
     /**
      * @ORM\Column(type="string", length=10)
      */
     private $gender;
-
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $phone;
-
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Image
      * 
      */
     private $picture;
-
     /**
      * @ORM\Column(type="text")
      */
     private $description;
-
     /**
      * @ORM\Column(type="text")
      */
     private $countries;
-
     /**
     * @ORM\ManyToMany(targetEntity="App\Entity\Answer", mappedBy="user")
     */
     private $answers;
-
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Chat", mappedBy="user")
      */
     private $chats;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $facebook;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $instagram;
     public function __construct()
     {
         $this->chats = new ArrayCollection();
     }
-
     public function getId(): ?int
     {
         return $this->id;
     }
-
     public function getEmail(): ?string
     {
         return $this->email;
     }
-
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
         return $this;
     }
-
     /**
      * A visual identifier that represents this user.
      *
@@ -131,7 +117,6 @@ class User implements UserInterface
     {
         return (string) $this->email;
     }
-
     /**
      * @see UserInterface
      */
@@ -140,17 +125,13 @@ class User implements UserInterface
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
-
         return array_unique($roles);
     }
-
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
-
         return $this;
     }
-
     /**
      * @see UserInterface
      */
@@ -158,26 +139,20 @@ class User implements UserInterface
     {
         return (string) $this->password;
     }
-
     public function getPlainPassword() :string
     {
         return (string) $this->plainPassword;
     }
-
     public function setPlainPassword(string $plainPassword) :self
     {
         $this->plainPassword = $plainPassword;
-
         return $this;
     }
-
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
         return $this;
     }
-
     /**
      * @see UserInterface
      */
@@ -185,7 +160,6 @@ class User implements UserInterface
     {
         // not needed when using the "bcrypt" algorithm in security.yaml
     }
-
     /**
      * @see UserInterface
      */
@@ -194,115 +168,87 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         $this->plainPassword = null;
     }
-
     public function getFirstname(): ?string
     {
         return $this->firstname;
     }
-
     public function setFirstname(string $firstname): self
     {
         $this->firstname = $firstname;
-
         return $this;
     }
-
     public function getLastname(): ?string
     {
         return $this->lastname;
     }
-
     public function setLastname(string $lastname): self
     {
         $this->lastname = $lastname;
-
         return $this;
     }
-
     public function getCity(): ?string
     {
         return $this->city;
     }
-
     public function setCity(string $city): self
     {
         $this->city = $city;
-
         return $this;
     }
-
     public function getBirthday(): ?\DateTimeInterface
     {
         return $this->birthday;
     }
-
     public function setBirthday(\DateTimeInterface $birthday): self
     {
         $this->birthday = $birthday;
-
         return $this;
     }
-
     public function getGender(): ?string
     {
         return $this->gender;
     }
-
     public function setGender(string $gender): self
     {
         $this->gender = $gender;
-
         return $this;
     }
-
-    public function getPhone(): ?int
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
-
-    public function setPhone(?int $phone): self
+    public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
-
         return $this;
     }
-
     public function getPicture()
     {
         return $this->picture;
     }
-
     public function setPicture($picture)
     {
         $this->picture = $picture;
-
         return $this;
     }
-
     public function getDescription(): ?string
     {
         return $this->description;
     }
-
     public function setDescription(string $description): self
     {
         $this->description = $description;
-
         return $this;
     }
-
     public function getCountries(): ?string
     {
         return $this->countries;
     }
-
     public function setCountries(string $countries): self
     {
         $this->countries = $countries;
-
         return $this;
     }
-
     /**
     * @return Collection|Answer[]
     */
@@ -310,27 +256,22 @@ class User implements UserInterface
    {
        return $this->answers;
    }
-
    public function addAnswer(Answer $answer): self
    {
        if (!$this->answers->contains($answer)) {
            $this->answers[] = $answer;
            $answer->addUser($this);
        }
-
        return $this;
    }
-
    public function removeAnswer(Answer $answer): self
    {
        if ($this->answers->contains($answer)) {
            $this->answers->removeElement($answer);
            $answer->removeUser($this);
        }
-
        return $this;
    }
-
    /**
     * @return Collection|Chat[]
     */
@@ -338,17 +279,14 @@ class User implements UserInterface
    {
        return $this->chats;
    }
-
    public function addChat(Chat $chat): self
    {
        if (!$this->chats->contains($chat)) {
            $this->chats[] = $chat;
            $chat->setUser($this);
        }
-
        return $this;
    }
-
    public function removeChat(Chat $chat): self
    {
        if ($this->chats->contains($chat)) {
@@ -358,48 +296,27 @@ class User implements UserInterface
                $chat->setUser(null);
            }
        }
-
        return $this;
    }
-
-   public function getPictureBg(): ?string
-   {
-       return $this->pictureBg;
-   }
-
-   public function setPictureBg(string $pictureBg): self
-   {
-       $this->pictureBg = $pictureBg;
-
-       return $this;
-   }
-
    public function getFacebook(): ?string
    {
        return $this->facebook;
    }
-
    public function setFacebook(?string $facebook): self
    {
        $this->facebook = $facebook;
-
        return $this;
    }
-
    public function getInstagram(): ?string
    {
        return $this->instagram;
    }
-
    public function setInstagram(?string $instagram): self
    {
        $this->instagram = $instagram;
-
        return $this;
    }
 
 }
-
-   
 
 

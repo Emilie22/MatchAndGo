@@ -28,8 +28,6 @@ class RegistrationFormType extends AbstractType
                 'invalid_message' => 'Les mots de passe ne corespondent pas',
                 'first_options' => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Répéter le mot de passe'],
-                 //     // instead of being set onto the object directly,
-            //     // this is read and encoded in the controller
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
@@ -38,7 +36,6 @@ class RegistrationFormType extends AbstractType
                     new Length([
                         'min' => 4,
                         'minMessage' => 'Le mot de passe doit contenir au moins {{ limit }} caractères',
-                        // max length allowed by Symfony for security reasons
                         'max' => 60,
                     ]),
                 ],            

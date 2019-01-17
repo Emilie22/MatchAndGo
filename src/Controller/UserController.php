@@ -25,4 +25,42 @@ class UserController extends AbstractController
         ]);
     }
 
+                    // CREATION DU PROFIL //
+
+    /**
+     * @Route("/user/add", name="addProfile")
+     */
+
+    public function addProfile(Request $request, FileUploader $fileuploader)
+    {
+
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $user = new User();
+
+        $user = $this->getUser();
+
+        $form = $this->createForm(ProfileType::class, $user);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+
+            $user = $form->getData();
+            $file = $user->getPicture(); 
+
+            $filename = $file ? $fileuploader->upload($file, $this->getParameter('user_image_directory')) : '';
+
+            $user->setPicture($filename);
+
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Votre profil a bien été créé !');
+            return $this->redirectToRoute('userInfo');
+    }
+
+        return $this->render('user/add.html.twig', ['form' => $form->createView()]);
+   }
+
 }
