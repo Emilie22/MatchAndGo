@@ -17,11 +17,13 @@
 
 <div class="row">
     <div class="container">
-        <div class="col-md-12" id="message">
+        <div class="col-md-12" id="listMessage">
             
         </div>
-        {{ form_start(form) }}
-        {{ form_end(form) }}
+            <form id="stop">
+                <input type="text" class="form-control formInput" id="message">
+                    <button class="btn fromBtn">Envoyer</button>
+            </form>
     </div>
 </div>
 {% endblock %}
@@ -29,29 +31,72 @@
 	{{ parent() }}
 
 	<script>
-		$("#salon").on('change', function(){
+        $(function(){
 
-			let idSalon = $(this).val();
-            let idUser = $('.selectSalon').data('user');
-            console.log(idSalon);
-            console.log(idUser);
-			$.ajax({
+            $("#salon").on('change', function(){
 
-				type: 'post',
-				url: '{{ path("changeSalon") }}',
-				data: 'idSalon=' + idSalon + '&idUser=' + idUser,
-				datatype: 'html',
-				success: function(result){
-					$("#message").append(result);
-				},
-				error: function(error){
-					console.log(error);
-				}
+                let idSalon = $(this).val();
+                let idUser = $('.selectSalon').data('user');
+                console.log(idSalon);
+                console.log(idUser);
+                $.ajax({
 
-			}) 
-		}) 
-            
+                    type: 'post',
+                    url: '{{ path("changeSalon") }}',
+                    data: 'idSalon=' + idSalon + '&idUser=' + idUser,
+                    datatype: 'html',
+                    success: function(result){
+                        $("#listMessage").empty().append(result);
+                    },
+                    error: function(error){
+                        console.log(error);
+                    }
 
+                }) 
+            })
+            $("#stop").on('submit', function(e){
+                e.preventDefault();
+                let setSalon = $('#salon').val();
+                let setUser = $('.selectSalon').data('user');
+
+                let message = $('#message').val();
+                let idSalon = setSalon;
+                let idUser = setUser;
+
+                console.log(message);
+                console.log(idSalon);
+                console.log(idUser);
+                $.ajax({
+
+                    type: 'post',
+                    url: '{{ path("addMessage") }}',
+                    data: 'message='+ message + '&idSalon=' + idSalon + '&idUser=' + idUser,
+                    datatype: 'html'
+                })
+            })
+
+            function refresh(){
+                let idSalon = $('#salon').val();
+                let idUser = $('.selectSalon').data('user');
+
+                $.ajax({
+                    type: 'post',
+                    url: '{{ path("changeSalon") }}',
+                    data: 'idSalon=' + idSalon + '&idUser=' + idUser, 
+                    timeout: 3000, // Si il a pas de réponse au bout de XXXX milliseconde, on déclenche une erreur
+                    dataType: 'html', //On veut récupérer du HTML
+                    success: function(result){
+                        $("#listMessage").html(result);
+                    },
+                    error: function(error){
+                        console.log(error);
+                    }
+                });
+            };
+        
+            setInterval(refresh, 5000);
+            //refresh();
+        })
     </script>
 {% endblock %}
 

@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
 use App\Entity\Chat;
 use App\Entity\Salon;
-use App\Form\ChatFormType;
 
 class ChatController extends AbstractController
 {
@@ -36,7 +35,7 @@ class ChatController extends AbstractController
         $chat1 ->setDateSend(new \DateTime(date('Y-m-d H:i:s')));
 
         $salon1 = new Salon();
-        $salon1->setName('salon' . ' ' . $i);
+        $salon1->setName('Salon de discution ' . $i);
 
         $chat1 ->setSalon($salon1);
 
@@ -70,21 +69,12 @@ class ChatController extends AbstractController
         dump($userId);
 
         $chat = $repository->findWithChat($userId);
-        dump($chat);
-
-        $form = $this->createForm(ChatFormType::class);
-        // $form->handleRequest($request);
-        // if($form->isSubmitted() && $form->isValid()){ 
-        //     $profile = $form->getData();
-        //     $entityManager->persist($profile);
-        //     $entityManager->flush();
-        // };
-
-
-        // $viewMessage = $repository->viewMessage($userId);
-        return $this->render('chat/index.html.twig', ['chat'=>$chat, 'form' => $form->createView()]);
+        
+        return $this->render('chat/index.html.twig', ['chat'=>$chat,]);
     }
 
+
+    // Requête Ajax :
     /**
      * @Route("/chat/changeSalon", name="changeSalon")
      */
@@ -94,8 +84,42 @@ class ChatController extends AbstractController
         $idUser = $request->request->get('idUser', null);
         
         $repository = $this->getDoctrine()->getRepository(Chat::class);
-        $message = $repository->viewMessage($idSalon, $idUser);
-
+        $message = $repository->viewMessage($idUser, $idSalon);
+        dump($message);
         return $this->render('chat/message.html.twig', ['messages'=>$message]);
+    }
+
+    /**
+     * @Route("/chat/addMessage", name="addMessage")
+     */
+    public function addMessage(Request $request){
+        dump($request);
+        $idSalon = $request->request->get('idSalon', null);
+        $idUser = $request->request->get('idUser', null);
+        $message = $request->request->get('message', null);
+
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $repositorySalon = $this->getDoctrine()->getRepository(Salon::class);
+        $idSalon = $repositorySalon->findById($idSalon);
+        foreach ($idSalon as $key=>$value) {
+            $idSalon = $value;
+        }
+        $repositoryUser = $this->getDoctrine()->getRepository(User::class);
+        $idUser = $repositoryUser->findById($idUser);
+        foreach ($idUser as $key=>$value) {
+            $idUser = $value;
+        }
+        dump($idSalon);
+        $chat = new Chat();
+        $chat->setMessage($message);
+        $chat->setSalon($idSalon);
+        $chat->setUser($idUser);
+        $chat->setDateSend(new \DateTime(date('Y-m-d H:i:s')));
+
+        $entityManager->persist($chat);
+        $entityManager->flush();
+
+        return $this->render('chat/index.html.twig');
     }
 }
