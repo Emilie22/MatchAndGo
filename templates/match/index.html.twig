@@ -83,13 +83,13 @@
         	var marker = new google.maps.Marker({
             position: {lat: coord.lat, lng: coord.lng},
             map: map,
-            icon: pictureSRC.replace(0, coord.picture)
+            icon: 
         	});
 
 
 
         	var infowindow = new google.maps.InfoWindow({
-	          content: coord.firstname
+	          content: pictureSRC.replace(0, coord.picture) + coord.firstname
 	        });
         	
           	infowindow.open(map, marker);
