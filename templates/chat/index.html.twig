@@ -17,11 +17,13 @@
 
 <div class="row">
     <div class="container">
-        <div class="col-md-12" id="message">
+        <div class="col-md-12" id="listMessage">
             
         </div>
-        {{ form_start(form) }}
-        {{ form_end(form) }}
+            <form id="stop">
+                <input type="text" class="form-control formInput" id="message">
+                    <button class="btn fromBtn">Envoyer</button>
+            </form>
     </div>
 </div>
 {% endblock %}
@@ -42,14 +44,34 @@
 				data: 'idSalon=' + idSalon + '&idUser=' + idUser,
 				datatype: 'html',
 				success: function(result){
-					$("#message").append(result);
+					$("#listMessage").empty().append(result);
 				},
 				error: function(error){
 					console.log(error);
 				}
 
 			}) 
-		}) 
+		})
+        $("#stop").on('submit', function(e){
+            e.preventDefault();
+            let setSalon = $('#salon').val();
+            let setUser = $('.selectSalon').data('user');
+
+            let message = $('#message').val();
+            let idSalon = setSalon;
+            let idUser = setUser;
+
+            console.log(message);
+            console.log(idSalon);
+            console.log(idUser);
+            $.ajax({
+
+                type: 'post',
+                url: '{{ path("addMessage") }}',
+                data: 'message='+ message + '&idSalon=' + idSalon + '&idUser=' + idUser,
+                datatype: 'html'
+            })
+        })
             
 
     </script>
