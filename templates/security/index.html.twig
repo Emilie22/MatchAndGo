@@ -1,39 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Voir profil{user.id}{% endblock %}
+{% block title %}Voir profil{% endblock %}
 
 {% block body %}
-	<section>
+
 		<div class="container-fluid pr-0 pl-0">
 			
-			<div class="row justify-content-center rowBgProfile">
-				<div class="col-12 col-md-12">
-					<img src="{{ asset('uploads/profile/landscape.png') }}" class="imgBgProfile" alt="landscape">
+			<div class="row rowBgProfile">
+				<img src="{{ asset('uploads/profile/' ~random(imgBgProfile)~'.jpg') }}" class="imgBgProfile" alt="landscape">
+				<div class="divAvatar">
+					<img src="{{ asset('uploads/user/image/' ~ user.picture) }}" class="avatar" alt="avatar">
 				</div>
 			</div>
 
-			<div class="row justify-content-center">
-				<div class="col-12 col-md-12 profileBlock">
-					
-				</div>
-			<div class="row">
-				<div class="col-12 col-md-4 divAvatar">
-					<img src="{{ asset('uploads/user/image/' ~ user.picture) }}" class="avatar" alt="people">
-				</div>
-					
-				</div>
+			<div class="row justify-content-center mt-5">
+				<h3 class="mt-5">Bonjour {{ user.firstname}} {{ user.lastname }}, voici vos informations de profil :</h3>
 			</div>
-			<div class="row justify-content-center">
-				<div class="col-12 col-md-6 infosUser">
-					<h3>Profil de {{ user.firstname}} {{ user.lastname }}</h3>
-					<p>Ville : {{ user.city}}</p>
-					<p>Numéro de téléphone : {{ user.phone }}</p>
-					<p>Email : {{ user.email}}</p>			
-					<p>Date de naissance : {{ user.birthday|date('d-m-Y') }}</p>			
-					<p>Description : {{ user.description}}</p>
-					<p>Derniers pays visités : {{ user.countries}}</p>
+			<div class="row justify-content-center mt-5">
+				<div class="col-12 col-md-3 ml-5">		
+					<p><b>Ville :</b> {{ user.city}}</p>
+					<p><b>Numéro de téléphone :</b> {{ user.phone }}</p>
+					<p><b>Email : </b>{{ user.email}}</p>			
+					<p><b>Date de naissance :</b> {{ user.birthday|date('d-m-Y') }}</p>			
+					<p><b> Facebook :</b><a href="{{ user.facebook }}"><i class="ml-2 mr-2 iconFbk fab fa-facebook fa-2x"></i></a></p>
+					<p><b>Instagram :</b><a href="{{ user.instagram }}"><i class="ml-2  iconInsta fab fa-instagram fa-2x"></i></a></p>
+				</div>
+				<div class="col-12 col-md-3 mt-5 text-center">	
+					<p><b>Description : </b>{{ user.description}}</p>
+					<p><b>Derniers pays visités :</b> {{ user.countries}}</p>
+					{% if is_granted('ROLE_USER') %}
+						<a href="{{ path('updateProfile')}}"><i class="fas fa-pencil-alt"></i>Modifier mon profil</a>
+					{% endif %}
 				</div>
 			</div>
 		</div>
-	</section>
+
 {% endblock %}

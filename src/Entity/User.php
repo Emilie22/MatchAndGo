@@ -65,6 +65,7 @@ class User implements UserInterface
      * 
      */
     private $picture;
+
     /**
      * @ORM\Column(type="text")
      */
@@ -231,6 +232,7 @@ class User implements UserInterface
         $this->picture = $picture;
         return $this;
     }
+
     public function getDescription(): ?string
     {
         return $this->description;
@@ -316,6 +318,7 @@ class User implements UserInterface
        $this->instagram = $instagram;
        return $this;
    }
+
 
 }
 
