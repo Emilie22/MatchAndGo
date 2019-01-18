@@ -11,54 +11,78 @@
         <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" href="{{asset('js/app.js')}}">
-        {% block stylesheets %}{% endblock %}
+    </head>
 
-</head>
-
+    {% block stylesheets %}{% endblock %}
 <body>   	
-<header>
-    <div id="logo" class="menuUp">
-        <a class="navbar-brand" href="{{ path ('home') }}">Match&Go</a>
-        <div id="navToggle"><a href="">Menu</a></div>
-    </div>
+    <header>
+    {# Bloc Logo #}
+        <div id="logo" class="menuUp">
+            <a class="navbar-brand" href="{{ path ('home') }}">Match&Go</a>
+            <div id="navToggle"><a href="">Menu</a></div>
+        </div>
+    {# Fin du bloc Logo #}
+
+    {# Début de la Navbar #}
+
 	<nav>
         <ul>
-            <li><a href="{{ path ('concept') }}">Concept</a></li>
-            <li><a href="{{ path ('blog')}}">Blog</a></li>
-            <li><a href="{{ path ('contact')}}">Contact</a></li>
-            	{% if is_granted('ROLE_ADMIN') %}
-            		<li>
-                		<a href="#">Admin <span class="toggle">Expand</span><span class="caret"></span></a>
-                		<nav>
-                    		<ul>
-                        		<li><a href="{{ path ('users') }}">Users</a></li>
-                        		<li><a href="{{ path ('addConceptAdmin') }}">Concept</a></li>
-                        		<li><a href="{{ path ('addBlogAdmin')}}">Ajouter Article</a></li>
-                    		</ul>
-                		</nav>
-            		</li>
-            	{% endif %}
-                 <li>
-                 	{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                <a href="{{ path('app_login') }}">Connexion</a>
-                {% endif %}
-                {% if is_granted('ROLE_USER') %}
-                	<a href="{{ path('app_login') }}">Profil</i> <span class="toggle">Expand</span><span class="caret"></span></a>
-                <nav>
-                    <ul>
-                        <li><a href="#">Modifier mon profil</a></li>
-
-                        <li><a href="{{ path('quiz') }}">Nouveau match</a></li>
-                        <li><a href="{{ path('match') }}">Derniers matchs</a></li>
-                        <li><a href="{{ path('logout') }}">Déconnexion</a></li>
-
-                    </ul>
-                </nav>
-                {% endif %}
+        {# Bloc visiteur #}
+            <li>
+                <a href="{{ path ('concept') }}">Concept</a>
             </li>
-        </ul>
-    </nav>
-</header>
+            <li>
+                <a href="{{ path ('blog')}}">Blog</a>
+            </li>
+            <li>
+                <a href="{{ path ('contact')}}">Contact</a>
+            </li>
+        {# Fin du bloc visiteur #}
+        {# Bloc Admin #}
+            {% if is_granted('ROLE_ADMIN') %}
+                <li>
+                	<a href="#">Admin <span class="toggle">Expand</span><span class="caret"></span></a>
+                {# Ul déroulant Admin #}
+                    <nav>
+                    	<ul>
+                        	<li><a href="{{ path ('users') }}">Users</a></li>
+                        	<li><a href="{{ path ('addConceptAdmin') }}">Concept</a></li>
+                        	<li><a href="{{ path ('addBlogAdmin')}}">Ajouter Article</a></li>
+                    	</ul>
+                	</nav>
+                {# Fin mennu déroulant admin #}
+            	</li>
+            {% endif %}
+        {# Fin du bloc Admin #}
+        {# lien connexion #}
+            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li>
+                    <a href="{{ path('app_login') }}">Connexion</a>
+                </li>
+            {% endif %}
+            {# Fin lien connexion #}
+
+            {# Bloc User connecté #}
+            {% if is_granted('ROLE_USER') %}
+                <li>
+                	<a href="{{ path('app_login') }}">Profil</i> <span class="toggle">Expand</span><span class="caret"></span></a>
+
+                    {# Menu déroulant Profil #}
+                    <nav>
+                        <ul>
+                            <li><a href="#">Modifier mon profil</a></li>
+                            <li><a href="{{ path('quiz') }}">Nouveau match</a></li>
+                            <li><a href="{{ path('match') }}">Derniers matchs</a></li>
+                            <li><a href="{{ path('logout') }}">Déconnexion</a></li>
+                        </ul>
+                    </nav>
+                    {# Fin du Menu déroulant Profil #}
+                </li>
+            {% endif %}
+            {# Fin bloc User connecté #}
+            </ul>
+        </nav>
+    </header>
 
 {% block body %}{% endblock %}
 
@@ -85,7 +109,6 @@
 		</div>
 	</div>
 </footer>
-
 
 {% block javascripts %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
