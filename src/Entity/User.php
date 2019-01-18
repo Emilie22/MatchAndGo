@@ -89,6 +89,7 @@ class User implements UserInterface
      * 
      */
     private $picture;
+
     /**
      * @ORM\Column(type="text")
      * @Assert\Regex(
@@ -110,6 +111,7 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity="App\Entity\Chat", mappedBy="user")
      */
     private $chats;
+
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Url(
@@ -117,6 +119,7 @@ class User implements UserInterface
      * )
      */
     private $facebook;
+
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Url(
@@ -124,6 +127,8 @@ class User implements UserInterface
      * )
      */
     private $instagram;
+
+
     public function __construct()
     {
         $this->chats = new ArrayCollection();
@@ -264,6 +269,7 @@ class User implements UserInterface
         $this->picture = $picture;
         return $this;
     }
+
     public function getDescription(): ?string
     {
         return $this->description;
@@ -349,4 +355,8 @@ class User implements UserInterface
        $this->instagram = $instagram;
        return $this;
    }
+
+
 }
+
+
