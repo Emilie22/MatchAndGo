@@ -302,9 +302,6 @@ header .header-content .inner p {
   height: 600px;
 }
 
-
-
-
 * {
     margin: 0;
     padding: 0;
@@ -623,9 +620,7 @@ h2{
     -moz-border-radius: 3px;
     border-radius: 3px;
 }
-.table a.table-link.danger {
-    color: #e74c3c;
-}
+
 .label {
     border-radius: 3px;
     font-size: 0.875em;
@@ -642,7 +637,7 @@ h2{
     margin-left: 60px;
 }
 a {
-    color: #3498db;
+    color: #3f4253;
     outline: none!important;
 }
 .user-list tbody td>img {
@@ -668,5 +663,11 @@ a {
     vertical-align: middle;
     border-top: 1px solid #e7ebee;
     padding: 12px 8px;
+}
+.user-link{
+  color: #3f4253;
+}
+.user-link:hover{
+  color: #fdad17; 
 }
 
