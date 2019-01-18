@@ -21,11 +21,11 @@
 
 			<div class="col-md-4 mt-4 mb-3">
 				<div class="imgBlog">
-					<img src="{{ asset('uploads/article/image/' ~ blog.pictureblog) }}"  class="img-thumbnail">
+					<a href="{{ path('showBlogWithSlug', {slug: blog.slug}) }}" class="gallery-box"><img src="{{ asset('uploads/article/image/' ~ blog.pictureblog) }}"  class="img-thumbnail"></a>
 				</div>
 				<div class="row">
 					<div class="col-12">
-					<h3>{{ blog.title }}</h3>
+					<a href="{{ path('showBlogWithSlug', {slug: blog.slug}) }}"><h3>{{ blog.title }}</h3></a>
 					<div class="row">
 						<div class="col-12 col-md-9">
 							<p>publié le {{ blog.datepost|date('d/m/Y') }} par {{ blog.author }}</p>
@@ -36,7 +36,6 @@
 								<a href="{{ path('deleteBlog', {slug: blog.slug}) }}"><i class="fas fa-trash"></i></a>
 								<a href="{{ path('updateBlog', {slug: blog.slug}) }}"><i class="fas fa-pencil-alt"></i></a> 
 							{% endif %}
-							<a href="{{ path('showBlogWithSlug', {slug: blog.slug}) }}"><i class="fas fa-search-plus"></i></a>
 							</p>
 						</div>
 						
