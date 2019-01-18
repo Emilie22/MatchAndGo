@@ -20,14 +20,14 @@ class User implements UserInterface
     private $id;
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email(
+     *      message = "Cet email '{{ value }}' est invalid.",
+     *      checkMX = true
+     * )
      */
     private $email;
     /**
      * @ORM\Column(type="array")
-     * @Assert\Email(
-     *     message = "Cet email '{{ value }}' est invalid.",
-     *     checkMX = true
-     * )
      */
     private $roles = [];
     /**
@@ -43,7 +43,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=30)
      * @Assert\Regex(
      *      pattern="/[a-zA-Z]{1-30}/",
-     *      match=true,
+     *      match=false,
      *      message="Votre Prénom ne doit pas contenir de chiffre et faire plus de 30 charactères"
      * )
      */
@@ -52,7 +52,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=30)
      * @Assert\Regex(
      *      pattern="/[a-zA-Z]{1-30}/",
-     *      match=true,
+     *      match=false,
      *      message="Votre nom ne doit pas contenir de chiffre et faire plus de 30 charactères"
      * )
      */
@@ -61,7 +61,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=30)
      * @Assert\Regex(
      *      pattern="/[a-zA-Z]{1-30}/",
-     *      match=true,
+     *      match=false,
      *      message="Votre ville ne doit pas contenir de chiffre et faire plus de 30 charactères"
      * )
      */
@@ -74,7 +74,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=10)
      * @Assert\Regex(
      *      pattern="/[a-zA-Z]{1-10}/",
-     *      match=true,
+     *      match=false,
      *      message="Votre genre ne doit pas contenir de chiffre et faire plus de 10 charactères"
      * )
      */
