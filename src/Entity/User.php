@@ -21,8 +21,8 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\Email(
-     *     message = "Cet email '{{ value }}' est invalid.",
-     *     checkMX = true
+     *      message = "Cet email '{{ value }}' est invalid.",
+     *      checkMX = true
      * )
      */
     private $email;

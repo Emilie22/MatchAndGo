@@ -22,7 +22,7 @@ class Blog
      * @ORM\Column(type="string", length=255)
      * @Assert\Regex(
      *      pattern="/[a-zA-Z]{1-255}/",
-     *      match=true,
+     *      match=false,
      *      message="Votre titre ne doit pas contenir de chiffre et fair plus de 255 charactères"
      * )
      */
@@ -32,7 +32,7 @@ class Blog
      * @ORM\Column(type="text")
      * @Assert\Regex(
      *      pattern="/[a-zA-Z]{1-255}/",
-     *      match=true,
+     *      match=false,
      *      message="Votre titre ne doit pas contenir de chiffre et fair plus de 255 charactères"
      * )
      */
