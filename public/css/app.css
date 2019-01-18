@@ -9,12 +9,40 @@ body{
 	font-family: 'Open Sans', cursive;
 }
 
-/*Vidéo Home*/
+/*HOME PAGE*/
 
-.videoHome{
-  height:100vh;
-  width:100vw;
+.step1 {
+  color: red;
+  border: 5px solid red;
 }
+
+.step2 {
+  color: purple;
+  border: 5px solid purple;
+}
+
+.step3 {
+  color: #fdad17;
+  border: 5px solid #fdad17;
+}
+
+.step4 {
+  color: green;
+  border: 5px solid green;
+}
+
+.step5 {
+  color: blue;
+  border: 5px solid blue;
+}
+
+.step1, .step2, .step3, .step4, .step5 {
+  border-radius: 50%;
+}
+
+
+
+
 
 .baseBackG{
   background: #3f4253;
@@ -25,6 +53,9 @@ body{
 .marginForm{
   margin-top: 100px;
 }
+
+
+
 
 /*Formulaires*/
 .formBackG{
@@ -578,20 +609,20 @@ position: absolute;
   color: white;
 }
 
-h1{
+/*h1{
   font-size: 5rem;
-}
+}*/
 
 .white-text-one{
   font-size: 1.5rem;
 }
 
-h2{
+/*h2{
   font-size: 3rem;
   font-family: 'Dancing Script', cursive;
   text-align: center;
   color: #fdad17;
-}
+}*/
 
 .inputContact{
   border-radius: 1.5rem;
@@ -667,5 +698,18 @@ a {
     vertical-align: middle;
     border-top: 1px solid #e7ebee;
     padding: 12px 8px;
+}
+
+
+/*BLOG*/
+
+.imgBlog {
+  height: 70%;
+  width: 100%;
+}
+
+.imgBlog > img {
+  height: 100%;
+  width: 100%;
 }
 

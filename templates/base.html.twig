@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Match&Go{% endblock %}</title>
         <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -11,11 +11,11 @@
         <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" href="{{asset('js/app.js')}}">
+        {% block stylesheets %}{% endblock %}
 
 </head>
 
-        {% block stylesheets %}{% endblock %}
-   <body>   	
+<body>   	
 <header>
     <div id="logo" class="menuUp">
         <a class="navbar-brand" href="{{ path ('home') }}">Match&Go</a>
@@ -60,39 +60,37 @@
     </nav>
 </header>
 
+{% block body %}{% endblock %}
 
-
-        {% block body %}{% endblock %}
-
-		<footer>
-			<div class="container-fluid footer">
-				<div class="row text-center">
-					<div class="col-12 col-md-4">
-						<p>Mentions légales</p>
-						<p>Conditions Générales d'Utilisation</p>
-						<p>Utilisation des cookies</p>
-						<p>Confidentialité</p>
-					</div>
-					<div class="col-12 col-md-4">
-						<p>Match&Go</p>
-						<p>66 rue Abbé de l'Epée</p>
-						<p>33000 Bordeaux</p>
-						<p><a href="https://goo.gl/maps/vQFAw9F82Pm">Nous localiser</a></p>
-					</div>
-					<div class="col-12 col-md-4">
-						<i class="fab fa-facebook-square fa-3x mr-2"></i>
-						<i class="fab fa-instagram fa-3x mr-2"></i>
-						<i class="fab fa-twitter fa-3x mr-2"></i>
-					</div>
-				</div>
+<footer>
+	<div class="container-fluid footer">
+		<div class="row text-center">
+			<div class="col-12 col-md-4">
+				<p>Mentions légales</p>
+				<p>Conditions Générales d'Utilisation</p>
+				<p>Utilisation des cookies</p>
+				<p>Confidentialité</p>
 			</div>
-		</footer>
-       
-        
-        {% block javascripts %}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    	{% endblock %}
+			<div class="col-12 col-md-4">
+				<p>Match&Go</p>
+				<p>66 rue Abbé de l'Epée</p>
+				<p>33000 Bordeaux</p>
+				<p><a href="https://goo.gl/maps/vQFAw9F82Pm">Nous localiser</a></p>
+			</div>
+			<div class="col-12 col-md-4">
+				<i class="fab fa-facebook-square fa-3x mr-2"></i>
+				<i class="fab fa-instagram fa-3x mr-2"></i>
+				<i class="fab fa-twitter fa-3x mr-2"></i>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+{% block javascripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+{% endblock %}
 		
     </body>
 </html>

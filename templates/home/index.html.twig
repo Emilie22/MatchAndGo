@@ -3,64 +3,74 @@
 {% block title %}Match&Go{% endblock %}
 
 {% block body %}
-	<div class="container-fluid pl-0 pr-0">
+<section class="baseBackG">
+   <div class="container-fluid pl-0 pr-0">
 
-<section id="first">
-        <div class="header-content">
-        	<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" style="width: 100%" class="">
-    <source src="{{asset ('video/match&go.mp4')}}" type="video/mp4">
-    <div class="overlay"></div>
-  </video>
+    <section id="first">
 
-     <!-- home wrapper -->
-  <div class="home-wrapper">
-    <div class="container">
-      <div class="row">
-        <!-- home content -->
-        <div class="col">
-          <div class="home-content">
-            <h1 class="white-text-brand">Match&Go</h1>
-            <p class="white-text-one">Trouvez votre partenaire de voyage</p>
-              <a href="{{ path('app_register') }}" class="btn btn-outline-light">Go</a>
-          </div>
-        </div>
-        </div>        
-</section>
+       <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" style="width: 100%" src="{{asset ('video/match&go.mp4')}}" type="video/mp4">
+       </video>
 
-<section>
-    
-  <div class="row">
-    <div class="col-12 col-md-3">
-      
-    </div>
-    <div class="col-12 col-md-3">
-      
-    </div>
-    <div class="col-12 col-md-3">
-      
-    </div>
-    <div class="col-12 col-md-3">
-      
-    </div>
-  </div>
-
-</section>
-
-    <section id="three" class="no-padding">
-        <div class="container-fluid">
-            <h2> Derniers Articles</h2>
-                <div class="row no-gutter">
-                    {% for blog in blogs %}
-                        <div class="col-lg-4 col-sm-6">
-                            <a href="{{ path ('showBlogWithSlug', {slug:blog.slug}) }}" class="gallery-box">
-                                <img src="{{ asset('uploads/article/image/' ~ blog.pictureblog) }}"  class="img-thumbnail">
-                            </a>
-                        </div>
-                    {% endfor %}    
+        <!-- home wrapper -->
+        <div class="home-wrapper">
+          <div class="container">
+            <div class="row">
+              <!-- home content -->
+              <div class="col-12">
+                <div class="home-content text-center">
+                  <h1 class="white-text-brand">Match&Go</h1>
+                  <p class="white-text-one">Trouvez votre partenaire de voyage</p>
+                  <a href="{{ path('app_register') }}" class="btn btn-outline-light">Go</a>
                 </div>
-        </div>                       
-    </section>
+              </div>
+            </div>
+            </div>
+            </div>       
+          </section>
 
+          {# chrono étapes #}
+          <section>
+
+            <div class="row">
+              <div class="col-12 col-md-2 offset-1">
+                <p class="text-center mt-5 step1">1</p>
+                <p>Inscris-toi sur Match&Go !</p>
+              </div>
+              <div class="col-12 col-md-2">
+                <p class="text-center mt-5 step2">2</p>
+                <p>Créé ton profil !</p>
+              </div>
+              <div class="col-12 col-md-2">
+                <p class="text-center mt-5 step3">3</p>
+                <p>Répond à notre questionnaire !</p>
+              </div>
+              <div class="col-12 col-md-2">
+                <p class="text-center mt-5 step4">4</p>
+                <p>Trouve les personnes qui te correpondent !</p>
+              </div>              
+              <div class="col-12 col-md-2">
+                <p class="text-center mt-5 step5">5</p>
+                <p>Discute directment avec eux !</p>
+              </div>
+            </div>
+
+          </section>
+
+          <section id="three" class="no-padding">
+              <h2> Derniers Articles</h2>
+              <div class="row no-gutter">
+                {% for blog in blogs %}
+                  <div class="col-lg-4 col-sm-6">
+                    <a href="{{ path ('showBlogWithSlug', {slug:blog.slug}) }}" class="gallery-box">
+                      <img src="{{ asset('uploads/article/image/' ~ blog.pictureblog) }}"  class="img-thumbnail">
+                    </a>
+                  </div>
+                {% endfor %}    
+              </div>                     
+          </section>
+
+  </div>
+</section>
 {% endblock %}
 
 
