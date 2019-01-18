@@ -13,6 +13,9 @@ body {
   font-family: 'Open Sans', sans-serif;
   background: #3f4253;
   color: #fdad17;
+}
+
+.heightPage {
   min-height: 100vh;
 }
 
@@ -32,13 +35,9 @@ header {
   -o-background-size: cover;
   height: 56px;
   border-bottom: 1px solid rgba(0,0,0,.15);
-}
-
-header {
-    
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
     header > div#logo {
@@ -444,9 +443,6 @@ a:hover {
 
 /*page match*/
 
-.match {
-  background-color: #3f4253;
-}
 
 .titleMatch {
   color: #fdad17;
