@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @UniqueEntity(fields={"email"}, message="Un compte existe déjà avec cet email")
  */
 class User implements UserInterface
 {
@@ -293,7 +293,6 @@ class User implements UserInterface
    {
        if ($this->chats->contains($chat)) {
            $this->chats->removeElement($chat);
-           // set the owning side to null (unless already changed)
            if ($chat->getUser() === $this) {
                $chat->setUser(null);
            }
