@@ -18,6 +18,10 @@ class Concept
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex(
+     *      pattern="/[a-zA-Z]{1-255}/",
+     *      match=true,
+     *      message="Votre titre ne doit pas contenir de chiffre et fair plus de 255 charactères"
      */
     private $titleConcept;
 

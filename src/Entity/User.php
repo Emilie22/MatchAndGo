@@ -24,6 +24,10 @@ class User implements UserInterface
     private $email;
     /**
      * @ORM\Column(type="array")
+     * @Assert\Email(
+     *     message = "Cet email '{{ value }}' est invalid.",
+     *     checkMX = true
+     * )
      */
     private $roles = [];
     /**
@@ -37,14 +41,29 @@ class User implements UserInterface
     private $plainPassword;
     /**
      * @ORM\Column(type="string", length=30)
+     * @Assert\Regex(
+     *      pattern="/[a-zA-Z]{1-30}/",
+     *      match=true,
+     *      message="Votre Prénom ne doit pas contenir de chiffre et faire plus de 30 charactères"
+     * )
      */
     private $firstname;
     /**
      * @ORM\Column(type="string", length=30)
+     * @Assert\Regex(
+     *      pattern="/[a-zA-Z]{1-30}/",
+     *      match=true,
+     *      message="Votre nom ne doit pas contenir de chiffre et faire plus de 30 charactères"
+     * )
      */
     private $lastname;
     /**
      * @ORM\Column(type="string", length=30)
+     * @Assert\Regex(
+     *      pattern="/[a-zA-Z]{1-30}/",
+     *      match=true,
+     *      message="Votre ville ne doit pas contenir de chiffre et faire plus de 30 charactères"
+     * )
      */
     private $city;
     /**
@@ -53,6 +72,11 @@ class User implements UserInterface
     private $birthday;
     /**
      * @ORM\Column(type="string", length=10)
+     * @Assert\Regex(
+     *      pattern="/[a-zA-Z]{1-10}/",
+     *      match=true,
+     *      message="Votre genre ne doit pas contenir de chiffre et faire plus de 10 charactères"
+     * )
      */
     private $gender;
     /**
@@ -68,6 +92,11 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Regex(
+     *      pattern="/\w/",
+     *      match=true,
+     *      message="Erreur veuillez contacter un administrateur"
+     * )
      */
     private $description;
     /**
@@ -85,11 +114,17 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Url(
+     *    message = "Ce lien : '{{ value }}' est invalide",
+     * )
      */
     private $facebook;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Url(
+     *    message = "Ce lien : '{{ value }}' est invalide",
+     * )
      */
     private $instagram;
     public function __construct()
