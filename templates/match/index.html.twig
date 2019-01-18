@@ -14,7 +14,7 @@
 	<div class="row pt-3 pb-3">
 		<div class="col-12">
 			<div class="titleMatch text-center">
-				<p><img class="avatar mr-3" src="http://placekitten.com/70/70" alt=""> Bonjour {{ moi.firstname }} ! Voici les voyageurs qui te correspondent ! N'hésite pas à tchater avec eux ! <a href="{{ path ('quiz')}}">Nouvelle recherche</a></p>
+				<p><img class="avatar2 mr-3" src="http://placekitten.com/70/70" alt=""> Bonjour {{ moi.firstname }} ! Voici les voyageurs qui te correspondent ! N'hésite pas à tchater avec eux ! <a href="{{ path ('quiz')}}">Nouvelle recherche</a></p>
 			</div>
 
 		</div>
@@ -22,7 +22,7 @@
 	<div class="row">
 		<div class="col-12 col-md-8">
 			<div class="row">
-				{% for userA in user %}
+				{% for userA in userMatch %}
 					{% for userB in userA %}
 					<div class="col-12 col-md-3">
 						<div class="card">
@@ -31,8 +31,8 @@
 								<p class="card-title text-center">{{ userB.firstname }}<br><span>{{ userB.gender }} | {{ userB.birthday|date('m-d-Y') }}</span></p>
 								<p class="card-text">{{ userB.city }}</p>
 								<div class="row">
-									<div class="text-center col-12 col-md-6"><button class="btnProfile">Profil</button></div>
-									<div class="text-center col-12 col-md-6"><button class="btnChat">Tchat</button></div>
+									<div class="text-center col-12 col-md-6"><a href="{{path('showProfile', {id:userB.id}) }}"><button class="btnProfile">Profil</button></a></div>
+									<div class="text-center col-12 col-md-6"><a href="{{path('addChat', {idUser:userB.id}) }}"><button class="btnChat">Tchat</button></a></div>
 								</div>
 							</div>
 
@@ -42,10 +42,61 @@
 				{% endfor %}
 			</div>
 		</div>
+
 		<div class="col-12 col-md-4">
-			<div class="mapLoc"></div>
+			<div id="mapLoc">
+			</div>
 		</div>
 	</div>
 </div>
 </section>
 {% endblock %}
+
+
+{% block javascripts %}
+{{parent()}}
+
+<script>
+
+    function initializeMap() {
+
+
+        var map = new google.maps.Map(document.getElementById('mapLoc'), {
+            zoom: 3.5,
+            center: {lat: 45.785, lng: 3.115}
+        });
+        
+        var geocoder = new google.maps.Geocoder();
+
+        let coords = {
+        	{% for key, coord in userCoord %}
+        		'{{ key }}' : { 'firstname': '{{ coord.firstname}}', 'picture': '{{ coord.picture }}', 'lat': {{ coord.lat }}, 'lng':{{ coord.lng }}},
+        	{% endfor %}
+        };
+        // console.log(coords);
+
+        $.each(coords, function(i, coord) {
+
+        	let pictureSRC = '<img src="{{asset("uploads/user/image/"~0)}}">';
+        	var marker = new google.maps.Marker({
+            position: {lat: coord.lat, lng: coord.lng},
+            map: map
+        	});
+
+        	var infowindow = new google.maps.InfoWindow({
+	          content: pictureSRC.replace(0, coord.picture) + coord.firstname
+	        });
+        	
+          	infowindow.open(map, marker);
+
+        });
+
+    }
+
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0xJoi5c9MwYIYQlwIEfLqLh95hLtcaYA&callback=initializeMap">
+</script>
+
+{% endblock %}
+

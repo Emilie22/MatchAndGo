@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 
@@ -10,6 +11,7 @@
         <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" href="{{asset('js/app.js')}}">
+
 </head>
 
         {% block stylesheets %}{% endblock %}
@@ -45,9 +47,11 @@
                 <nav>
                     <ul>
                         <li><a href="#">Modifier mon profil</a></li>
+
                         <li><a href="{{ path('quiz') }}">Nouveau match</a></li>
-                        <li><a href="{{ path('quiz') }}">Derniers matchs</a></li>
+                        <li><a href="{{ path('match') }}">Derniers matchs</a></li>
                         <li><a href="{{ path('logout') }}">Déconnexion</a></li>
+
                     </ul>
                 </nav>
                 {% endif %}
@@ -56,9 +60,9 @@
     </nav>
 </header>
 
-        {% block body %}
-			
-        {% endblock %}
+
+
+        {% block body %}{% endblock %}
 
 		<footer>
 			<div class="container-fluid footer">
@@ -83,12 +87,12 @@
 				</div>
 			</div>
 		</footer>
-
-
+       
+        
         {% block javascripts %}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-        {% endblock %}
+    	{% endblock %}
 		
     </body>
 </html>

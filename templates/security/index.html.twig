@@ -18,23 +18,20 @@
 				</div>
 			<div class="row">
 				<div class="col-12 col-md-4 divAvatar">
-					<img src="{{ asset('uploads/user/image/user1.jpg') }}" class="avatar" alt="people">
+					<img src="{{ asset('uploads/user/image/' ~ user.picture) }}" class="avatar" alt="people">
 				</div>
 					
 				</div>
 			</div>
 			<div class="row justify-content-center">
-				
-					<h3>Bonjour {{ user.firstname}} {{ user.lastname }}</h3>
-					<div class="col-12 col-md-6 infosUser">
-					
-					<h4>Voici vos informations</h4>
-					<p>Votre ville : {{ user.city}}</p>
-					<p>Votre numéro de téléphone : {{ user.phone }}</p>
-					<p>Votre email : {{ user.email}}</p>			
-					<p>Votre date de naissance : {{ user.birthday|date('d-m-Y') }}</p>			
-					<p>Votre description : {{ user.description}}</p>
-					<p>Vos pays visités : {{ user.countries}}</p>
+				<div class="col-12 col-md-6 infosUser">
+					<h3>Profil de {{ user.firstname}} {{ user.lastname }}</h3>
+					<p>Ville : {{ user.city}}</p>
+					<p>Numéro de téléphone : {{ user.phone }}</p>
+					<p>Email : {{ user.email}}</p>			
+					<p>Date de naissance : {{ user.birthday|date('d-m-Y') }}</p>			
+					<p>Description : {{ user.description}}</p>
+					<p>Derniers pays visités : {{ user.countries}}</p>
 				</div>
 			</div>
 		</div>

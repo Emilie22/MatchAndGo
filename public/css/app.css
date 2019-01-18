@@ -87,7 +87,7 @@ a:hover {
 }
 
 .profileBlock{
-  background: #3f4253;
+  background: #414559;;
   position:absolute;
   top: 40%;
   height: 100%;
@@ -101,7 +101,6 @@ a:hover {
 
 .infosUser{
   color: #fdad17;
-  border: 1px solid #fdad17;
 }
 
 
@@ -239,7 +238,7 @@ footer{
   box-shadow: 0px 10px 10px -4px #6A708C;
 }
 
-.avatar {
+.avatar2 {
   border-radius: 50%;
 }
 
@@ -296,6 +295,15 @@ header .header-content .inner p {
     font-weight: 300;
     color: rgba(255,255,255,0.7);
 }
+
+/*MAP localisation match*/
+
+#mapLoc {
+  height: 600px;
+}
+
+
+
 
 * {
     margin: 0;
