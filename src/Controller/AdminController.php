@@ -156,7 +156,7 @@ class AdminController extends AbstractController{
 
             $this->addFlash('success', 'texte ajouté');
 
-            return $this->redirectToRoute('addConceptAdmin');
+            return $this->redirectToRoute('concept');
 
         }
 

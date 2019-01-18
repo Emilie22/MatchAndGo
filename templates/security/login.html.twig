@@ -3,16 +3,17 @@
 {% block title %}Connexion{% endblock %}
 
 {% block body %}
+
 <section class="heightPage">
 
-<div class="container-fluid formBackG">
+    <div class="container-fluid formBackG">
         <form class="form-group mb-0" method="post">
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
                 <div class="row justify-content-center"> 
 
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-4 marginForm">
                         <h1 class="h3 font-weight-normal mb-5 mt-4 text-center">Se connecter</h1>
                         <label class="mb-3 mt-3" for="inputEmail">Email</label>
                         <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control formInput" placeholder="Email" required autofocus>
@@ -23,11 +24,6 @@
                                value="{{ csrf_token('authenticate') }}"
                         >
 
-                    {#
-                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-                    See https://symfony.com/doc/current/security/remember_me.html
-
-                #}
                     <div class="checkbox mb-3">
                         <label>
                             <input class="mr-3 mt-3" type="checkbox" name="_remember_me">Se souvenir de moi
@@ -40,8 +36,10 @@
                     </button>
                 </div>
             </div>
-    </form>
-        </div>
+        </form>
+
+    </div>
 
 </section>
+
 {% endblock %}

@@ -46,9 +46,6 @@ class RegistrationController extends AbstractController
             $user->setPicture('');
             $user->setDescription('');
             $user->setCountries('');
-            // $user->setFacebook('');
-            // $user->setInstagram('');
-
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
@@ -61,6 +58,8 @@ class RegistrationController extends AbstractController
                 $authenticator,
                 'main'
             );
+
+            $this->addFlash('success', 'Vous êtes maintenant inscrit sur Match&Go');
 
             return $this->redirectToRoute('addProfile');
         }
