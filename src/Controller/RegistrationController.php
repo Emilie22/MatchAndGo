@@ -42,7 +42,7 @@ class RegistrationController extends AbstractController
             $user->setCity('');
             $user->setBirthday(new \DateTime(date('')));
             $user->setGender('');
-            $user->setPhone(000);
+            $user->setPhone('');
             $user->setPicture('');
             $user->setDescription('');
             $user->setCountries('');

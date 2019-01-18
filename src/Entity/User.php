@@ -20,14 +20,14 @@ class User implements UserInterface
     private $id;
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     */
-    private $email;
-    /**
-     * @ORM\Column(type="array")
      * @Assert\Email(
      *     message = "Cet email '{{ value }}' est invalid.",
      *     checkMX = true
      * )
+     */
+    private $email;
+    /**
+     * @ORM\Column(type="array")
      */
     private $roles = [];
     /**
@@ -43,7 +43,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=30)
      * @Assert\Regex(
      *      pattern="/[a-zA-Z]{1-30}/",
-     *      match=true,
+     *      match=false,
      *      message="Votre Prénom ne doit pas contenir de chiffre et faire plus de 30 charactères"
      * )
      */
@@ -52,7 +52,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=30)
      * @Assert\Regex(
      *      pattern="/[a-zA-Z]{1-30}/",
-     *      match=true,
+     *      match=false,
      *      message="Votre nom ne doit pas contenir de chiffre et faire plus de 30 charactères"
      * )
      */
@@ -61,7 +61,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=30)
      * @Assert\Regex(
      *      pattern="/[a-zA-Z]{1-30}/",
-     *      match=true,
+     *      match=false,
      *      message="Votre ville ne doit pas contenir de chiffre et faire plus de 30 charactères"
      * )
      */
@@ -74,7 +74,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=10)
      * @Assert\Regex(
      *      pattern="/[a-zA-Z]{1-10}/",
-     *      match=true,
+     *      match=false,
      *      message="Votre genre ne doit pas contenir de chiffre et faire plus de 10 charactères"
      * )
      */
@@ -94,7 +94,7 @@ class User implements UserInterface
      * @ORM\Column(type="text")
      * @Assert\Regex(
      *      pattern="/\w/",
-     *      match=true,
+     *      match=false,
      *      message="Erreur veuillez contacter un administrateur"
      * )
      */
@@ -115,7 +115,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Url(
-     *    message = "Ce lien : '{{ value }}' est invalide",
+     *    message = "Ce lien : '{{ value }}' est invalide"
      * )
      */
     private $facebook;
@@ -123,10 +123,12 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Url(
-     *    message = "Ce lien : '{{ value }}' est invalide",
+     *    message = "Ce lien : '{{ value }}' est invalide"
      * )
      */
     private $instagram;
+
+
     public function __construct()
     {
         $this->chats = new ArrayCollection();
