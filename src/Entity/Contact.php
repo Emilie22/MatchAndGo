@@ -18,11 +18,19 @@ class Contact
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex(
+     *      pattern="/[a-zA-Z]{1-255}/",
+     *      match=true,
+     *      message="Votre nom ne doit pas contenir de chiffre et fair plus de 255 charactères"
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email(
+     *     message = "cet email '{{ value }}' est non valide.",
+     *     checkMX = true
+     * )
      */
     private $email;
 
