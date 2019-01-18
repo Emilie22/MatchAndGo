@@ -24,21 +24,15 @@ class AppFixtures extends Fixture
             $user->setFirstname('Dupond');
             $user->setLastName('Emilie');
             $user->setCity('Montpellier');
-            $user->setBirthday('1980-07-24');
+            $user->setBirthday(new \DateTime('1980-07-24'));
             $user->setGender('Femme');
             $user->setPhone('062324510');
             $user->setPicture('totophoto');
             $user->setDescription('Baroudeuse aguerrie, j\'adore particulièrement l\'Amérique du Sud. J\'ai un goût prononcer pour la randonnée et les visites culturelles.');
             $user->setCountries('Pérou, Mexique, Argentine');
             $user->setEmail('Dupond.emilie@gmail.com');
-            if($i=== 1){//je veux que toto1 aie le rôle Admin
-                $roles = ['ROLE_USER', 'ROLE_ADMIN'];
-            }
-            else{
-                $roles =['ROLE_USER'];
-            }
+            $roles =['ROLE_USER'];
             $user->setRoles($roles);
-
             $plainPassword = 'toto';
             $mdpencoded = $this->encoder->encodePassword($user, $plainPassword);
             $user->setPassword($mdpencoded);
@@ -54,7 +48,7 @@ class AppFixtures extends Fixture
             $user->setFirstname('Giaconi');
             $user->setLastName('Jean');
             $user->setCity('Paris');
-            $user->setBirthday('1990-10-03');
+            $user->setBirthday(new \DateTime('1990-10-03'));
             $user->setGender('Homme');
             $user->setPhone('0745245803');
             $user->setPicture('jeanphoto');
@@ -78,7 +72,7 @@ class AppFixtures extends Fixture
             $user->setFirstname('Vaugiraud');
             $user->setLastName('Mélanie');
             $user->setCity('Lyon');
-            $user->setBirthday('1995-12-27');
+            $user->setBirthday(new \DateTime('1995-12-27'));
             $user->setGender('Femme');
             $user->setPhone('0630204706');
             $user->setPicture('melaniephoto');
@@ -102,7 +96,7 @@ class AppFixtures extends Fixture
             $user->setFirstname('Franchin');
             $user->setLastName('Paul');
             $user->setCity('Nice');
-            $user->setBirthday('2000-01-17');
+            $user->setBirthday(new \DateTime('2000-01-17'));
             $user->setGender('Homme');
             $user->setPhone('0645248783');
             $user->setPicture('paulphoto');
@@ -126,7 +120,7 @@ class AppFixtures extends Fixture
             $user->setFirstname('Ramont');
             $user->setLastName('Audrey');
             $user->setCity('Rennes');
-            $user->setBirthday('1988-03-14');
+            $user->setBirthday(new \DateTime('1988-03-14'));
             $user->setGender('Femme');
             $user->setPhone('0630145327');
             $user->setPicture('audreyphoto');
@@ -150,7 +144,7 @@ class AppFixtures extends Fixture
             $user->setFirstname('Beric');
             $user->setLastName('Robert');
             $user->setCity('Nantes');
-            $user->setBirthday('1983-12-30');
+            $user->setBirthday(new \DateTime('1983-12-30'));
             $user->setGender('Homme');
             $user->setPhone('0734255730');
             $user->setPicture('robertphoto');
@@ -174,7 +168,7 @@ class AppFixtures extends Fixture
             $user->setFirstname('Marks');
             $user->setLastName('Laura');
             $user->setCity('Strasbourg');
-            $user->setBirthday('1987-06-11');
+            $user->setBirthday(new \DateTime('1987-06-11'));
             $user->setGender('Femme');
             $user->setPhone('0625232754');
             $user->setPicture('lauraphoto');
@@ -198,7 +192,7 @@ class AppFixtures extends Fixture
             $user->setFirstname('Prudhomme');
             $user->setLastName('David');
             $user->setCity('Toulouse');
-            $user->setBirthday('1988-07-12');
+            $user->setBirthday(new \DateTime('1988-07-12'));
             $user->setGender('Homme');
             $user->setPhone('0740357862');
             $user->setPicture('davidphoto');
@@ -222,7 +216,7 @@ class AppFixtures extends Fixture
             $user->setFirstname('Trapp');
             $user->setLastName('Kevin');
             $user->setCity('Bordeaux');
-            $user->setBirthday('1986-02-01');
+            $user->setBirthday(new \DateTime('1986-02-01'));
             $user->setGender('Homme');
             $user->setPhone('0678423641');
             $user->setPicture('kevinphoto');
@@ -246,7 +240,7 @@ class AppFixtures extends Fixture
             $user->setFirstname('Cardoso');
             $user->setLastName('Sophie');
             $user->setCity('Marseille');
-            $user->setBirthday('1995-09-17');
+            $user->setBirthday(new \DateTime('1995-09-17'));
             $user->setGender('Femme');
             $user->setPhone('0660452010');
             $user->setPicture('sophiephoto');
@@ -270,7 +264,7 @@ class AppFixtures extends Fixture
             $user->setFirstname('Austin');
             $user->setLastName('Léa');
             $user->setCity('Nancy');
-            $user->setBirthday('1998-06-21');
+            $user->setBirthday(new \DateTime('1998-06-21'));
             $user->setGender('Femme');
             $user->setPhone('0625470105');
             $user->setPicture('leaphoto');
@@ -294,7 +288,7 @@ class AppFixtures extends Fixture
             $user->setFirstname('Ticot');
             $user->setLastName('Iris');
             $user->setCity('Genève');
-            $user->setBirthday('2001-12-01');
+            $user->setBirthday(new \DateTime('2001-12-01'));
             $user->setGender('Femme');
             $user->setPhone('0789251078');
             $user->setPicture('irisphoto');
@@ -318,7 +312,7 @@ class AppFixtures extends Fixture
             $user->setFirstname('Vianello');
             $user->setLastName('Thibault');
             $user->setCity('Madrid');
-            $user->setBirthday('1999-01-05');
+            $user->setBirthday(new \DateTime('1999-01-05'));
             $user->setGender('Homme');
             $user->setPhone('0620845394');
             $user->setPicture('photo');
@@ -342,7 +336,7 @@ class AppFixtures extends Fixture
             $user->setFirstname('Da Silva');
             $user->setLastName('Eva');
             $user->setCity('Lisbonne');
-            $user->setBirthday('1996-10-10');
+            $user->setBirthday(new \DateTime('1996-10-10'));
             $user->setGender('Femme');
             $user->setPhone('0610781256');
             $user->setPicture('evaphoto');
@@ -366,7 +360,7 @@ class AppFixtures extends Fixture
             $user->setFirstname('Guion');
             $user->setLastName('Stéphane');
             $user->setCity('Berlin');
-            $user->setBirthday('1991-05-23');
+            $user->setBirthday(new \DateTime('1991-05-23'));
             $user->setGender('Homme');
             $user->setPhone('0624451063');
             $user->setPicture('stephanephoto');
@@ -390,7 +384,7 @@ class AppFixtures extends Fixture
             $user->setFirstname('Allois');
             $user->setLastName('Manon');
             $user->setCity('Londre');
-            $user->setBirthday('1981-11-02');
+            $user->setBirthday(new \DateTime('1981-11-02'));
             $user->setGender('Femme');
             $user->setPhone('0630783531');
             $user->setPicture('manonphoto');
@@ -414,7 +408,7 @@ class AppFixtures extends Fixture
             $user->setFirstname('Piralla');
             $user->setLastName('Lana');
             $user->setCity('Athènes');
-            $user->setBirthday('1992-10-23');
+            $user->setBirthday(new \DateTime('1992-10-23'));
             $user->setGender('Femme');
             $user->setPhone('0720451723');
             $user->setPicture('photo');
@@ -438,7 +432,7 @@ class AppFixtures extends Fixture
             $user->setFirstname('Rodriguez');
             $user->setLastName('Pedro');
             $user->setCity('Seville');
-            $user->setBirthday('1985-02-03');
+            $user->setBirthday(new \DateTime('1985-02-03'));
             $user->setGender('Homme');
             $user->setPhone('0623010523');
             $user->setPicture('pedrophoto');
@@ -462,7 +456,7 @@ class AppFixtures extends Fixture
             $user->setFirstname('Tevenot');
             $user->setLastName('Michael');
             $user->setCity('Bordeaux');
-            $user->setBirthday('1980-11-14');
+            $user->setBirthday(new \DateTime('1980-11-14'));
             $user->setGender('Homme');
             $user->setPhone('0603255367');
             $user->setPicture('michaelphoto');
@@ -486,7 +480,7 @@ class AppFixtures extends Fixture
             $user->setFirstname('Vuckovic');
             $user->setLastName('Andrea');
             $user->setCity('Moscou');
-            $user->setBirthday('1981-04-13');
+            $user->setBirthday(new \DateTime('1981-04-13'));
             $user->setGender('Femme');
             $user->setPhone('0610892536');
             $user->setPicture('andreaphoto');
@@ -494,6 +488,30 @@ class AppFixtures extends Fixture
             $user->setCountries('Australie, Thaïlande, Hawaï');
             $user->setEmail('Vuckovic.andrea@gmail.com');
             $roles =['ROLE_USER'];
+            $user->setRoles($roles);
+            $plainPassword = 'toto';
+            $mdpencoded = $this->encoder->encodePassword($user, $plainPassword);
+            $user->setPassword($mdpencoded);
+            $manager->persist($user);
+
+            //je rempli mon tableau users
+            $users[] = $user;
+        }
+
+        {
+
+            $user = new User();
+            $user->setFirstname('admin');
+            $user->setLastName('admin');
+            $user->setCity('Bordeaux');
+            $user->setBirthday(new \DateTime('1981-04-13'));
+            $user->setGender('Homme');
+            $user->setPhone('0610892536');
+            $user->setPicture('adminphoto');
+            $user->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam facilisis odio at nibh eleifend finibus. Vivamus vel erat vitae sem ultricies volutpat sed at nibh. Aliquam congue pellentesque sem non iaculis. Mauris egestas ultrices erat faucibus eleifend. Vestibulum placerat egestas ante. Phasellus eget mauris odio. Integer tempus vulputate ipsum, at laoreet nibh sagittis a. Nullam semper id elit ut elementum. Nunc in velit venenatis, rutrum odio eu, euismod ipsum. Proin rutrum diam vel magna venenatis rhoncus. Etiam eget lectus non felis eleifend pellentesque et sit amet leo. Morbi ac turpis id sapien dictum mollis vitae non metus. Nam fermentum sapien est, eget egestas ligula venenatis vitae. Maecenas enim massa, finibus at neque porta, pulvinar posuere lacus. Suspendisse eu sapien interdum, accumsan sem et, tincidunt felis.');
+            $user->setCountries('Australie, Thaïlande, Hawaï');
+            $user->setEmail('admin@admin.com');
+            $roles =['ROLE_ADMIN'];
             $user->setRoles($roles);
             $plainPassword = 'toto';
             $mdpencoded = $this->encoder->encodePassword($user, $plainPassword);
