@@ -31,7 +31,7 @@
 								<p class="card-title text-center">{{ userB.firstname }}<br><span>{{ userB.gender }} | {{ userB.birthday|date('m-d-Y') }}</span></p>
 								<p class="card-text">{{ userB.city }}</p>
 								<div class="row">
-									<div class="text-center col-12 col-md-6"><button class="btnProfile">Profil</button></div>
+									<div class="text-center col-12 col-md-6"><a href="{{path('showProfile', {id:userB.id}) }}"><button class="btnProfile">Profil</button></a></div>
 									<div class="text-center col-12 col-md-6"><a href="{{path('addChat', {idUser:userB.id}) }}"><button class="btnChat">Tchat</button></a></div>
 								</div>
 							</div>
@@ -73,30 +73,23 @@
         		'{{ key }}' : { 'firstname': '{{ coord.firstname}}', 'picture': '{{ coord.picture }}', 'lat': {{ coord.lat }}, 'lng':{{ coord.lng }}},
         	{% endfor %}
         };
-        console.log(coords);
-
-
+        // console.log(coords);
 
         $.each(coords, function(i, coord) {
-        	
+
         	let pictureSRC = '<img src="{{asset("uploads/user/image/"~0)}}">';
         	var marker = new google.maps.Marker({
             position: {lat: coord.lat, lng: coord.lng},
-            map: map,
-            icon: 
+            map: map
         	});
-
-
 
         	var infowindow = new google.maps.InfoWindow({
 	          content: pictureSRC.replace(0, coord.picture) + coord.firstname
 	        });
         	
           	infowindow.open(map, marker);
-          	
 
         });
-
 
     }
 

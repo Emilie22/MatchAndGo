@@ -3,11 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Match&Go{% endblock %}</title>
         <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" href="{{asset('js/app.js')}}">
 </head>
@@ -22,7 +23,7 @@
         </div>
     {# Fin du bloc Logo #}
 
-    {# Début de la Navbar #}
+{# Début de la Navbar #}
 	<nav>
         <ul>
         {# Bloc visiteur #}
@@ -64,54 +65,54 @@
             {% if is_granted('ROLE_USER') %}
                 <li>
                 	<a href="{{ path('app_login') }}">Profil</i> <span class="toggle">Expand</span><span class="caret"></span></a>
-                    {# Menu déroulant Profil #}
-                    <nav>
-                        <ul>
-                            <li><a href="#">Modifier mon profil</a></li>
-                            <li><a href="#">Nouvelle recherche</a></li>
-                            <li><a href="#">Déconnexion</a></li>
-                        </ul>
-                    </nav>
-                    {# Fin du Menu déroulant Profil #}
-                </li>
-                {% endif %}
+
+            {# Menu déroulant Profil #}
+                <nav>
+                    <ul>
+                        <li><a href="#">Modifier mon profil</a></li>
+
+                        <li><a href="{{ path('quiz') }}">Nouveau match</a></li>
+                        <li><a href="{{ path('match') }}">Derniers matchs</a></li>
+                        <li><a href="{{ path('logout') }}">Déconnexion</a></li>
+
+                    </ul>
+                </nav>
+            {# Fin du Menu déroulant Profil #}
+            {% endif %}
+
             {# Fin bloc User connecté #}
             </ul>
         </nav>
     </header>
 
+{% block body %}{% endblock %}
 
-
-        {% block body %}{% endblock %}
-
-		<footer>
-			<div class="container-fluid footer">
-				<div class="row text-center">
-					<div class="col-12 col-md-4">
-						<p>Mentions légales</p>
-						<p>Conditions Générales d'Utilisation</p>
-						<p>Utilisation des cookies</p>
-						<p>Confidentialité</p>
-					</div>
-					<div class="col-12 col-md-4">
-						<p>Match&Go</p>
-						<p>66 rue Abbé de l'Epée</p>
-						<p>33000 Bordeaux</p>
-						<p><a href="https://goo.gl/maps/vQFAw9F82Pm">Nous localiser</a></p>
-					</div>
-					<div class="col-12 col-md-4">
-						<i class="fab fa-facebook-square fa-3x mr-2"></i>
-						<i class="fab fa-instagram fa-3x mr-2"></i>
-						<i class="fab fa-twitter fa-3x mr-2"></i>
-					</div>
-				</div>
+<footer>
+	<div class="container-fluid footer">
+		<div class="row text-center">
+			<div class="col-12 col-md-4">
+				<p>Mentions légales</p>
+				<p>Conditions Générales d'Utilisation</p>
+				<p>Utilisation des cookies</p>
+				<p>Confidentialité</p>
 			</div>
-		</footer>
-        
-        {% block javascripts %}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    	{% endblock %}
-		
+			<div class="col-12 col-md-4">
+				<p>Match&Go</p>
+				<p>66 rue Abbé de l'Epée</p>
+				<p>33000 Bordeaux</p>
+				<p><a href="https://goo.gl/maps/vQFAw9F82Pm">Nous localiser</a></p>
+			</div>
+			<div class="col-12 col-md-4">
+				<i class="fab fa-facebook-square fa-3x mr-2"></i>
+				<i class="fab fa-instagram fa-3x mr-2"></i>
+				<i class="fab fa-twitter fa-3x mr-2"></i>
+			</div>
+		</div>
+	</div>
+</footer>
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+{% endblock %}
     </body>
 </html>
