@@ -3,6 +3,7 @@
 {% block title %}Modification Utilisateur{% endblock %}
 
 {% block body %}	
+<section class="heightPage">
 
 	{% for message in app.flashes('success') %}
 		<div class="alert alert-success">
@@ -33,3 +34,4 @@
 		</div>
 	{{ form_end(form) }}
 	</div>
+</section>

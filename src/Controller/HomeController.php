@@ -13,9 +13,9 @@ class HomeController extends AbstractController
      */
     public function index()
     {
+        
         $repository = $this->getDoctrine()->getRepository(Blog::class);
-        //utilisation de la méthode custom qui fait une jointure
-        $blogs = $repository->findAll();
+        $blogs = $repository->showThreeRecents();
 
         return $this->render('home/index.html.twig', [
             'blogs' => $blogs,

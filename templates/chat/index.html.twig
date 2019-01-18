@@ -3,29 +3,37 @@
 {% block title %}Hello ChatController!{% endblock %}
 
 {% block body %}
-<div class="row">
-    <div class="container">
-        <div class="col-md-12">
-            <select id="salon">
-                {% for chat in chat %}
-                    <option class="selectSalon" value="{{chat.salon.id}}" data-user="{{chat.user.id}}">{{chat.salon.name}}</option>
-                {% endfor %}
-            </select>
+<section class="heightPage">
+    <div class="row">
+        <div class="container">
+            <div class="col-md-12 my-5 text-center">
+                <select id="salon" class="form-control">
+                    {% for chat in chats %}
+                        <option class="selectSalon" value="{{chat.salon.id}}" data-user="{{chat.user.id}}">{{chat.salon.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
         </div>
     </div>
-</div>
-
-<div class="row">
-    <div class="container">
-        <div class="col-md-12" id="listMessage">
-            
+    <div class="row">
+        <div class="container">
+            <div class="col-md-12 border border-dark rounded" id="listMessage">
+            </div>
         </div>
-            <form id="stop">
-                <input type="text" class="form-control formInput" id="message">
-                    <button class="btn fromBtn">Envoyer</button>
+    </div>
+    <div class="row">
+        <div class="container text-center mt-3">
+            <form id="stop" class="form-inline">
+                <div class="col-md-10">
+                    <input type="text" class="form-control formInput" id="message">
+                </div>
+                <div class="col-md-2">
+                    <button class="btn formButton m-0">Envoyer</button>
+                </div>
             </form>
+        </div>
     </div>
-</div>
+</section>
 {% endblock %}
 {% block javascripts %}
 	{{ parent() }}
@@ -37,8 +45,7 @@
 
                 let idSalon = $(this).val();
                 let idUser = $('.selectSalon').data('user');
-                console.log(idSalon);
-                console.log(idUser);
+
                 $.ajax({
 
                     type: 'post',
@@ -62,16 +69,18 @@
                 let message = $('#message').val();
                 let idSalon = setSalon;
                 let idUser = setUser;
-
-                console.log(message);
-                console.log(idSalon);
-                console.log(idUser);
                 $.ajax({
 
                     type: 'post',
                     url: '{{ path("addMessage") }}',
                     data: 'message='+ message + '&idSalon=' + idSalon + '&idUser=' + idUser,
-                    datatype: 'html'
+                    datatype: 'html',
+                    success: function(){
+                        $("#message").val('');
+                    },
+                    error: function(error){
+                        console.log(error);
+                    }
                 })
             })
 
@@ -91,11 +100,10 @@
                     error: function(error){
                         console.log(error);
                     }
-                });
-            };
+                })
+            }
         
-            setInterval(refresh, 5000);
-            //refresh();
+            setInterval(refresh, 3000);
         })
     </script>
 {% endblock %}

@@ -3,7 +3,10 @@
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-	<div class="container-fluid formBackG">
+
+<section class="heightPage">
+
+	<div class="container-fluid">
 		
 		<div class="row justify-content-center"> 
 			<div class="col-12 col-md-4 form-group">
@@ -14,7 +17,7 @@
 		       	    {{ form_row(registrationForm.plainPassword.first, {'attr':{'class':'form-control mb-3 mt-3 formInput'}}) }}
 		       	    {{ form_row(registrationForm.plainPassword.second, {'attr':{'class':'form-control mb-3 mt-3 formInput'}}) }}
 
-		       		<div class="form-check form-check-inline">
+		       		<div class="form-check-inline">
 						{{ form_widget(registrationForm.TermsAccepted, {'attr':{'class':'form-check-input mr-2 formInput'}}) }}
 						{{ form_label(registrationForm.TermsAccepted, 'Accepter les CGU', {'label_attr':{'class':'form-check-label form-check-input'}}) }}
 					</div>
@@ -24,4 +27,5 @@
 			</div>		
 		</div>
 	</div>   	
+</section>
 {% endblock %}

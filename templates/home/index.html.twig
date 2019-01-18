@@ -3,63 +3,70 @@
 {% block title %}Match&Go{% endblock %}
 
 {% block body %}
-	<div class="container-fluid pl-0 pr-0">
 
-<section id="first">
-        <div class="header-content">
-        	<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" style="width: 100%" class="">
-    <source src="{{asset ('video/match&go.mp4')}}" type="video/mp4">
-    <div class="overlay"></div>
-  </video>
+<section class="heightPage">
 
-     <!-- home wrapper -->
-  <div class="home-wrapper">
-    <div class="container">
+   <div class="container-fluid pl-0 pr-0">
+
+    {# video et titre #}
+    <section class="firstHome">
+
+     <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" style="width: 100%" src="{{asset ('video/match&go.mp4')}}" type="video/mp4" class="videoHome">
+     </video>
+
+      <div class="titleHome text-center">
+        <h1>Match&Go</h1>
+        <p>Trouvez votre partenaire de voyage</p>
+        <a href="{{ path('app_register') }}" class="btn btn-outline-light">Go</a>
+      </div>
+      
+    </section>
+
+    {# description étapes du site #}
+    <section class="secondHome">
+
       <div class="row">
-        <!-- home content -->
-        <div class="col">
-          <div class="home-content">
-            <h1 class="white-text-brand">Match&Go</h1>
-            <p class="white-text-one">Trouvez votre partenaire de voyage</p>
-              <a href="{{ path('app_register') }}" class="btn btn-outline-light">Go</a>
-          </div>
+        <div class="col-12 col-md-3 text-center pl-2 pr-4">
+          <p class="text-center mt-5 step1">1</p>
+          <p class="text-center text-white">Inscris-toi sur Match&Go !</p>
         </div>
-        </div>        
-</section>
+        <div class="col-12 col-md-3 text-center pl-2 pr-4">
+          <p class="text-center mt-5 step2">2</p>
+          <p class="text-center text-white">Créé ton profil !</p>
+        </div>
+        <div class="col-12 col-md-3 text-center pl-2 pr-4">
+          <p class="text-center mt-5 step3">3</p>
+          <p class="text-center text-white">Répond à notre questionnaire en fonction de tes envies de voyage !</p>
+        </div>
+        <div class="col-12 col-md-3 text-center pl-2 pr-4">
+          <p class="text-center mt-5 step4">4</p>
+          <p class="text-center text-white">Trouve les personnes qui te correpondent et discute avec elles !</p>
+        </div>              
+      </div>
 
-<section>
-    
-  <div class="row">
-    <div class="col-12 col-md-3">
-      
-    </div>
-    <div class="col-12 col-md-3">
-      
-    </div>
-    <div class="col-12 col-md-3">
-      
-    </div>
-    <div class="col-12 col-md-3">
-      
-    </div>
+    </section>
+
+    {# 3 derniers articles du blog #}
+    <section class="thirdHome no-padding">
+
+      <h2 class="text-center mb-4">Derniers Articles</h2>
+
+      <div class="row no-gutter">
+        {% for blog in blogs %}
+          <div class="col-lg-4 col-sm-6">
+            <a href="{{ path ('showBlogWithSlug', {slug:blog.slug}) }}" class="gallery-box">
+              <img src="{{ asset('uploads/article/image/' ~ blog.pictureblog) }}"  class="img-thumbnail">
+            </a>
+            <p class="text-center mt-3 text-white">{{blog.title}}</p>
+          </div>
+        {% endfor %}    
+      </div>   
+
+    </section>
+
   </div>
 
 </section>
-
-    <section id="three" class="no-padding">
-        <div class="container-fluid">
-            <h2> Derniers Articles</h2>
-                <div class="row no-gutter">
-                    {% for blog in blogs %}
-                        <div class="col-lg-4 col-sm-6">
-                            <a href="{{ path ('showBlogWithSlug', {slug:blog.slug}) }}" class="gallery-box">
-                                <img src="{{ asset('uploads/article/image/' ~ blog.pictureblog) }}"  class="img-thumbnail">
-                            </a>
-                        </div>
-                    {% endfor %}    
-                </div>
-        </div>                       
-    </section>
 
 {% endblock %}
 
