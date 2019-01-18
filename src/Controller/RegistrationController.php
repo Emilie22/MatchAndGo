@@ -62,6 +62,8 @@ class RegistrationController extends AbstractController
                 'main'
             );
 
+            $this->addFlash('success', 'Vous êtes maintenant inscrit sur Match&Go');
+
             return $this->redirectToRoute('addProfile');
         }
 

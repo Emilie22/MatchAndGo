@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Voir profil{user.id}{% endblock %}
+{% block title %}Voir profil{% endblock %}
 
 {% block body %}
-	<section>
+
 		<div class="container-fluid pr-0 pl-0">
 			
 			<div class="row justify-content-center rowBgProfile">
 				<div class="col-12 col-md-12">
-					<img src="{{ asset('uploads/profile/landscape.png') }}" class="imgBgProfile" alt="landscape">
+					<img src="{{ asset('uploads/profile/landscape.png') }}" class="imgBgProfile">
 				</div>
 			</div>
 
@@ -18,7 +18,7 @@
 				</div>
 			<div class="row">
 				<div class="col-12 col-md-4 divAvatar">
-					<img src="{{ asset('uploads/user/image/' ~ user.picture) }}" class="avatar" alt="people">
+					<img src="{{ asset('uploads/user/image/' ~ user.picture) }}" class="avatar">
 				</div>
 					
 				</div>
@@ -32,8 +32,13 @@
 					<p>Votre date de naissance : {{ user.birthday|date('d-m-Y') }}</p>			
 					<p>Votre description : {{ user.description}}</p>
 					<p>Vos pays visités : {{ user.countries}}</p>
+					<p>Facebook : <i class="fab fa-facebook-square"></i>{{ user.facebook}}</i></p>
+					<p>Instagram : <i class="fab fa-instagram"></i>{{ user.instagram}}</i></p>
 				</div>
+				{% if is_granted('ROLE_USER') %}
+					<a href="{{ path('updateProfile')}}"><i class="fas fa-pencil-alt"></i>Modifier mon profil</a>
+				{% endif %}
 			</div>
 		</div>
-	</section>
+
 {% endblock %}

@@ -63,4 +63,50 @@ class UserController extends AbstractController
         return $this->render('user/add.html.twig', ['form' => $form->createView()]);
    }
 
+
+                        // MODIFICATION DU PROFIL //
+
+    /**
+    * @Route("/login/update", name="updateProfile")
+    */
+    public function updateProfile(Request $request, FileUploader $fileuploader){
+
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+        $user = $this->getUser();
+
+        $filename = $user->getPicture();
+
+        if ($user->getPicture()) {
+            $user->setPicture(new File($this->getParameter('upload_directory') . $this->getParameter('user_image_directory') . '/' . $filename ));
+        }
+
+        $form = $this->createForm(ProfileType::class, $user);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $user = $form->getData();
+
+            if ($user->getPicture()) { 
+
+                $file = $user->getPicture();
+
+            $filename = $fileuploader->upload($file, $this->getParameter('user_image_directory'), $filename);
+            }
+
+            $user->setPicture($filename);
+
+            $entitymanager = $this->getDoctrine()->getManager();
+
+            $entitymanager->flush();
+
+
+            $this->addFlash('success', 'Votre profil a bien été modifié');
+            
+            return $this->redirectToRoute('userInfo');
+        }
+        return $this->render('user/add.html.twig', ['user'=>$user, 'form' => $form->createView()]);
+    }
+
 }
