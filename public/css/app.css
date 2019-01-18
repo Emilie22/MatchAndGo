@@ -146,23 +146,23 @@ header > nav > ul > li > nav > ul > li:hover > a {
 }
 
 .step1 {
-  color: red;
-  border: 5px solid red;
+  color: #DABC83;
+  border: 5px solid #DABC83;
 }
 
 .step2 {
-  color: purple;
-  border: 5px solid purple;
+  color: #fdad17;
+  border: 5px solid #fdad17;
 }
 
 .step3 {
-  color: green;
-  border: 5px solid green;
+  color: #E8570C;
+  border: 5px solid #E8570C;
 }
 
 .step4 {
-  color: blue;
-  border: 5px solid blue;
+  color: #B70000;
+  border: 5px solid #B70000;
 }
 
 .step1, .step2, .step3, .step4 {
