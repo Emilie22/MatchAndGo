@@ -3,6 +3,9 @@
 {% block title %}Concept{% endblock %}
 
 {% block body %}
+
+<section class="heightPage">
+
 	{% for message in app.flashes('success') %}
 		<div class="alert alert-success">
 			{{ message }}
@@ -63,5 +66,6 @@
 		</div>
 	</div>
 </div>
+</section>
 {% endblock %}
 

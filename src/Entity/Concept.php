@@ -24,6 +24,7 @@ class Concept
      *      match=false,
      *      message="Votre titre ne doit pas contenir de chiffre et fair plus de 255 charactères"
      * )
+
      */
     private $titleConcept;
 
