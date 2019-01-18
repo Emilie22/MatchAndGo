@@ -1,5 +1,4 @@
 {% for message in messages %}
-        <p>Envoyer le : {{message.date_send}}</p>
-        <p>{{message.firstname}} : {{message.message}}</p>
+        <li class="mr-5">{{message.firstname}} <mark>({{message.date_send}})</mark> : {{message.message}}</li>
 {% endfor %}
 
