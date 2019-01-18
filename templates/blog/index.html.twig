@@ -6,7 +6,7 @@
 <section class="heightPage">
 
 <div class="container-fluid">
-	<h2 class="pt-4">Blog</h2>
+	<h2 class="pt-4 text-center mt-5">Blog</h2>
 	<div class="row">
 
 
@@ -19,13 +19,13 @@
 
 		{% for blog in blogs %}
 
-			<div class="col-md-4 mt-4 mb-3">
+			<div class="col-md-4 my-4">
 				<div class="imgBlog">
 					<a href="{{ path('showBlogWithSlug', {slug: blog.slug}) }}" class="gallery-box"><img src="{{ asset('uploads/article/image/' ~ blog.pictureblog) }}"  class="img-thumbnail"></a>
 				</div>
 				<div class="row">
 					<div class="col-12">
-					<a href="{{ path('showBlogWithSlug', {slug: blog.slug}) }}"><h3>{{ blog.title }}</h3></a>
+					<a href="{{ path('showBlogWithSlug', {slug: blog.slug}) }}"><h3 class="blogTitle">{{ blog.title }}</h3></a>
 					<div class="row">
 						<div class="col-12 col-md-9">
 							<p>publié le {{ blog.datepost|date('d/m/Y') }} par {{ blog.author }}</p>
