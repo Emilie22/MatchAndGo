@@ -60,14 +60,13 @@ class ChatRepository extends ServiceEntityRepository
         
 
     }
-    public function viewMessage($idUser, $idSalon){
+    public function viewMessage($idSalon){
         $connexion = $this->getEntityManager()->getConnection();
         $sql = 'SELECT u.id, salon_id, date_send, message, u.firstname, c.date_send
                 FROM user u
                 RIGHT JOIN chat c ON u.id = c.user_id 
-                WHERE u.id = :id OR salon_id = :idSalon ORDER BY date_send DESC LIMIT 20';
+                WHERE salon_id = :idSalon ORDER BY date_send DESC LIMIT 20';
         $select = $connexion->prepare($sql);
-        $select->bindValue(':id', $idUser);
         $select->bindValue(':idSalon', $idSalon);
         $select->execute();
             return $select->fetchAll();

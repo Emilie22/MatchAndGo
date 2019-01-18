@@ -16,8 +16,6 @@ class ChatController extends AbstractController
      */
     public function addChat($idUser)
     {
-        $i = 0;
-        $i++;
         $entityManager = $this->getDoctrine()->getManager();
 
         $repository = $this->getDoctrine()->getRepository(User::class);
@@ -31,11 +29,11 @@ class ChatController extends AbstractController
                 
         $chat1 = new Chat();
         $chat1 ->setUser($this->getUser());
-        $chat1 ->setMessage('Vous avez invité à parler');
+        $chat1 ->setMessage('Vous avez invité à parler ' . $inviteId->getFirstname());
         $chat1 ->setDateSend(new \DateTime(date('Y-m-d H:i:s')));
 
         $salon1 = new Salon();
-        $salon1->setName('Salon de discution ' . $i);
+        $salon1->setName('Salon de discution avec ' . $inviteId->getFirstname());
 
         $chat1 ->setSalon($salon1);
 
@@ -43,7 +41,7 @@ class ChatController extends AbstractController
 
         $chat = new Chat();
         $chat ->setUser($inviteId);
-        $chat ->setMessage('Vous avez été invité(e) à parler avec');
+        $chat ->setMessage('Vous avez été invité(e) à parler avec ' . $user->getFirstname());
         $chat ->setDateSend(new \DateTime(date('Y-m-d H:i:s')));
 
         $chat ->setSalon($salon1);
@@ -66,11 +64,10 @@ class ChatController extends AbstractController
 
         $user = $this->getUser();
         $userId = $user->getId();
-        dump($userId);
 
         $chat = $repository->findWithChat($userId);
         
-        return $this->render('chat/index.html.twig', ['chat'=>$chat,]);
+        return $this->render('chat/index.html.twig', ['chats'=>$chat]);
     }
 
 
@@ -79,21 +76,19 @@ class ChatController extends AbstractController
      * @Route("/chat/changeSalon", name="changeSalon")
      */
     public function changeSalon(Request $request){
-        dump($request);
+
         $idSalon = $request->request->get('idSalon', null);
-        $idUser = $request->request->get('idUser', null);
-        
+        $user = $this->getUser();
         $repository = $this->getDoctrine()->getRepository(Chat::class);
-        $message = $repository->viewMessage($idUser, $idSalon);
+        $message = $repository->viewMessage($idSalon);
         dump($message);
-        return $this->render('chat/message.html.twig', ['messages'=>$message]);
+        return $this->render('chat/message.html.twig', ['messages'=>$message, 'user'=>$user]);
     }
 
     /**
      * @Route("/chat/addMessage", name="addMessage")
      */
     public function addMessage(Request $request){
-        dump($request);
         $idSalon = $request->request->get('idSalon', null);
         $idUser = $request->request->get('idUser', null);
         $message = $request->request->get('message', null);
@@ -120,6 +115,6 @@ class ChatController extends AbstractController
         $entityManager->persist($chat);
         $entityManager->flush();
 
-        return $this->render('chat/index.html.twig');
+        return $this->redirectToRoute('chat');
     }
 }
