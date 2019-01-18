@@ -458,7 +458,6 @@ a:hover {
 }
 
 
-
 /* Medium screens */
 @media all and (min-width: 600px) {
   header > div#logo > div#navToggle {
@@ -533,6 +532,7 @@ a:hover {
     right: -50%;
     width: 196px;
   }
+
 }
 
 
@@ -573,6 +573,7 @@ a:hover {
 
 .main-box.no-header {
     padding-top: 20px;
+    margin-top: 160px;
 }
 .main-box {
     background: #FFFFFF;
@@ -586,9 +587,7 @@ a:hover {
     -moz-border-radius: 3px;
     border-radius: 3px;
 }
-.table a.table-link.danger {
-    color: #e74c3c;
-}
+
 .label {
     border-radius: 3px;
     font-size: 0.875em;
@@ -605,7 +604,7 @@ a:hover {
     margin-left: 60px;
 }
 a {
-    color: #3498db;
+    color: #3f4253;
     outline: none!important;
 }
 .user-list tbody td>img {
@@ -631,6 +630,12 @@ a {
     vertical-align: middle;
     border-top: 1px solid #e7ebee;
     padding: 12px 8px;
+}
+.user-link{
+  color: #3f4253;
+}
+.user-link:hover{
+  color: #fdad17; 
 }
 
 
