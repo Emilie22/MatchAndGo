@@ -23,6 +23,7 @@ class Concept
      *      pattern="/[a-zA-Z]{1-255}/",
      *      match=false,
      *      message="Votre titre ne doit pas contenir de chiffre et fair plus de 255 charactères"
+     * )
      */
     private $titleConcept;
 
