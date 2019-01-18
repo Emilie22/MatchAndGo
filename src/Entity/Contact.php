@@ -2,9 +2,8 @@
 
 namespace App\Entity;
 use Symfony\Component\Validator\Constraints as Assert;
-
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ContactRepository")
@@ -24,6 +23,7 @@ class Contact
      *      pattern="/[a-zA-Z]{1-255}/",
      *      match=false,
      *      message="Votre nom ne doit pas contenir de chiffre et fair plus de 255 charactères"
+     * )
      */
     private $name;
 

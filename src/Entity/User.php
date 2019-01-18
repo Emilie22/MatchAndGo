@@ -128,10 +128,16 @@ class User implements UserInterface
      */
     private $instagram;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ResetPassword", mappedBy="user")
+     */
+    private $resetPasswords;
+
 
     public function __construct()
     {
         $this->chats = new ArrayCollection();
+        $this->resetPasswords = new ArrayCollection();
     }
     public function getId(): ?int
     {
@@ -353,6 +359,37 @@ class User implements UserInterface
    public function setInstagram(?string $instagram): self
    {
        $this->instagram = $instagram;
+       return $this;
+   }
+
+   /**
+    * @return Collection|ResetPassword[]
+    */
+   public function getResetPasswords(): Collection
+   {
+       return $this->resetPasswords;
+   }
+
+   public function addResetPassword(ResetPassword $resetPassword): self
+   {
+       if (!$this->resetPasswords->contains($resetPassword)) {
+           $this->resetPasswords[] = $resetPassword;
+           $resetPassword->setUser($this);
+       }
+
+       return $this;
+   }
+
+   public function removeResetPassword(ResetPassword $resetPassword): self
+   {
+       if ($this->resetPasswords->contains($resetPassword)) {
+           $this->resetPasswords->removeElement($resetPassword);
+           // set the owning side to null (unless already changed)
+           if ($resetPassword->getUser() === $this) {
+               $resetPassword->setUser(null);
+           }
+       }
+
        return $this;
    }
 

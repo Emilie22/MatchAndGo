@@ -52,9 +52,20 @@ class SecurityController extends AbstractController
 
         $entityManager->flush();
 
-     return $this->render('security/index.html.twig', ['user'=>$user, 'imgBgProfile'=>$imgBgProfile]);
+    return $this->render('security/index.html.twig', ['user'=>$user, 'imgBgProfile'=>$imgBgProfile]);
 
     }
+    /**
+     * @Route("/reset/password", name="resetPassword")
+     */
+    public function showFormResetPassword(Request $request){
 
+
+    return $this->render('security/resetPassword.html.twig', []);
+    }
+
+    /**
+     * @Route("/reset/password/token", name="createToken")
+     */
 
 }
