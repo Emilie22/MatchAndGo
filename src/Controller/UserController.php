@@ -64,7 +64,6 @@ class UserController extends AbstractController
    }
 
 
-
                         // MODIFICATION DU PROFIL //
 
     /**
@@ -78,12 +77,14 @@ class UserController extends AbstractController
 
         $filename = $user->getPicture();
 
+
         if ($user->getPicture()) {
-            $user->setPicture(new File($this->getParameter('upload_directory') . $this->getParameter('user_image_directory') . '/' . $filename ));
+            //$user->setPicture(new File($this->getParameter('upload_directory') . $this->getParameter('user_image_directory') . '/' . $filename ));
         }
 
         $form = $this->createForm(ProfileType::class, $user);
         $form->handleRequest($request);
+
 
         if($form->isSubmitted() && $form->isValid())
         {
@@ -110,12 +111,17 @@ class UserController extends AbstractController
         return $this->render('user/add.html.twig', ['user'=>$user, 'form' => $form->createView()]);
     }
 
-   /**
-   * @Route ("/user/show/{id}", name="showProfile", requirements={"id"="\d+"})
-   */
-   public function showProfile(User $user) {
-        return $this->render('security/index.html.twig', [ 'user' => $user ]);
-   }
+    /**
+      * @Route ("/user/show/{id}", name="showProfile", requirements={"id"="\d+"})
+      */
+      public function showProfile(User $user) {
 
+            $imgBgProfile = [];
+            for ($i=1; $i<=5; $i++) {
+                $imgBgProfile[] = 'backgroundprofile'.$i;
+            }
+        
+           return $this->render('user/userInvite.html.twig', [ 'user' => $user, 'imgBgProfile'=>$imgBgProfile ]);
+      }
 
 }

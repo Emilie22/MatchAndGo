@@ -45,9 +45,14 @@ class SecurityController extends AbstractController
 
         $entityManager = $this->getDoctrine()->getManager();
 
+        $imgBgProfile = [];
+        for ($i=1; $i<=5; $i++) {
+            $imgBgProfile[] = 'backgroundprofile'.$i;
+        }
+
         $entityManager->flush();
 
-     return $this->render('security/index.html.twig', ['user'=>$user]);
+     return $this->render('security/index.html.twig', ['user'=>$user, 'imgBgProfile'=>$imgBgProfile]);
 
     }
 

@@ -46,9 +46,6 @@ class RegistrationController extends AbstractController
             $user->setPicture('');
             $user->setDescription('');
             $user->setCountries('');
-            // $user->setFacebook('');
-            // $user->setInstagram('');
-
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);

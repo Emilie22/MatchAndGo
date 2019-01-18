@@ -56,7 +56,7 @@ body{
 }
 
 .profileBg{
-	background-image: url('../uploads/profile/backgroundprofile2.jpg');
+	background-image: url('../uploads/profile/addprofil.jpg');
 	background-repeat: no-repeat;
 }
 
@@ -84,25 +84,21 @@ a:hover {
 .imgBgProfile{
   height: 400px;
   width: 100%;
+  opacity: 0.7;
 }
 
-/*.profileBlock{
-  background: #414559;;
-  position:absolute;
-  top: 40%;
-  height: 100%;
-  z-index: 0;
-
-}*/
 
 .rowBgProfile{
   position:relative;
 }
 
-.infosUser{
+.iconFbk{
   color: #fdad17;
 }
 
+.iconInsta{
+  color: #fdad17;
+}
 
 .avatar{
   width: 200px;
@@ -113,9 +109,10 @@ a:hover {
 
 .divAvatar{
   position: absolute;
-  bottom: 48%;
-  left: 40%;
+  top: 65%;
+  left: 44%;
 }
+
 /*CAROUSEL*/
 
 .containerQuiz {
