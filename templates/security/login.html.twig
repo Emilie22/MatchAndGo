@@ -4,19 +4,19 @@
 
 {% block body %}
 
-<div class="container-fluid connexionBg">
+<div class="container-fluid formBackG">
         <form class="form-group mb-0" method="post">
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
                 <div class="row justify-content-center"> 
 
-                    <div class="col-12 col-md-4 connexion">
+                    <div class="col-12 col-md-4">
                         <h1 class="h3 font-weight-normal mb-5 mt-4 text-center">Se connecter</h1>
                         <label class="mb-3 mt-3" for="inputEmail">Email</label>
-                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control formInput" placeholder="Email" required autofocus>
                         <label class="mb-3 mt-3" for="inputPassword">Mot de passe</label>
-                        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                        <input type="password" name="password" id="inputPassword" class="form-control formInput" placeholder="Password" required>
 
                         <input type="hidden" name="_csrf_token"
                                value="{{ csrf_token('authenticate') }}"
@@ -34,7 +34,7 @@
                     </div>
                
 
-                    <button class="mb-3 mt-3 btn btnConnexion" type="submit">
+                    <button class="mb-3 mt-3 btn formButton" type="submit">
                         Connexion
                     </button>
                 </div>

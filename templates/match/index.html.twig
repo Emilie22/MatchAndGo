@@ -31,29 +31,17 @@
 								<p class="card-title text-center">{{ userB.firstname }}<br><span>{{ userB.gender }} | {{ userB.birthday|date('m-d-Y') }}</span></p>
 								<p class="card-text">{{ userB.city }}</p>
 								<div class="row">
-									<div class="text-center col-12 col-md-6"><button class="btnProfile">Profil</button></div>
-									<div class="text-center col-12 col-md-6"><button class="btnChat">Tchat</button></div>
+									<div class="text-center col-12 col-md-6"><a href="{{path('showProfile', {id:userB.id}) }}"><button class="btnProfile">Profil</button></a></div>
+									<div class="text-center col-12 col-md-6"><a href="{{path('addChat', {idUser:userB.id}) }}"><button class="btnChat">Tchat</button></a></div>
 								</div>
 							</div>
 
 						</div>
 					</div>
-					
-{# 					{% set url = "https://maps.googleapis.com/maps/api/geocode/json?address={"~ userB.city ~"}&key=AIzaSyBjslA2cbupRwG-dJvPAKcfZp0ruzEFM38"|url_encode %}
-						{{dump(url)}}
-					{% set resultat = url|json_decode(true) %}
-						{{dump(resultat)}} #}
-{# 					{% set lat = resultat['results'][0]['geometry']['location']['lat'] %}
-					{% set lng = resultat['results'][0]['geometry']['location']['lng'] %} #}
 					{% endfor %}
 				{% endfor %}
 			</div>
 		</div>
-{# 				{{dump(cityTab)}}
-			
-				{% for cityMatch in cityTab %}
-			
-				{% endfor %} #}
 
 		<div class="col-12 col-md-4">
 			<div id="mapLoc">
@@ -62,41 +50,53 @@
 	</div>
 </div>
 </section>
+{% endblock %}
+
 
 {% block javascripts %}
+{{parent()}}
+
 <script>
-			
-            function initializeMap() {
-                var map = new google.maps.Map(document.getElementById('mapLoc'), {
-                    zoom: 5.5,
-                    center: {lat: 45.785, lng: 3.115}
-                });
-                
-                var geocoder = new google.maps.Geocoder();
+
+    function initializeMap() {
 
 
-            }
+        var map = new google.maps.Map(document.getElementById('mapLoc'), {
+            zoom: 3.5,
+            center: {lat: 45.785, lng: 3.115}
+        });
+        
+        var geocoder = new google.maps.Geocoder();
 
-            // function geocodeAddress(geocoder, resultsMap) {
-                
-            //     geocoder.geocode({'address': address}, function(results, status) {
-            //         if (status === 'OK') {
-            //             resultsMap.setCenter(results[0].geometry.location);
-            //             var marker = new google.maps.Marker({
-            //                 map: resultsMap,
-            //                 position: results[0].geometry.location
-            //             });
-            //         } else {
-            //             alert('Geocode was not successful for the following reason: ' + status);
-            //         }
-            //     });
-            // }
+        let coords = {
+        	{% for key, coord in userCoord %}
+        		'{{ key }}' : { 'firstname': '{{ coord.firstname}}', 'picture': '{{ coord.picture }}', 'lat': {{ coord.lat }}, 'lng':{{ coord.lng }}},
+        	{% endfor %}
+        };
+        // console.log(coords);
 
+        $.each(coords, function(i, coord) {
 
-        </script>
-        <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0xJoi5c9MwYIYQlwIEfLqLh95hLtcaYA&callback=initializeMap">
-        </script>
+        	let pictureSRC = '<img src="{{asset("uploads/user/image/"~0)}}">';
+        	var marker = new google.maps.Marker({
+            position: {lat: coord.lat, lng: coord.lng},
+            map: map
+        	});
 
-    {% endblock %}
+        	var infowindow = new google.maps.InfoWindow({
+	          content: pictureSRC.replace(0, coord.picture) + coord.firstname
+	        });
+        	
+          	infowindow.open(map, marker);
+
+        });
+
+    }
+
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0xJoi5c9MwYIYQlwIEfLqLh95hLtcaYA&callback=initializeMap">
+</script>
+
 {% endblock %}
+

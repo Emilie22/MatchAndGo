@@ -164,7 +164,7 @@ class AdminController extends AbstractController{
     }
 
     /**
-     * @Route("/admin/concept/delete/{id}", name="deleteConcept")
+     * @Route("/admin/concept/delete/{id}", name="deleteConcept", requirements={"id"="\d+"})
      */ 
 
     public function deleteConcept(Concept $concept){
@@ -183,7 +183,7 @@ class AdminController extends AbstractController{
     }
 
     /**
-    * @Route("/admin/concept/update/{id}", name="updateConcept")
+    * @Route("/admin/concept/update/{id}", name="updateConcept", requirements={"id"="\d+"})
     */
     public function updateConcept(Request $request, Concept $concept, FileUploader $fileuploader){
 
@@ -223,50 +223,33 @@ class AdminController extends AbstractController{
     }
 
     /**
-    * @Route("admin/user/update", name="updateUser")
+    *@Route("admin/users", name="users")
     */
-
-    public function updateUser(Request $request, User $user, FileUploader $fileuploader){
-
- $this->denyAccessUnlessGranted('ROLE_ADMIN');
-
-        $filename = $user->getPicture();
-
-        if ($user->getPicture()) {
-            $user->setPicture(new File($this->getParameter('upload_directory') . $this->getParameter('user_image_directory') . '/' . $filename ));
-        }
-
-        $form = $this->createForm(ProfileType::class, $user);
+    public function showUser(){
 
 
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid())
-        {
-
-            $user = $form->getData();
-
-            if ($user->getPicture()) { 
-
-                $file = $user->getPicture();
-
-            $filename = $fileuploader->upload($file, $this->getParameter('user_image_directory'), $filename);
-            }
-    
-            $user->setPicture($filename);
-
-
-
-            $entitymanager = $this->getDoctrine()->getManager();
-
-            $entitymanager->flush();
-
-            $this->addFlash('warning', 'User modifié');
-
-            return $this->redirectToRoute('admin');
-
-
-        }
-        return $this->render('admin/add.user.html.twig', ['form' => $form->createView()]);
+        $repository = $this->getDoctrine()->getRepository(User::class);
+        
+        $users = $repository->findAll();
+        return $this->render('admin/show.user.html.twig', [ 'users' => $users ]);
     }
+
+    /**
+    *@Route("admin/user/delete/{id}", name="deleteUser", requirements={"id"="\d+"})
+    */
+    public function deleteUser(User $user){
+
+       $entityManager = $this->getDoctrine()->getManager();
+
+       $entityManager->remove($user);
+
+       $entityManager->flush();
+
+       //génération d'un message flash
+       $this->addFlash('warning', 'Utilisateur supprimé');
+       //redirection vers ....
+       return $this->redirectToRoute('users');
+
+    }
+
 }

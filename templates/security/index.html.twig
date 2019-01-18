@@ -25,15 +25,18 @@
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-12 col-md-6 infosUser">
-					<h3>Bonjour {{ user.firstname}} {{ user.lastname }}</h3>
-					<p>Votre ville : {{ user.city}}</p>
-					<p>Votre numéro de téléphone : {{ user.phone }}</p>
-					<p>Votre email : {{ user.email}}</p>			
-					<p>Votre date de naissance : {{ user.birthday|date('d-m-Y') }}</p>			
-					<p>Votre description : {{ user.description}}</p>
-					<p>Vos pays visités : {{ user.countries}}</p>
+
+					
+					<h3>Profil de {{ user.firstname}} {{ user.lastname }}</h3>
+					<p>Ville : {{ user.city}}</p>
+					<p>Numéro de téléphone : {{ user.phone }}</p>
+					<p>Email : {{ user.email}}</p>			
+					<p>Date de naissance : {{ user.birthday|date('d-m-Y') }}</p>			
+					<p>Description : {{ user.description}}</p>
+					<p>Derniers pays visités : {{ user.countries}}</p>
 					<p>Facebook : <i class="fab fa-facebook-square"></i>{{ user.facebook}}</i></p>
 					<p>Instagram : <i class="fab fa-instagram"></i>{{ user.instagram}}</i></p>
+
 				</div>
 				{% if is_granted('ROLE_USER') %}
 					<a href="{{ path('updateProfile')}}"><i class="fas fa-pencil-alt"></i>Modifier mon profil</a>

@@ -316,4 +316,7 @@ class User implements UserInterface
        $this->instagram = $instagram;
        return $this;
    }
+
 }
+
+

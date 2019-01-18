@@ -9,11 +9,6 @@ body{
 	font-family: 'Open Sans', cursive;
 }
 
-section {
-  min-height: 100vh;
-  /*background-color: #3f4253;*/
-}
-
 /*Vidéo Home*/
 
 .videoHome{
@@ -21,58 +16,37 @@ section {
   width:100vw;
 }
 
+.baseBackG{
+  background: #3f4253;
+  color: #fdad17;
+  min-height: 100vh;
+}
 
-/*Formulaire d'inscription*/
-.inscriptionBg{
+.marginForm{
+  margin-top: 100px;
+}
+
+/*Formulaires*/
+.formBackG{
 	background: #3f4253;
 	color: #fdad17;
 }
 
-.inscription{ 
-	background: #3f4253;
-	color: #fdad17;
- }
-
-.inputInscription{
+.formInput{
 	background: #696d8a;
 	color: #fdad17;
 	border: #696d8a;
 }
 
-.btnInscription{
+.formButton{
  	background: #fdad17;
  	color: #3f4253;
+  margin: 230px;
  }
 
-.titleInscription{
- 	color: #fdad17;
- 	
+.formTitle{
+ 	color: #fdad17; 	
  }
-
-
-/*Formulaire de connexion*/
-
-.connexion{
-	background: #3f4253;
-	color: #fdad17;
-}
-
-.btnConnexion{
-	background: #fdad17;
-	color: #3f4253;
-}
-
-.connexionBg{
-	background: #3f4253;
-	color: #fdad17;
-}
-
-.connexion >input{
-	background: #696d8a;
-	color: #fdad17;
-	border: #696d8a;
-}
-
 
 /*Création du profil*/
 
@@ -630,3 +604,68 @@ h2{
   background: #3f4253;
   color: #fdad17;
 }
+
+/* admin user */ 
+
+.main-box.no-header {
+    padding-top: 20px;
+}
+.main-box {
+    background: #FFFFFF;
+    -webkit-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -moz-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -o-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -ms-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    box-shadow: 1px 1px 2px 0 #CCCCCC;
+    margin-bottom: 16px;
+    -webikt-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.table a.table-link.danger {
+    color: #e74c3c;
+}
+.label {
+    border-radius: 3px;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+.user-list tbody td .user-subhead {
+    font-size: 0.875em;
+    font-style: italic;
+}
+.user-list tbody td .user-link {
+    display: block;
+    font-size: 1.25em;
+    padding-top: 3px;
+    margin-left: 60px;
+}
+a {
+    color: #3498db;
+    outline: none!important;
+}
+.user-list tbody td>img {
+    position: relative;
+    max-width: 50px;
+    float: left;
+    margin-right: 15px;
+}
+
+.table thead tr th {
+    text-transform: uppercase;
+    font-size: 0.875em;
+}
+.table thead tr th {
+    border-bottom: 2px solid #e7ebee;
+}
+.table tbody tr td:first-child {
+    font-size: 1.125em;
+    font-weight: 300;
+}
+.table tbody tr td {
+    font-size: 0.875em;
+    vertical-align: middle;
+    border-top: 1px solid #e7ebee;
+    padding: 12px 8px;
+}
+

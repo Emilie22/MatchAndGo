@@ -64,6 +64,7 @@ class UserController extends AbstractController
    }
 
 
+
                         // MODIFICATION DU PROFIL //
 
     /**
@@ -108,5 +109,13 @@ class UserController extends AbstractController
         }
         return $this->render('user/add.html.twig', ['user'=>$user, 'form' => $form->createView()]);
     }
+
+   /**
+   * @Route ("/user/show/{id}", name="showProfile", requirements={"id"="\d+"})
+   */
+   public function showProfile(User $user) {
+        return $this->render('security/index.html.twig', [ 'user' => $user ]);
+   }
+
 
 }
