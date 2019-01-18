@@ -94,7 +94,7 @@ class User implements UserInterface
      * @ORM\Column(type="text")
      * @Assert\Regex(
      *      pattern="/\w/",
-     *      match=false,
+     *      match=true,
      *      message="Erreur veuillez contacter un administrateur"
      * )
      */

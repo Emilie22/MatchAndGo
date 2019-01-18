@@ -82,7 +82,7 @@ class UserController extends AbstractController
 
 
         if ($user->getPicture()) {
-            //$user->setPicture(new File($this->getParameter('upload_directory') . $this->getParameter('user_image_directory') . '/' . $filename ));
+            // $user->setPicture(new File($this->getParameter('upload_directory') . $this->getParameter('user_image_directory') . '/' . $filename ));
         }
 
         $form = $this->createForm(ProfileType::class, $user);

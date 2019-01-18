@@ -65,12 +65,11 @@
             {# Bloc User connecté #}
             {% if is_granted('ROLE_USER') %}
                 <li>
-                	<a href="{{ path('app_login') }}">Profil</i> <span class="toggle">Expand</span><span class="caret"></span></a>
-
+                	<a href="{{ path('userInfo') }}">Profil<span class="toggle">Expand</span><span class="caret"></span></a>
                     {# Menu déroulant Profil #}
                     <nav>
                         <ul>
-                            <li><a href="#">Modifier mon profil</a></li>
+                            <li><a href="{{ path('updateProfile') }}">Modifier mon profil</a></li>
                             <li><a href="{{ path('quiz') }}">Nouveau match</a></li>
                             <li><a href="{{ path('match') }}">Derniers matchs</a></li>
                             <li><a href="{{ path('logout') }}">Déconnexion</a></li>
@@ -79,8 +78,8 @@
                     {# Fin du Menu déroulant Profil #}
                 </li>
             {% endif %}
-
             {# Fin bloc User connecté #}
+
             </ul>
         </nav>
     </header>
