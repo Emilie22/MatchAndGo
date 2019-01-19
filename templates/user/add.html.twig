@@ -3,21 +3,24 @@
 {% block title %}Création de profil{% endblock %}
 
 	{% block body %}
+{# 		<ul>
+			{% for error in errors %}
+				<li>{{ error.message }}</li>
+			{% endfor %}
+		</ul> #}
 
-		<section class="heightPage">
 
 			<div class="container-fluid profileBg">
-	{# 			<img src="/uploads/backgroundprofile.jpg" alt="landscape" class="backgroundprofile"> #}
 				
-
 				<div class="row justify-content-center">
 					<div class="col-12 col-md-4 form-group">
-						<div class="formBg">
+						<div class="addProfileBg">
 							
-							<h3 class="text-center">Créer mon profil sur Match&Go</h3>
+							<h3 class="text-center mt-3">Créer mon profil sur Match&Go</h3>
 							<div class="form-group mt-3">
 
 								{{ form_start(form) }}
+								{{ form_errors(form) }}
 								<div class="row">
 									<div class="col-12 col-md-6">
 										{{ form_label(form.firstname) }}
@@ -50,14 +53,13 @@
 									</div>
 								</div>
 								{{ form_row(form.picture, {'attr':{'class':'col-12 col-md-12 inputProfile mb-2 mr-5'}}) }}
-								{{ form_row(form.description, {'attr':{'class':'form-control  inputProfile'}})  }}
+								{{ form_row(form.description, {'attr':{'class':'mt-3 form-control  inputProfile'}})  }}
 								{{ form_row(form.countries, {'attr':{'class':'form-control  inputProfile'}}) }}
 								{{ form_row(form.facebook, {'attr':{'class':'form-control  inputProfile'}}) }}
 								{{ form_row(form.instagram, {'attr':{'class':'form-control  inputProfile'}}) }}
-								{{ form_row(form.save, {'attr':{'class':'form-control mt-3 btn btnProfile'}}) }} 
+								{{ form_row(form.save, {'attr':{'class':'form-control mt-3 btn btnCreateProfile'}}) }} 
 
 								{{ form_end(form) }}
-
 
 							</div>
 						</div> 
@@ -67,6 +69,5 @@
 				</div>
 			</div>
 
-		</section>
 
 	{% endblock %}

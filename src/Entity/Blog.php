@@ -23,7 +23,7 @@ class Blog
      * @Assert\Regex(
      *      pattern="/[a-zA-Z]{1-255}/",
      *      match=false,
-     *      message="Votre titre ne doit pas contenir de chiffre et fair plus de 255 charactères"
+     *      message="Votre titre ne doit pas contenir de chiffre ni faire plus de 255 caractères."
      * )
      */
     private $title;
@@ -33,7 +33,7 @@ class Blog
      * @Assert\Regex(
      *      pattern="/[a-zA-Z]{1-255}/",
      *      match=false,
-     *      message="Votre titre ne doit pas contenir de chiffre et fair plus de 255 charactères"
+     *      message="Votre titre ne doit pas contenir de chiffre ni faire plus de 255 caractères."
      * )
      */
     private $content;
@@ -55,7 +55,7 @@ class Blog
      * @Assert\Regex(
      *     pattern="/\d/",
      *     match=false,
-     *     message="Votre Nom contient des chiffres"
+     *     message="Le nom de l'auteur ne doit pas contenir de chiffres."
      * )
      */
     private $author;
