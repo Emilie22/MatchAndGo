@@ -231,7 +231,6 @@ header > nav > ul > li > nav > ul > li:hover > a {
 .formButton{
   background: #fdad17;
   color: #3f4253;
-  margin: 230px;
  }
 
 .formTitle{
@@ -271,9 +270,6 @@ header > nav > ul > li > nav > ul > li:hover > a {
 	color: #fdad17;
 }
 
-a:hover {
-	color: #3f4253;
-}
 
 /* Affichage du profil de l'utilisateur connecté */
 
@@ -444,10 +440,6 @@ a:hover {
   padding: 5px 10px;
 }
 
-
-
-
-
 /*MAP localisation match*/
 
 #mapLoc {
@@ -600,10 +592,7 @@ a:hover {
     padding-top: 3px;
     margin-left: 60px;
 }
-a {
-    color: #3f4253;
-    outline: none!important;
-}
+ 
 .user-list tbody td>img {
     position: relative;
     max-width: 50px;
@@ -648,6 +637,26 @@ a {
   width: 100%;
 }
 
+.formTitle{
+  margin-top: 50px;
+}
+
+.formContent{
+  margin-top: 30px;
+}
+
+.formPublish{
+  margin-top: 25px;
+  text-align: center;
+}
+
+.blogTitle{
+  color: #e0b565;
+}
+
+
+
+
 
 /*FOOTER*/
 
@@ -673,4 +682,5 @@ mark{
     background: none;
     color: rgb(66, 67, 85);
 }
+
 
