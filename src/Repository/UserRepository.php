@@ -36,6 +36,23 @@ class UserRepository extends ServiceEntityRepository
         return $select->fetchAll();
     }
 
+    public function changePassword($newMdp, $id){
+        $connexion = $this->getEntityManager()->getConnection();
+        $sql = 'UPDATE user SET password = :newMdp WHERE id = :id';
+        $select = $connexion->prepare($sql);
+        $select->bindValue(':newMdp', $newMdp);
+        $select->bindValue(':id', $id);
+        $select->execute();
+        return $select->fetchAll();
+    }
+    
+    public function deleteToken($id){
+        $connexion = $this->getEntityManager()->getConnection();
+        $sql = 'DELETE FROM reset_password  WHERE id_user = :id';
+        $select = $connexion->prepare($sql);
+        $select->bindValue(':id', $id);
+        $select->execute();
+    }
 
 
 
