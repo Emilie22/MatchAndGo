@@ -108,7 +108,7 @@ class SecurityController extends AbstractController
                     $message = (new \Swift_Message('Hello Email'))
                         ->setFrom('MatchAndGo@gmx.fr')
                         ->setTo('ghghk@gmail.com')
-                        ->setBody('<a href={{path("resetPassword")}}?token=' . $token . '&id='.$users->getId().'>Cliquez ici pour changez votre mot de passe<a>');
+                        ->setBody('<a href={{path("valideToken")}}?token=' . $token . '&id='.$users->getId().'>Cliquez ici pour changez votre mot de passe<a>');
                                 $mailer->send($message);
 
                         return $this->redirectToRoute('valideToken');
@@ -119,7 +119,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route ("/login/valideToken", name="valideToken")
+     * @Route ("/login/valideToken/{token}", name="valideToken")
      */
     public function valideToken(Request $request){
         $get = $request->query->all();
@@ -142,13 +142,14 @@ class SecurityController extends AbstractController
             $users = $repository->findByToken($token);
 
             if(count($users) === 1){
-                return $this->redirectToRoute('formPassword.html.twig', ['id'=>$id, 'token'=>$token]);
+
+                return $this->redirectToRoute('formPassword', ['id'=>$id, 'token'=>$token]);
                 }
             }   
         }
     }
     /**
-     * @Route ("/login/formPassword/", name="formPassword")
+     * @Route ("/login/formPassword/{id}/{token}", name="formPassword", requirements={"id"="\d", "token"="\w"})
      */
         public function changePassword(Request $request, $id, $token){
             $post = $request->request->all();
