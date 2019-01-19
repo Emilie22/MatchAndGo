@@ -9,7 +9,8 @@
 {{ dump(user) }} #}
 {# {{ dump(answers) }} #}
 {# {{ dump(idAnswers) }} #}
-<section class="match">
+<section class="heightPage">
+
 <div class="container-fluid">
 	<div class="row pt-3 pb-3">
 		<div class="col-12">
@@ -35,7 +36,6 @@
 									<div class="text-center col-12 col-md-6"><a href="{{path('addChat', {idUser:userB.id}) }}"><button class="btnChat">Tchat</button></a></div>
 								</div>
 							</div>
-
 						</div>
 					</div>
 					{% endfor %}
@@ -77,16 +77,16 @@
 
         $.each(coords, function(i, coord) {
 
-        	let pictureSRC = '<img src="{{asset("uploads/user/image/"~0)}}">';
+        	// let pictureSRC = '<img src="{{asset("uploads/user/image/"~0)}}" class="imgMapMatch">';
         	var marker = new google.maps.Marker({
             position: {lat: coord.lat, lng: coord.lng},
             map: map
         	});
 
         	var infowindow = new google.maps.InfoWindow({
-	          content: pictureSRC.replace(0, coord.picture) + coord.firstname
+	          content: coord.firstname
 	        });
-        	
+        	// pictureSRC.replace(0, coord.picture) +
           	infowindow.open(map, marker);
 
         });

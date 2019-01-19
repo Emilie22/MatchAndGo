@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BlogRepository")
@@ -19,16 +20,28 @@ class Blog
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex(
+     *      pattern="/[a-zA-Z]{1-255}/",
+     *      match=false,
+     *      message="Votre titre ne doit pas contenir de chiffre et fair plus de 255 charactères"
+     * )
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Regex(
+     *      pattern="/[a-zA-Z]{1-255}/",
+     *      match=false,
+     *      message="Votre titre ne doit pas contenir de chiffre et fair plus de 255 charactères"
+     * )
      */
     private $content;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\DateTime
+     * @var string A "Y-m-d H:i:s" formatted value
      */
     private $datePost;
 
@@ -39,6 +52,11 @@ class Blog
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre Nom contient des chiffres"
+     * )
      */
     private $author;
 

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ConceptRepository")
@@ -18,6 +19,12 @@ class Concept
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex(
+     *      pattern="/[a-zA-Z]{1-255}/",
+     *      match=false,
+     *      message="Votre titre ne doit pas contenir de chiffre et fair plus de 255 charactères"
+     * )
+
      */
     private $titleConcept;
 

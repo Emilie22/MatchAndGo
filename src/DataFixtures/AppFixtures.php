@@ -7,6 +7,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\Question;
 use App\Entity\User;
+use App\Entity\Answer;
 
 class AppFixtures extends Fixture
 {
@@ -521,6 +522,121 @@ class AppFixtures extends Fixture
             //je rempli mon tableau users
             $users[] = $user;
         }
+
+
+        // $questions = ['Quelle serait ta prochaine destination de vacances ?', 'A quelle période ?', 'Pour combien de temps ?', 'Quelle serait ton budget ?', 'Quel type de voyageur es-tu ?', 'Tu préfères quel type d\'hébergement ?', 'Tu es plutôt ?', 'Quelles activités pratiques-tu ?', 'Tu es plutôt ?', 'Comment organises-tu tes vacances ?', 'Avec qui préfères-tu voyager ?', 'Quels âges auraient tes co-voyageurs ?'];
+
+        // $answersQ1 = ['Amérique du nord', 'Amérique du sud', 'Europe', 'Afrique', 'Asie', 'Océanie'];
+        // $answersQ2 = ['Janvier à Mars', 'Avril à Juin', 'Juillet à Septembre', 'Octobre à Décembre'];
+        // $answersQ3 = ['1 week-end', '1 semaine', '1 mois', 'peu importe'];
+        // $answersQ4 = ['jusqu\'à 500€', 'de 500 à 2000€', '2000€ et plus', 'je ne sais pas'];
+        // $answersQ5 = ['Aventurier', 'Détente', 'Local', 'Culturel'];
+        // $answersQ6 = ['Camping', 'AirBnB', 'Hôtel', 'Auberge de jeunesse'];
+        // $answersQ7 = ['Ville', 'Campagne', 'Balnéaire', 'Montagne'];
+        // $answersQ8 = ['Sportif', 'Culturel', 'Randonnée', 'Plage'];
+        // $answersQ9 = ['Lève-tôt', 'Couche-tard', 'Farniente', 'Hyperactif'];
+        // $answersQ10 = ['Improvisation', 'Organisé à l\'avance'];
+        // $answersQ11 = ['Femme', 'Homme'];
+        // $answersQ12 = ['jusqu\'à 20 ans', 'de 20 à 30 ans', 'de 30 à 40 ans', '40 ans et plus'];
+
+
+        // foreach($questions as $label) {
+        //     $question = new Question();
+        //     $question->setLabel($label);
+        //     $manager->persist($question);
+
+        // } 
+
+        // foreach ($answersQ1 as $label) {
+        //     $answerQ1 = new Answer();
+        //     $answerQ1->setLabelAnswer($label);
+        //     $answerQ1->setQuestion(1);
+        //     $manager->persist($answerQ1);
+        // }
+
+        // foreach ($answersQ2 as $label) {
+        //     $answerQ2 = new Answer();
+        //     $answerQ2->setLabelAnswer($label);
+        //     $answerQ2->setQuestion(2);
+        //     $manager->persist($answerQ2);
+        // }
+
+        // foreach ($answersQ3 as $label) {
+        //     $answerQ3 = new Answer();
+        //     $answerQ3->setLabelAnswer($label);
+        //     $answerQ3->setQuestion(3);
+        //     $manager->persist($answerQ3);
+        // }
+
+        // foreach ($answersQ4 as $label) {
+        //     $answerQ4 = new Answer();
+        //     $answerQ4->setLabelAnswer($label);
+        //     $answerQ4->setQuestion(4);
+        //     $manager->persist($answerQ4);
+        // }
+
+        // foreach ($answersQ5 as $label) {
+        //     $answerQ5 = new Answer();
+        //     $answerQ5->setLabelAnswer($label);
+        //     $answerQ5->setQuestion(5);
+        //     $manager->persist($answerQ5);
+        // }
+
+
+        // foreach ($answersQ6 as $label) {
+        //     $answerQ6 = new Answer();
+        //     $answerQ6->setLabelAnswer($label);
+        //     $answerQ6->setQuestion(6);
+        //     $manager->persist($answerQ6);
+        // }
+
+
+        // foreach ($answersQ7 as $label) {
+        //     $answerQ7 = new Answer();
+        //     $answerQ7->setLabelAnswer($label);
+        //     $answerQ7->setQuestion(7);
+        //     $manager->persist($answerQ7);
+        // }
+
+
+        // foreach ($answersQ8 as $label) {
+        //     $answerQ8 = new Answer();
+        //     $answerQ8->setLabelAnswer($label);
+        //     $answerQ8->setQuestion(8);
+        //     $manager->persist($answerQ8);
+        // }
+
+
+        // foreach ($answersQ9 as $label) {
+        //     $answerQ9 = new Answer();
+        //     $answerQ9->setLabelAnswer($label);
+        //     $answerQ9->setQuestion(9);
+        //     $manager->persist($answerQ9);
+        // }
+
+
+        // foreach ($answersQ10 as $label) {
+        //     $answerQ10 = new Answer();
+        //     $answerQ10->setLabelAnswer($label);
+        //     $answerQ10->setQuestion(10);
+        //     $manager->persist($answerQ10);
+        // }
+
+
+        // foreach ($answersQ11 as $label) {
+        //     $answerQ11 = new Answer();
+        //     $answerQ11->setLabelAnswer($label);
+        //     $answerQ11->setQuestion(11);
+        //     $manager->persist($answerQ11);
+        // }
+
+
+        // foreach ($answersQ12 as $label) {
+        //     $answerQ12 = new Answer();
+        //     $answerQ12->setLabelAnswer($label);
+        //     $answerQ12->setQuestion(12);
+        //     $manager->persist($answerQ12);
+        // }
 
         $manager->flush();
     }

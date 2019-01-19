@@ -40,7 +40,7 @@
 						
 						{% for answer in question.answers %}	
 
-							<div class="col-12 col-md-6 btn-group-toggle text-center mt-3 mb-3" data-toggle="buttons">
+							<div class="col-12 col-md-6 btn-group-toggle text-center mb-3" data-toggle="buttons">
 								<label class="btn btn-warning btnAnswers">
 									<input type="checkbox" name="{{ answer.labelAnswer }}" value="{{ answer.id }}" autocomplete="off">
 									{{ answer.labelAnswer }}

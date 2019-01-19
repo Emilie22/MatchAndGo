@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Entity;
-
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ContactRepository")
@@ -18,11 +19,20 @@ class Contact
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex(
+     *      pattern="/[a-zA-Z]{1-255}/",
+     *      match=false,
+     *      message="Votre nom ne doit pas contenir de chiffre et fair plus de 255 charactères"
+     * )
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email(
+     *     message = "cet email '{{ value }}' est non valide.",
+     *     checkMX = true
+     * )
      */
     private $email;
 

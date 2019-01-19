@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Open+Sans|Questrial" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Open+Sans|Questrial|PT+Serif:700" rel="stylesheet"> 
         <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" href="{{asset('js/app.js')}}">
@@ -65,12 +65,11 @@
             {# Bloc User connecté #}
             {% if is_granted('ROLE_USER') %}
                 <li>
-                	<a href="{{ path('app_login') }}">Profil</i> <span class="toggle">Expand</span><span class="caret"></span></a>
-
+                	<a href="{{ path('userInfo') }}">Profil<span class="toggle">Expand</span><span class="caret"></span></a>
                     {# Menu déroulant Profil #}
                     <nav>
                         <ul>
-                            <li><a href="#">Modifier mon profil</a></li>
+                            <li><a href="{{ path('updateProfile') }}">Modifier mon profil</a></li>
                             <li><a href="{{ path('quiz') }}">Nouveau match</a></li>
                             <li><a href="{{ path('match') }}">Derniers matchs</a></li>
                             <li><a href="{{ path('logout') }}">Déconnexion</a></li>
@@ -79,8 +78,8 @@
                     {# Fin du Menu déroulant Profil #}
                 </li>
             {% endif %}
-
             {# Fin bloc User connecté #}
+
             </ul>
         </nav>
     </header>

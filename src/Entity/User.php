@@ -20,6 +20,10 @@ class User implements UserInterface
     private $id;
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email(
+     *      message = "Cet email '{{ value }}' est invalid.",
+     *      checkMX = true
+     * )
      */
     private $email;
     /**
@@ -37,14 +41,29 @@ class User implements UserInterface
     private $plainPassword;
     /**
      * @ORM\Column(type="string", length=30)
+     * @Assert\Regex(
+     *      pattern="/[a-zA-Z]{1-30}/",
+     *      match=false,
+     *      message="Votre Prénom ne doit pas contenir de chiffre et faire plus de 30 charactères"
+     * )
      */
     private $firstname;
     /**
      * @ORM\Column(type="string", length=30)
+     * @Assert\Regex(
+     *      pattern="/[a-zA-Z]{1-30}/",
+     *      match=false,
+     *      message="Votre nom ne doit pas contenir de chiffre et faire plus de 30 charactères"
+     * )
      */
     private $lastname;
     /**
      * @ORM\Column(type="string", length=30)
+     * @Assert\Regex(
+     *      pattern="/[a-zA-Z]{1-30}/",
+     *      match=false,
+     *      message="Votre ville ne doit pas contenir de chiffre et faire plus de 30 charactères"
+     * )
      */
     private $city;
     /**
@@ -53,6 +72,11 @@ class User implements UserInterface
     private $birthday;
     /**
      * @ORM\Column(type="string", length=10)
+     * @Assert\Regex(
+     *      pattern="/[a-zA-Z]{1-10}/",
+     *      match=false,
+     *      message="Votre genre ne doit pas contenir de chiffre et faire plus de 10 charactères"
+     * )
      */
     private $gender;
     /**
@@ -68,6 +92,11 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Regex(
+     *      pattern="/\w/",
+     *      match=true,
+     *      message="Erreur veuillez contacter un administrateur"
+     * )
      */
     private $description;
     /**
@@ -85,16 +114,30 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Url(
+     *    message = "Ce lien : '{{ value }}' est invalide"
+     * )
      */
     private $facebook;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Url(
+     *    message = "Ce lien : '{{ value }}' est invalide"
+     * )
      */
     private $instagram;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ResetPassword", mappedBy="user")
+     */
+    private $resetPasswords;
+
+
     public function __construct()
     {
         $this->chats = new ArrayCollection();
+        $this->resetPasswords = new ArrayCollection();
     }
     public function getId(): ?int
     {
@@ -316,6 +359,37 @@ class User implements UserInterface
    public function setInstagram(?string $instagram): self
    {
        $this->instagram = $instagram;
+       return $this;
+   }
+
+   /**
+    * @return Collection|ResetPassword[]
+    */
+   public function getResetPasswords(): Collection
+   {
+       return $this->resetPasswords;
+   }
+
+   public function addResetPassword(ResetPassword $resetPassword): self
+   {
+       if (!$this->resetPasswords->contains($resetPassword)) {
+           $this->resetPasswords[] = $resetPassword;
+           $resetPassword->setUser($this);
+       }
+
+       return $this;
+   }
+
+   public function removeResetPassword(ResetPassword $resetPassword): self
+   {
+       if ($this->resetPasswords->contains($resetPassword)) {
+           $this->resetPasswords->removeElement($resetPassword);
+           // set the owning side to null (unless already changed)
+           if ($resetPassword->getUser() === $this) {
+               $resetPassword->setUser(null);
+           }
+       }
+
        return $this;
    }
 

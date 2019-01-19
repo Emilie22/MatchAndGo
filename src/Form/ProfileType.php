@@ -42,15 +42,6 @@ class ProfileType extends AbstractType
             ->add('picture', FileType::class, array(
                 'data_class'=> null, 
                 'label' => 'Choisis ta photo de profil', 'required' => true))
-            // ->add('pictureBg', Choicetype::class, array(
-            //     'choices'=> array('photo1' => 'photo1.jpg',
-            //                       'photo2' => 'photo2.jpg',
-            //                       'photo3' => 'photo3.jpg',
-            //                       'photo4' => 'photo4.jpg'),
-            //     'label' => 'Choisis ta photo de couverture', 
-            //     'required' => true,
-            //     'expanded' => true,
-            //     'multiple' => false))
             ->add('description', TextareaType::class, array('label' => 'Parle-nous un peu de toi !'))
             ->add('countries', TextType::class, array('label' => 'Quels pays as-tu visités ?'))
             ->add('facebook', TextType::class, array('label' => 'Lien vers ton profil facebook',

@@ -46,7 +46,7 @@ class MatchController extends AbstractController
                 if ($keyobj = 'city') {
                     $cityTab[] = $obj->getCity();
                     $url = "https://maps.googleapis.com/maps/api/geocode/json?address={".urlencode(strip_tags($obj->getCity()))."}&key=AIzaSyB0xJoi5c9MwYIYQlwIEfLqLh95hLtcaYA";
-                    // dump($url);
+                    dump($url);
                     $resultat = json_decode(file_get_contents($url, false), true);
                     // dump($resultat);
                     $lat = $resultat['results'][0]['geometry']['location']['lat'];
