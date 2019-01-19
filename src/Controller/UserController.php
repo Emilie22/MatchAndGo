@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\File\File;
 use App\Service\FileUploader;
 use App\Form\ProfileType;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends AbstractController
 {
@@ -31,7 +33,7 @@ class UserController extends AbstractController
      * @Route("/user/add", name="addProfile")
      */
 
-    public function addProfile(Request $request, FileUploader $fileuploader)
+    public function addProfile(Request $request, FileUploader $fileuploader, ValidatorInterface $validator)
     {
 
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
@@ -42,9 +44,8 @@ class UserController extends AbstractController
 
         $user = $this->getUser();
 
-
         $form = $this->createForm(ProfileType::class, $user);
-        $form->handleRequest($request);
+        $form->handleRequest($request); 
 
         if($form->isSubmitted() && $form->isValid()){
 
@@ -59,12 +60,23 @@ class UserController extends AbstractController
 
             $entityManager->flush();
 
+           
             $this->addFlash('success', 'Votre profil a bien été créé !');
             return $this->redirectToRoute('userInfo');
-    }
+        }
+
+
+        // $errors = $validator->validate($user);
+
+        // if(count($errors) > 0) {
+        //     $errorsString = (string) $errors;
+
+        //     return new Response($errorsString);
+        
 
         return $this->render('user/add.html.twig', ['form' => $form->createView()]);
-   }
+
+        }
 
 
                         // MODIFICATION DU PROFIL //
@@ -111,7 +123,7 @@ class UserController extends AbstractController
             
             return $this->redirectToRoute('userInfo');
         }
-        return $this->render('user/add.html.twig', ['user'=>$user, 'form' => $form->createView()]);
+        return $this->render('user/update.html.twig', ['user'=>$user, 'form' => $form->createView()]);
     }
 
     /**
@@ -120,7 +132,7 @@ class UserController extends AbstractController
       public function showProfile(User $user) {
 
             $imgBgProfile = [];
-            for ($i=1; $i<=5; $i++) {
+            for ($i=1; $i<=6; $i++) {
                 $imgBgProfile[] = 'backgroundprofile'.$i;
             }
         

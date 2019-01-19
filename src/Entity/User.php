@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @UniqueEntity(fields={"email"}, message="Un compte existe déjà avec cet email.")
  */
 class User implements UserInterface
 {
@@ -21,9 +21,9 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\Email(
-     *      message = "Cet email '{{ value }}' est invalid.",
+     *      message = "Cet email '{{ value }}' est invalide.",
      *      checkMX = true
-     * )
+     *)
      */
     private $email;
     /**
@@ -35,17 +35,14 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
-    /* nouvelle propriété qui va stocker le mot de passe en clair lors de l'inscription
-    *
-    */
     private $plainPassword;
     /**
      * @ORM\Column(type="string", length=30)
      * @Assert\Regex(
      *      pattern="/[a-zA-Z]{1-30}/",
      *      match=false,
-     *      message="Votre Prénom ne doit pas contenir de chiffre et faire plus de 30 charactères"
-     * )
+     *      message="Votre prénom ne doit pas contenir de chiffre ni faire plus de 30 caractères."
+     *)
      */
     private $firstname;
     /**
@@ -53,8 +50,8 @@ class User implements UserInterface
      * @Assert\Regex(
      *      pattern="/[a-zA-Z]{1-30}/",
      *      match=false,
-     *      message="Votre nom ne doit pas contenir de chiffre et faire plus de 30 charactères"
-     * )
+     *      message="Votre nom ne doit pas contenir de chiffre et faire plus de 30 caractères."
+     *)
      */
     private $lastname;
     /**
@@ -62,8 +59,8 @@ class User implements UserInterface
      * @Assert\Regex(
      *      pattern="/[a-zA-Z]{1-30}/",
      *      match=false,
-     *      message="Votre ville ne doit pas contenir de chiffre et faire plus de 30 charactères"
-     * )
+     *      message="Votre ville ne doit pas contenir de chiffre et faire plus de 30 caractères."
+     *)
      */
     private $city;
     /**
@@ -75,17 +72,21 @@ class User implements UserInterface
      * @Assert\Regex(
      *      pattern="/[a-zA-Z]{1-10}/",
      *      match=false,
-     *      message="Votre genre ne doit pas contenir de chiffre et faire plus de 10 charactères"
-     * )
+     *      message="Le genre ne doit pas contenir de chiffre et doit faire plus de 10 caractères."
+     *)
      */
     private $gender;
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\Regex(
+     *      pattern="/^0[1-68]([-. ]?[0-9]{2}){4}$/",
+     *      match=false,
+     *      message="Numéro de téléphone invalide." 
+     *)
      */
     private $phone;
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Image
      * 
      */
     private $picture;
@@ -95,12 +96,16 @@ class User implements UserInterface
      * @Assert\Regex(
      *      pattern="/\w/",
      *      match=true,
-     *      message="Erreur veuillez contacter un administrateur"
-     * )
+     *      message="Erreur, veuillez contacter un administrateur."
+     *)
      */
     private $description;
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(
+     *      min = 2,
+     *      minMessage = "Veuillez saisir un pays valide."
+     *)
      */
     private $countries;
     /**
@@ -116,15 +121,16 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Url(
      *    message = "Ce lien : '{{ value }}' est invalide"
-     * )
+     *)
      */
     private $facebook;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Url(
-     *    message = "Ce lien : '{{ value }}' est invalide"
-     * )
+     * @Assert\Length(
+     *    max = 20,
+     *    maxMessage = "Compte instagram invalide."
+     *)
      */
     private $instagram;
 

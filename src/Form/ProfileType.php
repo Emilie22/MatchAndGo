@@ -42,13 +42,13 @@ class ProfileType extends AbstractType
             ->add('picture', FileType::class, array(
                 'data_class'=> null, 
                 'label' => 'Choisis ta photo de profil', 'required' => true))
-            ->add('description', TextareaType::class, array('label' => 'Parle-nous un peu de toi !'))
+            ->add('description', TextareaType::class, array('label' => 'Parle-nous un peu de toi ! (Tes hobbies, ta personnalité, ta profession...)'))
             ->add('countries', TextType::class, array('label' => 'Quels pays as-tu visités ?'))
             ->add('facebook', TextType::class, array('label' => 'Lien vers ton profil facebook',
                 'required' => false))
             ->add('instagram', TextType::class, array('label' => 'Ton compte Instagram',
                 'required' => false))
-            ->add('save', SubmitType::class, array('label' => 'Créer mon profil'))
+            ->add('save', SubmitType::class, array('label' => 'Enregistrer'))
 
 
         ;

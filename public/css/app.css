@@ -333,20 +333,22 @@ header > nav > ul > li > nav > ul > li:hover > a {
 
 /*Création du profil*/
 
-.btnProfile{
+.btnCreateProfile{
 	background: #fdad17;
 	color: #3f4253;
 }
 
 .profileBg{
-	background-image: url('../uploads/profile/addprofil.jpg');
+	background-image: url('../uploads/user/image/addprofil.jpg');
 	background-repeat: no-repeat;
 }
 
-.formBg{
-	background-color: rgba(248,248,248,.7);
-	padding: 30px;
+.addProfileBg{
+  color: black;
+  background-color: rgba(248,248,248,0.7);
+  padding: 30px;
 }
+
 
 .fas{
 	color: #fdad17;
@@ -358,39 +360,107 @@ header > nav > ul > li > nav > ul > li:hover > a {
 	color: #fdad17;
 }
 
+
+/* Formulaire de modification du profil */
+
+.profileUpdateBg{
+  background-image: url('../uploads/user/image/updateProfile.jpg');
+  background-repeat: no-repeat;
+}
+
+
 /* Affichage du profil de l'utilisateur connecté */
 
 .imgBgProfile{
-  height: 400px;
+  height: 55.5em;
   width: 100%;
-  opacity: 0.7;
 }
-
 
 .rowBgProfile{
-  position:relative;
+  position: relative;
 }
 
-.iconFbk{
+.infosProfile{
+  position: absolute;
+  top: 0;
+  background-color: rgba(248,248,248,0.8);
+  color: #3f4253;
+  left: 12em;
+  width: 55em;
+  height: 55.5em;
+  text-align: center;
+
+}
+
+.iconFbk, .iconInsta{
   color: #fdad17;
 }
 
 
+/* Photo de profil de l'utilisateur */
+
 .avatar{
-  width: 200px;
-  height: 200px;
+  width: 15em;
+  height: 15em;
   border-radius: 50%;
   box-shadow: 0px 2px 4px black;
 }
 
-.divAvatar{
-  position: absolute;
-  top: 65%;
-  left: 44%;
+
+
+/* Responsive de la page Voir profil sur tablette */
+
+@media all and (max-width:1000px){
+
+    .infosProfile{
+      width:100%;
+      left: 0;
+    }
+
+    .imgBgProfile{
+      height: 50em;
+    }
+
+    .description p{
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .rowBgProfile{
+      height: 50em;
+    }
+
+}
+
+/* Responsive de la page Voir profil sur mobile */
+
+
+@media all and (max-width:600px){
+    
+    .infosProfile{
+      width:100%;
+      left: 0;
+    }
+
+    .imgBgProfile{
+      height: 80em;
+    }
+
+    .description p{
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    .rowBgProfile{
+      height: 80em;
+    }
+
+
 }
 
 
+
 /*CAROUSEL*/
+
 
 #carouselQuiz {
   margin-top: 2.5rem;
