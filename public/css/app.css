@@ -11,8 +11,8 @@ gris : #3f4253*/
 
 body {
   font-family: 'Open Sans', sans-serif;
+  color: #fdad17;
   background: #3f4253;
-  /*color: #fdad17;*/
 }
 
 .heightPage {
@@ -126,8 +126,8 @@ header > nav > ul > li > nav > ul > li:hover > a {
 
 .titleHome {
   position: absolute;
-  top: 40%;
-  left: 40%;
+  top: 40vh;
+  left: 40vw;
 }
 
 .titleHome > h1 {
