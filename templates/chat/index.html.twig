@@ -19,23 +19,6 @@
         <div class="container-fluid">
             <div class="offset-2 col-md-8 border border-dark rounded" id="listMessage">
             </div>
-
-            <div class="col-md-2 border-dark rounded">
-            {% for match in matchs %}
-                <div class="box14">
-                    <img src="{{ asset('uploads/user/image/'~ match.user.picture) }}" alt="Photo utilisateur">
-                    <div class="box-content">
-                        <h3 class="title">{{match.user.firstname}}</h3>
-                        <span class="post">{{match.user.lastname}}</span>
-                        <ul class="icon">
-                            <li><a href="#"><i class="fa fa-search"></i></a></li>
-                            <li><a href="#"><i class="fa fa-link"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                {% endfor %}
-
-            </div>
         </div>
     </div>
     <div class="row">
