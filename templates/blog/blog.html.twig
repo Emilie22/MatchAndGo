@@ -1,32 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Blog{% endblock %}
+{% block title %}{{blog.title}}{% endblock %}
 
-{% block body %}
-<section class="heightPage">
+	{% block body %}
+		<section class="heightPage">
 
-<div class="container-fluid">
-	{# affichage des éventuels messages flash #}
-	{% for message in app.flashes('success') %}
-		<div class="alert alert-success">
-			{{ message }}
-		</div>
-	{% endfor %}
-	<div class="row">
-		<div class="col-md-4 mx-auto mt-5">
-			<img src="{{ asset('uploads/article/image/' ~ blog.pictureblog) }}"  class="img-thumbnail">
+			<div class="container">
 
-			<h3 class="formTitle">{{ blog.title }}</h3>
-			<p class="formPublish">publié le {{ blog.datepost|date('d/m/Y') }} par {{ blog.author }}</p>
-			<p class="formContent">{{ blog.content }}</p>
-		</div>
-		{% if is_granted('ROLE_ADMIN') %}
-			
-			<a href="{{ path('deleteBlog', {slug: blog.slug}) }}"><i class="fas fa-trash"></i></a>
-			<a href="{{ path('updateBlog', {slug: blog.slug}) }}"><i class="fas fa-pencil-alt"></i></a>
-		{% endif %}	
-	</div>
-</div>
-</section>
 
-{% endblock %}
+				<div class="row">
+					<div class="col-md-4 mx-auto mt-5">
+						<img src="{{ asset('uploads/article/image/' ~ blog.pictureblog) }}"  class="img-thumbnail">
+						{% if is_granted('ROLE_ADMIN') %}
+							<a href="{{ path('deleteBlog', {slug: blog.slug}) }}"><i class="fas fa-trash"></i></a>
+							<a href="{{ path('updateBlog', {slug: blog.slug}) }}"><i class="fas fa-pencil-alt"></i></a>
+						{% endif %}	
+					</div>
+				</div>
+				<div class="row text-center">
+					<div class="col-12">
+						<h3 class="formTitle">{{ blog.title }}</h3>
+
+						<p class="formPublish">publié le {{ blog.datepost|date('d/m/Y') }} par {{ blog.author }}</p>
+					</div>
+
+					<p class="formContent blogTitle text-left">{{ blog.content }}</p>
+				</div>
+			</div>
+
+
+		</section>
+
+	{% endblock %}
