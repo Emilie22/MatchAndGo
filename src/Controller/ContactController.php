@@ -22,8 +22,8 @@ class ContactController extends AbstractController
             $entityManager->persist($profile);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Votre message a bien été envoyé !');
-            return $this->redirectToRoute('home');
+            $this->addFlash('warning', 'Votre message a bien été envoyé !');
+            return $this->redirectToRoute('contact');
     }
 
         return $this->render('contact/index.html.twig', ['form' => $form->createView()]);

@@ -58,7 +58,7 @@ class AdminController extends AbstractController{
 
             $entityManager->flush();
 
-            $this->addFlash('success', 'article ajouté');
+            $this->addFlash('warning', 'L\'article a bien été ajouté !');
 
             return $this->redirectToRoute('addBlogAdmin');
 
@@ -83,7 +83,7 @@ class AdminController extends AbstractController{
        $entityManager->flush();
 
        //génération d'un message flash
-       $this->addFlash('warning', 'Blog supprimé');
+       $this->addFlash('warning', 'L\'article a bien été supprimé !');
        //redirection vers la liste des articles
        return $this->redirectToRoute('blog');
     }
