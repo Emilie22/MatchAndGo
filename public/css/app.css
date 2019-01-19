@@ -26,6 +26,10 @@ body {
   color: #fdad17;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 
 /*HEADER logo et navbar*/
 
@@ -272,10 +276,6 @@ header > nav > ul > li > nav > ul > li:hover > a {
   margin: 5px;  
 }
 
-.fas:hover {
-  color: #3f4253;
-}
-
 .navbar-light .navbar-nav .nav-link{
 	color: #fdad17;
 }
@@ -488,6 +488,7 @@ header > nav > ul > li > nav > ul > li:hover > a {
   background: #dabc83;
   color: #3f4253;
   height: 130px;
+  margin: 5% auto;
 }
 
 
@@ -671,6 +672,16 @@ header > nav > ul > li > nav > ul > li:hover > a {
 }
 .user-link:hover{
   color: #fdad17; 
+}
+
+.searchUser, .trashUser {
+  color: #fdad17;
+  font-size: 1.5em;
+  margin: 5px;  
+}
+
+.searchUser:hover, .trashUser:hover {
+  color: #3f4253;
 }
 
 
