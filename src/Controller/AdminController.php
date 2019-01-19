@@ -230,7 +230,7 @@ class AdminController extends AbstractController{
 
         $repository = $this->getDoctrine()->getRepository(User::class);
         
-        $users = $repository->findAll();
+        $users = $repository->findBy(array(), array('firstname' => 'ASC'));
         return $this->render('admin/show.user.html.twig', [ 'users' => $users ]);
     }
 
