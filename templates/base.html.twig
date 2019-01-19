@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Open+Sans|Questrial" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Open+Sans|Questrial|PT+Serif:700" rel="stylesheet"> 
         <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" href="{{asset('js/app.js')}}">
@@ -17,7 +17,7 @@
     <header>
     {# Bloc Logo #}
         <div id="logo" class="menuUp">
-            <a class="navbar-brand" href="{{ path ('home') }}">Match&Go</a>
+            <a class="navbar-brand" href="{{ path ('home') }}"><img src="{{ asset ('logo.png')}}"></a>
             <div id="navToggle"><a href="">Menu</a></div>
         </div>
     {# Fin du bloc Logo #}
@@ -47,7 +47,7 @@
                     	<ul>
                         	<li><a href="{{ path ('users') }}">Users</a></li>
                         	<li><a href="{{ path ('addConceptAdmin') }}">Concept</a></li>
-                        	<li><a href="{{ path ('addBlogAdmin')}}">Ajouter Article</a></li>
+                        	<li><a href="{{ path ('addBlogAdmin')}}">Blog</a></li>
                     	</ul>
                 	</nav>
                 {# Fin mennu déroulant admin #}
@@ -70,7 +70,7 @@
                     <nav>
                         <ul>
                             <li><a href="{{ path('updateProfile') }}">Modifier mon profil</a></li>
-                            <li><a href="{{ path('quiz') }}">Nouveau match</a></li>
+                            <li><a href="{{ path('quiz') }}">Recherche match</a></li>
                             <li><a href="{{ path('match') }}">Derniers matchs</a></li>
                             <li><a href="{{ path('logout') }}">Déconnexion</a></li>
                         </ul>
@@ -91,7 +91,7 @@
 		<div class="row text-center">
 			<div class="col-12 col-md-4">
 				<p>Mentions légales</p>
-				<p>Conditions Générales d'Utilisation</p>
+				<a href="{{path('cgu')}}"><p>Conditions Générales d'Utilisation</p></a>
 				<p>Utilisation des cookies</p>
 				<p>Confidentialité</p>
 			</div>
@@ -102,9 +102,10 @@
 				<p><a href="https://goo.gl/maps/vQFAw9F82Pm">Nous localiser</a></p>
 			</div>
 			<div class="col-12 col-md-4">
-				<i class="fab fa-facebook-square fa-3x mr-2"></i>
-				<i class="fab fa-instagram fa-3x mr-2"></i>
-				<i class="fab fa-twitter fa-3x mr-2"></i>
+                <p>Suivez nous sur les réseaux sociaux</p>
+				<a href="https://fr-fr.facebook.com"><i class="fab fa-facebook-square fa-3x mr-2"></i></a>
+				<a href="https://www.instagram.com/"><i class="fab fa-instagram fa-3x mr-2"></i></a>
+				<a href="https://twitter.com/"><i class="fab fa-twitter fa-3x mr-2"></i></a>
 			</div>
 		</div>
 	</div>

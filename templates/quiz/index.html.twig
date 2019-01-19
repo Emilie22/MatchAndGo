@@ -9,13 +9,16 @@
 
 <div class="container-fluid">
 
+<h3 class="formTitle text-center mb-2">Répondez à ce questionnaire et trouvez vos prochains compagnons de voyage !</h3>
+<p class="text-center mb-0 titleMatch">(plusieurs réponses possibles par question)</p>	
+
 <div class="container">
 
 	{# début du formulaire #}
 	<form method="post" class="form-horizontal">
 
 	{# début du carousel #}
-	<div id="carouselQuiz" class="carousel slide" data-ride="carousel" data-interval="false">
+	<div id="carouselQuiz" class="carousel slide mb-5" data-ride="carousel" data-interval="false">
 
 		{# indicateurs du carousel #}
 		<ol class="carousel-indicators">
@@ -31,8 +34,8 @@
 				<div {% if loop.index0 == 0 %} class="carousel-item active" {% else %} class="carousel-item" {% endif %}>
 			        <img src="{{asset('uploads/quiz/picture/'~random(imgQuiz)~'.jpg') }}" class="d-block w-100 pictureQuiz">
 					<div class="row">
-			            <div class="form-group col-md-8 offset-2 text-center labelQuestion">
-							<label class="">{{ question.label }}</label>
+			            <div class="form-group col-12 text-center labelQuestion">
+							<label>{{ question.label }}</label>
 						</div>
 					</div>
 					
@@ -40,7 +43,7 @@
 						
 						{% for answer in question.answers %}	
 
-							<div class="col-12 col-md-6 btn-group-toggle text-center mt-3 mb-3" data-toggle="buttons">
+							<div class="col-12 col-md-6 btn-group-toggle text-center mb-3" data-toggle="buttons">
 								<label class="btn btn-warning btnAnswers">
 									<input type="checkbox" name="{{ answer.labelAnswer }}" value="{{ answer.id }}" autocomplete="off">
 									{{ answer.labelAnswer }}
@@ -55,6 +58,7 @@
 			{% endfor %}
 
 			<div class="carousel-item row">
+				<img src="{{asset('uploads/quiz/picture/carouselsearch.jpg') }}" class="d-block ml-2 pictureQuiz">
 				<div class="form-group col-12 text-center">
 					<button type="submit" id="btnSearchMatch">Recherche tes ami(e)s de voyage !</button>
 				</div>

@@ -2,33 +2,35 @@
 
 {% block title %}Ajouter un blog{% endblock %}
 
-{% block body %}
+    {% block body %}
 
-<section class="heightPage">
+        <section class="heightPage">
 
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success">
-            {{ message }}
-        </div>
-    {% endfor %}
+            {# affichage des messages flash #}
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }}">{{ message }}</div>
+                {% endfor %}
+            {% endfor %}
 
-    {{ form_start(form) }}
 
-    <div class="container-fluid formBackG">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-4 form-group marginForm">
-                <h3 class="formTitle mb-5 mt-4 text-center"> Ajouter un blog</h3>
 
-    <div class="form-group">{{ form_row(form.title, {'attr':{'class':'form-control formInput'}}) }}</div>
-    <div class="form-group">{{ form_row(form.content, {'attr':{'class':'form-control formInput'}}) }}</div>
-    <div class="form-group">{{ form_row(form.author, {'attr':{'class':'form-control formInput'}}) }}</div>
-    <div class="form-group">{{ form_row(form.picture_blog) }}</div>
-    <button class="btn mb-3 mt-3 formButton" type="submit">Ajouter</button>
-
+            <div class="container-fluid formBackG">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-4 form-group marginForm">
+                        <h3 class="formTitle text-center">Ajouter ou modifier un article du blog</h3>
+                        {# debut du formulaire d'ajout d'article #}
+                        {{ form_start(form) }}
+                        <div class="form-group">{{ form_row(form.title, {'attr':{'class':'form-control formInput'}}) }}</div>
+                        <div class="form-group">{{ form_row(form.content, {'attr':{'class':'form-control formInput'}}) }}</div>
+                        <div class="form-group">{{ form_row(form.author, {'attr':{'class':'form-control formInput'}}) }}</div>
+                        <div class="custom-file">{{ form_row(form.picture_blog) }}</div>
+                        <div class="text-center"><button class="btn text-center formButton" type="submit">Enregistrer</button></div>
+                        {{ form_end(form) }}
+                    </div>
                 </div>
-    {{ form_end(form) }}
             </div>
-        </div>
 
-</section>
-{% endblock %}
+        </section>
+        
+    {% endblock %}

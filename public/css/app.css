@@ -12,15 +12,27 @@ gris : #3f4253*/
 body {
   font-family: 'Open Sans', sans-serif;
   background: #3f4253;
-  color: #fdad17;
 }
 
 .heightPage {
   min-height: 100vh;
 }
 
+.formTitle{
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  font-family: 'PT Serif', serif;
+  font-weight: 700;
+  color: #fdad17;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
 
 /*HEADER logo et navbar*/
+
 
 header {
   position: relative;
@@ -37,6 +49,11 @@ header {
   text-align: center;
 }
 
+.navbar-brand > img{
+    width: 80%;
+    margin-top: -13px;
+}
+}
 header > div#logo {
     line-height: 70px;
     position: relative;
@@ -120,19 +137,19 @@ header > nav > ul > li > nav > ul > li:hover > a {
 
 /*1ère section home page*/
 
+.logoHome{
+  margin-bottom: 15px;
+  width: 100%;
+}
+
 .videoHome {
   position: relative;
 }
 
 .titleHome {
   position: absolute;
-  top: 40%;
-  left: 40%;
-}
-
-.titleHome > h1 {
-  font-family: 'Dancing Script', cursive;
-  font-size: 5rem;
+  top: 40vh;
+  left: 40vw;
 }
 
 .firstHome > p {
@@ -146,23 +163,23 @@ header > nav > ul > li > nav > ul > li:hover > a {
 }
 
 .step1 {
-  color: red;
-  border: 5px solid red;
+  color: #DABC83;
+  border: 5px solid #DABC83;
 }
 
 .step2 {
-  color: purple;
-  border: 5px solid purple;
+  color: #fdad17;
+  border: 5px solid #fdad17;
 }
 
 .step3 {
-  color: green;
-  border: 5px solid green;
+  color: #E8570C;
+  border: 5px solid #E8570C;
 }
 
 .step4 {
-  color: blue;
-  border: 5px solid blue;
+  color: #B70000;
+  border: 5px solid #B70000;
 }
 
 .step1, .step2, .step3, .step4 {
@@ -213,8 +230,6 @@ header > nav > ul > li > nav > ul > li:hover > a {
 }
 
 
-
-
 /*FORMULAIRES*/
 
 .formBackG{
@@ -231,18 +246,12 @@ header > nav > ul > li > nav > ul > li:hover > a {
 .formButton{
   background: #fdad17;
   color: #3f4253;
-  margin: 230px;
- }
-
-.formTitle{
-  color: #fdad17;   
+  margin: 1rem;
  }
 
  .form-inline .form-control{
     width: 100%;
 }
-
-
 
 /*Création du profil*/
 
@@ -271,10 +280,6 @@ header > nav > ul > li > nav > ul > li:hover > a {
 	color: #fdad17;
 }
 
-a:hover {
-	color: #3f4253;
-}
-
 /* Affichage du profil de l'utilisateur connecté */
 
 .imgBgProfile{
@@ -292,9 +297,6 @@ a:hover {
   color: #fdad17;
 }
 
-.iconInsta{
-  color: #fdad17;
-}
 
 .avatar{
   width: 200px;
@@ -309,16 +311,14 @@ a:hover {
   left: 44%;
 }
 
+
 /*CAROUSEL*/
 
-
-
 #carouselQuiz {
+  margin-top: 2.5rem;
 	background-color: #fff;
-  /*padding: 100px;*/
   height: 600px;
   position: relative;
-  /*box-shadow: 5px 5px 10px lightgrey, -5px -5px 10px lightgrey;*/
 }
 
 .carousel-inner {
@@ -345,16 +345,16 @@ a:hover {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 110%;
   height: 600px;
   opacity: 0.6;
 }
 
-
 .labelQuestion {
   margin-top: 4rem;
-  color: #3f4253;/*
-  font-family: 'Lobster', cursive;*/
+  color: #3f4253;
+  font-family: 'PT Serif', serif;
+  font-weight: 700;
   font-size: 2rem;
 }
 
@@ -378,14 +378,96 @@ a:hover {
 #btnSearchMatch {
   background-color: #fdad17;
   color: #3f4253;
-  width: 300px;
+  width: 55%;
   height: 100px;
   border: 1px solid #fdad17;
   border-radius: 5px;
-  margin-top: 250px;
-  box-shadow: 10px 10px 20px lightgrey, -10px -10px 20px lightgrey;
+  margin: 5rem auto 0;
+  font-size: 1.7rem;
+  padding: 10px;
 }
 
+#btnSearchMatch:hover {
+  background-color: #3f4253;
+  color: #fdad17;  
+  cursor: pointer;
+}
+
+/*responsive tablette carousel quiz*/
+@media all and (max-width: 1000px) {
+  .btnAnswers {
+    width: 100%;
+  }
+  #btnSearchMatch {
+    margin: 0 auto;
+    width: 60%;
+    height: 100px;
+    border: 1px solid #fdad17;
+    border-radius: 5px;
+    margin-top: 15rem;
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+/*responsive portable carousel quiz*/
+@media all and (max-width: 576px) {
+  .labelQuestion {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+  .littleContainer {
+    width: 80%;
+    margin: 30% auto 0;
+  }
+  .btnAnswers {
+    width: 100%;
+  }
+  #btnSearchMatch {
+    margin: 0 auto;
+    width: 60%;
+    height: 100px;
+    border: 1px solid #fdad17;
+    border-radius: 5px;
+    margin-top: 15rem;
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
+
+/*PAGE MATCH*/
+
+.imgProfileMatch {
+  width: 100%;
+  height: 50%;
+  box-shadow: 0px 10px 10px -4px #6A708C;
+}
+
+.avatar2 {
+  border-radius: 50%;
+}
+
+.card {
+    min-height: 200px;
+    border: none;
+}
+
+.fa-user, .fa-comment {
+  border-radius: 50%;
+  background-color: #fdad17;
+  color: #fff;
+  font-size: 1rem;
+  padding: 12px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  box-shadow: 0px 10px 10px -4px #6A708C;
+}
+
+.fa-user:hover, .fa-comment:hover {
+  background-color: #3f4253;
+  color: #fff;
+}
 
 /*Formulaire admin Concept*/
 
@@ -406,44 +488,8 @@ a:hover {
   background: #dabc83;
   color: #3f4253;
   height: 130px;
+  margin: 5% auto;
 }
-
-
-/*page match*/
-
-
-.titleMatch {
-  color: #fdad17;
-}
-
-.imgProfileMatch {
-  width: 100%;
-  box-shadow: 0px 10px 10px -4px #6A708C;
-}
-
-.avatar2 {
-  border-radius: 50%;
-}
-
-.card {
-    width: 200px;
-    min-height:300px;
-    background:#dabc83;
-    box-shadow:0 20px 50px rgba(0,0,0, 0.3);
-}
-
-.card:hover {
-    box-shadow:0 30px 70px rgba(0,0,0,0.7);
-}
-
-.btnChat, .btnProfile {
-  background-color: #3f4253;
-  border: 1px solid #3f4253;
-  color: #fdad17; 
-  margin: 0 auto;
-  padding: 5px 10px;
-}
-
 
 
 
@@ -456,7 +502,7 @@ a:hover {
 
 
 /* Medium screens */
-@media all and (min-width: 600px) {
+@media all and (min-width: 576px) {
   header > div#logo > div#navToggle {
     display: none;    
   }
@@ -532,10 +578,6 @@ a:hover {
 
 }
 
-
-
-
-
 .btn-outline-light {
     color: #f8f9fa;
     background-color: transparent;
@@ -570,7 +612,7 @@ a:hover {
 
 .main-box.no-header {
     padding-top: 20px;
-    margin-top: 160px;
+    margin-top: 50px;
 }
 .main-box {
     background: #FFFFFF;
@@ -600,10 +642,7 @@ a:hover {
     padding-top: 3px;
     margin-left: 60px;
 }
-a {
-    color: #3f4253;
-    outline: none!important;
-}
+ 
 .user-list tbody td>img {
     position: relative;
     max-width: 50px;
@@ -635,6 +674,16 @@ a {
   color: #fdad17; 
 }
 
+.searchUser, .trashUser {
+  color: #fdad17;
+  font-size: 1.5em;
+  margin: 5px;  
+}
+
+.searchUser:hover, .trashUser:hover {
+  color: #3f4253;
+}
+
 
 /*BLOG*/
 
@@ -648,6 +697,23 @@ a {
   width: 100%;
 }
 
+.formContent{
+  margin-top: 30px;
+}
+
+.formPublish{
+  margin-top: 25px;
+  text-align: center;
+}
+
+.blogTitle{
+  color: #e0b565;
+}
+
+.blogTitle:hover{
+  text-decoration: none;
+  color: #fff;
+}
 
 /*FOOTER*/
 
@@ -673,5 +739,6 @@ mark{
     background: none;
     color: rgb(66, 67, 85);
 }
+
 
 
