@@ -11,12 +11,19 @@ gris : #3f4253*/
 
 body {
   font-family: 'Open Sans', sans-serif;
-  color: #fdad17;
   background: #3f4253;
 }
 
 .heightPage {
   min-height: 100vh;
+}
+
+.formTitle{
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  font-family: 'PT Serif', serif;
+  font-weight: 700;
+  color: #fdad17;
 }
 
 
@@ -231,10 +238,6 @@ header > nav > ul > li > nav > ul > li:hover > a {
 .formButton{
   background: #fdad17;
   color: #3f4253;
- }
-
-.formTitle{
-  color: #fdad17;   
  }
 
  .form-inline .form-control{
@@ -635,10 +638,6 @@ header > nav > ul > li > nav > ul > li:hover > a {
 .imgBlog > img {
   height: 100%;
   width: 100%;
-}
-
-.formTitle{
-  margin-top: 50px;
 }
 
 .formContent{
