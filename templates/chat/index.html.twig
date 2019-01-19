@@ -23,7 +23,7 @@
             <div class="col-md-2 border-dark rounded">
             {% for match in matchs %}
                 <div class="box14">
-                    <img src="{{ asset('uploads/user/image/'~ match.picture) }}" alt="Photo utilisateur">
+                    <img {# src="{{ asset('uploads/user/image/'~ match.picture) }}" #} alt="Photo utilisateur">
                     <div class="box-content">
                         <h3 class="title">{{match.firstname}}</h3>
                         <span class="post">{{match.lastname}}</span>
