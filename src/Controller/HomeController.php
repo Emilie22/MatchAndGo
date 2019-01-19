@@ -23,4 +23,12 @@ class HomeController extends AbstractController
 
 
     }
+
+    /**
+     * @Route("/cgu", name="cgu")
+     */
+    public function cgu(){
+        return $this->render('home/cgu.html.twig');
+    }
+    
 }
