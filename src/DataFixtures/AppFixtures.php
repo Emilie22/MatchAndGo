@@ -22,8 +22,8 @@ class AppFixtures extends Fixture
         {
 
             $user = new User();
-            $user->setFirstname('Dupond');
-            $user->setLastName('Emilie');
+            $user->setLastname('Dupond');
+            $user->setFirstname('Emilie');
             $user->setCity('Montpellier');
             $user->setBirthday(new \DateTime('1980-07-24'));
             $user->setGender('Femme');
@@ -46,8 +46,8 @@ class AppFixtures extends Fixture
         {
 
             $user = new User();
-            $user->setFirstname('Giaconi');
-            $user->setLastName('Jean');
+            $user->setLastname('Giaconi');
+            $user->setFirstname('Jean');
             $user->setCity('Paris');
             $user->setBirthday(new \DateTime('1990-10-03'));
             $user->setGender('Homme');
@@ -70,8 +70,8 @@ class AppFixtures extends Fixture
         {
 
             $user = new User();
-            $user->setFirstname('Vaugiraud');
-            $user->setLastName('Mélanie');
+            $user->setLastname('Vaugiraud');
+            $user->setFirstname('Mélanie');
             $user->setCity('Lyon');
             $user->setBirthday(new \DateTime('1995-12-27'));
             $user->setGender('Femme');
@@ -94,8 +94,8 @@ class AppFixtures extends Fixture
         {
 
             $user = new User();
-            $user->setFirstname('Franchin');
-            $user->setLastName('Paul');
+            $user->setLastname('Franchin');
+            $user->setFirstname('Paul');
             $user->setCity('Nice');
             $user->setBirthday(new \DateTime('2000-01-17'));
             $user->setGender('Homme');
@@ -118,8 +118,8 @@ class AppFixtures extends Fixture
         {
 
             $user = new User();
-            $user->setFirstname('Ramont');
-            $user->setLastName('Audrey');
+            $user->setLastname('Ramont');
+            $user->setFirstname('Audrey');
             $user->setCity('Rennes');
             $user->setBirthday(new \DateTime('1988-03-14'));
             $user->setGender('Femme');
@@ -142,8 +142,8 @@ class AppFixtures extends Fixture
         {
 
             $user = new User();
-            $user->setFirstname('Beric');
-            $user->setLastName('Robert');
+            $user->setLastname('Beric');
+            $user->setFirstname('Robert');
             $user->setCity('Nantes');
             $user->setBirthday(new \DateTime('1983-12-30'));
             $user->setGender('Homme');
@@ -166,8 +166,8 @@ class AppFixtures extends Fixture
          {
 
             $user = new User();
-            $user->setFirstname('Marks');
-            $user->setLastName('Laura');
+            $user->setLastname('Marks');
+            $user->setFirstname('Laura');
             $user->setCity('Strasbourg');
             $user->setBirthday(new \DateTime('1987-06-11'));
             $user->setGender('Femme');
@@ -190,8 +190,8 @@ class AppFixtures extends Fixture
         {
 
             $user = new User();
-            $user->setFirstname('Prudhomme');
-            $user->setLastName('David');
+            $user->setLastname('Prudhomme');
+            $user->setFirstname('David');
             $user->setCity('Toulouse');
             $user->setBirthday(new \DateTime('1988-07-12'));
             $user->setGender('Homme');
@@ -214,8 +214,8 @@ class AppFixtures extends Fixture
         {
 
             $user = new User();
-            $user->setFirstname('Trapp');
-            $user->setLastName('Kevin');
+            $user->setLastname('Trapp');
+            $user->setFirstname('Kevin');
             $user->setCity('Bordeaux');
             $user->setBirthday(new \DateTime('1986-02-01'));
             $user->setGender('Homme');
@@ -238,8 +238,8 @@ class AppFixtures extends Fixture
         {
 
             $user = new User();
-            $user->setFirstname('Cardoso');
-            $user->setLastName('Sophie');
+            $user->setLastname('Cardoso');
+            $user->setFirstname('Sophie');
             $user->setCity('Marseille');
             $user->setBirthday(new \DateTime('1995-09-17'));
             $user->setGender('Femme');
@@ -262,8 +262,8 @@ class AppFixtures extends Fixture
         {
 
             $user = new User();
-            $user->setFirstname('Austin');
-            $user->setLastName('Léa');
+            $user->setLastname('Austin');
+            $user->setFirstname('Léa');
             $user->setCity('Nancy');
             $user->setBirthday(new \DateTime('1998-06-21'));
             $user->setGender('Femme');
@@ -286,8 +286,8 @@ class AppFixtures extends Fixture
         {
 
             $user = new User();
-            $user->setFirstname('Ticot');
-            $user->setLastName('Iris');
+            $user->setLastname('Ticot');
+            $user->setFirstname('Iris');
             $user->setCity('Genève');
             $user->setBirthday(new \DateTime('2001-12-01'));
             $user->setGender('Femme');
@@ -310,8 +310,8 @@ class AppFixtures extends Fixture
         {
 
             $user = new User();
-            $user->setFirstname('Vianello');
-            $user->setLastName('Thibault');
+            $user->setLastname('Vianello');
+            $user->setFirstname('Thibault');
             $user->setCity('Madrid');
             $user->setBirthday(new \DateTime('1999-01-05'));
             $user->setGender('Homme');
@@ -334,8 +334,8 @@ class AppFixtures extends Fixture
         {
 
             $user = new User();
-            $user->setFirstname('Da Silva');
-            $user->setLastName('Eva');
+            $user->setLastname('Da Silva');
+            $user->setFirstname('Eva');
             $user->setCity('Lisbonne');
             $user->setBirthday(new \DateTime('1996-10-10'));
             $user->setGender('Femme');
@@ -358,8 +358,8 @@ class AppFixtures extends Fixture
         {
 
             $user = new User();
-            $user->setFirstname('Guion');
-            $user->setLastName('Stéphane');
+            $user->setLastname('Guion');
+            $user->setFirstname('Stéphane');
             $user->setCity('Berlin');
             $user->setBirthday(new \DateTime('1991-05-23'));
             $user->setGender('Homme');
@@ -382,8 +382,8 @@ class AppFixtures extends Fixture
         {
 
             $user = new User();
-            $user->setFirstname('Allois');
-            $user->setLastName('Manon');
+            $user->setLastname('Allois');
+            $user->setFirstname('Manon');
             $user->setCity('Londre');
             $user->setBirthday(new \DateTime('1981-11-02'));
             $user->setGender('Femme');
@@ -406,8 +406,8 @@ class AppFixtures extends Fixture
         {
 
             $user = new User();
-            $user->setFirstname('Piralla');
-            $user->setLastName('Lana');
+            $user->setLastname('Piralla');
+            $user->setFirstname('Lana');
             $user->setCity('Athènes');
             $user->setBirthday(new \DateTime('1992-10-23'));
             $user->setGender('Femme');
@@ -430,8 +430,8 @@ class AppFixtures extends Fixture
         {
 
             $user = new User();
-            $user->setFirstname('Rodriguez');
-            $user->setLastName('Pedro');
+            $user->setLastname('Rodriguez');
+            $user->setFirstname('Pedro');
             $user->setCity('Seville');
             $user->setBirthday(new \DateTime('1985-02-03'));
             $user->setGender('Homme');
@@ -454,8 +454,8 @@ class AppFixtures extends Fixture
         {
 
             $user = new User();
-            $user->setFirstname('Tevenot');
-            $user->setLastName('Michael');
+            $user->setLastname('Tevenot');
+            $user->setFirstname('Michael');
             $user->setCity('Bordeaux');
             $user->setBirthday(new \DateTime('1980-11-14'));
             $user->setGender('Homme');
@@ -478,8 +478,8 @@ class AppFixtures extends Fixture
         {
 
             $user = new User();
-            $user->setFirstname('Vuckovic');
-            $user->setLastName('Andrea');
+            $user->setLastname('Vuckovic');
+            $user->setFirstname('Andrea');
             $user->setCity('Moscou');
             $user->setBirthday(new \DateTime('1981-04-13'));
             $user->setGender('Femme');
@@ -502,8 +502,8 @@ class AppFixtures extends Fixture
         {
 
             $user = new User();
+            $user->setLastname('admin');
             $user->setFirstname('admin');
-            $user->setLastName('admin');
             $user->setCity('Bordeaux');
             $user->setBirthday(new \DateTime('1981-04-13'));
             $user->setGender('Homme');
