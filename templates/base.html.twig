@@ -70,9 +70,10 @@
                         {# Bloc User connecté #}
                         {% if is_granted('ROLE_USER') %}
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{ path('userInfo') }}" id="navbarProfil" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profil<span class="caret"></span><span class="cache">A</span></a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarProfil" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profil<span class="caret"></span><span class="cache">A</span></a>
                             {# Menu déroulant Profil #}
                             <div class="dropdown-menu" aria-labelledby="navbarProfil">
+                                <a class="dropdown-item" href="{{ path('userInfo') }}">Voir mon profil</a>
                                 <a class="dropdown-item" href="{{ path('updateProfile') }}">Modifier mon profil</a>
                                 <a class="dropdown-item" href="{{ path('quiz') }}">Recherche match</a>
                                 <a class="dropdown-item" href="{{ path('match') }}">Derniers matchs</a>

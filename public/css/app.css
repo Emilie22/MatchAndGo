@@ -389,6 +389,10 @@ body {
   border: 10px solid #25283a;
 }
 
+.titleQuiz {
+  color: #fdad17;
+}
+
 .ico {
   background: none;
   color: #3f4253;
@@ -509,11 +513,15 @@ body {
 
 .avatar2 {
   border-radius: 50%;
+  width: 125px;
+  height: 100px;
+  margin-top: 30px;
 }
 
 .card {
     min-height: 200px;
     border: none;
+    margin: 20px;
 }
 
 .fa-user, .fa-comment {
@@ -530,6 +538,36 @@ body {
 .fa-user:hover, .fa-comment:hover {
   background-color: #3f4253;
   color: #fff;
+}
+
+@media all and (max-width: 1000px) {
+  .card-body {
+    padding: 10px;
+  }
+  .card-body > p {
+    font-size: 0.8rem;
+  }
+  .fa-user, .fa-comment {
+    font-size: 0.8rem;
+    margin: 0;
+    padding: 12px;
+    box-shadow: 0px 10px 10px -4px #6A708C;
+  }
+  #mapLoc {
+    height: 400px;
+  }
+  .titleMatch {
+    font-size: 1.2rem;
+  }
+}
+@media all and (max-width: 600px) {
+  .card {
+    width: 60%;
+    margin: 20px auto;
+  }
+  .avatar2 {
+    display: none;
+  }
 }
 
 /*Formulaire admin Concept*/

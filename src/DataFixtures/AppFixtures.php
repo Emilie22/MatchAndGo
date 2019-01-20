@@ -565,7 +565,7 @@ class AppFixtures extends Fixture
             $user->setDescription('Cela fait dix ans que je voyage autour du monde. J’ai exploré 50 pays, et je compte bien rallonger la liste ! Je suis adepte du voyage à sac à dos, minimaliste et hors des sentiers battus. J’espère trouver des voyageurs passionnés comme moi sur Match&Go !');
             $user->setCountries('Australie, Népal, Hawaï');
             $user->setEmail('admin@admin.com');
-            $roles =['ROLE_ADMIN'];
+            $roles =['ROLE_USER', 'ROLE_ADMIN'];
             $user->setRoles($roles);
             $plainPassword = 'toto';
             $mdpencoded = $this->encoder->encodePassword($user, $plainPassword);
