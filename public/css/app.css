@@ -26,8 +26,13 @@ body {
   color: #fdad17;
 }
 
-a:hover {
+.lienHome:hover {
   text-decoration: none;
+  color: #fdad17; 
+}
+
+.lienHome{
+  color: #dabc83; 
 }
 
 
@@ -694,7 +699,7 @@ a:hover {
 
 .blogTitle:hover{
   text-decoration: none;
-  color: #fff;
+  color: #fdad17;
 }
 
 /*responsive tablette blog*/
