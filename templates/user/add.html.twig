@@ -13,13 +13,11 @@
 				{% endfor %}
 				
 			{# Message d'erreur #}
-				{% if errors is defined %}
-					<div class="bg-warning">
-						{% for error in errors %}
-							<li>{{ error.message }}</li>
-						{% endfor %}
-					</div>
-				{% endif %}
+			{% if errors is defined %}
+					{% for error in errors %}
+						<div class="alert alert-warning">{{ error.message }}</div>
+					{% endfor %}
+			{% endif %}
 
 				<div class="row justify-content-center">
 					<div class="col-12 col-md-9 col-lg-4 form-group">
@@ -63,7 +61,7 @@
 										{{ form_row(form.phone, {'attr':{'class':'col-12 col-md-12 form-control mb-2 inputProfile'}}) }}
 									</div>
 								</div>
-								<!-- {{ form_row(form.picture, {'attr':{'class':'col-12 col-md-12 inputProfile mb-2 mr-5'}}) }} -->
+								{{ form_row(form.picture, {'attr':{'class':'col-12 col-md-12 inputProfile mb-2 mr-5'}}) }}
 								{{ form_row(form.description, {'attr':{'class':'mt-3 form-control  inputProfile'}})  }}
 								{{ form_row(form.countries, {'attr':{'class':'form-control  inputProfile'}}) }}
 								{{ form_row(form.facebook, {'attr':{'class':'form-control  inputProfile'}}) }}

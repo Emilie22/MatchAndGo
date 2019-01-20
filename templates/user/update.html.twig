@@ -14,14 +14,13 @@
 
 			<div class="container-fluid profileUpdateBg">
 
-				{# Message d'erreur #}
+			{# Message d'erreur #}
 			{% if errors is defined %}
-				<div class="bg-warning">
 					{% for error in errors %}
-						<li>{{ error.message }}</li>
+						<div class="alert alert-warning">{{ error.message }}</div>
 					{% endfor %}
-				</div>
 			{% endif %}
+			
 
 				<div class="row justify-content-center">
 					<div class="col-12 col-md-9 col-lg-4 form-group">
