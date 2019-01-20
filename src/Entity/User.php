@@ -5,6 +5,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -139,6 +140,11 @@ class User implements UserInterface
      */
     private $resetPasswords;
 
+    /**
+    * @Gedmo\Slug(fields={"firstname"})
+    * @ORM\Column(length=128, unique=true)
+    */
+    private $slug;
 
     public function __construct()
     {
@@ -399,6 +405,17 @@ class User implements UserInterface
        return $this;
    }
 
+   public function getSlug(): ?string
+   {
+       return $this->slug;
+   }
+
+   public function setSlug(string $slug): self
+   {
+       $this->slug = $slug;
+
+       return $this;
+   }
 
 }
 
