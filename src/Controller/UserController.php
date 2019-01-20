@@ -2,16 +2,16 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\File;
-use App\Service\FileUploader;
-use App\Form\ProfileType;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Symfony\Component\HttpFoundation\Response;
+use App\Service\FileUploader;
+use App\Form\ProfileType;
+use App\Entity\User;
 
 class UserController extends AbstractController
 {
@@ -33,7 +33,7 @@ class UserController extends AbstractController
      * @Route("/user/add", name="addProfile")
      */
 
-    public function addProfile(Request $request, FileUploader $fileuploader, ValidatorInterface $validator)
+    public function addProfile(Request $request,FileUploader $fileuploader, ValidatorInterface $validator)
     {
 
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
@@ -45,10 +45,17 @@ class UserController extends AbstractController
         $user = $this->getUser();
 
         $form = $this->createForm(ProfileType::class, $user);
-        $form->handleRequest($request); 
+        $form->handleRequest($request);
+        
+        $errors = $validator->validate($user);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if(count($errors)>0){
+            
+                return $this->render('user/add.html.twig', ['form' => $form->createView(), 'errors' => $errors]);
+        }
+        if($form->isSubmitted() && count($errors) === 0){
 
+            
             $user = $form->getData();
 
             $file = $user->getPicture(); 
@@ -60,19 +67,10 @@ class UserController extends AbstractController
 
             $entityManager->flush();
 
-           
+
             $this->addFlash('success', 'Votre profil a bien été créé !');
             return $this->redirectToRoute('userInfo');
         }
-
-
-        // $errors = $validator->validate($user);
-
-        // if(count($errors) > 0) {
-        //     $errorsString = (string) $errors;
-
-        //     return new Response($errorsString);
-        
 
         return $this->render('user/add.html.twig', ['form' => $form->createView()]);
 
@@ -84,13 +82,13 @@ class UserController extends AbstractController
     /**
     * @Route("/login/update", name="updateProfile")
     */
-    public function updateProfile(Request $request, FileUploader $fileuploader){
+    public function updateProfile(Request $request, FileUploader $fileuploader, ValidatorInterface $validator){
 
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         $user = $this->getUser();
 
-        $filename = $user->getPicture();
+        // $filename = $user->getPicture();
 
 
         if ($user->getPicture()) {
@@ -100,8 +98,14 @@ class UserController extends AbstractController
         $form = $this->createForm(ProfileType::class, $user);
         $form->handleRequest($request);
 
+        $errors = $validator->validate($user);
 
-        if($form->isSubmitted() && $form->isValid())
+        if(count($errors)>0){
+            
+                return $this->render('user/update.html.twig', ['form' => $form->createView(), 'errors' => $errors]);
+        }
+
+        if($form->isSubmitted() && $form->isValid() && count($errors) === 0)
         {
             $user = $form->getData();
 
