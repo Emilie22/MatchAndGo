@@ -26,7 +26,7 @@
                                 <tr>
                                     <td>
                                         <img src="https://bootdey.com/img/Content/user_2.jpg" alt="">
-                                        <a href="{{ path('showProfile', {id: user.id}) }}" class="user-link">{{ user.firstname }}</a>
+                                        <a href="{{ path('showProfileWithSlug', {slug: user.slug}) }}" class="user-link">{{ user.firstname }}</a>
                                     </td>
                                     <td>
                                         <span class="label label-default">{{ user.lastname }}</span>
@@ -38,7 +38,7 @@
                                         <span class="label label-default">{{ user.email }}</span>
                                     </td>
                                     <td style="width: 20%;">
-                                        <a href="{{ path('showProfile', {id: user.id}) }}" class="fas fa-search-plus searchUser">
+                                        <a href="{{ path('showProfileWithSlug', {slug: user.slug}) }}" class="fas fa-search-plus searchUser">
                                         </a>
                                         <a href="{{ path('deleteUser', {id: user.id}) }}" class="fas fa-trash trashUser">
                                         </a>

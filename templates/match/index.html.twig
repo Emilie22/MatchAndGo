@@ -33,7 +33,7 @@
 								<p class="card-text text-center">{{ userB.city }}</p>
 								<div class="row">
 									<div class="col-12 text-center">
-										<a href="{{path('showProfile', {id:userB.id}) }}"><i class="fas fa-user"></i></a>
+										<a href="{{path('showProfileWithSlug', {slug:userB.slug}) }}"><i class="fas fa-user"></i></a>
 										<a href="{{path('addChat', {idUser:userB.id}) }}"><i class="fas fa-comment"></i></a>
 									</div>
 

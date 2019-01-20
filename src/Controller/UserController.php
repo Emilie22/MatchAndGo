@@ -131,9 +131,9 @@ class UserController extends AbstractController
     }
 
     /**
-      * @Route ("/user/show/{id}", name="showProfile", requirements={"id"="\d+"})
+      * @Route ("/user/show/{slug}", name="showProfileWithSlug", requirements={"slug"="[a-z0-9]+(?:-[a-z0-9]+)*"})
       */
-      public function showProfile(User $user) {
+      public function showProfileWithSlug(User $user) {
 
             $imgBgProfile = [];
             for ($i=1; $i<=6; $i++) {
