@@ -31,22 +31,11 @@ a:hover {
 }
 
 
-/*HEADER logo et navbar*/
+/*NAVBAR*/
 
-
-header {
-  position: relative;
-  min-height: auto;
-  text-align: center;
-  width: 100%;
-  background-color: #c9c9c9;
-  background-position: center;
-  background-size: cover;
-  height: 56px;
-  border-bottom: 1px solid rgba(0,0,0,.15);
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+#navbar {
+  position: absolute;
+  right: 8%;
 }
 
 .navbar-brand > img{
@@ -54,161 +43,52 @@ header {
     margin-top: -13px;
 }
 
-header > div#logo {
-    line-height: 70px;
-    position: relative;
-}
-  
-header > .menuUp {
-    box-shadow: none;
+.dropdown > a > .cache {
+  background-color: #fff;
+  width: 15px;
+  position: absolute;
+  color: #fff;
 }
 
-header > nav {
-    background-color: white;
-    display: none;
-    flex: 1;
-    transform: 300ms all ease;
-}
-    
-header nav > ul {
-    list-style-type: none;    
-}
-        
-header nav > ul > li {
-    border-bottom: 1px dotted rgba(0,0,0,.1);
-    position: relative;
-}
-            
-header nav > ul > li:last-of-type {
-    border-bottom: none;    
-}
-            
-header nav > ul > li > a {
-    display: block;
-    color: rgba(0,0,0,.65);
-    font-weight: 700;
-    padding: 1.5rem 0;
-    text-decoration: none;
-    transition: 250ms all ease;
-}
-        
-header nav > ul > li > a span.toggle {
-  background-color: rgba(0,0,0,.05);
-  border-radius: 3rem;
-  color: rgba(0,0,0,.25);
-  font-size: 0.75em;
-  font-weight: 500;
-  padding: 2px 8px;
-  text-transform: lowercase;  
-}
-          
-header nav > ul > li > a span.caret {
-  display: none;
-}
-                
-header > nav > ul > li:hover > a {
-    color: #fdad17;  
-}
-                
-header > nav > ul > li > nav {
-    background-color: rgb(51,51,51);
-    border-radius: 1.5em;
-    box-shadow: 0 2px 8px rgba(0,0,0,.6);
-    display: none;
-    overflow: hidden;
-    position: absolute;
-    right: 5%;
-    width: 90%;
-    z-index: 100;
-}
-            
-header > nav > ul > li > nav > ul > li > a {
-    color: rgba(255,255,255,.85);
-    transition: 300ms all ease;
-}
-                
-header > nav > ul > li > nav > ul > li:hover > a {
-    background-color: rgba(0,0,0,.6);
-    color: #fdad17;
+.dropdown > a > .caret {
+  border-bottom: 4px solid transparent;
+  border-top: 4px solid #fdad17;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  border-radius: 1px;
+  content: "";
+  display: inline-block;
+  height: 0;
+  margin: 0 0 0 .25rem;
+  transition: 250ms all ease;
+  width: 0;
+  vertical-align: middle;
 }
 
-/* Medium screens */
-@media all and (min-width: 576px) {
-  header > div#logo > div#navToggle {
-    display: none;    
-  }
+.dropdown:hover > a > .caret {
+  border-top-color: rgb(140, 193, 193);
+  transform: rotate(270deg); 
+}
 
-  header {
-    background-color: white;
-    flex-direction: row;
-    line-height: 60px;
-    padding: 0 3rem;
-    position: relative;
-    text-align: left;
-    width: 100%;
-  }
+.dropdown-item {
+  color: #fdad17;
+}
 
-  header > div#logo {
-    background-color: transparent;
-    line-height: 50px;
-  }
+/*responsive navbar*/
 
+@media all and (max-width:1000px){
 
-  header > nav {
-    background-color: transparent;
-    display: block;
-  }
-
-  header > nav > ul {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-end;    
-  }
-
-  header nav > ul > li {
-    border-bottom: none;
-  }
-
-  header nav > ul > li > a {
-    padding: 0 1.25rem;
-  }
-
-  header nav > ul > li > a span.toggle {
-    display: none;  
-  }
-
-  header nav > ul > li > a span.caret {
-    border-bottom: 4px solid transparent;
-    border-top: 4px solid rgba(0,0,0,.65);
-    border-right: 4px solid transparent;
-    border-left: 4px solid transparent;
-    border-radius: 1px;
-    content: "";
-    display: inline-block;
-    height: 0;
-    margin: 0 0 0 .25rem;
-    transition: 250ms all ease;
-    width: 0;
-    vertical-align: middle;
-  }
-
-  header nav > ul > li:hover > a span.caret {
-    border-top-color: rgb(140, 193, 193);
-    transform: rotate(270deg); 
-  }
-
-  header > nav > ul > li:hover > nav {
-    background-color: rgb(51,51,51);
-    border-radius: .25em;
-    box-shadow: 0 2px 8px rgba(0,0,0,.6);
-    display: block;
-    line-height: 3em;
-    right: -50%;
-    width: 196px;
+  #navbar {
+    z-index: 10;
+    top: 100%;    
+    right: 0;
+    border: 1px solid lightgrey;
+    width: 200px;
+    padding: 10px;
+    background-color: #fff;
   }
 
 }
-
 
 
 /*HOME PAGE*/
@@ -220,7 +100,7 @@ header > nav > ul > li > nav > ul > li:hover > a {
   width: 100%;
 }
 
-.videoHome {
+.firstHome {
   position: relative;
 }
 
@@ -228,6 +108,10 @@ header > nav > ul > li > nav > ul > li:hover > a {
   position: absolute;
   top: 40vh;
   left: 40vw;
+}
+
+.homeP {
+  color: #fdad17;
 }
 
 .firstHome > p {
@@ -306,6 +190,30 @@ header > nav > ul > li > nav > ul > li:hover > a {
     padding-right: 0;
     padding-left: 0;
 }
+
+/*responsive home page*/
+
+@media all and (max-width:1000px){
+  .titleHome {
+    position: absolute;
+    top: 9vh;
+    left: 34vw;
+  }
+  .step1, .step2, .step3, .step4 {
+    width: 100px;
+    padding: 12px 0;
+  }
+}
+
+@media all and (max-width:600px){
+  .titleHome {
+    position: absolute;
+    top: 2vh;
+    left: 13vw;
+  }
+}
+
+
 
 
 /*FORMULAIRES*/
@@ -560,7 +468,7 @@ header > nav > ul > li > nav > ul > li:hover > a {
   }
 }
 /*responsive portable carousel quiz*/
-@media all and (max-width: 576px) {
+@media all and (max-width: 600px) {
   .labelQuestion {
     margin-top: 2rem;
     font-size: 1.5rem;
