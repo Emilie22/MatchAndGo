@@ -323,10 +323,11 @@ a:hover {
     .infosProfile{
       width:100%;
       left: 0;
+      height: 64em;
     }
 
     .imgBgProfile{
-      height: 50em;
+      height: 64em;
     }
 
     .description p{
@@ -348,6 +349,7 @@ a:hover {
     .infosProfile{
       width:100%;
       left: 0;
+      height: 80em;
     }
 
     .imgBgProfile{
