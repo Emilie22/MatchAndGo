@@ -119,7 +119,7 @@ class UserController extends AbstractController
             $entitymanager->flush();
 
 
-            $this->addFlash('success', 'Votre profil a bien été modifié');
+            $this->addFlash('warning', 'Votre profil a bien été modifié');
             
             return $this->redirectToRoute('userInfo');
         }
