@@ -15,7 +15,7 @@
      </video>
 
       <div class="titleHome text-center">
-        <img  class="logoHome" src="{{ asset ('Matchandgo4.png')}}">
+        <img class="logoHome" src="{{ asset ('Matchandgo4.png')}}">
         <p class="homeP">Trouvez votre partenaire de voyage</p>
         <a href="{{ path('app_register') }}" class="btn btn-outline-light">Go</a>
       </div>
@@ -28,19 +28,19 @@
       <div class="row">
         <div class="col-12 col-md-3 text-center pl-2 pr-4">
           <p class="text-center mt-5 step1">1</p>
-          <p class="text-center text-white">Inscris-toi sur Match&Go !</p>
+          <p class="text-center text-white px-3">Inscris-toi sur Match&Go !</p>
         </div>
         <div class="col-12 col-md-3 text-center pl-2 pr-4">
           <p class="text-center mt-5 step2">2</p>
-          <p class="text-center text-white">Créé ton profil !</p>
+          <p class="text-center text-white px-3">Créé ton profil !</p>
         </div>
         <div class="col-12 col-md-3 text-center pl-2 pr-4">
           <p class="text-center mt-5 step3">3</p>
-          <p class="text-center text-white">Répond à notre questionnaire en fonction de tes envies de voyage !</p>
+          <p class="text-center text-white px-3">Répond à notre questionnaire en fonction de tes envies de voyage !</p>
         </div>
         <div class="col-12 col-md-3 text-center pl-2 pr-4">
           <p class="text-center mt-5 step4">4</p>
-          <p class="text-center text-white">Trouve les personnes qui te correpondent et discute avec elles !</p>
+          <p class="text-center text-white px-3">Trouve les personnes qui te correpondent et discute avec !</p>
         </div>              
       </div>
 
@@ -53,7 +53,7 @@
 
       <div class="row no-gutter">
         {% for blog in blogs %}
-          <div class="col-lg-4 col-sm-6">
+          <div class="col-12 col-lg-4 ">
             <a href="{{ path ('showBlogWithSlug', {slug:blog.slug}) }}" class="gallery-box">
               <img src="{{ asset('uploads/article/image/' ~ blog.pictureblog) }}"  class="img-thumbnail">
             </a>

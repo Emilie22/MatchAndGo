@@ -1,92 +1,97 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-        <title>{% block title %}Match&Go{% endblock %}</title>
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <title>{% block title %}Match&Go{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Open+Sans|Questrial|PT+Serif:700" rel="stylesheet"> 
-        <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="{{asset('css/app.css')}}">
-        <link rel="stylesheet" href="{{asset('js/app.js')}}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Open+Sans|Questrial|PT+Serif:700" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('js/app.js')}}">
 
     {% block stylesheets %}{% endblock %}
-<body>      
-    <header>
-    {# Bloc Logo #}
-        <div id="logo" class="menuUp">
-            <a class="navbar-brand" href="{{ path ('home') }}"><img src="{{ asset ('logo.png')}}"></a>
-            <div id="navToggle"><a href="">Menu</a></div>
-        </div>
-    {# Fin du bloc Logo #}
 
+    <body>      
+        <header>
 
-{# Début de la Navbar #}
+            <nav class="navbar navbar-expand-lg navbar-light bg-white" id="navbarAll">
 
-    <nav>
-        <ul>
-        {# Bloc visiteur #}
-            <li>
-                <a href="{{ path ('concept') }}">Concept</a>
-            </li>
-            <li>
-                <a href="{{ path ('blog')}}">Blog</a>
-            </li>
-            <li>
-                <a href="{{ path ('contact')}}">Contact</a>
-            </li>
-        {# Fin du bloc visiteur #}
-        {# Bloc Admin #}
-            {% if is_granted('ROLE_ADMIN') %}
-                <li>
-                    <a href="#">Admin <span class="toggle">Expand</span><span class="caret"></span></a>
-                {# Ul déroulant Admin #}
-                    <nav>
-                        <ul>
-                            <li><a href="{{ path ('users') }}">Users</a></li>
-                            <li><a href="{{ path ('addConceptAdmin') }}">Concept</a></li>
-                            <li><a href="{{ path ('addBlogAdmin')}}">Ajouter Article</a></li>
-                        </ul>
-                    </nav>
-                {# Fin mennu déroulant admin #}
-                </li>
-            {% endif %}
-        {# Fin du bloc Admin #}
-        {# lien connexion #}
-            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                <li>
-                    <a href="{{ path('app_login') }}">Connexion</a>
-                </li>
-            {% endif %}
-            {# Fin lien connexion #}
+                {# Bloc Logo / lien page home #}
+                <a class="navbar-brand" href="{{ path ('home') }}"><img src="{{ asset ('logo.png')}}"></a>
+                {# Fin du bloc Logo #}
 
-            {# Bloc User connecté #}
-            {% if is_granted('ROLE_USER') %}
-                <li>
-                    <a href="{{ path('userInfo') }}">Profil<span class="toggle">Expand</span><span class="caret"></span></a>
-                    {# Menu déroulant Profil #}
-                    <nav>
-                        <ul>
-                            <li><a href="{{ path('updateProfile') }}">Modifier mon profil</a></li>
-                            <li><a href="{{ path('quiz') }}">Nouveau match</a></li>
-                            <li><a href="{{ path('match') }}">Derniers matchs</a></li>
-                            <li><a href="{{ path('logout') }}">Déconnexion</a></li>
-                        </ul>
-                    </nav>
-                    {# Fin du Menu déroulant Profil #}
-                </li>
-            {% endif %}
-            {# Fin bloc User connecté #}
+                {# bouton burger #}
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                {# fin bouton burger #}
 
-            </ul>
-        </nav>
-    </header>
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="navbar-nav">
 
-{% block body %}{% endblock %}
+                        {# Bloc visiteur #}
+                        <li class="nav-item mr-3">
+                            <a class="nav-link" href="{{ path ('concept') }}">Concept</a>
+                        </li>
+                        <li class="nav-item mr-3">
+                            <a class="nav-link" href="{{ path ('blog')}}">Blog</a>
+                        </li>
+                        <li class="nav-item mr-3">
+                            <a class="nav-link" href="{{ path ('contact')}}">Contact</a>
+                        </li>
+                        {# Fin du bloc visiteur #}
 
-<footer>
+                        {# Bloc Admin #}
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarAdmin" role="button" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">Admin<span class="caret"></span><span class="cache">A</span></a>
+                            {# Menu déroulant Admin #}
+                            <div class="dropdown-menu" aria-labelledby="navbarAdmin">
+                                <a class="dropdown-item" href="{{ path ('users') }}">Users</a>
+                                <a class="dropdown-item" href="{{ path ('addConceptAdmin') }}">Concept</a>
+                                <a class="dropdown-item" href="{{ path ('addBlogAdmin')}}">Blog</a>
+                            </div>
+                            {# Fin menu déroulant admin #}
+                        </li>
+                        {% endif %}
+                        {# Fin du bloc Admin #}
+
+                        {# Bloc Connexion #}
+                        {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                        </li>
+                        {% endif %}
+                        {# fin bloc connexion #}
+
+                        {# Bloc User connecté #}
+                        {% if is_granted('ROLE_USER') %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="{{ path('userInfo') }}" id="navbarProfil" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profil<span class="caret"></span><span class="cache">A</span></a>
+                            {# Menu déroulant Profil #}
+                            <div class="dropdown-menu" aria-labelledby="navbarProfil">
+                                <a class="dropdown-item" href="{{ path('updateProfile') }}">Modifier mon profil</a>
+                                <a class="dropdown-item" href="{{ path('quiz') }}">Recherche match</a>
+                                <a class="dropdown-item" href="{{ path('match') }}">Derniers matchs</a>
+                                <a class="dropdown-item" href="{{ path('logout') }}">Déconnexion</a>
+                            </div>
+                            {# Fin du Menu déroulant Profil #}
+                        </li>
+                        {% endif %}
+                        {# Fin du bloc User connecté #}
+
+                    </ul>
+                </div>
+            </nav>
+
+        </header>
+
+  {% block body %}{% endblock %}
+
+  <footer>
     <div class="container-fluid">
         <div class="row text-center">
             <div class="col-12 col-md-4">
@@ -112,9 +117,34 @@
 </footer>
 
 {% block javascripts %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script>
+
+// // When the user scrolls down 20px from the top of the document, slide down the navbar
+
+// window.onscroll = function() {scrollFunction()};
+
+
+
+// function scrollFunction() {
+
+// // Valeur a modifier pour a un peu plus de la moitié de vidéo la nav devienne noir :
+
+//   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+
+//     document.getElementById("navbarAll").style.background = "black";
+
+//   } else {
+
+//     document.getElementById("navbarAll").style.background= "transparent";
+
+//   }
+
+// }
+
+</script>
 {% endblock %}
 
-    </body>
+</body>
 </html>
