@@ -62,16 +62,10 @@ class ChatController extends AbstractController
     public function index(Request $request) {
 
         $repository = $this->getDoctrine()->getRepository(Chat::class);
-        
 
         $user = $this->getUser();
-
         $userId = $user->getId();
-
-        
-
         $chat = $repository->findWithChat($userId);
-        dump($matchs);
         return $this->render('chat/index.html.twig', ['chats'=>$chat]);
     }
 

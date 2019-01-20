@@ -13,7 +13,15 @@
 				{% endfor %}
 
 			<div class="container-fluid profileUpdateBg">
-				
+
+			{# Message d'erreur #}
+			{% if errors is defined %}
+					{% for error in errors %}
+						<div class="alert alert-warning">{{ error.message }}</div>
+					{% endfor %}
+			{% endif %}
+			
+
 				<div class="row justify-content-center">
 					<div class="col-12 col-md-9 col-lg-4 form-group">
 						<div class="addProfileBg">

@@ -35,31 +35,32 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
     private $plainPassword;
     /**
      * @ORM\Column(type="string", length=30)
      * @Assert\Regex(
-     *      pattern="/[a-zA-Z]{1-30}/",
+     *      pattern="/\d/",
      *      match=false,
-     *      message="Votre prénom ne doit pas contenir de chiffre ni faire plus de 30 caractères."
+     *      message="Votre prénom ne doit pas contenir de chiffre."
      *)
      */
     private $firstname;
     /**
      * @ORM\Column(type="string", length=30)
      * @Assert\Regex(
-     *      pattern="/[a-zA-Z]{1-30}/",
+     *      pattern="/\d/",
      *      match=false,
-     *      message="Votre nom ne doit pas contenir de chiffre et faire plus de 30 caractères."
+     *      message="Votre nom ne doit pas contenir de chiffre."
      *)
      */
     private $lastname;
     /**
      * @ORM\Column(type="string", length=30)
      * @Assert\Regex(
-     *      pattern="/[a-zA-Z]{1-30}/",
+     *      pattern="/\d/",
      *      match=false,
-     *      message="Votre ville ne doit pas contenir de chiffre et faire plus de 30 caractères."
+     *      message="Votre ville ne doit pas contenir de chiffre."
      *)
      */
     private $city;
@@ -70,9 +71,9 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=10)
      * @Assert\Regex(
-     *      pattern="/[a-zA-Z]{1-10}/",
+     *      pattern="/\d/",
      *      match=false,
-     *      message="Le genre ne doit pas contenir de chiffre et doit faire plus de 10 caractères."
+     *      message="Votre genre ne doit pas contenir de chiffre."
      *)
      */
     private $gender;
@@ -80,7 +81,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", nullable=true)
      * @Assert\Regex(
      *      pattern="/^0[1-68]([-. ]?[0-9]{2}){4}$/",
-     *      match=false,
+     *      match=true,
      *      message="Numéro de téléphone invalide." 
      *)
      */

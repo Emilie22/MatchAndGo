@@ -3,16 +3,8 @@
 {% block title %}Création de profil{% endblock %}
 
 	{% block body %}
-{# 		<ul>
-			{% for error in errors %}
-				<li>{{ error.message }}</li>
-			{% endfor %}
-		</ul> #}
-
 
 			<div class="container-fluid profileBg">
-
-		
 				{# affichage des messages flash #}
 				{% for label, messages in app.flashes %}
 					{% for message in messages %}
@@ -20,6 +12,13 @@
 					{% endfor %}
 				{% endfor %}
 				
+			{# Message d'erreur #}
+			{% if errors is defined %}
+					{% for error in errors %}
+						<div class="alert alert-warning">{{ error.message }}</div>
+					{% endfor %}
+			{% endif %}
+
 				<div class="row justify-content-center">
 					<div class="col-12 col-md-9 col-lg-4 form-group">
 						<div class="addProfileBg">
