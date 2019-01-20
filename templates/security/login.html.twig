@@ -13,7 +13,7 @@
             {% endif %}
                 <div class="row justify-content-center"> 
 
-                    <div class="col-12 col-md-4 marginForm">
+                    <div class="col-12 col-md-9 col-lg-4 marginForm">
                         <h3 class="formTitle text-center">Se connecter</h3>
                         <label class="mb-3 mt-3" for="inputEmail">Email</label>
                         <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control formInput" placeholder="Email" required autofocus>
@@ -31,9 +31,7 @@
                         <a href="{{path('resetPassword')}}">Mot de passe oublié</a>
                     </div>
 
-                    <button class="mb-3 mt-3 btn formButton" type="submit">
-                        Connexion
-                    </button>
+                    <div class="text-center"><button class="btn text-center formButton" type="submit">Connexion</button></div>
                 </div>
             </div>
         </form>
