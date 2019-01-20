@@ -13,42 +13,19 @@
         <link rel="stylesheet" href="{{asset('js/app.js')}}">
 
     {% block stylesheets %}{% endblock %}
-<body>   	
+<body>      
     <header>
+    {# Bloc Logo #}
+        <div id="logo" class="menuUp">
+            <a class="navbar-brand" href="{{ path ('home') }}"><img src="{{ asset ('logo.png')}}"></a>
+            <div id="navToggle"><a href="">Menu</a></div>
+        </div>
+    {# Fin du bloc Logo #}
 
 
-	
-    </header>
+{# Début de la Navbar #}
 
-{% block body %}{% endblock %}
-
-<footer>
-	<div class="container-fluid">
-		<div class="row text-center">
-			<div class="col-12 col-md-4">
-				<p>Mentions légales</p>
-				<a href="{{path('cgu')}}"><p>Conditions Générales d'Utilisation</p></a>
-				<p>Utilisation des cookies</p>
-				<p>Confidentialité</p>
-			</div>
-			<div class="col-12 col-md-4">
-				<p>Match&Go</p>
-				<p>66 rue Abbé de l'Epée</p>
-				<p>33000 Bordeaux</p>
-				<p><a href="https://goo.gl/maps/vQFAw9F82Pm">Nous localiser</a></p>
-			</div>
-			<div class="col-12 col-md-4">
-                <p>Suivez nous sur les réseaux sociaux</p>
-				<a href="https://fr-fr.facebook.com"><i class="fab fa-facebook-square fa-3x mr-2"></i></a>
-				<a href="https://www.instagram.com/"><i class="fab fa-instagram fa-3x mr-2"></i></a>
-				<a href="https://twitter.com/"><i class="fab fa-twitter fa-3x mr-2"></i></a>
-			</div>
-		</div>
-	</div>
-</footer>
-
-
-<nav>
+    <nav>
         <ul>
         {# Bloc visiteur #}
             <li>
@@ -70,7 +47,7 @@
                         <ul>
                             <li><a href="{{ path ('users') }}">Users</a></li>
                             <li><a href="{{ path ('addConceptAdmin') }}">Concept</a></li>
-                            <li><a href="{{ path ('addBlogAdmin')}}">Blog</a></li>
+                            <li><a href="{{ path ('addBlogAdmin')}}">Ajouter Article</a></li>
                         </ul>
                     </nav>
                 {# Fin mennu déroulant admin #}
@@ -93,7 +70,7 @@
                     <nav>
                         <ul>
                             <li><a href="{{ path('updateProfile') }}">Modifier mon profil</a></li>
-                            <li><a href="{{ path('quiz') }}">Recherche match</a></li>
+                            <li><a href="{{ path('quiz') }}">Nouveau match</a></li>
                             <li><a href="{{ path('match') }}">Derniers matchs</a></li>
                             <li><a href="{{ path('logout') }}">Déconnexion</a></li>
                         </ul>
@@ -105,6 +82,35 @@
 
             </ul>
         </nav>
+    </header>
+
+{% block body %}{% endblock %}
+
+<footer>
+    <div class="container-fluid">
+        <div class="row text-center">
+            <div class="col-12 col-md-4">
+                <p>Mentions légales</p>
+                <a href="{{path('cgu')}}"><p>Conditions Générales d'Utilisation</p></a>
+                <p>Utilisation des cookies</p>
+                <p>Confidentialité</p>
+            </div>
+            <div class="col-12 col-md-4">
+                <p>Match&Go</p>
+                <p>66 rue Abbé de l'Epée</p>
+                <p>33000 Bordeaux</p>
+                <p><a href="https://goo.gl/maps/vQFAw9F82Pm">Nous localiser</a></p>
+            </div>
+            <div class="col-12 col-md-4">
+                <p>Suivez nous sur les réseaux sociaux</p>
+                <a href="https://fr-fr.facebook.com"><i class="fab fa-facebook-square fa-3x mr-2"></i></a>
+                <a href="https://www.instagram.com/"><i class="fab fa-instagram fa-3x mr-2"></i></a>
+                <a href="https://twitter.com/"><i class="fab fa-twitter fa-3x mr-2"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
 {% block javascripts %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
