@@ -518,7 +518,7 @@ class AppFixtures extends Fixture
             $user->setPicture('samiaphoto');
             $user->setDescription('Je suis retraitée et j\'habite au Bardo, en Tunisie. Je vis seule, et j\'ai eu l\'occasion de découvrir le Maghreb avec ma famille. Aujourd\'hui j\'aimerais découvrir des destinations plus lointaines. Ce qui m\'intéresse dans le voyage, c\'est la dimension culturelle et l\'architecture.');
             $user->setCountries('Algérie, Egypte, Malte');
-            $user->setEmail('Dupont.roger@gmail.com');
+            $user->setEmail('Bensaoud.Samia@gmail.com');
             $roles =['ROLE_USER'];
             $user->setRoles($roles);
             $plainPassword = 'toto';
