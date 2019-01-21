@@ -1,31 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Création de profil{% endblock %}
+{% block title %}Modification du profil{% endblock %}
 
 	{% block body %}
-{# 		<ul>
-			{% for error in errors %}
-				<li>{{ error.message }}</li>
-			{% endfor %}
-		</ul> #}
 
+
+	{# affichage des messages flash #}
+				{% for label, messages in app.flashes %}
+					{% for message in messages %}
+						<div class="alert alert-{{ label }}">{{ message }}</div>
+					{% endfor %}
+				{% endfor %}
 
 			<div class="container-fluid profileUpdateBg">
 
-				{# Message d'erreur #}
+			{# Message d'erreur #}
 			{% if errors is defined %}
-				<div class="bg-warning">
 					{% for error in errors %}
-						<li>{{ error.message }}</li>
+						<div class="alert alert-warning">{{ error.message }}</div>
 					{% endfor %}
-				</div>
 			{% endif %}
+			
 
 				<div class="row justify-content-center">
-					<div class="col-12 col-md-4 form-group">
+					<div class="col-12 col-md-9 col-lg-4 form-group">
 						<div class="addProfileBg">
 							
-							<h3 class="text-center mt-3">Modifier mon profil sur Match&Go</h3>
+							<h3 class="text-center mt-3">Modifier mon profil Match&Go</h3>
 							<div class="form-group mt-3">
 
 								{{ form_start(form) }}

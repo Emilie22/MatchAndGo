@@ -15,7 +15,18 @@
 	<div class="row">
 		<div class="col-12">
 			<div class="text-center">
-				<img class="avatar2 mr-3" src="http://placekitten.com/70/70" alt=""><h3 class="formTitle"> Bonjour {{ moi.firstname }} ! Voici les voyageurs qui te correspondent !<br>N'hésite pas à discuter avec eux ! <a href="{{ path ('quiz')}}">Nouvelle recherche</a></h3>
+				<div class="row">
+					<div class="col-md-3 text-right">
+						<img class="avatar2 mr-3" src="{{ asset('uploads/user/image/' ~ moi.picture) }}" alt="">
+					</div>
+					<div class="col-md-7">
+						<h3 class="formTitle titleMatch"> Bonjour {{ moi.firstname }} ! Voici les voyageurs qui te correspondent !<br>N'hésite pas à discuter avec eux ! </h3>
+					</div>
+					<div class="col-md-2">
+						<a href="{{ path ('quiz')}}">Nouvelle recherche</a>
+					</div>
+				</div>
+				
 			</div>
 
 		</div>
@@ -25,15 +36,15 @@
 			<div class="row">
 				{% for userA in userMatch %}
 					{% for userB in userA %}
-					<div class="col-12 col-md-4 px-4">
-						<div class="card my-3">
+					<div class="col-12 col-md-4">
+						<div class="card">
 							<img src="http://placekitten.com/100/60" alt="photoUserMatch" class="imgProfileMatch">
 							<div class="card-body">
 								<p class="card-title text-center">{{ userB.firstname }}<br><span>{{ userB.gender }} | {{ userB.birthday|date('m-d-Y') }}</span></p>
 								<p class="card-text text-center">{{ userB.city }}</p>
 								<div class="row">
 									<div class="col-12 text-center">
-										<a href="{{path('showProfile', {id:userB.id}) }}"><i class="fas fa-user"></i></a>
+										<a href="{{path('showProfileWithSlug', {slug:userB.slug}) }}"><i class="fas fa-user"></i></a>
 										<a href="{{path('addChat', {idUser:userB.id}) }}"><i class="fas fa-comment"></i></a>
 									</div>
 

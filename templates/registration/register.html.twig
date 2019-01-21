@@ -5,18 +5,18 @@
 {% block body %}
 
 <section class="heightPage">
-		{# Message d'erreur #}
-		{% if errors is defined %}
-		<div class="bg-warning">
+
+	{# Message d'erreur #}
+	{% if errors is defined %}
 			{% for error in errors %}
-				<li>{{ error.message }}</li>
+				<div class="alert alert-warning">{{ error.message }}</div>
 			{% endfor %}
-		</div>
 	{% endif %}
+
 	<div class="container-fluid formBackG">
 
 		<div class="row justify-content-center"> 
-			<div class="col-12 col-md-4 form-group marginForm">
+			<div class="col-12 col-md-9 col-lg-4 marginForm">
 				<h3 class="formTitle text-center">S'inscrire sur Match&Go</h3>
 				<div class="form-group mt-3">
 					{{ form_start(registrationForm)}}
@@ -29,7 +29,7 @@
 						{{ form_label(registrationForm.TermsAccepted, 'Accepter les CGU', {'label_attr':{'class':'form-check-label form-check-input'}}) }}
 					</div>
 				</div>
-		        <button class="btn mb-3 mt-3 formButton" type="submit">S'inscrire</button>
+				<div class="text-center"><button class="btn text-center formButton" type="submit">S'inscrire</button></div>
 				{{ form_end(registrationForm) }}
 			</div>		
 		</div>

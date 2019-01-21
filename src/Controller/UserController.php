@@ -29,9 +29,11 @@ class UserController extends AbstractController
 
                     // CREATION DU PROFIL //
 
+
     /**
      * @Route("/user/add", name="addProfile")
      */
+
 
     public function addProfile(Request $request,FileUploader $fileuploader, ValidatorInterface $validator)
     {
@@ -49,11 +51,15 @@ class UserController extends AbstractController
         
         $errors = $validator->validate($user);
 
-        if(count($errors)>0){
+                    /* PROBLEME avec Serialization du fichier, validation impossible */
+
+        // if(count($errors)>0){
             
-                return $this->render('user/add.html.twig', ['form' => $form->createView(), 'errors' => $errors]);
-        }
-        if($form->isSubmitted() && count($errors) === 0){
+        //         return $this->render('user/add.html.twig', ['form' => $form->createView(), 'errors' => $errors]);
+        // }
+        // if($form->isSubmitted() && $form->isValid() && count($errors) === 0){
+
+        if($form->isSubmitted()){
 
             
             $user = $form->getData();
@@ -100,12 +106,17 @@ class UserController extends AbstractController
 
         $errors = $validator->validate($user);
 
-        if(count($errors)>0){
-            
-                return $this->render('user/update.html.twig', ['form' => $form->createView(), 'errors' => $errors]);
-        }
+                        /* PROBLEME avec Serialization du fichier, validation impossible */
 
-        if($form->isSubmitted() && $form->isValid() && count($errors) === 0)
+        // if(count($errors)>0){
+            
+        //         return $this->render('user/update.html.twig', ['form' => $form->createView(), 'errors' => $errors]);
+        // }
+
+        // if($form->isSubmitted() && $form->isValid() && count($errors) === 0)
+        // {
+
+         if($form->isSubmitted())
         {
             $user = $form->getData();
 
@@ -113,7 +124,7 @@ class UserController extends AbstractController
 
                 $file = $user->getPicture();
 
-            $filename = $fileuploader->upload($file, $this->getParameter('user_image_directory'), $filename);
+            $filename = $file ? $fileuploader->upload($file, $this->getParameter('user_image_directory')) : '';
             }
 
             $user->setPicture($filename);
@@ -123,7 +134,7 @@ class UserController extends AbstractController
             $entitymanager->flush();
 
 
-            $this->addFlash('success', 'Votre profil a bien été modifié');
+            $this->addFlash('warning', 'Votre profil a bien été modifié');
             
             return $this->redirectToRoute('userInfo');
         }
@@ -131,9 +142,9 @@ class UserController extends AbstractController
     }
 
     /**
-      * @Route ("/user/show/{id}", name="showProfile", requirements={"id"="\d+"})
+      * @Route ("/user/show/{slug}", name="showProfileWithSlug", requirements={"slug"="[a-z0-9]+(?:-[a-z0-9]+)*"})
       */
-      public function showProfile(User $user) {
+      public function showProfileWithSlug(User $user) {
 
             $imgBgProfile = [];
             for ($i=1; $i<=6; $i++) {
