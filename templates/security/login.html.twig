@@ -2,10 +2,11 @@
 
 {% block title %}Connexion{% endblock %}
 
+          {#   Page de connexion #}
+
 {% block body %}
 
 <section class="heightPage">
-
     <div class="container-fluid formBackG">
         <form class="form-group mb-0" method="post">
             {% if error %}
@@ -28,16 +29,17 @@
                         <label>
                             <input class="mr-3 mt-3" type="checkbox" name="_remember_me">Se souvenir de moi
                         </label>
-                        <a class="ml-3 blogTitle" href="{{path('resetPassword')}}">Mot de passe oublié</a>
-                    </div>
 
-                    <div class="text-center"><button class="btn text-center formButton" type="submit">Connexion</button></div>
+                        <a class="ml-3 blogTitle" href="{{path('resetPassword')}}">Mot de passe oublié</a>
+
+                    </div>
+                    <div class="text-center">
+                        <button class="btn text-center formButton" type="submit">Connexion</button>
+                    </div>
                 </div>
             </div>
         </form>
-
     </div>
-
 </section>
 
 {% endblock %}

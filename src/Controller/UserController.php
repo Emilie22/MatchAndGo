@@ -28,7 +28,7 @@ class UserController extends AbstractController
         ]);
     }
 
-                    // CREATION DU PROFIL //
+                    // FORMULAIRE DE CREATION DU PROFIL //
 
 
     /**
@@ -52,7 +52,7 @@ class UserController extends AbstractController
         
         $errors = $validator->validate($user);
 
-                    /* PROBLEME avec Serialization du fichier, validation impossible */
+                    /* PROBLEME avec Serialization du fichier, validation du formulaire impossible */
 
         // if(count($errors)>0){
             
@@ -84,7 +84,7 @@ class UserController extends AbstractController
         }
 
 
-                        // MODIFICATION DU PROFIL //
+                        // FORMULAIRE DE MODIFICATION DU PROFIL //
 
     /**
     * @Route("/login/update", name="updateProfile")
@@ -95,11 +95,7 @@ class UserController extends AbstractController
 
         $user = $this->getUser();
 
-
-
-
         // $filename = $user->getPicture();
-
 
         if ($user->getPicture()) {
             // $user->setPicture(new File($this->getParameter('upload_directory') . $this->getParameter('user_image_directory') . '/' . $filename ));
@@ -110,7 +106,7 @@ class UserController extends AbstractController
 
         $errors = $validator->validate($user);
 
-                        /* PROBLEME avec Serialization du fichier, validation impossible */
+        /* PROBLEME avec Serialization du fichier, validation impossible */
 
         // if(count($errors)>0){
             
@@ -144,6 +140,9 @@ class UserController extends AbstractController
         }
         return $this->render('user/update.html.twig', ['user'=>$user, 'form' => $form->createView(), 'age'=>$age]);
     }
+
+
+                /* PAGE POUR VOIR LE PROFIL D'UN UTILISATEUR */
 
     /**
       * @Route ("/user/show/{slug}", name="showProfileWithSlug", requirements={"slug"="[a-z0-9]+(?:-[a-z0-9]+)*"})

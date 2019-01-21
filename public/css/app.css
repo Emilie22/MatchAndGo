@@ -14,10 +14,13 @@ body {
   background: #3f4253;
 }
 
+/* Hauteur des pages du site */
 .heightPage {
   min-height: 100vh;
 }
 
+
+/* Titres principaux du site */
 .formTitle{
   margin-top: 3rem;
   margin-bottom: 3rem;
@@ -84,7 +87,7 @@ body {
   color: #fdad17;
 }
 
-/*responsive navbar*/
+/* Responsive navbar*/
 
 @media all and (max-width:1000px){
 
@@ -259,6 +262,7 @@ body {
 .profileBg{
   background-image: url('../uploads/user/image/addprofil.jpg');
   background-repeat: no-repeat;
+
 }
 
 .addProfileBg{
@@ -284,7 +288,7 @@ body {
 @media all and (max-width:1000px){
   .profileBg{
     background-size: cover; 
-    height: 64em;
+    height: 68em;
   }
 
   .addProfileBg{
@@ -297,7 +301,7 @@ body {
 
 @media all and (max-width:600px){
   .profileBg{
-    height: 71em;
+    height: 79em;
     background-size: cover;
   }
 
@@ -496,6 +500,7 @@ body {
   cursor: pointer;
 }
 
+
 /*responsive tablette carousel quiz*/
 @media all and (max-width: 1000px) {
   .btnAnswers {
@@ -576,6 +581,19 @@ body {
   color: #fff;
 }
 
+.btnSearch{
+  background: #fdad17;
+  color: #3f4253;
+}
+
+.btnSearch a{
+  background: #fdad17;
+  color: #3f4253;
+}
+
+
+/* Responsive de la page liste des matchs */
+
 @media all and (max-width: 1000px) {
   .card-body {
     padding: 10px;
@@ -627,6 +645,10 @@ body {
   margin: 5% auto;
 }
 
+.teamPhoto img{
+  width: 10em;
+  height: 10em;
+}
 
 
 
@@ -635,8 +657,6 @@ body {
 #mapLoc {
   height: 600px;
 }
-
-
 
 
 .btn-outline-light {
@@ -669,7 +689,7 @@ body {
 }
 
 
-/* admin user */ 
+/* Admin  : gestion des users */ 
 
 .main-box.no-header {
     padding-top: 20px;
@@ -812,8 +832,6 @@ mark{
     background: none;
     color: rgb(66, 67, 85);
 }
-
-
 
 .colorP{
   color: #fdad17 

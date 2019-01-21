@@ -14,6 +14,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Form\BlogType;
+                        
+                        // FORMULAIRE D'AJOUT D'ARTICLES DE BLOG //
 
 class BlogType extends AbstractType
 {

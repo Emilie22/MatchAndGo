@@ -17,7 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Validator\Constraints\IsTrue;
 
-
+            // FORMULAIRE DE CREATION ET MODIFICATION DE PROFIL //
 
 class ProfileType extends AbstractType
 {
@@ -28,8 +28,9 @@ class ProfileType extends AbstractType
             ->add('firstname', TextType::class, array('label' => 'Prénom'))
             ->add('lastname', TextType::class, array('label' => 'Nom'))
             ->add('gender', ChoiceType::class, array(
-                'label' => ' ',
+                'label' => 'Genre',
                 'choices' =>array(
+                    'Choisir le genre' =>null,
                     'Femme' => 'femme',
                     'Homme' => 'homme')))
             ->add('city', TextType::class, array('label' => 'Ville'))

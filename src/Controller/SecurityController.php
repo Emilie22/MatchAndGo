@@ -15,6 +15,8 @@ use App\Entity\ResetPassword;
 use App\Entity\User;
 
 class SecurityController extends AbstractController
+
+                                 // CONNEXION //
 {
     /**
      * @Route("/login", name="app_login")
@@ -31,8 +33,7 @@ class SecurityController extends AbstractController
 
 
 
-
-                    // AFFICHAGE DU PROFIL //
+                    // AFFICHAGE DU PROFIL DE L'UTILISATEUR CONNECTE //
 
    /**
    * @Route("/login/infos", name="userInfo")
@@ -58,7 +59,7 @@ class SecurityController extends AbstractController
     }
 
 
-
+                    // MOT DE PASSE OUBLIE //
     /**
      * @Route("/reset/password", name="resetPassword")
      */
@@ -73,7 +74,7 @@ class SecurityController extends AbstractController
                 $errors[] = 'Email invalide';
             }
             if($post['email'] !== $post['verifEmail']){
-                $errors[] = 'Les emails ne sont pas identique';
+                $errors[] = 'Les emails ne sont pas identiques';
             }
             if(empty($errors)){
                 $repository = $this->getDoctrine()->getRepository(User::class);
@@ -109,6 +110,7 @@ class SecurityController extends AbstractController
                         ->setFrom('matchandgowf3@gmail.com')
                         // ->setTo('$post['email'])
                         ->setBody("<a href='{{ url('valideToken', {'token': $token, 'id': $user }) }}'>Cliquez ici pour changez votre mot de passe </a>");
+
 
                                 $mailer->send($message);
 
@@ -168,6 +170,7 @@ class SecurityController extends AbstractController
                             
                             $this->addFlash('success', 'Mot de passe changé !');
                             return $this->redirectToRoute('app_login');
+
                         }
                     }
                 }
