@@ -355,6 +355,11 @@ body {
   box-shadow: 0px 2px 4px black;
 }
 
+/* Lien chat sur le profil d'un utilisateur */
+.infosProfile a{
+  color: #3f4253;
+}
+
 
 
 /* Responsive de la page Voir profil sur tablette */
