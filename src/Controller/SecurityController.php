@@ -111,6 +111,7 @@ class SecurityController extends AbstractController
                         ->setBody("<a href='{{ path('valideToken', {'token': $token, 'id': $users->getId() }) }}'>Cliquez ici pour changez votre mot de passe </a>");
                                 $mailer->send($message);
 
+                                $this->addFlash('success', 'Veuillez regarder votre boite mail ');
                         return $this->redirectToRoute('home');
                     }
                 }
@@ -123,7 +124,7 @@ class SecurityController extends AbstractController
      */
     public function valideToken($token, $id){
 
-        if(isset($token)){
+        if(isset($token) && isset($id)){
 
             if(empty($id) && !is_numeric($id)){
                 $errors[] = 'lien incorrect';
@@ -141,6 +142,7 @@ class SecurityController extends AbstractController
                 return $this->redirectToRoute('formPassword', ['id'=>$id, 'token'=>$token]);
             }
         } else{
+                $this->addFlash('warning', 'Votre token est invalide !');
             return $this->redirectToRoute('home');
         }
     }
@@ -152,7 +154,7 @@ class SecurityController extends AbstractController
 
             if(!empty($post)){
 
-                if(($post['password'] === $post['verifPassword']) && strlen($_POST['newPassword']) > 4 && strlen($_POST['newPassword']) < 10 ){
+                if(($post['password'] === $post['verifPassword']) && strlen($post['password']) > 4 && strlen($_POST['password']) < 10 ){
             
                     $newMdp = password_hash(trim(strip_tags($post['password']), PASSWORD_DEFAULT));
 
@@ -163,10 +165,12 @@ class SecurityController extends AbstractController
                             $repository = $this->getDoctrine()->getRepository(User::class);
                             $UserPassword = $repository->changePassword($newMdp, $id);
                             
-                            echo 'Mot de passe changer ! ';
+                            $this->addFlash('success', 'Mot de passe changé !');
+                            return $this->redirectToRoute('app_login');
                         }
                     }
                 }
+                $this->addFlash('warning', 'Une erreur est survenue !');
             return $this->render('security/formPassword.html.twig');
         }
 }
