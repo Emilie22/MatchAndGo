@@ -103,12 +103,14 @@ class SecurityController extends AbstractController
                         $entityManager = $this->getDoctrine()->getManager();
                         $entityManager->persist($resetPassword);
                         $entityManager->flush();
-
                         
-                    $message = (new \Swift_Message('Hello Email'))
-                        ->setFrom('e20383e797-66b38d@inbox.mailtrap.io')
-                        ->setTo($post['email'])
-                        ->setBody("<a href='{{ path('valideToken', {'token': $token, 'id': $users->getId() }) }}'>Cliquez ici pour changez votre mot de passe </a>");
+                        $user = $users->getId();
+
+                    $message = (new \Swift_Message('Mot de passe oublier'))
+                        ->setFrom('matchandgowf3@gmail.com')
+                        // ->setTo('$post['email'])
+                        ->setBody("<a href='{{ url('valideToken', {'token': $token, 'id': $user }) }}'>Cliquez ici pour changez votre mot de passe </a>");
+
                                 $mailer->send($message);
 
                                 $this->addFlash('success', 'Veuillez regarder votre boite mail ');
