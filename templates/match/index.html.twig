@@ -3,12 +3,7 @@
 {% block title %}Hello MatchController!{% endblock %}
 
 {% block body %}
-{# {{ dump(users) }}
-{{ dump(userAnswers) }}
-{{ dump(test) }}
-{{ dump(user) }} #}
-{# {{ dump(answers) }} #}
-{# {{ dump(idAnswers) }} #}
+
 <section class="heightPage">
 
 <div class="container-fluid">
@@ -23,7 +18,7 @@
 						<h3 class="formTitle titleMatch"> Bonjour {{ moi.firstname }} ! Voici les voyageurs qui te correspondent !<br>N'hésite pas à discuter avec eux ! </h3>
 					</div>
 					<div class="col-md-2">
-						<a href="{{ path ('quiz')}}">Nouvelle recherche</a>
+						<a class="btn mt-5 mr-2 btnSearch" href="{{ path ('quiz')}}">Nouvelle recherche de match</a>
 					</div>
 				</div>
 				

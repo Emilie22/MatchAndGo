@@ -92,8 +92,8 @@
                     type: 'post',
                     url: '{{ path("changeSalon") }}',
                     data: 'idSalon=' + idSalon + '&idUser=' + idUser, 
-                    timeout: 3000, // Si il a pas de réponse au bout de XXXX milliseconde, on déclenche une erreur
-                    dataType: 'html', //On veut récupérer du HTML
+                    timeout: 3000, 
+                    dataType: 'html', 
                     success: function(result){
                         $("#listMessage").html(result);
                     },

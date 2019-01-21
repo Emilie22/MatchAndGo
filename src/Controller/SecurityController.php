@@ -15,6 +15,8 @@ use App\Entity\User;
 use App\Entity\ResetPassword;
 
 class SecurityController extends AbstractController
+
+                                 // CONNEXION //
 {
     /**
      * @Route("/login", name="app_login")
@@ -31,8 +33,7 @@ class SecurityController extends AbstractController
 
 
 
-
-                    // AFFICHAGE DU PROFIL //
+                    // AFFICHAGE DU PROFIL DE L'UTILISATEUR CONNECTE //
 
    /**
    * @Route("/login/infos", name="userInfo")
@@ -58,7 +59,7 @@ class SecurityController extends AbstractController
     }
 
 
-
+                    // MOT DE PASSE OUBLIE //
     /**
      * @Route("/reset/password", name="resetPassword")
      */
@@ -73,7 +74,7 @@ class SecurityController extends AbstractController
                 $errors[] = 'Email invalide';
             }
             if($post['email'] !== $post['verifEmail']){
-                $errors[] = 'Les emails ne sont pas identique';
+                $errors[] = 'Les emails ne sont pas identiques';
             }
             if(empty($errors)){
                 $repository = $this->getDoctrine()->getRepository(User::class);
@@ -108,7 +109,7 @@ class SecurityController extends AbstractController
                     $message = (new \Swift_Message('Hello Email'))
                         ->setFrom('MatchAndGo@gmx.fr')
                         ->setTo('ghghk@gmail.com')
-                        ->setBody('<a href={{path("valideToken")}}?token=' . $token . '&id='.$users->getId().'>Cliquez ici pour changez votre mot de passe<a>');
+                        ->setBody('<a href={{path("valideToken")}}?token=' . $token . '&id='.$users->getId().'>Cliquez ici pour changer votre mot de passe<a>');
                                 $mailer->send($message);
 
                         return $this->redirectToRoute('valideToken');
@@ -170,7 +171,7 @@ class SecurityController extends AbstractController
                             $repository = $this->getDoctrine()->getRepository(User::class);
                             $UserPassword = $repository->changePassword($newMdp, $id);
                             
-                            echo 'Mot de passe changer ! ';
+                            echo 'Mot de passe changé ! ';
                 
                         }
                     }

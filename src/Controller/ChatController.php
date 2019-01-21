@@ -29,11 +29,11 @@ class ChatController extends AbstractController
                 
         $chat1 = new Chat();
         $chat1 ->setUser($this->getUser());
-        $chat1 ->setMessage('Vous avez invité à parler ' . $inviteId->getFirstname());
+        $chat1 ->setMessage('Vous avez invité ' . $inviteId->getFirstname() . ' à parler');
         $chat1 ->setDateSend(new \DateTime(date('Y-m-d H:i:s')));
 
         $salon1 = new Salon();
-        $salon1->setName('Salon de discution avec ' . $inviteId->getFirstname());
+        $salon1->setName('Salon de discussion avec ' . $inviteId->getFirstname());
 
         $chat1 ->setSalon($salon1);
 

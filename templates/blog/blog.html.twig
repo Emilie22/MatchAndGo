@@ -2,11 +2,10 @@
 
 {% block title %}{{blog.title}}{% endblock %}
 
+				{# Affichage d'un article de blog  #}
 	{% block body %}
 		<section class="heightPage">
-
 			<div class="container">
-
 				<div class="row">
 					<div class="col-md-4 mx-auto mt-5">
 						<img src="{{ asset('uploads/article/image/' ~ blog.pictureblog) }}"  class="img-thumbnail">
@@ -19,16 +18,11 @@
 				<div class="row text-center">
 					<div class="col-12">
 						<h3 class="formTitle">{{ blog.title }}</h3>
-
 						<p class="formPublish">publié le {{ blog.datepost|date('d/m/Y') }} par {{ blog.author }}</p>
 					</div>
-
 					<p class="formContent blogTitle text-left">{{ blog.content }}</p>
 				</div>
 			</div>
-
-
 		</section>
-
 	{% endblock %}
 

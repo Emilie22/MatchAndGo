@@ -8,6 +8,7 @@ use App\Entity\Blog;
 
 class HomeController extends AbstractController
 {
+                                // PAGE D'ACCUEIL //
     /**
      * @Route("/home", name="home")
      */
@@ -22,7 +23,7 @@ class HomeController extends AbstractController
         ]);
 
 
-    }
+    }                   // CONDITIONS GENERALES D'UTILISATION //
 
     /**
      * @Route("/cgu", name="cgu")

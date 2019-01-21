@@ -17,7 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Validator\Constraints\IsTrue;
 
-
+            // FORMULAIRE DE CREATION ET MODIFICATION DE PROFIL //
 
 class ProfileType extends AbstractType
 {
