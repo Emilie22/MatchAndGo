@@ -247,13 +247,13 @@ body {
 /*Création du profil*/
 
 .btnCreateProfile{
-	background: #fdad17;
-	color: #3f4253;
+  background: #fdad17;
+  color: #3f4253;
 }
 
 .profileBg{
-	background-image: url('../uploads/user/image/addprofil.jpg');
-	background-repeat: no-repeat;
+  background-image: url('../uploads/user/image/addprofil.jpg');
+  background-repeat: no-repeat;
 }
 
 .addProfileBg{
@@ -264,13 +264,13 @@ body {
 
 
 .fas{
-	color: #fdad17;
+  color: #fdad17;
   font-size: 1.5em;
   margin: 5px;  
 }
 
 .navbar-light .navbar-nav .nav-link{
-	color: #fdad17;
+  color: #fdad17;
 }
 
 
@@ -379,7 +379,7 @@ body {
 
 #carouselQuiz {
   margin-top: 2.5rem;
-	background-color: #fff;
+  background-color: #fff;
   height: 600px;
   position: relative;
 }
@@ -426,8 +426,8 @@ body {
 }
 
 .littleContainer {
-	width: 60%;
-	margin: 200px auto 0;
+  width: 60%;
+  margin: 200px auto 0;
 }
 
 .btnAnswers {
