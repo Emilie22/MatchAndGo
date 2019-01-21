@@ -12,6 +12,7 @@
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
+
                 <div class="row justify-content-center"> 
 
                     <div class="col-12 col-md-9 col-lg-4 marginForm">
@@ -31,7 +32,6 @@
                         </label>
 
                         <a class="ml-3 blogTitle" href="{{path('resetPassword')}}">Mot de passe oublié</a>
-
                     </div>
                     <div class="text-center">
                         <button class="btn text-center formButton" type="submit">Connexion</button>

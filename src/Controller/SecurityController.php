@@ -106,7 +106,7 @@ class SecurityController extends AbstractController
                         
                         $user = $users->getId();
 
-                    $message = (new \Swift_Message('Mot de passe oublier'))
+                    $message = (new \Swift_Message('Mot de passe oublié'))
                         ->setFrom('matchandgowf3@gmail.com')
                         // ->setTo('$post['email'])
                         ->setBody("<a href='{{ url('valideToken', {'token': $token, 'id': $user }) }}'>Cliquez ici pour changez votre mot de passe </a>");
@@ -167,7 +167,7 @@ class SecurityController extends AbstractController
                         if(!empty($tokens)){
                             $repository = $this->getDoctrine()->getRepository(User::class);
                             $UserPassword = $repository->changePassword($newMdp, $id);
-                            
+
                             $this->addFlash('success', 'Mot de passe changé !');
                             return $this->redirectToRoute('app_login');
 
