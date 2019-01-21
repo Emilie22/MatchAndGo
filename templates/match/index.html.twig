@@ -94,8 +94,12 @@
         	var infowindow = new google.maps.InfoWindow({
 	          content: coord.firstname
 	        });
-          	infowindow.open(map, marker);
-
+          	marker.addListener('mouseover', function() {
+          		infowindow.open(map, marker);
+          	});
+          	marker.addListener('mouseout', function() {
+          		infowindow.close(map, marker);
+          	});
         });
 
     }

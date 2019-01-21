@@ -25,8 +25,8 @@
 					<div class="mt-5 col-12 col-md-7">
 						<h3>Bonjour {{ user.firstname}} {{ user.lastname }}, voici vos informations de profil :</h3>
 						{% if is_granted('ROLE_USER') %}
-							<a href="{{ path('updateProfile')}}"><i class="fas fa-pencil-alt"></i>Modifier mon profil</a><br>
-							<a href="{{ path ('quiz')}}"><i class="fas fa-search"></i>Nouvelle recherche de match</a>
+							<a class="iconComment" href="{{ path('updateProfile')}}"><i class="iconComment fas fa-pencil-alt"></i>Modifier mon profil</a><br>
+							<a  class="iconComment" href="{{ path('quiz')}}"><i class="iconComment fas fa-search"></i>Nouvelle recherche de match</a>
 						{% endif %}
 					</div>
 				</div>

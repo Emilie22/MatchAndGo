@@ -125,6 +125,8 @@ body {
 
 .homeP {
   color: #fdad17;
+  font-weight: bold;
+  font-size: 1em;
 }
 
 .firstHome > p {
@@ -377,6 +379,7 @@ body {
 
 .iconComment:hover{
   color: #fdad17;
+  text-decoration: none;
 }
 
 /* Photo de profil de l'utilisateur */
@@ -851,4 +854,11 @@ mark{
 
 .colorP{
   color: #fdad17 
+}
+
+#mapquiz {
+ width: 100%;
+ height: 400px;
+ z-index: 10;
+ background: none;
 }
