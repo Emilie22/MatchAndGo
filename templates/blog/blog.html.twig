@@ -6,7 +6,11 @@
 		<section class="heightPage">
 
 			<div class="container">
-
+				{% for label, messages in app.flashes %}
+					{% for message in messages %}
+						<div class="alert alert-{{ label }}">{{ message }}</div>
+					{% endfor %}
+				{% endfor %}
 				<div class="row">
 					<div class="col-md-4 mx-auto mt-5">
 						<img src="{{ asset('uploads/article/image/' ~ blog.pictureblog) }}"  class="img-thumbnail">
