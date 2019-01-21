@@ -19,11 +19,6 @@ class MatchController extends AbstractController
     	$repository = $this->getDoctrine()->getRepository(User::class);
         $users = $repository->myFindAll($this->getUser()->getId());
         
-        $dateJour = new DateTime('Y-m-d');
-        $dateUser = new DateTime($users->getBirthday());
-
-        $age = $dateJour->diff($dateUser);
-
     	$userAnswers = [];
 
         // dump($users);
@@ -41,8 +36,6 @@ class MatchController extends AbstractController
     			$userMatch[] = $repository->findById($key);
     		}
     	}
-        // dump($userMatch);
-
         $cityTab = [];
         $userCoord = [];
         foreach ($userMatch as $userCity) {
@@ -70,7 +63,7 @@ class MatchController extends AbstractController
         $moi = $this->getUser();
 
         return $this->render('match/index.html.twig', [
-            'users'=>$users, 'userAnswers'=>$userAnswers, 'userMatch'=>$userMatch, 'test'=>$test, 'moi'=>$moi,  'userCoord'=>$userCoord, 'cityTab'=>$cityTab, 'age'=>$age
+            'users'=>$users, 'userAnswers'=>$userAnswers, 'userMatch'=>$userMatch, 'test'=>$test, 'moi'=>$moi,  'userCoord'=>$userCoord, 'cityTab'=>$cityTab,
         ]);
 // 
 

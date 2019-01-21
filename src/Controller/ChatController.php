@@ -63,12 +63,34 @@ class ChatController extends AbstractController
      */
     public function index(Request $request) {
 
+            	
+    	$repository = $this->getDoctrine()->getRepository(User::class);
+        $users = $repository->myFindAll($this->getUser()->getId());
+        
+    	$userAnswers = [];
+
+        // dump($users);
+
+    	foreach ($users as $user) {
+            // dump($user);
+    		$userAnswers[] = implode(" ", $user);
+    	}
+
+    	$test = array_count_values($userAnswers);
+
+    	$userMatch = [];
+    	foreach ($test as $key=>$value) {
+    		if ($value > 2) {
+    			$userMatch[] = $repository->findById($key);
+    		}
+    	}
+
         $repository = $this->getDoctrine()->getRepository(Chat::class);
 
         $user = $this->getUser();
         $userId = $user->getId();
         $chat = $repository->findWithChat($userId);
-        return $this->render('chat/index.html.twig', ['chats'=>$chat]);
+        return $this->render('chat/index.html.twig', ['chats'=>$chat, 'userMatch'=> $userMatch]);
     }
 
 
@@ -109,6 +131,43 @@ class ChatController extends AbstractController
         dump($idSalon);
         $chat = new Chat();
         $chat->setMessage($message);
+        $chat->setSalon($idSalon);
+        $chat->setUser($idUser);
+        $chat->setDateSend(new \DateTime(date('Y-m-d H:i:s')));
+
+        $entityManager->persist($chat);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('chat');
+    }
+    /**
+     * @Route("/chat/addUserOnchat", name="UserOnChat")
+     */
+    public function addUserOnChat(Request $request){
+        $idSalon = $request->request->get('idSalon', null);
+        $idUserB = $request->request->get('idUserB', null);
+        dump($idUserB);
+        dump($idSalon);
+
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $repositorySalon = $this->getDoctrine()->getRepository(Salon::class);
+
+        $idSalon = $repositorySalon->findById($idSalon);
+        foreach ($idSalon as $key=>$value) {
+            $idSalon = $value;
+        }
+
+        $repositoryUser = $this->getDoctrine()->getRepository(User::class);
+
+        $idUserB = $repositoryUser->findById($idUserB);
+        foreach ($idUserB as $key=>$value) {
+            $idUser = $value;
+        }
+
+        
+        $chat = new Chat();
+        $chat->setMessage('Vous avez invité ' . $idUser->getFirstname());
         $chat->setSalon($idSalon);
         $chat->setUser($idUser);
         $chat->setDateSend(new \DateTime(date('Y-m-d H:i:s')));

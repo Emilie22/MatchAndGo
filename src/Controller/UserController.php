@@ -96,10 +96,7 @@ class UserController extends AbstractController
         $user = $this->getUser();
 
 
-        $dateJour = new DateTime($today);
-        $dateUser = new DateTime($user->getBirthday());
 
-        $age = $dateJour->diff($dateUser);
 
         // $filename = $user->getPicture();
 
@@ -151,14 +148,14 @@ class UserController extends AbstractController
     /**
       * @Route ("/user/show/{slug}", name="showProfileWithSlug", requirements={"slug"="[a-z0-9]+(?:-[a-z0-9]+)*"})
       */
-      public function showProfileWithSlug(User $user) {
+      public function showProfileWithSlug(User $user){
 
             $imgBgProfile = [];
             for ($i=1; $i<=6; $i++) {
                 $imgBgProfile[] = 'backgroundprofile'.$i;
             }
         
-           return $this->render('user/userInvite.html.twig', [ 'user' => $user, 'imgBgProfile'=>$imgBgProfile ]);
+           return $this->render('user/userInvite.html.twig', [ 'user' => $user, 'imgBgProfile'=>$imgBgProfile]);
       }
 
 }

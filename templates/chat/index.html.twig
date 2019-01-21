@@ -39,6 +39,32 @@
             </form>
         </div>
     </div>
+    <div class="row justify-content-center mt-5">
+    <h3 class="formTitle ">Mes dernier matchs</h3>
+		<div class="col-12 col-md-12">
+			<div class="row">
+				{% for userA in userMatch %}
+					{% for userB in userA %}
+					<div class="col-12 col-md-4">
+						<div class="card">
+							<img src="http://placekitten.com/100/60" alt="photoUserMatch" class="imgProfileMatch">
+							<div class="card-body">
+								<p class="card-title text-center">{{ userB.firstname }}<br><span>{{ userB.gender }} | {{ userB.birthday|date('m-d-Y') }}</span></p>
+								<p class="card-text text-center">{{ userB.city }}</p>
+								<div class="row">
+									<div class="col-12 text-center">
+										<a href="{{path('showProfileWithSlug', {slug:userB.slug}) }}"><i class="fas fa-user"></i></a>
+										<p data-iduser="{{userB.id}}" class='inviteUser'><i class="fas fa-comment"></i></p>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				{% endfor %}
+			</div>
+		</div>
 </section>
 {% endblock %}
 {% block javascripts %}
@@ -108,8 +134,28 @@
                     }
                 })
             }
-        
             setInterval(refresh, 3000);
+
+            $('.inviteUser').on('click', function(){
+                let idUserB = $(this).data('iduser');
+                let idSalon = $('#salon').val();
+                console.log(idSalon);
+
+                console.log(idUserB);
+                $.ajax({
+                    type: 'post',
+                    url: '{{path("UserOnChat")}}',
+                    data: 'idSalon=' + idSalon + '&idUserB=' + idUserB,
+                    timeout: 3000,
+                    dataType: 'html',
+                    success: function(result){
+
+                    },
+                    error: function(error){
+                        console.log(error);
+                    }
+                })
+            })
         })
     </script>
 {% endblock %}
