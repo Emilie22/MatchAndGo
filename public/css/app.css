@@ -364,10 +364,17 @@ body {
 
 }
 
-.iconFbk, .iconInsta{
-  color: #fdad17;
+.iconFbk:hover, .iconInsta:hover{
+  color: #fdad17; 
 }
 
+.iconComment{
+  color: #3f4253;
+}
+
+.iconComment:hover{
+  color: #fdad17;
+}
 
 /* Photo de profil de l'utilisateur */
 
@@ -618,27 +625,15 @@ body {
   color: #3f4253;
 }
 
-.btnSearch a{
-  background: #fdad17;
-  color: #3f4253;
+.btnSearch:hover{
+  text-decoration: none;
+  color: white;
 }
 
 
 /* Responsive de la page liste des matchs */
 
 @media all and (max-width: 1000px) {
-  .card-body {
-    padding: 10px;
-  }
-  .card-body > p {
-    font-size: 0.8rem;
-  }
-  .fa-user, .fa-comment {
-    font-size: 0.8rem;
-    margin: 0;
-    padding: 12px;
-    box-shadow: 0px 10px 10px -4px #6A708C;
-  }
   #mapLoc {
     height: 400px;
   }
@@ -647,10 +642,6 @@ body {
   }
 }
 @media all and (max-width: 600px) {
-  .card {
-    width: 60%;
-    margin: 20px auto;
-  }
   .avatar2 {
     display: none;
   }
@@ -835,10 +826,7 @@ body {
   }
 
 }
-/*responsive portable blog*/
-@media all and (max-width: 576px) {
 
-}
 
 /*FOOTER*/
 
@@ -867,6 +855,7 @@ mark{
 
 .colorP{
   color: #fdad17 
+
 }
 
 
@@ -882,4 +871,3 @@ mark{
   z-index: 10;
   background: none;
 }
-

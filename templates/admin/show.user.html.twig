@@ -28,7 +28,7 @@
                                 	{% for user in users %}
                                     <tr>
                                         <td>
-                                            <img src="https://bootdey.com/img/Content/user_2.jpg" alt="">
+                                            <img src="{{ asset('uploads/user/image/' ~ user.picture) }}">
                                             <a href="{{ path('showProfileWithSlug', {slug: user.slug}) }}" class="user-link">{{ user.firstname }}</a>
                                         </td>
                                         <td>
