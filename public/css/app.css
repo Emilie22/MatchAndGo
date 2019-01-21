@@ -519,7 +519,7 @@ body {
 }
 
 .card {
-    min-height: 200px;
+    height: 500px;
     border: none;
     margin: 20px;
 }

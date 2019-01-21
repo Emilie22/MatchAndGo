@@ -38,7 +38,7 @@
 					{% for userB in userA %}
 					<div class="col-12 col-md-4">
 						<div class="card">
-							<img src="http://placekitten.com/100/60" alt="photoUserMatch" class="imgProfileMatch">
+							<img src="{{ asset('uploads/user/image/' ~ userB.picture) }}" alt="photoUserMatch" class="imgProfileMatch">
 							<div class="card-body">
 								<p class="card-title text-center">{{ userB.firstname }}<br><span>{{ userB.gender }} | {{ userB.birthday|date('m-d-Y') }}</span></p>
 								<p class="card-text text-center">{{ userB.city }}</p>
