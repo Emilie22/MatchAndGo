@@ -259,6 +259,7 @@ body {
 .profileBg{
   background-image: url('../uploads/user/image/addprofil.jpg');
   background-repeat: no-repeat;
+  
 }
 
 .addProfileBg{
@@ -284,7 +285,7 @@ body {
 @media all and (max-width:1000px){
   .profileBg{
     background-size: cover; 
-    height: 64em;
+    height: 68em;
   }
 
   .addProfileBg{
@@ -297,7 +298,7 @@ body {
 
 @media all and (max-width:600px){
   .profileBg{
-    height: 71em;
+    height: 79em;
     background-size: cover;
   }
 
