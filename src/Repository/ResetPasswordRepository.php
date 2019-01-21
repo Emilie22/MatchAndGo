@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\ResetPassword;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -47,5 +48,16 @@ class ResetPasswordRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function myfindByToken($token){
+        $connexion = $this->getEntityManager()->getConnection();
+        $sql = 'SELECT u.id, rp.user_id, rp.token
+                FROM user u
+                RIGHT JOIN reset_password rp ON u.id = rp.user_id 
+                WHERE token = :token ';
+        $select = $connexion->prepare($sql);
+        $select->bindValue(':token', $token);
+        $select->execute();
+            return $select->fetch();
+    }
 
 }

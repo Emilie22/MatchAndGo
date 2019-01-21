@@ -14,10 +14,13 @@ body {
   background: #3f4253;
 }
 
+/* Hauteur des pages du site */
 .heightPage {
   min-height: 100vh;
 }
 
+
+/* Titres principaux du site */
 .formTitle{
   margin-top: 3rem;
   margin-bottom: 3rem;
@@ -84,7 +87,7 @@ body {
   color: #fdad17;
 }
 
-/*responsive navbar*/
+/* Responsive navbar*/
 
 @media all and (max-width:1000px){
 
@@ -259,7 +262,7 @@ body {
 .profileBg{
   background-image: url('../uploads/user/image/addprofil.jpg');
   background-repeat: no-repeat;
-  
+
 }
 
 .addProfileBg{
@@ -350,6 +353,11 @@ body {
   height: 15em;
   border-radius: 50%;
   box-shadow: 0px 2px 4px black;
+}
+
+/* Lien chat sur le profil d'un utilisateur */
+.infosProfile a{
+  color: #3f4253;
 }
 
 
@@ -497,6 +505,7 @@ body {
   cursor: pointer;
 }
 
+
 /*responsive tablette carousel quiz*/
 @media all and (max-width: 1000px) {
   .btnAnswers {
@@ -570,6 +579,50 @@ body {
 }
 
 
+.btnSearch{
+  background: #fdad17;
+  color: #3f4253;
+}
+
+.btnSearch a{
+  background: #fdad17;
+  color: #3f4253;
+}
+
+
+/* Responsive de la page liste des matchs */
+
+@media all and (max-width: 1000px) {
+  .card-body {
+    padding: 10px;
+  }
+  .card-body > p {
+    font-size: 0.8rem;
+  }
+  .fa-user, .fa-comment {
+    font-size: 0.8rem;
+    margin: 0;
+    padding: 12px;
+    box-shadow: 0px 10px 10px -4px #6A708C;
+  }
+  #mapLoc {
+    height: 400px;
+  }
+  .titleMatch {
+    font-size: 1.2rem;
+  }
+}
+@media all and (max-width: 600px) {
+  .card {
+    width: 60%;
+    margin: 20px auto;
+  }
+  .avatar2 {
+    display: none;
+  }
+}
+
+
 /*Formulaire admin Concept*/
 
 .btnConcept{
@@ -591,6 +644,10 @@ body {
   margin: 5% auto;
 }
 
+.teamPhoto img{
+  width: 10em;
+  height: 10em;
+}
 
 
 
@@ -599,8 +656,6 @@ body {
 #mapLoc {
   height: 600px;
 }
-
-
 
 
 .btn-outline-light {
@@ -633,7 +688,7 @@ body {
 }
 
 
-/* admin user */ 
+/* Admin  : gestion des users */ 
 
 .main-box.no-header {
     padding-top: 20px;
@@ -777,10 +832,6 @@ mark{
     color: rgb(66, 67, 85);
 }
 
-
-
 .colorP{
   color: #fdad17 
-}
-
-
+} master

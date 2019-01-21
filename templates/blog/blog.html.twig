@@ -2,10 +2,16 @@
 
 {% block title %}{{blog.title}}{% endblock %}
 
+				{# Affichage d'un article de blog  #}
 	{% block body %}
 		<section class="heightPage">
-
 			<div class="container">
+
+				{% for label, messages in app.flashes %}
+					{% for message in messages %}
+						<div class="alert alert-{{ label }} m-0">{{ message }}</div>
+					{% endfor %}
+				{% endfor %}
 
 				<div class="row">
 					<div class="col-md-4 mx-auto mt-5">
@@ -19,16 +25,11 @@
 				<div class="row text-center">
 					<div class="col-12">
 						<h3 class="formTitle">{{ blog.title }}</h3>
-
 						<p class="formPublish">publié le {{ blog.datepost|date('d/m/Y') }} par {{ blog.author }}</p>
 					</div>
-
 					<p class="formContent blogTitle text-left">{{ blog.content }}</p>
 				</div>
 			</div>
-
-
 		</section>
-
 	{% endblock %}
 

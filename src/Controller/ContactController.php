@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ContactController extends AbstractController
 {
+
+                            // FORMULAIRE DE CONTACT //
     /**
      * @Route("/contact", name="contact")
      */

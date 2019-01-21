@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\CommentType;
 
 class BlogController extends AbstractController
-{
+{                     // PAGE BLOG //
 
      /**
      * @Route("/blog", name="blog")
@@ -28,9 +28,9 @@ class BlogController extends AbstractController
             'blogs' => $blogs,
         ]);
     }
+                  // GENERATION DES SLUG POUR LES ARTICLES DE BLOG //
 
    /**
-    * Route qui va afficher les détails d'un article grâce au slug 
     * @Route("/blog/{slug}", name="showBlogWithSlug", requirements={"slug"="[a-z0-9]+(?:-[a-z0-9]+)*"})
     */
         public function showBlogWithSlug(Request $request, Blog $blog){

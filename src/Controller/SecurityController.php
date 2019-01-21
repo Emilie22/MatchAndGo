@@ -11,10 +11,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\File;
 use App\Service\FileUploader;
 use App\Form\ProfileType;
-use App\Entity\User;
 use App\Entity\ResetPassword;
+use App\Entity\User;
 
 class SecurityController extends AbstractController
+
+                                 // CONNEXION //
 {
     /**
      * @Route("/login", name="app_login")
@@ -31,8 +33,7 @@ class SecurityController extends AbstractController
 
 
 
-
-                    // AFFICHAGE DU PROFIL //
+                    // AFFICHAGE DU PROFIL DE L'UTILISATEUR CONNECTE //
 
    /**
    * @Route("/login/infos", name="userInfo")
@@ -58,7 +59,7 @@ class SecurityController extends AbstractController
     }
 
 
-
+                    // MOT DE PASSE OUBLIE //
     /**
      * @Route("/reset/password", name="resetPassword")
      */
@@ -73,7 +74,7 @@ class SecurityController extends AbstractController
                 $errors[] = 'Email invalide';
             }
             if($post['email'] !== $post['verifEmail']){
-                $errors[] = 'Les emails ne sont pas identique';
+                $errors[] = 'Les emails ne sont pas identiques';
             }
             if(empty($errors)){
                 $repository = $this->getDoctrine()->getRepository(User::class);
@@ -95,7 +96,6 @@ class SecurityController extends AbstractController
                             $users = $value;
                         }
 
-
                         $resetPassword = new ResetPassword();
                         $resetPassword ->setUser($users);
                         $resetPassword ->setToken($token);
@@ -103,15 +103,20 @@ class SecurityController extends AbstractController
                         $entityManager = $this->getDoctrine()->getManager();
                         $entityManager->persist($resetPassword);
                         $entityManager->flush();
-
                         
-                    $message = (new \Swift_Message('Hello Email'))
-                        ->setFrom('MatchAndGo@gmx.fr')
-                        ->setTo('ghghk@gmail.com')
-                        ->setBody('<a href={{path("valideToken")}}?token=' . $token . '&id='.$users->getId().'>Cliquez ici pour changez votre mot de passe<a>');
+
+                        $user = $users->getId();
+
+                    $message = (new \Swift_Message('Mot de passe oublié'))
+                        ->setFrom('matchandgowf3@gmail.com')
+                        // ->setTo('$post['email'])
+                        ->setBody("<a href='{{ url('valideToken', {'token': $token, 'id': $user }) }}'>Cliquez ici pour changez votre mot de passe </a>");
+
+
                                 $mailer->send($message);
 
-                        return $this->redirectToRoute('valideToken');
+                                $this->addFlash('success', 'Veuillez regarder votre boite mail ');
+                        return $this->redirectToRoute('home');
                     }
                 }
             }
@@ -119,16 +124,11 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route ("/login/valideToken/{token}", name="valideToken")
+     * @Route ("/login/valideToken/{token}/{id}", name="valideToken", requirements={"id"="\d+", "token"="\w+"})
      */
-    public function valideToken(Request $request){
-        $get = $request->query->all();
+    public function valideToken($token, $id){
 
-        if(!empty($get)){
-            $errors = [];
-        if(!empty($get)){
-            $token = strip_tags($get['token']);
-            $id = strip_tags($get['id']);
+        if(isset($token) && isset($id)){
 
             if(empty($id) && !is_numeric($id)){
                 $errors[] = 'lien incorrect';
@@ -139,43 +139,44 @@ class SecurityController extends AbstractController
             }
 
             $repository = $this->getDoctrine()->getRepository(ResetPassword::class);
-            $users = $repository->findByToken($token);
 
-            if(count($users) === 1){
-
+            $users = $repository->myfindByToken($token);
+            
+            if(count($users) > 1){
                 return $this->redirectToRoute('formPassword', ['id'=>$id, 'token'=>$token]);
-                }
-            }   
+            }
+        } else{
+                $this->addFlash('warning', 'Votre token est invalide !');
+            return $this->redirectToRoute('home');
         }
     }
     /**
-     * @Route ("/login/formPassword/{id}/{token}", name="formPassword", requirements={"id"="\d", "token"="\w"})
+     * @Route ("/login/formPassword/{id}/{token}", name="formPassword", requirements={"id"="\d+", "token"="\w+"})
      */
         public function changePassword(Request $request, $id, $token){
             $post = $request->request->all();
 
             if(!empty($post)){
 
-                    $select = $connexion ->query('SELECT id_user, motDePasse FROM reset_password INNER JOIN users ON reset_password.id_user = users.id');
-                    $password = $select ->fetchAll();
+                if(($post['password'] === $post['verifPassword']) && strlen($post['password']) > 4 && strlen($_POST['password']) < 10 ){
             
-                        if(($post['password'] === $post['verifPassword']) && strlen($_POST['newPassword']) > 4 && strlen($_POST['newPassword']) < 10 ){
-            
-                            $newMdp = password_hash(trim(strip_tags($post['password']), PASSWORD_DEFAULT));
+                    $newMdp = password_hash(trim(strip_tags($post['password']), PASSWORD_DEFAULT));
 
-                            $repository = $this->getDoctrine()->getRepository(ResetPassword::class);
-                            $tokens = $repository->findByToken($token);
+                        $repository = $this->getDoctrine()->getRepository(ResetPassword::class);
+                        $tokens = $repository->findByToken($token);
 
                         if(!empty($tokens)){
                             $repository = $this->getDoctrine()->getRepository(User::class);
                             $UserPassword = $repository->changePassword($newMdp, $id);
                             
-                            echo 'Mot de passe changer ! ';
-                
+
+                            $this->addFlash('success', 'Mot de passe changé !');
+                            return $this->redirectToRoute('app_login');
                         }
                     }
                 }
-            return $this->render('formPassword.html.twig');
+                $this->addFlash('warning', 'Une erreur est survenue !');
+            return $this->render('security/formPassword.html.twig');
         }
 }
 

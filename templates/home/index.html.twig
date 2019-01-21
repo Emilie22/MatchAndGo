@@ -7,7 +7,12 @@
 <section class="heightPage">
 
    <div class="container-fluid pl-0 pr-0">
-
+   
+    {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }} m-0">{{ message }}</div>
+                {% endfor %}
+            {% endfor %}
     {# video et titre #}
     <section class="firstHome">
 

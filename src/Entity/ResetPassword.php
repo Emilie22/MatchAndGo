@@ -22,7 +22,7 @@ class ResetPassword
     private $token;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\user", inversedBy="resetPasswords")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="resetPasswords")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
