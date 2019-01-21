@@ -14,8 +14,6 @@
 							<div class="alert alert-{{ label }}">{{ message }}</div>
 						{% endfor %}
 					{% endfor %}
-			<div class="container-fluid pr-0 pl-0 rowBgProfile">
-					<img src="{{ asset('uploads/profile/' ~random(imgBgProfile)~'.jpg') }}" class="imgBgProfile" alt="landscape">
 				
 			{# AFFICHAGE DU PROFIL D'UN UTILISATEUR NON CONNECTE #}
 
@@ -26,7 +24,7 @@
 						</div>
 						<div class="mt-5 col-12 col-md-7">
 							<h3>Profil de {{ user.firstname}}</h3>
-							<a class="mt-5 mr-2" href="{{path('addChat', {idUser:user.id}) }}"><i class="fas fa-comment"></i>Discuter avec {{user.firstname}}</a>
+							<a class="mt-5 mr-2 iconComment" href="{{path('addChat', {idUser:user.id}) }}"><i class="iconComment fas fa-comment"></i>Discuter avec {{user.firstname}}</a>
 						</div>
 					</div>
 					<div class="row justify-content-center mt-5">
