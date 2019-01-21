@@ -4,8 +4,10 @@
 
 	{% block body %}
 
-		<section class="heightPage">
 
+	<section class="heightPage">
+		<div class="container-fluid pr-0 pl-0 rowBgProfile">
+				<img src="{{ asset('uploads/profile/' ~random(imgBgProfile)~'.jpg') }}" class="imgBgProfile img-fluid" alt="landscape">			
 			{# affichage des messages flash #}
 					{% for label, messages in app.flashes %}
 						{% for message in messages %}

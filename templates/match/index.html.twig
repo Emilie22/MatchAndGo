@@ -31,22 +31,18 @@
 			<div class="row">
 				{% for userA in userMatch %}
 					{% for userB in userA %}
-					<div class="col-12 col-md-4">
-						<div class="card">
-							<img src="http://placekitten.com/100/60" alt="photoUserMatch" class="imgProfileMatch">
-							<div class="card-body">
-								<p class="card-title text-center">{{ userB.firstname }}<br><span>{{ userB.gender }} | {{ userB.birthday|date('m-d-Y') }}</span></p>
-								<p class="card-text text-center">{{ userB.city }}</p>
-								<div class="row">
-									<div class="col-12 text-center">
-										<a href="{{path('showProfileWithSlug', {slug:userB.slug}) }}"><i class="fas fa-user"></i></a>
-										<a href="{{path('addChat', {idUser:userB.id}) }}"><i class="fas fa-comment"></i></a>
-									</div>
-
-								</div>
-							</div>
-						</div>
-					</div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="box15">
+                        <img  src="{{ asset('uploads/user/image/' ~ userB.picture) }}" alt="photoUserMatch" class="thumbnails">
+                        <div class="box-content">
+                            <p class="title">{{ userB.firstname }}<span><br> {{ userB.birthday|date('m-d-Y') }} <br> {{ userB.city }}</span></p>
+                            <ul class="icon">
+                                <li><a href="{{path('showProfileWithSlug', {slug:userB.slug}) }}"><i class="fas fa-user"></i></a></li>
+                                <li><a href="{{path('addChat', {idUser:userB.id}) }}"><i class="fas fa-comment"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 					{% endfor %}
 				{% endfor %}
 			</div>
