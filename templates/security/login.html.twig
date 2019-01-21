@@ -21,14 +21,14 @@
                         <input type="password" name="password" id="inputPassword" class="form-control formInput" placeholder="Password" required>
 
                         <input type="hidden" name="_csrf_token"
-                               value="{{ csrf_token('authenticate') }}"
+                            value="{{ csrf_token('authenticate') }}"
                         >
 
                     <div class="checkbox mb-3">
                         <label>
                             <input class="mr-3 mt-3" type="checkbox" name="_remember_me">Se souvenir de moi
                         </label>
-                        <a href="{{path('resetPassword')}}">Mot de passe oublié</a>
+                        <a class="ml-3 blogTitle" href="{{path('resetPassword')}}">Mot de passe oublié</a>
                     </div>
 
                     <div class="text-center"><button class="btn text-center formButton" type="submit">Connexion</button></div>

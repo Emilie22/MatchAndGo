@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\DateTime;
 use App\Entity\User;
 use App\Entity\Answer;
 
@@ -16,7 +17,12 @@ class MatchController extends AbstractController
     {
     	
     	$repository = $this->getDoctrine()->getRepository(User::class);
-    	$users = $repository->myFindAll($this->getUser()->getId());
+        $users = $repository->myFindAll($this->getUser()->getId());
+        
+        $dateJour = new DateTime('Y-m-d');
+        $dateUser = new DateTime($users->getBirthday());
+
+        $age = $dateJour->diff($dateUser);
 
     	$userAnswers = [];
 
@@ -64,7 +70,7 @@ class MatchController extends AbstractController
         $moi = $this->getUser();
 
         return $this->render('match/index.html.twig', [
-            'users'=>$users, 'userAnswers'=>$userAnswers, 'userMatch'=>$userMatch, 'test'=>$test, 'moi'=>$moi,  'userCoord'=>$userCoord, 'cityTab'=>$cityTab,
+            'users'=>$users, 'userAnswers'=>$userAnswers, 'userMatch'=>$userMatch, 'test'=>$test, 'moi'=>$moi,  'userCoord'=>$userCoord, 'cityTab'=>$cityTab, 'age'=>$age
         ]);
 // 
 

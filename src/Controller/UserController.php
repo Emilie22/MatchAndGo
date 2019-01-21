@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use App\Service\FileUploader;
 use App\Form\ProfileType;
 use App\Entity\User;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class UserController extends AbstractController
 {
@@ -94,6 +95,12 @@ class UserController extends AbstractController
 
         $user = $this->getUser();
 
+
+        $dateJour = new DateTime($today);
+        $dateUser = new DateTime($user->getBirthday());
+
+        $age = $dateJour->diff($dateUser);
+
         // $filename = $user->getPicture();
 
 
@@ -138,7 +145,7 @@ class UserController extends AbstractController
             
             return $this->redirectToRoute('userInfo');
         }
-        return $this->render('user/update.html.twig', ['user'=>$user, 'form' => $form->createView()]);
+        return $this->render('user/update.html.twig', ['user'=>$user, 'form' => $form->createView(), 'age'=>$age]);
     }
 
     /**
