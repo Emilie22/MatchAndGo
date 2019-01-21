@@ -141,7 +141,7 @@ class UserController extends AbstractController
             
             return $this->redirectToRoute('userInfo');
         }
-        return $this->render('user/update.html.twig', ['user'=>$user, 'form' => $form->createView(), 'age'=>$age]);
+        return $this->render('user/update.html.twig', ['user'=>$user, 'form' => $form->createView()]);
     }
 
 
