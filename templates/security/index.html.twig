@@ -9,7 +9,7 @@
 		{# affichage des messages flash #}
 				{% for label, messages in app.flashes %}
 					{% for message in messages %}
-						<div class="alert alert-{{ label }}">{{ message }}</div>
+						<div class="messageFlash mb-0 alert alert-{{ label }}">{{ message }}</div>
 					{% endfor %}
 				{% endfor %}
 		<div class="container-fluid pr-0 pl-0 rowBgProfile">

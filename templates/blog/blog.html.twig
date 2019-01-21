@@ -9,7 +9,7 @@
 
 				{% for label, messages in app.flashes %}
 					{% for message in messages %}
-						<div class="alert alert-{{ label }} m-0">{{ message }}</div>
+						<div class="messageFlash alert alert-{{ label }} m-0">{{ message }}</div>
 					{% endfor %}
 				{% endfor %}
 

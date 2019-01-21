@@ -6,21 +6,10 @@
 {% block body %}
 <section class="heightPage">
 
-<div class="container-fluid">
-	<h2 class="formTitle text-center">Blog</h2>
-	<div class="row">
-
-{# affichage des messages flash #}
-{% for label, messages in app.flashes %}
-    {% for message in messages %}
-        <div class="alert alert-{{ label }} m-0">{{ message }}</div>
-    {% endfor %}
-{% endfor %}
 
 			<div class="container-fluid">
 				<h2 class="formTitle text-center">Blog</h2>
 				<div class="row">
-
 
 					{# affichage des messages flash #}
 					{% for label, messages in app.flashes %}

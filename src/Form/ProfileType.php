@@ -31,8 +31,8 @@ class ProfileType extends AbstractType
                 'label' => 'Genre',
                 'choices' =>array(
                     'Choisir le genre' =>null,
-                    'Femme' => 'femme',
-                    'Homme' => 'homme')))
+                    'Femme' => 'Femme',
+                    'Homme' => 'Homme')))
             ->add('city', TextType::class, array('label' => 'Ville'))
             ->add('birthday', DateType::class, array(
                 'label' => 'Date de naissance',
@@ -42,7 +42,7 @@ class ProfileType extends AbstractType
             ->add('phone', TextType::class, array('label' => 'Numéro de téléphone'))
             ->add('picture', FileType::class, array(
                 'data_class'=> null, 
-                'label' => 'Choisis ta photo de profil', 'required' => true))
+                'label' => 'Choisis ta photo de profil', 'required' => false))
             ->add('description', TextareaType::class, array('label' => 'Parle-nous un peu de toi ! (Tes hobbies, ta personnalité, ta profession...)'))
             ->add('countries', TextType::class, array('label' => 'Quels pays as-tu visités ?'))
             ->add('facebook', TextType::class, array('label' => 'Lien vers ton profil facebook',

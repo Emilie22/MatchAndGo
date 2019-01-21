@@ -75,7 +75,7 @@ class UserController extends AbstractController
             $entityManager->flush();
 
 
-            $this->addFlash('success', 'Votre profil a bien été créé !');
+            $this->addFlash('warning', 'Votre profil a bien été créé !');
             return $this->redirectToRoute('userInfo');
         }
 
@@ -141,7 +141,7 @@ class UserController extends AbstractController
             
             return $this->redirectToRoute('userInfo');
         }
-        return $this->render('user/update.html.twig', ['user'=>$user, 'form' => $form->createView(), 'age'=>$age]);
+        return $this->render('user/update.html.twig', ['user'=>$user, 'form' => $form->createView()]);
     }
 
 

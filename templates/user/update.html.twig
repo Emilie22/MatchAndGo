@@ -10,20 +10,20 @@
 			{# affichage des messages flash #}
 				{% for label, messages in app.flashes %}
 					{% for message in messages %}
-						<div class="alert alert-{{ label }}">{{ message }}</div>
+						<div class="messageFlashalert alert-{{ label }}">{{ message }}</div>
 					{% endfor %}
 				{% endfor %}
 			
 
 			{# Message d'erreur #}
-			{% if errors is defined %}
+			{# {% if errors is defined %}
 					{% for error in errors %}
 						<div class="alert alert-warning">{{ error.message }}</div>
 					{% endfor %}
-			{% endif %}
+			{% endif %} #}
 				<div class="row justify-content-center">
 					<div class="col-12 col-md-9 col-lg-4">
-						<div class="addProfileBg">
+						<div class="updateProfileBg">
 							
 							<h3 class="text-center mt-5">Modifier mon profil Match&Go</h3>
 							<div class="form-group">
