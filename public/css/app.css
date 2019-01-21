@@ -26,6 +26,11 @@ body {
   color: #fdad17;
 }
 
+/* Couleur de la police des labels des formulaires */
+.fontOrange{
+  color: #fdad17;
+}
+
 .lienHome:hover {
   text-decoration: none;
   color: #fdad17; 
@@ -260,6 +265,7 @@ body {
   color: black;
   background-color: rgba(248,248,248,0.7);
   padding: 30px;
+  height: 62.5em;
 }
 
 
@@ -273,6 +279,32 @@ body {
   color: #fdad17;
 }
 
+/* Responsive tablette de la page de création de profil */
+
+@media all and (max-width:1000px){
+  .profileBg{
+    background-size: cover; 
+    height: 64em;
+  }
+
+  .addProfileBg{
+    height: 64em;
+  }
+
+}
+
+/* Responsive mobile de la page de création de profil */
+
+@media all and (max-width:600px){
+  .profileBg{
+    height: 71em;
+    background-size: cover;
+  }
+
+  .addProfileBg{
+    height: 71em;
+  }
+}
 
 /* Formulaire de modification du profil */
 
@@ -285,7 +317,7 @@ body {
 /* Affichage du profil de l'utilisateur connecté */
 
 .imgBgProfile{
-  height: 55.5em;
+  height: 60.5em;
   width: 100%;
 }
 
@@ -300,7 +332,7 @@ body {
   color: #3f4253;
   left: 12em;
   width: 55em;
-  height: 55.5em;
+  height: 60.5em;
   text-align: center;
 
 }
@@ -331,6 +363,10 @@ body {
       height: 64em;
     }
 
+    .infosProfile h3{
+       font-size: 1.5em;
+      }
+
     .imgBgProfile{
       height: 64em;
     }
@@ -341,7 +377,7 @@ body {
     }
 
     .rowBgProfile{
-      height: 50em;
+      height: 64em;
     }
 
 }
