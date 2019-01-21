@@ -26,6 +26,11 @@ body {
   color: #fdad17;
 }
 
+/* Couleur de la police des labels des formulaires */
+.fontOrange{
+  color: #fdad17;
+}
+
 .lienHome:hover {
   text-decoration: none;
   color: #fdad17; 
@@ -247,32 +252,60 @@ body {
 /*Création du profil*/
 
 .btnCreateProfile{
-	background: #fdad17;
-	color: #3f4253;
+  background: #fdad17;
+  color: #3f4253;
 }
 
 .profileBg{
-	background-image: url('../uploads/user/image/addprofil.jpg');
-	background-repeat: no-repeat;
+  background-image: url('../uploads/user/image/addprofil.jpg');
+  background-repeat: no-repeat;
+  
 }
 
 .addProfileBg{
   color: black;
   background-color: rgba(248,248,248,0.7);
   padding: 30px;
+  height: 62.5em;
 }
 
 
 .fas{
-	color: #fdad17;
+  color: #fdad17;
   font-size: 1.5em;
   margin: 5px;  
 }
 
 .navbar-light .navbar-nav .nav-link{
-	color: #fdad17;
+  color: #fdad17;
 }
 
+/* Responsive tablette de la page de création de profil */
+
+@media all and (max-width:1000px){
+  .profileBg{
+    background-size: cover; 
+    height: 68em;
+  }
+
+  .addProfileBg{
+    height: 64em;
+  }
+
+}
+
+/* Responsive mobile de la page de création de profil */
+
+@media all and (max-width:600px){
+  .profileBg{
+    height: 79em;
+    background-size: cover;
+  }
+
+  .addProfileBg{
+    height: 71em;
+  }
+}
 
 /* Formulaire de modification du profil */
 
@@ -285,7 +318,7 @@ body {
 /* Affichage du profil de l'utilisateur connecté */
 
 .imgBgProfile{
-  height: 55.5em;
+  height: 60.5em;
   width: 100%;
 }
 
@@ -300,7 +333,7 @@ body {
   color: #3f4253;
   left: 12em;
   width: 55em;
-  height: 55.5em;
+  height: 60.5em;
   text-align: center;
 
 }
@@ -331,6 +364,10 @@ body {
       height: 64em;
     }
 
+    .infosProfile h3{
+       font-size: 1.5em;
+      }
+
     .imgBgProfile{
       height: 64em;
     }
@@ -341,7 +378,7 @@ body {
     }
 
     .rowBgProfile{
-      height: 50em;
+      height: 64em;
     }
 
 }
@@ -379,7 +416,7 @@ body {
 
 #carouselQuiz {
   margin-top: 2.5rem;
-	background-color: #fff;
+  background-color: #fff;
   height: 600px;
   position: relative;
 }
@@ -426,8 +463,8 @@ body {
 }
 
 .littleContainer {
-	width: 60%;
-	margin: 200px auto 0;
+  width: 60%;
+  margin: 200px auto 0;
 }
 
 .btnAnswers {
