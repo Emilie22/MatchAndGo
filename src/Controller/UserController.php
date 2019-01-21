@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use App\Service\FileUploader;
 use App\Form\ProfileType;
 use App\Entity\User;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class UserController extends AbstractController
 {
@@ -94,6 +95,7 @@ class UserController extends AbstractController
 
         $user = $this->getUser();
 
+
         /* PROBLEME avec Serialization du fichier, validation impossible */
 
         // $filename = $user->getPicture();
@@ -139,7 +141,7 @@ class UserController extends AbstractController
             
             return $this->redirectToRoute('userInfo');
         }
-        return $this->render('user/update.html.twig', ['user'=>$user, 'form' => $form->createView()]);
+        return $this->render('user/update.html.twig', ['user'=>$user, 'form' => $form->createView(), 'age'=>$age]);
     }
 
 
@@ -148,14 +150,14 @@ class UserController extends AbstractController
     /**
       * @Route ("/user/show/{slug}", name="showProfileWithSlug", requirements={"slug"="[a-z0-9]+(?:-[a-z0-9]+)*"})
       */
-      public function showProfileWithSlug(User $user) {
+      public function showProfileWithSlug(User $user){
 
             $imgBgProfile = [];
             for ($i=1; $i<=6; $i++) {
                 $imgBgProfile[] = 'backgroundprofile'.$i;
             }
         
-           return $this->render('user/userInvite.html.twig', [ 'user' => $user, 'imgBgProfile'=>$imgBgProfile ]);
+           return $this->render('user/userInvite.html.twig', [ 'user' => $user, 'imgBgProfile'=>$imgBgProfile]);
       }
 
 }

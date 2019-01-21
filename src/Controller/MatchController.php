@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\DateTime;
 use App\Entity\User;
 use App\Entity\Answer;
 
@@ -16,8 +17,8 @@ class MatchController extends AbstractController
     {
     	
     	$repository = $this->getDoctrine()->getRepository(User::class);
-    	$users = $repository->myFindAll($this->getUser()->getId());
-
+        $users = $repository->myFindAll($this->getUser()->getId());
+        
     	$userAnswers = [];
 
     	foreach ($users as $user) {
