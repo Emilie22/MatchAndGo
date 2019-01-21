@@ -95,7 +95,6 @@ class SecurityController extends AbstractController
                             $users = $value;
                         }
 
-
                         $resetPassword = new ResetPassword();
                         $resetPassword ->setUser($users);
                         $resetPassword ->setToken($token);
