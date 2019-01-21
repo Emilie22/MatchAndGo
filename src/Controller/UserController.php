@@ -96,6 +96,7 @@ class UserController extends AbstractController
         $user = $this->getUser();
 
 
+
         /* PROBLEME avec Serialization du fichier, validation impossible */
 
         // $filename = $user->getPicture();

@@ -12,6 +12,7 @@ use App\Entity\Salon;
 class ChatController extends AbstractController
 {
     /**
+     * Création d'un salon à partir de la page match
      * @Route("/chat/add/{idUser}", name="addChat", requirements={"idUser"="\d+"})
      */
     public function addChat($idUser)
@@ -58,7 +59,6 @@ class ChatController extends AbstractController
     }
 
     /**
-     * Page principal du chat
      * @Route("/chat", name="chat")
      */
     public function index(Request $request) {
@@ -80,7 +80,7 @@ class ChatController extends AbstractController
 
     	$userMatch = [];
     	foreach ($test as $key=>$value) {
-    		if ($value > 2) {
+    		if ($value > 15) {
     			$userMatch[] = $repository->findById($key);
     		}
     	}
@@ -95,6 +95,7 @@ class ChatController extends AbstractController
 
 
     // Requête Ajax :
+
     /**
      * @Route("/chat/changeSalon", name="changeSalon")
      */

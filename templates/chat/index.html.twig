@@ -11,7 +11,6 @@
 					<div class="messageFlash alert alert-{{ label }} m-0">{{ message }}</div>
 				{% endfor %}
 			{% endfor %}
-
             <div class="col-md-12 my-5 text-center">
                 <select id="salon" class="form-control">
                     {% for chat in chats %}
@@ -21,6 +20,7 @@
             </div>
         </div>
     </div>
+
     <div class="row">
         <div class="container-fluid">
             <div class="offset-2 col-md-8 border border-dark rounded" id="listMessage">
@@ -39,32 +39,34 @@
             </form>
         </div>
     </div>
-    <div class="row justify-content-center mt-5">
-    <h3 class="formTitle ">Mes derniers matchs</h3>
-		<div class="col-12 col-md-12">
-			<div class="row">
-				{% for userA in userMatch %}
-					{% for userB in userA %}
-					<div class="col-12 col-md-4">
-						<div class="card">
-							<img src="http://placekitten.com/100/60" alt="photoUserMatch" class="imgProfileMatch">
-							<div class="card-body">
-								<p class="card-title text-center">{{ userB.firstname }}<br><span>{{ userB.gender }} | {{ userB.birthday|date('m-d-Y') }}</span></p>
-								<p class="card-text text-center">{{ userB.city }}</p>
-								<div class="row">
-									<div class="col-12 text-center">
-										<a href="{{path('showProfileWithSlug', {slug:userB.slug}) }}"><i class="fas fa-user"></i></a>
-										<p data-iduser="{{userB.id}}" class='inviteUser'><i class="fas fa-comment"></i></p>
-									</div>
 
-								</div>
-							</div>
-						</div>
-					</div>
-					{% endfor %}
+
+{# Personne qui match avec l'utilisateur connecté #}
+    <div class="row justify-content-center">
+        <h3 class="formTitle">Invitez d'autres personnes dans le tchat </h3>
+    </div>
+	<div class="row justify-content-center">
+        <div class="col-12 col-md-10">
+			<div class="row">
+			{% for userA in userMatch %}
+				{% for userB in userA %}
+                    <div class="col-10 col-md-4 col-lg-2">
+                        <div class="box15">
+                            <img  src="{{ asset('uploads/user/image/' ~ userB.picture) }}" alt="photoUserMatch" class="thumbnails">
+                            <div class="box-content">
+                                <p class="title">{{ userB.firstname }}<span><br> {{ userB.birthday|date('m-d-Y') }} <br> {{ userB.city }}</span></p>
+                                <ul class="icon">
+                                    <li><a href="{{path('showProfileWithSlug', {slug:userB.slug}) }}"><i class="fas fa-user"></i></a></li>
+                                    <li><a class="inviteUser" data-iduser="{{userB.id}}"><i class="fas fa-comment"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 				{% endfor %}
-			</div>
-		</div>
+			{% endfor %}
+            </div>
+        </div>
+    </div>
 </section>
 {% endblock %}
 {% block javascripts %}
@@ -72,7 +74,7 @@
 
 	<script>
         $(function(){
-
+        // Ajax pour le changement de salon avec le select 
             $("#salon").on('change', function(){
 
                 let idSalon = $(this).val();
@@ -93,6 +95,7 @@
 
                 }) 
             })
+        // Ajax pour l'envoie de message 
             $("#stop").on('submit', function(e){
                 e.preventDefault();
                 let setSalon = $('#salon').val();
@@ -115,7 +118,7 @@
                     }
                 })
             })
-
+        // Ajax pour le rafraichissement de la div message
             function refresh(){
                 let idSalon = $('#salon').val();
                 let idUser = $('.selectSalon').data('user');
@@ -135,7 +138,7 @@
                 })
             }
             setInterval(refresh, 3000);
-
+        // Invitez des personnes dans le salon utilisé 
             $('.inviteUser').on('click', function(){
                 let idUserB = $(this).data('iduser');
                 let idSalon = $('#salon').val();

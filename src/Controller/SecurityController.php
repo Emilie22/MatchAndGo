@@ -104,7 +104,6 @@ class SecurityController extends AbstractController
                         $entityManager->persist($resetPassword);
                         $entityManager->flush();
                         
-
                         $user = $users->getId();
 
                     $message = (new \Swift_Message('Mot de passe oublié'))
@@ -168,10 +167,10 @@ class SecurityController extends AbstractController
                         if(!empty($tokens)){
                             $repository = $this->getDoctrine()->getRepository(User::class);
                             $UserPassword = $repository->changePassword($newMdp, $id);
-                            
 
                             $this->addFlash('success', 'Mot de passe changé !');
                             return $this->redirectToRoute('app_login');
+
                         }
                     }
                 }

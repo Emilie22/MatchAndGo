@@ -40,6 +40,7 @@ class MatchController extends AbstractController
 
         // je crée un tableau qui récupère les villes de mes user match
         // et un tableau qui récupère les noms, lattitude et longitude (api google map)
+
         $cityTab = [];
         $userCoord = [];
         foreach ($userMatch as $userCity) {
