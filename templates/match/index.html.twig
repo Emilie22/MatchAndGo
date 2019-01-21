@@ -3,12 +3,7 @@
 {% block title %}Hello MatchController!{% endblock %}
 
 {% block body %}
-{# {{ dump(users) }}
-{{ dump(userAnswers) }}
-{{ dump(test) }}
-{{ dump(user) }} #}
-{# {{ dump(answers) }} #}
-{# {{ dump(idAnswers) }} #}
+
 <section class="heightPage">
 
 <div class="container-fluid">
@@ -31,14 +26,16 @@
 
 		</div>
 	</div>
+
 	<div class="row">
 		<div class="col-12 col-md-8">
 			<div class="row">
+				{# je boucle pour pouvoir afficher les infos de mes match #}
 				{% for userA in userMatch %}
 					{% for userB in userA %}
 					<div class="col-12 col-md-4">
 						<div class="card">
-							<img src="http://placekitten.com/100/60" alt="photoUserMatch" class="imgProfileMatch">
+							<img src="{{ asset('uploads/user/image/' ~ userB.picture) }}" alt="photoUserMatch" class="imgProfileMatch">
 							<div class="card-body">
 								<p class="card-title text-center">{{ userB.firstname }}<br><span>{{ userB.gender }} | {{ userB.birthday|date('m-d-Y') }}</span></p>
 								<p class="card-text text-center">{{ userB.city }}</p>
@@ -58,6 +55,7 @@
 		</div>
 
 		<div class="col-12 col-md-4">
+			{# div pour afficher la map pour la localisation des match #}
 			<div id="mapLoc">
 			</div>
 		</div>
@@ -84,14 +82,12 @@
 
         let coords = {
         	{% for key, coord in userCoord %}
-        		'{{ key }}' : { 'firstname': '{{ coord.firstname}}', 'picture': '{{ coord.picture }}', 'lat': {{ coord.lat }}, 'lng':{{ coord.lng }}},
+        		'{{ key }}' : { 'firstname': '{{ coord.firstname}}', 'lat': {{ coord.lat }}, 'lng':{{ coord.lng }}},
         	{% endfor %}
         };
-        // console.log(coords);
 
         $.each(coords, function(i, coord) {
 
-        	// let pictureSRC = '<img src="{{asset("uploads/user/image/"~0)}}" class="imgMapMatch">';
         	var marker = new google.maps.Marker({
             position: {lat: coord.lat, lng: coord.lng},
             map: map
@@ -100,7 +96,6 @@
         	var infowindow = new google.maps.InfoWindow({
 	          content: coord.firstname
 	        });
-        	// pictureSRC.replace(0, coord.picture) +
           	infowindow.open(map, marker);
 
         });

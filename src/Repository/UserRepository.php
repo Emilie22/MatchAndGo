@@ -19,6 +19,7 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
+    // requête des match : je récupère les id des users qui ont répondu aux mêmes questions que moi
     public function myFindAll($id) {
         $connexion = $this->getEntityManager()->getConnection();
         $sql = 'SELECT au2.user_id     

@@ -17,31 +17,35 @@ class QuizController extends AbstractController
     public function showQuiz(Request $request)
     {
 
+    	// requête pour récupérer et pouvoir afficher toutes les questions du quiz
     	$repository = $this->getDoctrine()->getRepository(Question::class);
     	$questions = $repository->findAll();
 
+    	// tableau pour pouvoir afficher les photos du quiz/carousel en random
     	$imgQuiz = [];
-    	for ($i=1; $i<=22; $i++) {
+    	for ($i=1; $i<=23; $i++) {
     		$imgQuiz[] = 'carousel'.$i;
     	}
-    	// $imgQuiz = ['carousel1', 'carousel2', 'carousel3', 'carousel4', 'carousel5', 'carousel6', 'carousel7', 'carousel8', 'carousel9', 'carousel10', 'carousel11', 'carousel12'];
 
+
+    	// traitement du formulaire du quiz
 		$post = $request->request->all();
 
 		if (!empty($post)) {
 
-		$user = new User();
+		// $user = moi
 		$user = $this->getUser();
 
+		// si j'ai déjà répondu au quiz, je supprime toutes mes anciennes réponses
 		$oldAnswers = $user->getAnswers();
 		foreach ($oldAnswers as $key => $value) {
 			$user->removeAnswer($value);
 		}
 		
+		// je crée un tableau $answerObj où je stocke les id des réponses récupérées du quiz
+		// et je rajoute ces id dans le champ answers de ma table User		
     	$repositoryAnswer = $this->getDoctrine()->getRepository(Answer::class);
-
     	$answerObj = new Answer();
-		
 		$answerObj = [];
 		foreach ($post as $key => $value){
 			$answerObj[] = $repositoryAnswer->find($value);
@@ -49,10 +53,10 @@ class QuizController extends AbstractController
 				$user->addAnswer($value);
 			}
 		}
-
 		$entityManager = $this->getDoctrine()->getManager();
 		$entityManager->flush();
 
+		// je suis redirigée sur la page qui affiche mes match
 		return $this->redirectToRoute('match');
 
 		}
