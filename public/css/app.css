@@ -252,11 +252,6 @@ body {
     width: 100%;
 }
 
-/* Message flash */
-
-.messageFlash{
-  z-index: 1;
-}
 
 
 /*Création du profil*/
@@ -277,6 +272,13 @@ body {
   background-color: rgba(248,248,248,0.7);
   padding: 30px;
   height: 58.5em;
+}
+
+.updateProfileBg{
+  color: black;
+  background-color: rgba(248,248,248,0.7);
+  padding: 30px;
+  height: 60.5em;
 }
 
 
@@ -336,12 +338,6 @@ body {
   background-repeat: no-repeat;
 }
 
-.updateProfileBg{
-  color: black;
-  background-color: rgba(248,248,248,0.7);
-  padding: 30px;
-  height: 60.5em;
-}
 
 
 /* Affichage du profil de l'utilisateur connecté */
@@ -389,7 +385,7 @@ body {
 }
 
 /* Lien chat sur le profil d'un utilisateur */
-.infosProfile a{
+.infosProfile > a{
   color: #3f4253;
 }
 
@@ -484,6 +480,10 @@ body {
 .ico:focus {
   background: none;
   color: #3f4253;
+}
+
+.slideMap {
+  background-color: #FFF9D6;
 }
 
 .pictureQuiz {
@@ -582,7 +582,7 @@ body {
 }
 
 
-/*PAGE MATCH 33 */
+/*PAGE MATCH */
 
 .avatar2 {
   border-radius: 50%;
@@ -819,10 +819,7 @@ body {
   }
 
 }
-/*responsive portable blog*/
-@media all and (max-width: 576px) {
 
-}
 
 /*FOOTER*/
 
@@ -851,4 +848,16 @@ mark{
 
 .colorP{
   color: #fdad17 
+}
+
+.cgu h3{
+  color: #dabc83;
+}
+
+
+#mapquiz {
+ width: 100%;
+ height: 400px;
+ z-index: 10;
+ background: none;
 }
