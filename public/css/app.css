@@ -542,12 +542,6 @@ body {
 
 /*PAGE MATCH*/
 
-.imgProfileMatch {
-  width: 100%;
-  height: 50%;
-  box-shadow: 0px 10px 10px -4px #6A708C;
-}
-
 .avatar2 {
   border-radius: 50%;
   width: 125px;
@@ -555,57 +549,26 @@ body {
   margin-top: 30px;
 }
 
-.card {
-    height: 500px;
-    border: none;
-    margin: 20px;
+.box15{position:relative; margin-top: 0.5em}
+.box15 img{width:99%;height:19em}
+.box15 .box-content{width:100%;height:100%;position:absolute;top:0;left:0;transition:all .5s ease 0s}
+.box15:hover .box-content{background-color:rgba(255,242,242,.8)}
+.box15 .box-content:after,.box15 .box-content:before{content:"";width:50px;height:50px;position:absolute;opacity:0;transform:scale(1.5);transition:all .6s ease .3s}
+.box15 .box-content:before{border-left:1px solid #040404;border-top:1px solid #040404;top:19px;left:19px}
+.box15 .box-content:after{border-bottom:1px solid #040404;border-right:1px solid #040404;bottom:19px;right:19px}
+.box15:hover .box-content:after,.box15:hover .box-content:before{opacity:1;transform:scale(1)}
+.box15 .title{font-size:22px;color:#000;margin:0;position:relative;top:0;opacity:0;transition:all 1s ease 10ms}
+.box15:hover .title{top:19%;opacity:1;transition:all .5s cubic-bezier(1,-.53,.405,1.425) 10ms; text-align: center; font-size: 1.5em;}
+.box15 .title:after{content:"";width:0;height:1px;background:#040404;position:absolute;bottom:-8px;left:0;right:0;margin:0 auto;transition:all 1s ease 0s}
+.box15:hover .title:after{width:80%;transition:all 1s ease .8s}
+.box15 .icon{width:100%;margin:0 auto;position:absolute;bottom:0;opacity:0;transition-duration:.6s;transition-timing-function:cubic-bezier(1,-.53,.405,1.425);transition-delay:.1s}
+.box15:hover .icon{bottom:20%;opacity:1; text-align: center}
+.box15 .icon li{display:inline-block}
+.box15 .icon li a{display:block;width:40px;height:40px;line-height:40px;border-radius:50%;font-size:18px;color:#000;border:1px solid #000;margin-right:5px;transition:all .3s ease-in-out 0s}
+.box15 .icon li a:hover{background:#000;color:#fff}
+@media all and (max-width:1000px){.box15{margin-bottom:30px}
 }
 
-.fa-user, .fa-comment {
-  border-radius: 50%;
-  background-color: #fdad17;
-  color: #fff;
-  font-size: 1rem;
-  padding: 12px;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  box-shadow: 0px 10px 10px -4px #6A708C;
-}
-
-.fa-user:hover, .fa-comment:hover {
-  background-color: #3f4253;
-  color: #fff;
-}
-
-@media all and (max-width: 1000px) {
-  .card-body {
-    padding: 10px;
-  }
-  .card-body > p {
-    font-size: 0.8rem;
-  }
-  .fa-user, .fa-comment {
-    font-size: 0.8rem;
-    margin: 0;
-    padding: 12px;
-    box-shadow: 0px 10px 10px -4px #6A708C;
-  }
-  #mapLoc {
-    height: 400px;
-  }
-  .titleMatch {
-    font-size: 1.2rem;
-  }
-}
-@media all and (max-width: 600px) {
-  .card {
-    width: 60%;
-    margin: 20px auto;
-  }
-  .avatar2 {
-    display: none;
-  }
-}
 
 /*Formulaire admin Concept*/
 
@@ -818,4 +781,25 @@ mark{
 
 .colorP{
   color: #fdad17 
+}
+
+
+.box15{position:relative; margin-top: 0.5em}
+.box15 img{width:99%;height:19em}
+.box15 .box-content{width:100%;height:100%;position:absolute;top:0;left:0;transition:all .5s ease 0s}
+.box15:hover .box-content{background-color:rgba(255,242,242,.8)}
+.box15 .box-content:after,.box15 .box-content:before{content:"";width:50px;height:50px;position:absolute;opacity:0;transform:scale(1.5);transition:all .6s ease .3s}
+.box15 .box-content:before{border-left:1px solid #040404;border-top:1px solid #040404;top:19px;left:19px}
+.box15 .box-content:after{border-bottom:1px solid #040404;border-right:1px solid #040404;bottom:19px;right:19px}
+.box15:hover .box-content:after,.box15:hover .box-content:before{opacity:1;transform:scale(1)}
+.box15 .title{font-size:22px;color:#000;margin:0;position:relative;top:0;opacity:0;transition:all 1s ease 10ms}
+.box15:hover .title{top:19%;opacity:1;transition:all .5s cubic-bezier(1,-.53,.405,1.425) 10ms; text-align: center; font-size: 1.5em;}
+.box15 .title:after{content:"";width:0;height:1px;background:#040404;position:absolute;bottom:-8px;left:0;right:0;margin:0 auto;transition:all 1s ease 0s}
+.box15:hover .title:after{width:80%;transition:all 1s ease .8s}
+.box15 .icon{width:100%;margin:0 auto;position:absolute;bottom:0;opacity:0;transition-duration:.6s;transition-timing-function:cubic-bezier(1,-.53,.405,1.425);transition-delay:.1s}
+.box15:hover .icon{bottom:17%;opacity:1; text-align: center}
+.box15 .icon li{display:inline-block}
+.box15 .icon li a{display:block;width:40px;height:40px;line-height:40px;border-radius:50%;font-size:18px;color:#000;border:1px solid #000;margin-right:5px;transition:all .3s ease-in-out 0s}
+.box15 .icon li a:hover{background:#000;color:#fff}
+@media all and (max-width:1000px){.box15{margin-bottom:30px}
 }
