@@ -54,7 +54,7 @@ class ChatController extends AbstractController
 
             $entityManager->flush();
 
-            $this->addFlash('success', 'Salon créer');
+            $this->addFlash('warning', 'Salon créé');
         return $this->redirectToRoute('chat');
     }
 
