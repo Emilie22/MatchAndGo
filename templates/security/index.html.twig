@@ -20,7 +20,13 @@
 			<div class="infosProfile">
 				<div class="row justify-content-center mt-5">
 					<div class="col-12 col-md-4">
-						<img src="{{ asset('uploads/user/image/' ~ user.picture) }}" class="avatar" alt="avatar">
+						{% if user.picture %}
+							<img src="{{ asset('uploads/user/image/' ~ user.picture) }}" class="avatar" alt="avatar">
+						{% elseif user.gender == 'Homme' %}
+							<img src="{{ asset('uploads/user/image/avatarHomme.png') }}" class="avatar" alt="avatar">
+						{% elseif user.gender == 'Femme' %}
+							<img src="{{ asset('uploads/user/image/avatarFemme.png') }}" class="avatar" alt="avatar">
+						{% endif %}
 					</div>
 					<div class="mt-5 col-12 col-md-7">
 						<h3>Bonjour {{ user.firstname}} {{ user.lastname }}, voici vos informations de profil :</h3>
