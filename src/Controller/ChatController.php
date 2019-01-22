@@ -105,7 +105,6 @@ class ChatController extends AbstractController
         $user = $this->getUser();
         $repository = $this->getDoctrine()->getRepository(Chat::class);
         $message = $repository->viewMessage($idSalon);
-        dump($message);
         return $this->render('chat/message.html.twig', ['messages'=>$message, 'user'=>$user]);
     }
 

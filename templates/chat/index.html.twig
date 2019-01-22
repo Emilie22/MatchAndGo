@@ -90,7 +90,6 @@
                         $("#listMessage").empty().append(result);
                     },
                     error: function(error){
-                        console.log(error);
                     }
 
                 }) 
@@ -114,7 +113,6 @@
                         $("#message").val('');
                     },
                     error: function(error){
-                        console.log(error);
                     }
                 })
             })
@@ -133,7 +131,6 @@
                         $("#listMessage").html(result);
                     },
                     error: function(error){
-                        console.log(error);
                     }
                 })
             }
@@ -142,9 +139,7 @@
             $('.inviteUser').on('click', function(){
                 let idUserB = $(this).data('iduser');
                 let idSalon = $('#salon').val();
-                console.log(idSalon);
 
-                console.log(idUserB);
                 $.ajax({
                     type: 'post',
                     url: '{{path("UserOnChat")}}',
@@ -155,7 +150,6 @@
 
                     },
                     error: function(error){
-                        console.log(error);
                     }
                 })
             })
