@@ -133,6 +133,12 @@ body {
   font-size: 1.5rem;
 }
 
+.logo3{
+  width: 11em;
+  height: 11em;
+  margin-bottom: 2em;
+}
+
 /*2ème section homepage*/
 
 .secondHome {
