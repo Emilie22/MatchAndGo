@@ -365,6 +365,10 @@ body {
 
 }
 
+.iconFbk {
+  color: #3f4253;
+}
+
 .iconFbk:hover, .iconInsta:hover{
   color: #fdad17; 
 }
@@ -674,7 +678,7 @@ body {
 /*MAP localisation match*/
 
 #mapLoc {
-  height: 600px;
+  height: 615px;
 }
 
 
