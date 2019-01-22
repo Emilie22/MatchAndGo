@@ -33,7 +33,7 @@ class MatchController extends AbstractController
         // est supérieur à 14
     	$userMatch = [];
     	foreach ($test as $key=>$value) {
-    		if ($value > 14) {
+    		if ($value > 8) {
     			$userMatch[] = $repository->findById($key);
     		}
     	}

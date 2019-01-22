@@ -62,7 +62,8 @@ class ChatController extends AbstractController
      * @Route("/chat", name="chat")
      */
     public function index(Request $request) {
-
+        
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
             	
     	$repository = $this->getDoctrine()->getRepository(User::class);
         $users = $repository->myFindAll($this->getUser()->getId());
