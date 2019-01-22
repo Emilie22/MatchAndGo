@@ -254,6 +254,14 @@ body {
     width: 100%;
 }
 
+.mdpoublie {
+  color: #DABC83; 
+}
+
+.mdpoublie:hover {
+  color: #fdad17; 
+}
+
 
 
 /*Création du profil*/
